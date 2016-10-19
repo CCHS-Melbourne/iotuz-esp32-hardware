@@ -28,11 +28,12 @@ LIBS:opto
 LIBS:atmel
 LIBS:contrib
 LIBS:valves
-LIBS:ESP32-footprints-Shem-Lib
-LIBS:freetronics_schematic
-LIBS:cn3063
-LIBS:ltc3426
 LIBS:ESP8266
+LIBS:freetronics_schematic
+LIBS:ESP32-footprints-Shem-Lib
+LIBS:cn3063
+LIBS:cp2102
+LIBS:ltc3426
 LIBS:InternetOfTux-cache
 EELAYER 25 0
 EELAYER END
@@ -181,8 +182,6 @@ F 3 "" H 6850 1900 60  0000 C CNN
 $EndComp
 Text Notes 750  950  0    60   ~ 0
 USB Input:\nPreferred charging input if available, 4.5-5.5V
-Text Notes 800  2350 0    60   ~ 0
-Solar input:\n7V open circuit voltage panel\nNominal 4-6V under load
 Text Notes 4550 4800 0    60   ~ 0
 Charging current\nIr = 252mA max
 $Comp
@@ -892,4 +891,6 @@ Text Label 9050 3050 3    60   ~ 0
 3.3V
 Text Label 10000 3050 3    60   ~ 0
 3.3V
+Text Notes 800  2350 0    60   ~ 0
+Solar input:\n7V open circuit voltage panel\nNominal 4-6V under load
 $EndSCHEMATC

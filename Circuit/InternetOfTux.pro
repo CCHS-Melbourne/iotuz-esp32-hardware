@@ -1,4 +1,4 @@
-update=9/10/2016 4:04:12 PM
+update=19/10/2016 6:58:30 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -58,8 +58,9 @@ LibName26=opto
 LibName27=atmel
 LibName28=contrib
 LibName29=valves
-LibName30=subs/ESP32-kiCAD-Footprints/ESP32-Footprints/ESP32-footprints-Shem-Lib
+LibName30=subs/kicad-ESP8266/ESP8266
 LibName31=subs/freetronics_kicad_library/freetronics_schematic
-LibName32=libs/cn3063
-LibName33=libs/ltc3426
-LibName34=subs/kicad-ESP8266/ESP8266
+LibName32=subs/ESP32-kiCAD-Footprints/ESP32-Footprints/ESP32-footprints-Shem-Lib
+LibName33=libs/cn3063
+LibName34=libs/cp2102
+LibName35=libs/ltc3426
