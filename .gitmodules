@@ -4,6 +4,3 @@
 [submodule "Circuit/subs/freetronics_kicad_library"]
 	path = Circuit/subs/freetronics_kicad_library
 	url = https://github.com/freetronics/freetronics_kicad_library.git 
-[submodule "Circuit/subs/kicad-ESP8266"]
-	path = Circuit/subs/kicad-ESP8266
-	url = https://github.com/jdunmire/kicad-ESP8266.git
