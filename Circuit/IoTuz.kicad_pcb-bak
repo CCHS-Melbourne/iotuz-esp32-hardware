@@ -1039,7 +1039,7 @@
   )
 
   (module freetronics_footprints:USB-MICRO-5pin_PTHMOUNT (layer F.Cu) (tedit 5477AC9A) (tstamp 580B6953)
-    (at 135.128 122.1232)
+    (at 141.042171 146.59755)
     (path /57FB5388)
     (attr smd)
     (fp_text reference P3 (at -4.7 0 90) (layer Eco1.User)
@@ -1305,7 +1305,7 @@
   )
 
   (module TO_SOT_Packages_THT:TO-92_Inline_Wide (layer F.Cu) (tedit 54F242B4) (tstamp 580B699A)
-    (at 241.173 80.01)
+    (at 241.876152 87.8274)
     (descr "TO-92 leads in-line, wide, drill 0.8mm (see NXP sot054_po.pdf)")
     (tags "to-92 sc-43 sc-43a sot54 PA33 transistor")
     (path /5807FFC5)
@@ -1338,7 +1338,7 @@
   )
 
   (module TO_SOT_Packages_THT:TO-92_Inline_Wide (layer F.Cu) (tedit 54F242B4) (tstamp 580B69A1)
-    (at 147.193 144.145)
+    (at 145.916152 147.1474)
     (descr "TO-92 leads in-line, wide, drill 0.8mm (see NXP sot054_po.pdf)")
     (tags "to-92 sc-43 sc-43a sot54 PA33 transistor")
     (path /58080049)
