@@ -52,9 +52,9 @@ Made at hackmelbourne.org!
 SPECIAL THANKS
 ------------
 
-(EspressIF, https://espressif.com/) - The company behind the hugely popular ESP8266 chips we used in 2016 and the brand new ESP32 chips we're using this year.  EspressIF has kindly donated the ESP32 chips we'll be using on the boards.
+[EspressIF](https://espressif.com/) - The company behind the hugely popular ESP8266 chips we used in 2016 and the brand new ESP32 chips we're using this year.  EspressIF has kindly donated the ESP32 chips we'll be using on the boards.
 
-To the HackMelbourne (CCHS, http://hackmelbourne.org) community of Melbourne, Australia.
+To the [HackMelbourne](http://hackmelbourne.org) community of Melbourne, Australia.
 
 To all other open-source developers whose countless hours supported every other aspect of this design.
 
