@@ -1,0 +1,8 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP ROTARY
+D Rotary Encoder
+K switch
+$ENDCMP
+#
+#End Doc Library
