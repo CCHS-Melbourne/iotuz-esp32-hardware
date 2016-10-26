@@ -60,10 +60,8 @@ F 3 "" H 3800 2900 60  0000 C CNN
 	1    4050 3250
 	1    0    0    -1  
 $EndComp
-Text HLabel 1100 1150 0    60   Input ~ 0
+Text HLabel 1650 1800 0    60   Input ~ 0
 USB_IN
-Text HLabel 1150 1800 0    60   Input ~ 0
-SOLAR_IN
 $Comp
 L GND #PWR044
 U 1 1 563C4E24
@@ -87,47 +85,14 @@ F 3 "" H 4950 4150 30  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L MOSFET_P Q201
-U 1 1 563C5347
-P 1850 1700
-F 0 "Q201" H 1760 1870 60  0000 R CNN
-F 1 "FDN340P" V 2150 1900 60  0000 R CNN
-F 2 "freetronics_footprints:SOT23_FET" V 2200 1700 24  0000 C CNN
-F 3 "" H 1850 1700 60  0000 C CNN
-	1    1850 1700
-	0    -1   1    0   
-$EndComp
-$Comp
 L DIODE_SCHOTTKY D201
 U 1 1 563C54FD
-P 2400 1150
-F 0 "D201" H 2400 1250 40  0000 C CNN
-F 1 "SS14" H 2400 1050 40  0000 C CNN
-F 2 "freetronics_footprints:DIODE_SMA" H 2400 1000 24  0000 C CNN
-F 3 "" H 2400 1150 60  0000 C CNN
-	1    2400 1150
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R201
-U 1 1 563C5AF3
-P 1500 1350
-F 0 "R201" V 1580 1350 50  0000 C CNN
-F 1 "1K" V 1500 1350 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 1650 1350 24  0000 C CNN
-F 3 "" H 1500 1350 60  0000 C CNN
-	1    1500 1350
-	0    1    1    0   
-$EndComp
-$Comp
-L GND #PWR045
-U 1 1 563C5B2C
-P 1150 1500
-F 0 "#PWR045" H 1150 1250 50  0001 C CNN
-F 1 "GND" H 1150 1350 50  0000 C CNN
-F 2 "" H 1150 1500 60  0000 C CNN
-F 3 "" H 1150 1500 60  0000 C CNN
-	1    1150 1500
+P 2200 1800
+F 0 "D201" H 2200 1900 40  0000 C CNN
+F 1 "SS14" H 2200 1700 40  0000 C CNN
+F 2 "freetronics_footprints:DIODE_SMA" H 2200 1650 24  0000 C CNN
+F 3 "" H 2200 1800 60  0000 C CNN
+	1    2200 1800
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -136,7 +101,7 @@ U 1 1 563C5FC4
 P 2950 3400
 F 0 "LED202" H 2950 3500 50  0000 C CNN
 F 1 "LED_RED" H 2950 3300 50  0000 C CNN
-F 2 "freetronics_footprints:LED-0805" H 2950 3550 24  0000 C CNN
+F 2 "LEDs:LED_0805" H 2950 3550 24  0000 C CNN
 F 3 "" H 2950 3400 60  0000 C CNN
 	1    2950 3400
 	0    -1   -1   0   
@@ -149,7 +114,7 @@ U 1 1 563FF8B1
 P 2450 3400
 F 0 "LED201" H 2450 3500 50  0000 C CNN
 F 1 "LED_GREEN" H 2450 3300 50  0000 C CNN
-F 2 "freetronics_footprints:LED-0805" H 2450 3550 24  0000 C CNN
+F 2 "LEDs:LED_0805" H 2450 3550 24  0000 C CNN
 F 3 "" H 2450 3400 60  0000 C CNN
 	1    2450 3400
 	0    -1   -1   0   
@@ -336,7 +301,9 @@ $EndComp
 Wire Wire Line
 	5050 3050 5050 2750
 Wire Wire Line
-	4700 2750 5850 2750
+	4700 2750 5050 2750
+Wire Wire Line
+	5050 2750 5850 2750
 Wire Wire Line
 	4700 3550 5450 3550
 Wire Wire Line
@@ -345,26 +312,15 @@ Wire Wire Line
 	4950 3850 4700 3850
 Connection ~ 4050 1800
 Wire Wire Line
-	1150 1800 1650 1800
+	2400 1800 2700 1800
 Wire Wire Line
-	1850 1150 1850 1500
+	2700 1800 3900 1800
 Wire Wire Line
-	1100 1150 2200 1150
-Connection ~ 1850 1150
+	3900 1800 4050 1800
 Wire Wire Line
-	2600 1150 2900 1150
+	4050 1800 4600 1800
 Wire Wire Line
-	2900 1150 2900 1800
-Connection ~ 2900 1800
-Wire Wire Line
-	1650 1350 1850 1350
-Connection ~ 1850 1350
-Wire Wire Line
-	1150 1350 1350 1350
-Wire Wire Line
-	1150 1350 1150 1500
-Wire Wire Line
-	2050 1800 6650 1800
+	4600 1800 6650 1800
 Wire Wire Line
 	2950 3650 3400 3650
 Connection ~ 2950 3650
@@ -372,9 +328,13 @@ Wire Wire Line
 	2950 3050 2950 3200
 Connection ~ 2950 3850
 Wire Wire Line
-	6850 2100 6850 3750
+	6850 2100 6850 3550
 Wire Wire Line
-	2450 3850 3400 3850
+	6850 3550 6850 3750
+Wire Wire Line
+	2450 3850 2950 3850
+Wire Wire Line
+	2950 3850 3400 3850
 Wire Wire Line
 	2450 3050 2450 3200
 Wire Wire Line
@@ -383,21 +343,35 @@ Wire Wire Line
 	4950 4500 4950 4300
 Connection ~ 4950 4500
 Wire Wire Line
-	5850 2500 8200 2500
+	5850 2500 6300 2500
 Wire Wire Line
-	8400 2800 8400 3550
+	6300 2500 8200 2500
+Wire Wire Line
+	8400 2800 8400 3050
+Wire Wire Line
+	8400 3050 8400 3550
 Connection ~ 9050 1800
 Wire Wire Line
-	8600 2500 9050 2500
+	8600 2500 8750 2500
 Wire Wire Line
-	7050 1800 10650 1800
+	8750 2500 9050 2500
+Wire Wire Line
+	7050 1800 9050 1800
+Wire Wire Line
+	9050 1800 10250 1800
+Wire Wire Line
+	10250 1800 10450 1800
+Wire Wire Line
+	10450 1800 10650 1800
 Wire Wire Line
 	10250 1800 10250 2000
 Connection ~ 10250 1800
 Wire Wire Line
 	10250 2300 10250 2500
 Wire Wire Line
-	7450 3850 7450 4200
+	7450 3850 7450 4100
+Wire Wire Line
+	7450 4100 7450 4200
 Wire Wire Line
 	9050 2500 9050 1800
 Wire Wire Line
@@ -468,7 +442,9 @@ Wire Wire Line
 Text Label 5450 3000 1    60   ~ 0
 VIN
 Wire Wire Line
-	5450 3400 5450 3600
+	5450 3400 5450 3550
+Wire Wire Line
+	5450 3550 5450 3600
 Connection ~ 5450 3550
 Wire Wire Line
 	5450 4500 5450 4100
@@ -481,7 +457,9 @@ Connection ~ 2700 1800
 Wire Wire Line
 	2700 2800 2700 3050
 Wire Wire Line
-	2450 3050 2950 3050
+	2450 3050 2700 3050
+Wire Wire Line
+	2700 3050 2950 3050
 Connection ~ 2700 3050
 $Comp
 L C C204
@@ -511,9 +489,17 @@ F 3 "" H 6300 3100 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3950 4500 5850 4500
+	3950 4500 4150 4500
 Wire Wire Line
-	3950 4150 3950 4650
+	4150 4500 4950 4500
+Wire Wire Line
+	4950 4500 5450 4500
+Wire Wire Line
+	5450 4500 5850 4500
+Wire Wire Line
+	3950 4150 3950 4500
+Wire Wire Line
+	3950 4500 3950 4650
 Wire Wire Line
 	4150 4500 4150 4150
 Connection ~ 4150 4500
@@ -523,7 +509,9 @@ Wire Wire Line
 Text HLabel 5850 2500 1    60   Input ~ 0
 VBAT
 Wire Wire Line
-	5850 2500 5850 3150
+	5850 2500 5850 2750
+Wire Wire Line
+	5850 2750 5850 3150
 $Comp
 L R R18
 U 1 1 56EBE55C
@@ -583,246 +571,6 @@ Wire Wire Line
 Wire Wire Line
 	6850 3550 7050 3550
 $Comp
-L DIODE_SCHOTTKY D6
-U 1 1 57FA1D94
-P 4150 5950
-F 0 "D6" H 4150 6050 40  0000 C CNN
-F 1 "SS14" H 4150 5850 40  0000 C CNN
-F 2 "freetronics_footprints:DIODE_SMA" H 4150 5950 60  0001 C CNN
-F 3 "" H 4150 5950 60  0000 C CNN
-	1    4150 5950
-	1    0    0    -1  
-$EndComp
-$Comp
-L INDUCTOR L1
-U 1 1 57FA1E35
-P 3200 5950
-F 0 "L1" V 3150 5950 50  0000 C CNN
-F 1 "2.2uH" V 3300 5950 50  0000 C CNN
-F 2 "" H 3200 5950 50  0001 C CNN
-F 3 "" H 3200 5950 50  0000 C CNN
-	1    3200 5950
-	0    -1   -1   0   
-$EndComp
-$Comp
-L LTC3426 U3
-U 1 1 57FA234B
-P 3700 6450
-F 0 "U3" H 3700 5650 60  0000 C CNN
-F 1 "LTC3426" H 3700 7050 60  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23-6_Handsoldering" H 2950 6500 60  0001 C CNN
-F 3 "" H 2950 6500 60  0000 C CNN
-	1    3700 6450
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3500 5950 3950 5950
-Connection ~ 3700 5950
-$Comp
-L R R16
-U 1 1 57FA28FE
-P 4600 6200
-F 0 "R16" V 4680 6200 50  0000 C CNN
-F 1 "95.3K" V 4600 6200 39  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 4500 6200 24  0001 C CNN
-F 3 "" H 4600 6200 60  0000 C CNN
-	1    4600 6200
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	4450 6400 4150 6400
-Wire Wire Line
-	4450 5950 4450 6400
-Wire Wire Line
-	4600 5950 4600 6050
-Connection ~ 4450 5950
-Wire Wire Line
-	4150 6550 4600 6550
-Wire Wire Line
-	4600 6350 4600 6650
-$Comp
-L R R17
-U 1 1 57FA322D
-P 4600 6800
-F 0 "R17" V 4680 6800 50  0000 C CNN
-F 1 "30.9K" V 4600 6800 39  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 4500 6800 24  0001 C CNN
-F 3 "" H 4600 6800 60  0000 C CNN
-	1    4600 6800
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	3700 7050 3700 7100
-Wire Wire Line
-	2800 7100 4900 7100
-Wire Wire Line
-	4600 7100 4600 6950
-Connection ~ 4600 6550
-$Comp
-L C C13
-U 1 1 57FA36F6
-P 4850 6550
-F 0 "C13" H 4750 6450 50  0000 L CNN
-F 1 "22uF" H 4650 6650 50  0000 L CNN
-F 2 "freetronics_footprints:1210_CAP" H 5000 6750 24  0001 C CNN
-F 3 "" H 4850 6550 60  0000 C CNN
-	1    4850 6550
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	4850 5950 4850 6400
-Connection ~ 4600 5950
-Wire Wire Line
-	4850 7100 4850 6700
-Connection ~ 4600 7100
-$Comp
-L GND #PWR054
-U 1 1 57FA4959
-P 4900 7150
-F 0 "#PWR054" H 4900 6900 50  0001 C CNN
-F 1 "GND" H 4900 7000 50  0000 C CNN
-F 2 "" H 4900 7150 50  0000 C CNN
-F 3 "" H 4900 7150 50  0000 C CNN
-	1    4900 7150
-	1    0    0    -1  
-$EndComp
-Connection ~ 4850 5950
-Wire Wire Line
-	4900 7100 4900 7150
-Connection ~ 4850 7100
-$Comp
-L R R15
-U 1 1 57FA4BF9
-P 3050 6550
-F 0 "R15" V 3130 6550 50  0000 C CNN
-F 1 "1M" V 3050 6550 39  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 2950 6550 24  0001 C CNN
-F 3 "" H 3050 6550 60  0000 C CNN
-	1    3050 6550
-	0    1    1    0   
-$EndComp
-Wire Wire Line
-	3200 6550 3250 6550
-Wire Wire Line
-	2800 5950 2800 6700
-Wire Wire Line
-	2800 6550 2900 6550
-Wire Wire Line
-	3250 6400 2800 6400
-Connection ~ 2800 6400
-$Comp
-L C C12
-U 1 1 57FA4E9F
-P 2800 6850
-F 0 "C12" H 2700 6750 50  0000 L CNN
-F 1 "10uF" H 2600 6950 50  0000 L CNN
-F 2 "freetronics_footprints:1210_CAP" H 2950 7050 24  0001 C CNN
-F 3 "" H 2800 6850 60  0000 C CNN
-	1    2800 6850
-	-1   0    0    1   
-$EndComp
-Connection ~ 2800 6550
-Wire Wire Line
-	2800 7000 2800 7100
-Connection ~ 3700 7100
-Connection ~ 2800 5950
-Text HLabel 4950 5950 2    60   Input ~ 0
-5OUT
-Wire Wire Line
-	4350 5950 4950 5950
-Text Notes 900  6700 0    60   ~ 0
--Take our 3.3v from our battery\nand produce 5v.\n-If we have 5v from usb,\nignore the battery (circuit is 5v safe)
-Text HLabel 1100 5950 0    60   Input ~ 0
-VBAT
-Text HLabel 1100 5300 0    60   Input ~ 0
-USB_IN
-$Comp
-L DIODE_SCHOTTKY D5
-U 1 1 57FA9576
-P 2150 5300
-F 0 "D5" H 2150 5400 40  0000 C CNN
-F 1 "SS14" H 2150 5200 40  0000 C CNN
-F 2 "freetronics_footprints:DIODE_SMA" H 2150 5150 24  0000 C CNN
-F 3 "" H 2150 5300 60  0000 C CNN
-	1    2150 5300
-	1    0    0    -1  
-$EndComp
-$Comp
-L MOSFET_P Q4
-U 1 1 57FA9A8C
-P 1800 5850
-F 0 "Q4" V 1700 5700 60  0000 R CNN
-F 1 "FDN340P" V 2100 6050 60  0000 R CNN
-F 2 "freetronics_footprints:SOT23_FET" V 2150 5850 24  0000 C CNN
-F 3 "" H 1800 5850 60  0000 C CNN
-	1    1800 5850
-	0    -1   1    0   
-$EndComp
-$Comp
-L R R14
-U 1 1 57FA9A92
-P 1450 5500
-F 0 "R14" V 1530 5500 50  0000 C CNN
-F 1 "1K" V 1450 5500 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 1600 5500 24  0000 C CNN
-F 3 "" H 1450 5500 60  0000 C CNN
-	1    1450 5500
-	0    1    1    0   
-$EndComp
-$Comp
-L GND #PWR055
-U 1 1 57FA9A98
-P 1150 5650
-F 0 "#PWR055" H 1150 5400 50  0001 C CNN
-F 1 "GND" H 1150 5500 50  0000 C CNN
-F 2 "" H 1150 5650 60  0000 C CNN
-F 3 "" H 1150 5650 60  0000 C CNN
-	1    1150 5650
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	1800 5300 1800 5650
-Wire Wire Line
-	1600 5500 1800 5500
-Connection ~ 1800 5500
-Wire Wire Line
-	1150 5500 1300 5500
-Wire Wire Line
-	1150 5500 1150 5650
-Wire Wire Line
-	1100 5300 1950 5300
-Connection ~ 1800 5300
-Wire Wire Line
-	1100 5950 1600 5950
-Wire Wire Line
-	2350 5300 2500 5300
-Wire Wire Line
-	2500 5300 2500 5950
-Connection ~ 2500 5950
-Wire Wire Line
-	2900 5950 2800 5950
-Wire Wire Line
-	2500 5950 2000 5950
-Text Label 2500 5950 0    60   ~ 0
-5V
-Text Label 2800 5950 1    60   ~ 0
-5V_SWITCH
-$Comp
-L Switch_DPST SW6
-U 1 1 57FB1109
-P 1150 4250
-F 0 "SW6" H 1450 4300 50  0000 C CNN
-F 1 "POWER" H 1450 4200 50  0000 C CNN
-F 2 "" H 1150 4250 50  0001 C CNN
-F 3 "" H 1150 4250 50  0000 C CNN
-	1    1150 4250
-	1    0    0    -1  
-$EndComp
-Text Label 1450 4450 0    60   ~ 0
-5V_SWITCH
-Text Label 850  4450 2    60   ~ 0
-5V
-$Comp
 L LD3985M U4
 U 1 1 57FB1BEE
 P 8750 5600
@@ -853,7 +601,9 @@ Wire Wire Line
 Wire Wire Line
 	9350 6100 8750 6100
 Wire Wire Line
-	8750 6000 8750 6150
+	8750 6000 8750 6100
+Wire Wire Line
+	8750 6100 8750 6150
 Wire Wire Line
 	8250 5650 8250 5550
 Wire Wire Line
@@ -877,20 +627,29 @@ F 3 "" H 8750 6150 50  0000 C CNN
 	1    8750 6150
 	1    0    0    -1  
 $EndComp
-Text Label 1450 4050 0    60   ~ 0
+Text Label 2550 4800 0    60   ~ 0
 3.3V_SWITCH
-Text Label 850  4050 2    60   ~ 0
+Text Label 1550 4800 2    60   ~ 0
 3.3V
 Text Notes 7750 6150 0    60   ~ 0
 Regulated output\n3.3V
-Text Notes 850  3800 0    60   ~ 0
-SPDT Switch to\nTurn on and OFF
 Text Label 7450 3050 3    60   ~ 0
 3.3V
 Text Label 9050 3050 3    60   ~ 0
 3.3V
 Text Label 10000 3050 3    60   ~ 0
 3.3V
-Text Notes 800  2350 0    60   ~ 0
-Solar input:\n7V open circuit voltage panel\nNominal 4-6V under load
+$Comp
+L SPST SW?
+U 1 1 5810B231
+P 2050 4800
+F 0 "SW?" H 2050 4900 50  0000 C CNN
+F 1 "ON/OFF" H 2050 4700 50  0000 C CNN
+F 2 "" H 2050 4800 50  0000 C CNN
+F 3 "" H 2050 4800 50  0000 C CNN
+	1    2050 4800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1650 1800 2000 1800
 $EndSCHEMATC
