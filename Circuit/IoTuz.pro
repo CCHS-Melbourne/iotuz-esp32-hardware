@@ -1,4 +1,4 @@
-update=22/10/2016 8:31:04 PM
+update=27/10/2016 2:08:06 AM
 version=1
 last_client=kicad
 [pcbnew]
@@ -64,3 +64,5 @@ LibName32=libs/cn3063
 LibName33=libs/cp2102
 LibName34=libs/ltc3426
 LibName35=libs/rotary
+LibName36=libs/adxl345
+LibName37=libs/bme280
