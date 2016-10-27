@@ -40,7 +40,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 1 4
+Sheet 1 7
 Title ""
 Date ""
 Rev ""
@@ -1563,4 +1563,22 @@ Wire Wire Line
 	10700 5800 11050 5800
 Wire Wire Line
 	10700 5950 11050 5950
+$Sheet
+S 7300 5250 1100 1050
+U 5811BE75
+F0 "Audio" 60
+F1 "Audio.sch" 60
+$EndSheet
+$Sheet
+S 7300 3700 1100 1300
+U 5811E13F
+F0 "LCDTouch" 60
+F1 "LCDTouchScreen.sch" 60
+$EndSheet
+$Sheet
+S 7300 2600 1050 650 
+U 5811E5C9
+F0 "IRTransceiver" 60
+F1 "IRTransceiver.sch" 60
+$EndSheet
 $EndSCHEMATC

@@ -40,7 +40,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 4
+Sheet 2 7
 Title ""
 Date ""
 Rev ""
@@ -609,4 +609,24 @@ F 3 "" H 2050 4800 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	1650 1800 2000 1800
+Text Notes 800  3800 0    60   ~ 0
+Charge done not necessary? \nI'd just turn off the ~CHRG~ LED\n and call it good.
+Wire Notes Line
+	750  3000 2650 3000
+Wire Notes Line
+	2650 3000 2650 4250
+Wire Notes Line
+	2650 4250 750  4250
+Wire Notes Line
+	750  4250 750  3000
+Wire Notes Line
+	7400 5050 7400 6450
+Wire Notes Line
+	7400 6450 10100 6450
+Wire Notes Line
+	10100 6450 10100 5050
+Wire Notes Line
+	10100 5050 7400 5050
+Text Notes 7400 5000 0    60   ~ 0
+Insufficient current capability.
 $EndSCHEMATC

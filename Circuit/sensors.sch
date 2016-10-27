@@ -40,7 +40,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 3 4
+Sheet 3 7
 Title "ESPlant"
 Date "2016-02-20"
 Rev "V1.5"
@@ -286,4 +286,14 @@ Wire Wire Line
 Wire Wire Line
 	5000 2900 4750 2900
 Connection ~ 4750 2900
+Wire Notes Line
+	1150 1400 4300 1400
+Wire Notes Line
+	4300 1400 4300 4450
+Wire Notes Line
+	4300 4450 1150 4450
+Wire Notes Line
+	1150 4450 1150 1400
+Text Notes 1200 1350 0    60   ~ 0
+Recommend different or removal. -BP
 $EndSCHEMATC
