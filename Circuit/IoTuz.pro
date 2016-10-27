@@ -1,4 +1,4 @@
-update=27/10/2016 2:08:06 AM
+update=Thu 27 Oct 2016 15:00:16 AEDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -63,6 +63,5 @@ LibName31=subs/ESP32-kiCAD-Footprints/ESP32-Footprints/ESP32-footprints-Shem-Lib
 LibName32=libs/cn3063
 LibName33=libs/cp2102
 LibName34=libs/ltc3426
-LibName35=libs/rotary
-LibName36=libs/adxl345
-LibName37=libs/bme280
+LibName35=libs/adxl345
+LibName36=libs/bme280
