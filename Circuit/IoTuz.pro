@@ -1,4 +1,4 @@
-update=Thu 27 Oct 2016 15:00:16 AEDT
+update=Fri 28 Oct 2016 13:28:05 AEDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -65,3 +65,4 @@ LibName33=libs/cp2102
 LibName34=libs/ltc3426
 LibName35=libs/adxl345
 LibName36=libs/bme280
+LibName37=libs/lxdc2xq
