@@ -35,6 +35,7 @@ LIBS:cp2102
 LIBS:ltc3426
 LIBS:adxl345
 LIBS:bme280
+LIBS:lxdc2xq
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
@@ -176,7 +177,7 @@ Text Label 8400 3450 1    60   ~ 0
 GBAT
 Text Label 6850 3450 1    60   ~ 0
 GIN
-Text HLabel 9400 5550 2    60   Input ~ 0
+Text HLabel 10550 5550 2    60   Input ~ 0
 3.3OUT
 $Comp
 L GND #PWR034
@@ -299,6 +300,161 @@ F 3 "" H 4600 2350 60  0000 C CNN
 	1    4600 2350
 	1    0    0    -1  
 $EndComp
+Text Notes 6000 3950 0    59   ~ 0
+Battery goes here\nin circuit\n(actually\nconnected\nto VBAT on\nparent sheet)
+$Comp
+L R R205
+U 1 1 566F70E7
+P 5450 3250
+F 0 "R205" V 5530 3250 50  0000 C CNN
+F 1 "7.15K 1%" V 5450 3250 39  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 5350 3250 24  0000 C CNN
+F 3 "" H 5450 3250 60  0000 C CNN
+	1    5450 3250
+	1    0    0    -1  
+$EndComp
+$Comp
+L THERMISTOR TH201
+U 1 1 566F7293
+P 5450 3850
+F 0 "TH201" V 5360 3740 50  0000 C CNN
+F 1 "10K NTC" V 5600 3850 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 5650 3850 24  0000 C CNN
+F 3 "http://www.murata.com/products/catalog/pdf/r44e.pdf" H 5450 3850 60  0001 C CNN
+F 4 "NCP18XH103F03RB" V 5450 3850 60  0001 C CNN "MPN"
+	1    5450 3850
+	1    0    0    -1  
+$EndComp
+Text Label 5450 3000 1    60   ~ 0
+VIN
+Text Notes 5600 5000 0    59   ~ 0
+NTC thermistor\nplaced under battery holder.\n\nCharging cut off @ 38.5C\nwhen using specified thermistor.
+$Comp
+L C C204
+U 1 1 566F9EBD
+P 6300 2850
+F 0 "C204" H 6325 2950 50  0000 L CNN
+F 1 "10uF 16V" H 6325 2750 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1210_HandSoldering" H 6450 2700 24  0000 C CNN
+F 3 "" H 6300 2850 60  0000 C CNN
+	1    6300 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR040
+U 1 1 566FA00B
+P 6300 3100
+F 0 "#PWR040" H 6300 2850 50  0001 C CNN
+F 1 "GND" H 6300 2950 50  0000 C CNN
+F 2 "" H 6300 3100 60  0000 C CNN
+F 3 "" H 6300 3100 60  0000 C CNN
+	1    6300 3100
+	1    0    0    -1  
+$EndComp
+Text HLabel 5850 2500 1    60   Input ~ 0
+VBAT
+$Comp
+L R R18
+U 1 1 56EBE55C
+P 6850 3900
+F 0 "R18" V 6930 3900 50  0000 C CNN
+F 1 "100K" V 6850 3900 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 6780 3900 50  0001 C CNN
+F 3 "" H 6850 3900 50  0000 C CNN
+	1    6850 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R19
+U 1 1 56EBECD6
+P 8750 2800
+F 0 "R19" V 8830 2800 50  0000 C CNN
+F 1 "100K" V 8750 2800 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 8680 2800 50  0001 C CNN
+F 3 "" H 8750 2800 50  0000 C CNN
+	1    8750 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L MCP6002 U202
+U 2 1 5642B7E1
+P 8950 3550
+AR Path="/5642B7E1" Ref="U202"  Part="2" 
+AR Path="/56E80626/5642B7E1" Ref="U202"  Part="2" 
+AR Path="/57F9BECE/5642B7E1" Ref="U202"  Part="2" 
+F 0 "U202" H 8950 3700 50  0000 L CNN
+F 1 "MCP6002" H 8950 3400 50  0000 L CNN
+F 2 "freetronics_footprints:SO08_4mm" H 8500 3800 24  0000 C CNN
+F 3 "" H 8950 3700 50  0000 C CNN
+	2    8950 3550
+	-1   0    0    1   
+$EndComp
+Text Label 10650 1800 0    60   ~ 0
+3.3V
+Text Label 8500 5550 2    60   ~ 0
+3.3V_SWITCH
+Text Label 2550 4800 0    60   ~ 0
+3.3V_SWITCH
+Text Label 1550 4800 2    60   ~ 0
+3.3V
+Text Notes 8100 6200 0    60   ~ 0
+Regulated output\nBuck (upto)5v5->3v3
+Text Label 7450 3050 3    60   ~ 0
+3.3V
+Text Label 9050 3050 3    60   ~ 0
+3.3V
+Text Label 10000 3050 3    60   ~ 0
+3.3V
+$Comp
+L SPST SW1
+U 1 1 5810B231
+P 2050 4800
+F 0 "SW1" H 2050 4900 50  0000 C CNN
+F 1 "ON/OFF" H 2050 4700 50  0000 C CNN
+F 2 "libs:SS12D00" H 2050 4800 50  0001 C CNN
+F 3 "" H 2050 4800 50  0000 C CNN
+	1    2050 4800
+	1    0    0    -1  
+$EndComp
+Text Notes 800  3800 0    60   ~ 0
+Charge done not necessary? \nI'd just turn off the ~CHRG~ LED\n and call it good.
+$Comp
+L LXDC2XQ U?
+U 1 1 5812C4CE
+P 9500 5550
+F 0 "U?" H 8950 5950 60  0000 C CNN
+F 1 "LXDC2XQ" H 10000 5150 60  0000 C CNN
+F 2 "IoTuz:LXDC2XQ" H 9500 5550 60  0001 C CNN
+F 3 "http://power.murata.com/data/power/LXDC2XQ_Series_datasheet.pdf" H 9500 5550 60  0001 C CNN
+F 4 "Digikey" H 9500 5550 60  0001 C CNN "Supplier"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/LXDC2XQ33A-254/490-12573-1-ND/5797558" H 9500 5550 60  0001 C CNN "Digikey URL"
+F 6 "1.55" H 9500 5550 60  0001 C CNN "Unit Cost (1)"
+F 7 "490-12573-1-ND" H 9500 5550 60  0001 C CNN "Digikey PN"
+	1    9500 5550
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5812C93A
+P 9500 6300
+F 0 "#PWR?" H 9500 6050 50  0001 C CNN
+F 1 "GND" H 9500 6150 50  0000 C CNN
+F 2 "" H 9500 6300 60  0000 C CNN
+F 3 "" H 9500 6300 60  0000 C CNN
+	1    9500 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 5812E212
+P 9800 5000
+F 0 "#PWR?" H 9800 4750 50  0001 C CNN
+F 1 "GND" H 9800 4850 50  0000 C CNN
+F 2 "" H 9800 5000 60  0000 C CNN
+F 3 "" H 9800 5000 60  0000 C CNN
+	1    9800 5000
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
 	5050 3050 5050 2750
 Wire Wire Line
@@ -379,49 +535,20 @@ Wire Notes Line
 	5750 3700 5950 3700
 Wire Notes Line
 	5800 3750 5900 3750
-Text Notes 6000 3950 0    59   ~ 0
-Battery goes here\nin circuit\n(actually\nconnected\nto VBAT on\nparent sheet)
 Wire Wire Line
 	2950 3600 2950 3650
-$Comp
-L R R205
-U 1 1 566F70E7
-P 5450 3250
-F 0 "R205" V 5530 3250 50  0000 C CNN
-F 1 "7.15K 1%" V 5450 3250 39  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 5350 3250 24  0000 C CNN
-F 3 "" H 5450 3250 60  0000 C CNN
-	1    5450 3250
-	1    0    0    -1  
-$EndComp
-$Comp
-L THERMISTOR TH201
-U 1 1 566F7293
-P 5450 3850
-F 0 "TH201" V 5360 3740 50  0000 C CNN
-F 1 "10K NTC" V 5600 3850 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 5650 3850 24  0000 C CNN
-F 3 "http://www.murata.com/products/catalog/pdf/r44e.pdf" H 5450 3850 60  0001 C CNN
-F 4 "NCP18XH103F03RB" V 5450 3850 60  0001 C CNN "MPN"
-	1    5450 3850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5050 3050 4700 3050
 Connection ~ 5850 2750
 Connection ~ 5050 2750
 Wire Wire Line
 	5450 2850 5450 3100
-Text Label 5450 3000 1    60   ~ 0
-VIN
 Wire Wire Line
 	5450 3400 5450 3600
 Connection ~ 5450 3550
 Wire Wire Line
 	5450 4500 5450 4100
 Connection ~ 5450 4500
-Text Notes 5600 5000 0    59   ~ 0
-NTC thermistor\nplaced under battery holder.\n\nCharging cut off @ 38.5C\nwhen using specified thermistor.
 Wire Wire Line
 	2700 1800 2700 2500
 Connection ~ 2700 1800
@@ -430,33 +557,11 @@ Wire Wire Line
 Wire Wire Line
 	2450 3050 2950 3050
 Connection ~ 2700 3050
-$Comp
-L C C204
-U 1 1 566F9EBD
-P 6300 2850
-F 0 "C204" H 6325 2950 50  0000 L CNN
-F 1 "10uF 16V" H 6325 2750 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1210_HandSoldering" H 6450 2700 24  0000 C CNN
-F 3 "" H 6300 2850 60  0000 C CNN
-	1    6300 2850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	6300 2700 6300 2500
 Connection ~ 6300 2500
 Wire Wire Line
 	6300 3000 6300 3100
-$Comp
-L GND #PWR040
-U 1 1 566FA00B
-P 6300 3100
-F 0 "#PWR040" H 6300 2850 50  0001 C CNN
-F 1 "GND" H 6300 2950 50  0000 C CNN
-F 2 "" H 6300 3100 60  0000 C CNN
-F 3 "" H 6300 3100 60  0000 C CNN
-	1    6300 3100
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	3950 4500 5850 4500
 Wire Wire Line
@@ -467,38 +572,14 @@ Connection ~ 4150 4500
 Connection ~ 3950 4500
 Wire Wire Line
 	4050 2450 4050 1800
-Text HLabel 5850 2500 1    60   Input ~ 0
-VBAT
 Wire Wire Line
 	5850 2500 5850 3150
-$Comp
-L R R18
-U 1 1 56EBE55C
-P 6850 3900
-F 0 "R18" V 6930 3900 50  0000 C CNN
-F 1 "100K" V 6850 3900 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 6780 3900 50  0001 C CNN
-F 3 "" H 6850 3900 50  0000 C CNN
-	1    6850 3900
-	1    0    0    -1  
-$EndComp
 Connection ~ 6850 3550
 Wire Wire Line
 	6850 4050 6850 4100
 Wire Wire Line
 	6850 4100 7450 4100
 Connection ~ 7450 4100
-$Comp
-L R R19
-U 1 1 56EBECD6
-P 8750 2800
-F 0 "R19" V 8830 2800 50  0000 C CNN
-F 1 "100K" V 8750 2800 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 8680 2800 50  0001 C CNN
-F 3 "" H 8750 2800 50  0000 C CNN
-	1    8750 2800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	8750 2650 8750 2500
 Connection ~ 8750 2500
@@ -507,20 +588,6 @@ Wire Wire Line
 Wire Wire Line
 	8750 3050 8400 3050
 Connection ~ 8400 3050
-$Comp
-L MCP6002 U202
-U 2 1 5642B7E1
-P 8950 3550
-AR Path="/5642B7E1" Ref="U202"  Part="2" 
-AR Path="/56E80626/5642B7E1" Ref="U202"  Part="2" 
-AR Path="/57F9BECE/5642B7E1" Ref="U202"  Part="2" 
-F 0 "U202" H 8950 3700 50  0000 L CNN
-F 1 "MCP6002" H 8950 3400 50  0000 L CNN
-F 2 "freetronics_footprints:SO08_4mm" H 8500 3800 24  0000 C CNN
-F 3 "" H 8950 3700 50  0000 C CNN
-	2    8950 3550
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	9050 3050 9050 3250
 Wire Wire Line
@@ -529,88 +596,8 @@ Wire Wire Line
 	8400 3550 8650 3550
 Wire Wire Line
 	6850 3550 7050 3550
-$Comp
-L LD3985M U4
-U 1 1 57FB1BEE
-P 8750 5600
-F 0 "U4" H 9000 5350 50  0000 C CNN
-F 1 "LD3985M" H 8750 5800 50  0000 C CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23-5" H 8650 5350 50  0000 C CNN
-F 3 "" H 8750 5600 50  0000 C CNN
-	1    8750 5600
-	1    0    0    -1  
-$EndComp
-Text Label 10650 1800 0    60   ~ 0
-3.3V
-Text Label 8150 5550 2    60   ~ 0
-3.3V_SWITCH
-$Comp
-L C C14
-U 1 1 57FB2358
-P 9350 5900
-F 0 "C14" H 9250 5800 50  0000 L CNN
-F 1 "100nF" H 9150 6000 50  0000 L CNN
-F 2 "freetronics_footprints:1210_CAP" H 9500 6100 24  0001 C CNN
-F 3 "" H 9350 5900 60  0000 C CNN
-	1    9350 5900
-	-1   0    0    1   
-$EndComp
-Wire Wire Line
-	9350 6050 9350 6100
-Wire Wire Line
-	9350 6100 8750 6100
-Wire Wire Line
-	8750 6000 8750 6150
-Wire Wire Line
-	8250 5650 8250 5550
-Wire Wire Line
-	8250 5550 8150 5550
-Wire Wire Line
-	9250 5650 9350 5650
-Wire Wire Line
-	9350 5650 9350 5750
-Connection ~ 8750 6100
-Connection ~ 8250 5550
-Wire Wire Line
-	9250 5550 9400 5550
-$Comp
-L GND #PWR041
-U 1 1 57FB3009
-P 8750 6150
-F 0 "#PWR041" H 8750 5900 50  0001 C CNN
-F 1 "GND" H 8750 6000 50  0000 C CNN
-F 2 "" H 8750 6150 50  0000 C CNN
-F 3 "" H 8750 6150 50  0000 C CNN
-	1    8750 6150
-	1    0    0    -1  
-$EndComp
-Text Label 2550 4800 0    60   ~ 0
-3.3V_SWITCH
-Text Label 1550 4800 2    60   ~ 0
-3.3V
-Text Notes 7750 6150 0    60   ~ 0
-Regulated output\n3.3V
-Text Label 7450 3050 3    60   ~ 0
-3.3V
-Text Label 9050 3050 3    60   ~ 0
-3.3V
-Text Label 10000 3050 3    60   ~ 0
-3.3V
-$Comp
-L SPST SW1
-U 1 1 5810B231
-P 2050 4800
-F 0 "SW1" H 2050 4900 50  0000 C CNN
-F 1 "ON/OFF" H 2050 4700 50  0000 C CNN
-F 2 "libs:SS12D00" H 2050 4800 50  0001 C CNN
-F 3 "" H 2050 4800 50  0000 C CNN
-	1    2050 4800
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	1650 1800 2000 1800
-Text Notes 800  3800 0    60   ~ 0
-Charge done not necessary? \nI'd just turn off the ~CHRG~ LED\n and call it good.
 Wire Notes Line
 	750  3000 2650 3000
 Wire Notes Line
@@ -619,14 +606,47 @@ Wire Notes Line
 	2650 4250 750  4250
 Wire Notes Line
 	750  4250 750  3000
+Wire Wire Line
+	9350 6200 9650 6200
+Wire Wire Line
+	9350 6100 9350 6200
+Wire Wire Line
+	9500 6100 9500 6300
+Connection ~ 9500 6200
+Wire Wire Line
+	9650 6200 9650 6100
+Wire Wire Line
+	8600 5500 8600 5600
+Wire Wire Line
+	8600 5550 8500 5550
+Wire Wire Line
+	8600 5600 8700 5600
+Connection ~ 8600 5550
+Wire Wire Line
+	8700 5500 8600 5500
+Wire Wire Line
+	10300 5500 10450 5500
+Wire Wire Line
+	10450 5500 10450 5600
+Wire Wire Line
+	10450 5550 10550 5550
+Wire Wire Line
+	10450 5600 10300 5600
+Connection ~ 10450 5550
+Wire Wire Line
+	8600 5550 8600 4800
+Wire Wire Line
+	9400 5000 9400 4800
+Wire Wire Line
+	9400 4800 8600 4800
+Wire Wire Line
+	9600 5000 9600 4800
+Wire Wire Line
+	9600 4800 9800 4800
+Wire Wire Line
+	9800 4800 9800 5000
 Wire Notes Line
-	7400 5050 7400 6450
+	7900 6500 7900 4750
 Wire Notes Line
-	7400 6450 10100 6450
-Wire Notes Line
-	10100 6450 10100 5050
-Wire Notes Line
-	10100 5050 7400 5050
-Text Notes 7400 5000 0    60   ~ 0
-Insufficient current capability.
+	7900 4750 11200 4750
 $EndSCHEMATC
