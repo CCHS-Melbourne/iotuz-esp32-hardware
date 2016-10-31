@@ -36,6 +36,7 @@ LIBS:ltc3426
 LIBS:adxl345
 LIBS:bme280
 LIBS:lxdc2xq
+LIBS:qdtech-3.2-tft
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
@@ -1384,120 +1385,6 @@ F 3 "" H 2350 850 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	2250 2150 2250 1500
-$Comp
-L CONN_01X14 P8
-U 1 1 581185F0
-P 9150 3500
-F 0 "P8" H 9150 4250 50  0000 C CNN
-F 1 "LCD_SCREEN" V 9250 3500 50  0000 C CNN
-F 2 "libs:QDTech-3.2in-TFT" H 9150 3500 50  0001 C CNN
-F 3 "" H 9150 3500 50  0000 C CNN
-	1    9150 3500
-	-1   0    0    -1  
-$EndComp
-$Comp
-L CONN_01X04 P1
-U 1 1 58119106
-P 9150 2350
-F 0 "P1" H 9150 2600 50  0000 C CNN
-F 1 "SD_SPI" V 9250 2350 50  0000 C CNN
-F 2 "" H 9150 2350 50  0001 C CNN
-F 3 "" H 9150 2350 50  0000 C CNN
-	1    9150 2350
-	-1   0    0    -1  
-$EndComp
-Wire Wire Line
-	9350 2200 9800 2200
-Text Label 9800 2200 2    60   ~ 0
-SD_CS
-Wire Wire Line
-	9350 2300 9800 2300
-Wire Wire Line
-	9800 2400 9350 2400
-Wire Wire Line
-	9800 2500 9350 2500
-Text Label 9800 2300 2    60   ~ 0
-SD_MOSI
-Text Label 9800 2400 2    60   ~ 0
-SD_MISO
-Text Label 9800 2500 2    60   ~ 0
-SD_SCK
-Wire Wire Line
-	9350 2850 9800 2850
-Wire Wire Line
-	9350 2950 9800 2950
-Wire Wire Line
-	9350 3050 9800 3050
-Wire Wire Line
-	9350 3150 9800 3150
-Wire Wire Line
-	9350 3250 9800 3250
-Wire Wire Line
-	9350 3350 9800 3350
-Wire Wire Line
-	9350 3450 9800 3450
-Wire Wire Line
-	9350 3550 9800 3550
-Wire Wire Line
-	9350 3650 9800 3650
-Wire Wire Line
-	9350 3750 9800 3750
-Wire Wire Line
-	9350 3850 9800 3850
-Wire Wire Line
-	9350 3950 9800 3950
-Wire Wire Line
-	9350 4150 9650 4150
-Text Label 9800 2850 2    60   ~ 0
-T_IRQ
-Text Label 9800 2950 2    60   ~ 0
-T_DO
-Text Label 9800 3050 2    60   ~ 0
-T_DIN
-Text Label 9800 3150 2    60   ~ 0
-T_CS
-Text Label 9800 3250 2    60   ~ 0
-T_CLK
-Text Label 9800 3350 2    60   ~ 0
-SDO(MISO)
-Text Label 9800 3450 2    60   ~ 0
-LED
-Text Label 9800 3550 2    60   ~ 0
-SCK
-Text Label 9800 3650 2    60   ~ 0
-SDI(MOSI)
-Text Label 9800 3750 2    60   ~ 0
-D/C
-Text Label 9800 3850 2    60   ~ 0
-RESET
-Text Label 9800 3950 2    60   ~ 0
-CS
-$Comp
-L GND #PWR030
-U 1 1 58121E66
-P 9500 4250
-F 0 "#PWR030" H 9500 4000 50  0001 C CNN
-F 1 "GND" H 9500 4100 50  0000 C CNN
-F 2 "" H 9500 4250 50  0000 C CNN
-F 3 "" H 9500 4250 50  0000 C CNN
-	1    9500 4250
-	1    0    0    -1  
-$EndComp
-$Comp
-L +3.3V #PWR031
-U 1 1 58121F10
-P 9650 4150
-F 0 "#PWR031" H 9650 4000 50  0001 C CNN
-F 1 "+3.3V" H 9650 4290 50  0000 C CNN
-F 2 "" H 9650 4150 50  0000 C CNN
-F 3 "" H 9650 4150 50  0000 C CNN
-	1    9650 4150
-	1    0    0    -1  
-$EndComp
-Wire Wire Line
-	9350 4050 9500 4050
-Wire Wire Line
-	9500 4050 9500 4250
 $Sheet
 S 1000 3850 850  500 
 U 58125176
@@ -1571,7 +1458,7 @@ F0 "Audio" 60
 F1 "Audio.sch" 60
 $EndSheet
 $Sheet
-S 7300 3700 1100 1300
+S 9300 3300 1100 1300
 U 5811E13F
 F0 "LCDTouch" 60
 F1 "LCDTouchScreen.sch" 60
