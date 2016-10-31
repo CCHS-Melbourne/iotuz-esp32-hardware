@@ -424,7 +424,7 @@ U 1 1 5812C4CE
 P 9500 5550
 F 0 "U3" H 8950 5950 60  0000 C CNN
 F 1 "LXDC2XQ" H 10000 5150 60  0000 C CNN
-F 2 "IoTuz:LXDC2XQ" H 9500 5550 60  0001 C CNN
+F 2 "libs:LXDC2XQ" H 9500 5550 60  0001 C CNN
 F 3 "http://power.murata.com/data/power/LXDC2XQ_Series_datasheet.pdf" H 9500 5550 60  0001 C CNN
 F 4 "Digikey" H 9500 5550 60  0001 C CNN "Supplier"
 F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/LXDC2XQ33A-254/490-12573-1-ND/5797558" H 9500 5550 60  0001 C CNN "Digikey URL"

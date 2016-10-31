@@ -1,7 +1,7 @@
 (export (version D)
   (design
-    (source C:/Users/mage/Dropbox/GitHub/IoTuz/Circuit/IoTuz.sch)
-    (date "1/11/2016 1:31:41 AM")
+    (source C:\Users\mage\Dropbox\GitHub\IoTuz\Circuit\IoTuz.sch)
+    (date "1/11/2016 1:47:10 AM")
     (tool "Eeschema 4.0.4-stable")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -403,7 +403,7 @@
       (tstamp 5810B231))
     (comp (ref U3)
       (value LXDC2XQ)
-      (footprint IoTuz:LXDC2XQ)
+      (footprint libs:LXDC2XQ)
       (datasheet http://power.murata.com/data/power/LXDC2XQ_Series_datasheet.pdf)
       (fields
         (field (name Supplier) Digikey)
