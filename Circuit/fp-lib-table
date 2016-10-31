@@ -1,5 +1,4 @@
 (fp_lib_table
   (lib (name ESP32-footprints-Lib)(type KiCad)(uri "$(KIPRJMOD)\\subs\\ESP32-kiCAD-Footprints\\ESP32-Footprints\\ESP32-footprints-Lib.pretty")(options "")(descr ""))
   (lib (name libs)(type KiCad)(uri "$(KIPRJMOD)\\libs")(options "")(descr ""))
-  (lib (name IoTuz)(type KiCad)(uri "$(KIPRJMOD)/libs/IoTuz.pretty")(options "")(descr ""))
 )
