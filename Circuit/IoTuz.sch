@@ -1469,4 +1469,24 @@ U 5811E5C9
 F0 "IRTransceiver" 60
 F1 "IRTransceiver.sch" 60
 $EndSheet
+Text Notes 7050 2350 0    60   ~ 0
+Joy_button/PRGM
+Text Notes 7050 1750 0    60   ~ 0
+EN_A
+Text Notes 7050 1250 0    60   ~ 0
+EN_B
+Text Notes 3850 2500 0    60   ~ 0
+Joy_X
+Text Notes 6100 3550 1    60   ~ 0
+Joy_Y
+Text Notes 7050 1850 0    60   ~ 0
+VCC_SENS (1/10)
+Text Notes 3850 1500 0    60   ~ 0
+A_Button
+Text Notes 3850 1600 0    60   ~ 0
+B_Button
+Text Notes 3850 1400 0    60   ~ 0
+Reset
+Text Notes 6200 3550 1    60   ~ 0
+LEDs
 $EndSCHEMATC
