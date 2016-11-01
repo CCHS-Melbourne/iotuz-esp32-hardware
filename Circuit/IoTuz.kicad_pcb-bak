@@ -1,4 +1,4 @@
-(kicad_pcb (version 4) (host pcbnew 4.0.4-stable)
+(kicad_pcb (version 4) (host pcbnew 4.0.3-1.fc24-product)
 
   (general
     (links 238)
@@ -2474,6 +2474,11 @@
       (net 2 GND))
     (pad 5 smd rect (at -1.1 0.975) (size 0.5 0.35) (layers F.Cu F.Paste F.Mask)
       (net 1 +3V3))
+    (model iotuz.3dshapes/bme280.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 0.393701 0.393701 0.393701))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module libs:ADXL345 (layer F.Cu) (tedit 566E0724) (tstamp 5811EF76)

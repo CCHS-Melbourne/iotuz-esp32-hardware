@@ -2999,6 +2999,11 @@
     (pad 32 thru_hole circle (at -43.965 -17.5) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
     (pad 33 thru_hole circle (at -41.465 -20) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
     (pad 34 thru_hole circle (at -43.965 -20) (size 1.524 1.524) (drill 0.762) (layers *.Cu *.Mask))
+    (model iotuz.3dshapes/qdtech-3in2-lcd.wrl
+      (at (xyz -1.786024 1.133858 0.12))
+      (scale (xyz 0.393701 0.393701 0.393701))
+      (rotate (xyz 0 0 90))
+    )
   )
 
   (module libs:LXDC2XQ (layer F.Cu) (tedit 58175874) (tstamp 58177190)
