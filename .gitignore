@@ -1,4 +1,9 @@
 #################
+##KiCAD
+#################
+*.bck #Backup files for schematic libraries
+
+#################
 ## Eclipse
 #################
 
