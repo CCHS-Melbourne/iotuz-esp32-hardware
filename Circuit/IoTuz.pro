@@ -1,4 +1,4 @@
-update=1/11/2016 3:00:18 AM
+update=Wed 02 Nov 2016 10:56:18 AEDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -67,3 +67,4 @@ LibName35=libs/adxl345
 LibName36=libs/bme280
 LibName37=libs/lxdc2xq
 LibName38=libs/qdtech-3.2-tft
+LibName39=libs/nau8814

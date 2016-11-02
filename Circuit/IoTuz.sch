@@ -37,6 +37,7 @@ LIBS:adxl345
 LIBS:bme280
 LIBS:lxdc2xq
 LIBS:qdtech-3.2-tft
+LIBS:nau8814
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
