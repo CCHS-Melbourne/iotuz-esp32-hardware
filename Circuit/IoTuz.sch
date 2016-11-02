@@ -1490,4 +1490,6 @@ Text Notes 3850 1400 0    60   ~ 0
 Reset
 Text Notes 6200 3550 1    60   ~ 0
 LEDs
+Text Notes 7050 2150 0    60   ~ 0
+EMAC_CLK_OUT-25/50MHz
 $EndSCHEMATC

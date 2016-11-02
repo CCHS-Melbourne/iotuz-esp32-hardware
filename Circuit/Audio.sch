@@ -67,5 +67,20 @@ $EndComp
 Text Notes 6300 4300 0    60   ~ 0
 Unused Analogue - Float\nUnused Digital - GND
 Text Notes 4350 2850 0    60   ~ 0
-Mic Output - TRS jack?
+Mic Input - TRS jack?
+$Comp
+L SPEAKER SP?
+U 1 1 581967C2
+P 7500 3050
+F 0 "SP?" H 7400 3300 50  0000 C CNN
+F 1 "SPEAKER" H 7400 2800 50  0000 C CNN
+F 2 "" H 7500 3050 50  0000 C CNN
+F 3 "" H 7500 3050 50  0000 C CNN
+F 4 "http://www.digikey.com.au/product-detail/en/cui-inc/CDM-12008/102-2494-ND/2791824" H 7500 3050 60  0001 C CNN "Link"
+F 5 "2.44000" H 7500 3050 60  0001 C CNN "Unit Cost"
+F 6 "102-2494-ND" H 7500 3050 60  0001 C CNN "Digikey PN"
+F 7 "CDM-12008" H 7500 3050 60  0001 C CNN "Manufacturer PN"
+	1    7500 3050
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
