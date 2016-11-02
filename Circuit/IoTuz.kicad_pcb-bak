@@ -1886,7 +1886,7 @@
     (pad 39 smd rect (at 0.3 -2.45 270) (size 6 6) (layers F.Cu F.Paste F.Mask)
       (net 2 GND))
     (model iotuz.3dshapes/esp-wroom-32.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0.354331 0.501968504 0))
       (scale (xyz 0.393701 0.393701 0.393701))
       (rotate (xyz 0 0 -180))
     )
