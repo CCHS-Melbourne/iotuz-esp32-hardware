@@ -1008,6 +1008,11 @@
       (net 58 "Net-(Q3-PadG)"))
     (pad S smd rect (at 0.94996 1.00076) (size 0.8001 0.89916) (layers F.Cu F.Paste F.Mask)
       (net 1 +3V3))
+    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module freetronics_footprints:SOT23_FET (layer F.Cu) (tedit 5477A114) (tstamp 580B69BD)
@@ -1031,6 +1036,11 @@
       (net 59 /Power/GIN))
     (pad S smd rect (at 0.94996 1.00076) (size 0.8001 0.89916) (layers F.Cu F.Paste F.Mask)
       (net 11 /Power/3.3V))
+    (model TO_SOT_Packages_SMD.3dshapes/SOT-23.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module freetronics_footprints:SOT23_FET (layer F.Cu) (tedit 5477A114) (tstamp 580B69C4)

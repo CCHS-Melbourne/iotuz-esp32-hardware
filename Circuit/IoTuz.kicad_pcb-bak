@@ -2480,7 +2480,7 @@
     (pad 5 smd rect (at -1.1 0.975) (size 0.5 0.35) (layers F.Cu F.Paste F.Mask)
       (net 1 +3V3))
     (model iotuz.3dshapes/bme280.wrl
-      (at (xyz 0 0 0))
+      (at (xyz 0 0 0.000394))
       (scale (xyz 0.393701 0.393701 0.393701))
       (rotate (xyz 0 0 -90))
     )
@@ -2532,6 +2532,11 @@
       (net 1 +3V3))
     (pad 14 smd rect (at 0 -2.1 90) (size 1.145 0.55) (layers F.Cu F.Paste F.Mask)
       (net 90 /I2C_SCL))
+    (model iotuz.3dshapes/adxl345.wrl
+      (at (xyz 0 0 0.01378))
+      (scale (xyz 0.393701 0.393701 0.393701))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Capacitors_SMD:C_0603_HandSoldering (layer F.Cu) (tedit 541A9B4D) (tstamp 581204F2)
