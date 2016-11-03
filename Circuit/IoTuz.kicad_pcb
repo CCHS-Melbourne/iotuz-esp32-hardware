@@ -2090,6 +2090,11 @@
     (pad "" thru_hole circle (at -27.805 0) (size 5.08 5.08) (drill 3.2) (layers *.Cu *.Mask))
     (pad 1 thru_hole rect (at 36.45 0) (size 2.76 4.8) (drill oval 1.38 2.8) (layers *.Cu *.Mask)
       (net 2 GND))
+    (model iotuz.3dshapes/bh_18650_pc.wrl
+      (at (xyz 0 0 0.44))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module LEDs:LED_0805 (layer F.Cu) (tedit 5810F46A) (tstamp 5810BFFF)
@@ -2853,6 +2858,11 @@
       (net 2 GND))
     (pad SW2 thru_hole circle (at -12.75 3.85) (size 2 2) (drill 1.35) (layers *.Cu *.Mask F.SilkS)
       (net 2 GND))
+    (model iotuz.3dshapes/joystick.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 10 10 10))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module libs:QDTech-3.2in-TFT (layer F.Cu) (tedit 58175518) (tstamp 58176CA0)
