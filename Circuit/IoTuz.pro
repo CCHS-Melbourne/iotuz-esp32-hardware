@@ -1,4 +1,4 @@
-update=Wed 02 Nov 2016 10:56:18 AEDT
+update=Fri 04 Nov 2016 09:44:41 AEDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=
+LibDir=libs
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -68,3 +68,4 @@ LibName36=libs/bme280
 LibName37=libs/lxdc2xq
 LibName38=libs/qdtech-3.2-tft
 LibName39=libs/nau8814
+LibName40=libs/spu0410hr5h
