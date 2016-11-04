@@ -1454,19 +1454,26 @@ Wire Wire Line
 Wire Wire Line
 	10700 5950 11050 5950
 $Sheet
-S 7300 5250 1100 1050
+S 9300 3900 1100 1050
 U 5811BE75
 F0 "Audio" 60
 F1 "Audio.sch" 60
+F2 "MCLK" I L 9300 4000 60 
+F3 "SCLK" I L 9300 4150 60 
+F4 "SDIO" B L 9300 4250 60 
+F5 "FS" I L 9300 4400 60 
+F6 "BCLK" I L 9300 4500 60 
+F7 "DACIN" I L 9300 4600 60 
+F8 "ADCOUT" O R 10400 4500 60 
 $EndSheet
 $Sheet
-S 9300 3300 1100 1300
+S 7550 2800 1100 1300
 U 5811E13F
 F0 "LCDTouch" 60
 F1 "LCDTouchScreen.sch" 60
 $EndSheet
 $Sheet
-S 7300 2600 1050 650 
+S 9300 2100 1050 650 
 U 5811E5C9
 F0 "IRTransceiver" 60
 F1 "IRTransceiver.sch" 60
@@ -1493,4 +1500,10 @@ Text Notes 6200 3550 1    60   ~ 0
 LEDs
 Text Notes 7050 2150 0    60   ~ 0
 EMAC_CLK_OUT-25/50MHz
+Text Notes 3200 3950 0    60   ~ 0
+Doesn't fit in 0603;\n3v3 already has 100uF\nin power block.
+Text Label 9250 4000 2    60   ~ 0
+IO16
+Wire Wire Line
+	9250 4000 9300 4000
 $EndSCHEMATC

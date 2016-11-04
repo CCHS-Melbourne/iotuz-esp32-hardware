@@ -395,4 +395,18 @@ Wire Notes Line
 	5500 4750 5500 5150
 Text Notes 5250 5300 0    60   ~ 0
 I2S Interface
+Text HLabel 1400 3200 0    60   Input ~ 0
+MCLK
+Text HLabel 1400 3350 0    60   Input ~ 0
+SCLK
+Text HLabel 1400 3450 0    60   BiDi ~ 0
+SDIO
+Text HLabel 1400 3600 0    60   Input ~ 0
+FS
+Text HLabel 1400 3700 0    60   Input ~ 0
+BCLK
+Text HLabel 1400 3800 0    60   Input ~ 0
+DACIN
+Text HLabel 1400 3900 0    60   Output ~ 0
+ADCOUT
 $EndSCHEMATC
