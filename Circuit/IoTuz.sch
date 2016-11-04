@@ -598,7 +598,7 @@ Text Label 6900 1750 2    60   ~ 0
 IO19
 Text Label 6900 1850 2    60   ~ 0
 IO18
-Text Label 6950 1950 2    60   ~ 0
+Text Label 6900 1950 2    60   ~ 0
 IO5
 Text Label 6950 2050 2    60   ~ 0
 IO17
@@ -606,6 +606,450 @@ Text Label 6950 2150 2    60   ~ 0
 IO16
 Text Label 6950 2250 2    60   ~ 0
 IO4
+Text Label 6900 2350 2    60   ~ 0
+IO0
+$Comp
+L GND #PWR018
+U 1 1 5809017E
+P 6400 3050
+F 0 "#PWR018" H 6400 2800 50  0001 C CNN
+F 1 "GND" H 6400 2900 50  0000 C CNN
+F 2 "" H 6400 3050 50  0000 C CNN
+F 3 "" H 6400 3050 50  0000 C CNN
+	1    6400 3050
+	1    0    0    -1  
+$EndComp
+Text Label 6200 3250 1    60   ~ 0
+IO2
+Text Label 6100 3250 1    60   ~ 0
+IO15
+Text Label 6000 3200 1    60   ~ 0
+SD1
+Text Label 5900 3200 1    60   Italic 0
+SD0
+Text Label 5700 3200 1    60   ~ 0
+CMD
+Text Label 5600 3200 1    60   ~ 0
+SD3
+Text Label 5500 3200 1    60   ~ 0
+SD2
+Text Label 5400 3200 1    60   ~ 0
+IO13
+Text Label 5800 3200 1    60   ~ 0
+CLK
+Text Label 8650 5800 0    60   ~ 0
+IO12
+Text Label 8650 5950 0    60   ~ 0
+IO15
+Text Label 8650 5650 0    60   ~ 0
+IO0
+Text Label 11050 5950 2    60   ~ 0
+IO21
+Text Label 11050 5800 2    60   ~ 0
+IO19
+$Comp
+L CONN_01X04 P4
+U 1 1 580D7B68
+P 2550 2050
+F 0 "P4" H 2550 2300 50  0000 C CNN
+F 1 "LED_1" V 2650 2050 50  0000 C CNN
+F 2 "libs:LED_8MM_APA-106" H 2550 2050 50  0001 C CNN
+F 3 "" H 2550 2050 50  0000 C CNN
+	1    2550 2050
+	0    -1   -1   0   
+$EndComp
+$Comp
+L CONN_01X04 P5
+U 1 1 580D86C3
+P 3050 2050
+F 0 "P5" H 3050 2300 50  0000 C CNN
+F 1 "LED_2" V 3150 2050 50  0000 C CNN
+F 2 "libs:LED_8MM_APA-106" H 3050 2050 50  0001 C CNN
+F 3 "" H 3050 2050 50  0000 C CNN
+	1    3050 2050
+	0    -1   -1   0   
+$EndComp
+Text Label 2150 2300 0    60   ~ 0
+IO2
+NoConn ~ 3200 2250
+$Comp
+L +3.3V #PWR019
+U 1 1 580DAAD9
+P 2250 2550
+F 0 "#PWR019" H 2250 2400 50  0001 C CNN
+F 1 "+3.3V" H 2250 2690 50  0000 C CNN
+F 2 "" H 2250 2550 50  0000 C CNN
+F 3 "" H 2250 2550 50  0000 C CNN
+	1    2250 2550
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR020
+U 1 1 580DAB83
+P 3200 2500
+F 0 "#PWR020" H 3200 2250 50  0001 C CNN
+F 1 "GND" H 3200 2350 50  0000 C CNN
+F 2 "" H 3200 2500 50  0000 C CNN
+F 3 "" H 3200 2500 50  0000 C CNN
+	1    3200 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L MOSFET_P Q3
+U 1 1 580E31AD
+P 1650 3200
+F 0 "Q3" V 1950 3250 60  0000 R CNN
+F 1 "FDN340P" V 1500 3750 60  0000 R CNN
+F 2 "freetronics_footprints:SOT23_FET" H 1650 3200 60  0001 C CNN
+F 3 "" H 1650 3200 60  0000 C CNN
+	1    1650 3200
+	0    1    -1   0   
+$EndComp
+Text Label 2300 3100 2    60   ~ 0
+VCC_SENS
+$Comp
+L R R3
+U 1 1 580E4CFF
+P 1100 3150
+F 0 "R3" V 1180 3150 50  0000 C CNN
+F 1 "10K" V 1000 3150 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 1030 3150 50  0001 C CNN
+F 3 "" H 1100 3150 50  0000 C CNN
+	1    1100 3150
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R4
+U 1 1 580E4FDA
+P 1400 3500
+F 0 "R4" V 1480 3500 50  0000 C CNN
+F 1 "1K" V 1300 3500 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 1330 3500 50  0001 C CNN
+F 3 "" H 1400 3500 50  0000 C CNN
+	1    1400 3500
+	0    1    1    0   
+$EndComp
+$Comp
+L +3.3V #PWR021
+U 1 1 580E52A3
+P 1350 2900
+F 0 "#PWR021" H 1350 2750 50  0001 C CNN
+F 1 "+3.3V" H 1350 3040 50  0000 C CNN
+F 2 "" H 1350 2900 50  0000 C CNN
+F 3 "" H 1350 2900 50  0000 C CNN
+	1    1350 2900
+	1    0    0    -1  
+$EndComp
+Text Label 850  3500 0    60   ~ 0
+IO18
+$Comp
+L CONN_01X20 P6
+U 1 1 580E9CD4
+P 6100 4850
+F 0 "P6" H 6100 5900 50  0000 C CNN
+F 1 "CONN_01X20" V 6200 4850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x20" H 6100 4850 50  0001 C CNN
+F 3 "" H 6100 4850 50  0000 C CNN
+	1    6100 4850
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR022
+U 1 1 580EDF72
+P 5600 3800
+F 0 "#PWR022" H 5600 3650 50  0001 C CNN
+F 1 "+3.3V" H 5600 3940 50  0000 C CNN
+F 2 "" H 5600 3800 50  0000 C CNN
+F 3 "" H 5600 3800 50  0000 C CNN
+	1    5600 3800
+	1    0    0    -1  
+$EndComp
+Text Label 5350 4000 0    60   ~ 0
+EN
+Text Label 5350 4100 0    60   ~ 0
+SENSOR_VP
+Text Label 5350 4200 0    60   ~ 0
+SENSOR_VN
+Text Label 5350 4300 0    60   ~ 0
+IO34
+Text Label 5350 4400 0    60   ~ 0
+IO35
+Text Label 5350 4500 0    60   ~ 0
+IO32
+Text Label 5350 4600 0    60   ~ 0
+IO33
+Text Label 5350 4700 0    60   ~ 0
+IO25
+Text Label 5350 4800 0    60   ~ 0
+IO26
+Text Label 5350 4900 0    60   ~ 0
+IO27
+Text Label 5350 5000 0    60   ~ 0
+IO14
+Text Label 5350 5100 0    60   ~ 0
+IO12
+$Comp
+L GND #PWR023
+U 1 1 580EFC34
+P 5250 5250
+F 0 "#PWR023" H 5250 5000 50  0001 C CNN
+F 1 "GND" H 5250 5100 50  0000 C CNN
+F 2 "" H 5250 5250 50  0000 C CNN
+F 3 "" H 5250 5250 50  0000 C CNN
+	1    5250 5250
+	1    0    0    -1  
+$EndComp
+NoConn ~ 5900 5800
+Text Label 5350 5300 0    60   ~ 0
+IO13
+Text Label 5350 5400 0    60   ~ 0
+SD2
+Text Label 5350 5500 0    60   ~ 0
+SD3
+Text Label 5350 5600 0    60   ~ 0
+CMD
+$Comp
+L +5V #PWR024
+U 1 1 580F08CD
+P 5250 5650
+F 0 "#PWR024" H 5250 5500 50  0001 C CNN
+F 1 "+5V" H 5250 5790 50  0000 C CNN
+F 2 "" H 5250 5650 50  0000 C CNN
+F 3 "" H 5250 5650 50  0000 C CNN
+	1    5250 5650
+	1    0    0    -1  
+$EndComp
+$Comp
+L CONN_01X20 P7
+U 1 1 580F1335
+P 6450 4850
+F 0 "P7" H 6450 5900 50  0000 C CNN
+F 1 "CONN_01X20" V 6550 4850 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x20" H 6450 4850 50  0001 C CNN
+F 3 "" H 6450 4850 50  0000 C CNN
+	1    6450 4850
+	-1   0    0    -1  
+$EndComp
+$Comp
+L GND #PWR025
+U 1 1 580F2337
+P 7100 4600
+F 0 "#PWR025" H 7100 4350 50  0001 C CNN
+F 1 "GND" H 7100 4450 50  0000 C CNN
+F 2 "" H 7100 4600 50  0000 C CNN
+F 3 "" H 7100 4600 50  0000 C CNN
+	1    7100 4600
+	1    0    0    -1  
+$EndComp
+Text Label 6950 4200 2    60   ~ 0
+RXD
+Text Label 6950 4300 2    60   ~ 0
+TXD
+Text Label 6950 4000 2    60   ~ 0
+IO23
+Text Label 6950 4100 2    60   ~ 0
+IO22
+Text Label 6950 4400 2    60   ~ 0
+IO21
+Text Label 6950 4600 2    60   ~ 0
+IO19
+Text Label 6950 4700 2    60   ~ 0
+IO18
+Text Label 6950 4800 2    60   ~ 0
+IO5
+Text Label 6950 4900 2    60   ~ 0
+IO17
+Text Label 6950 5000 2    60   ~ 0
+IO16
+Text Label 6950 5100 2    60   ~ 0
+IO4
+Text Label 6950 5200 2    60   ~ 0
+IO0
+NoConn ~ 6650 5800
+Text Label 6950 5300 2    60   ~ 0
+IO2
+Text Label 6950 5400 2    60   ~ 0
+IO15
+Text Label 6950 5500 2    60   ~ 0
+SD1
+Text Label 6950 5600 2    60   Italic 0
+SD0
+Text Label 6950 5700 2    60   ~ 0
+CLK
+$Comp
+L +5V #PWR026
+U 1 1 58114717
+P 1550 1600
+F 0 "#PWR026" H 1550 1450 50  0001 C CNN
+F 1 "+5V" H 1550 1740 50  0000 C CNN
+F 2 "" H 1550 1600 50  0000 C CNN
+F 3 "" H 1550 1600 50  0000 C CNN
+	1    1550 1600
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR027
+U 1 1 581147C2
+P 2350 850
+F 0 "#PWR027" H 2350 700 50  0001 C CNN
+F 1 "+5V" H 2350 990 50  0000 C CNN
+F 2 "" H 2350 850 50  0000 C CNN
+F 3 "" H 2350 850 50  0000 C CNN
+	1    2350 850 
+	1    0    0    -1  
+$EndComp
+$Sheet
+S 1000 3850 850  500 
+U 58125176
+F0 "I2C Sensors" 60
+F1 "sensors.sch" 60
+F2 "I2C_SDA" I L 1000 3950 60 
+F3 "I2C_SCL" I L 1000 4100 60 
+F4 "ADXL_INT" I R 1850 4250 60 
+$EndSheet
+Text Label 600  3950 0    60   ~ 0
+I2C_SDA
+Text Label 600  4100 0    60   ~ 0
+I2C_SCL
+$Comp
+L R R6
+U 1 1 5812B9CE
+P 2050 4250
+F 0 "R6" V 2130 4250 50  0000 C CNN
+F 1 "10K" V 2050 4250 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 1980 4250 50  0001 C CNN
+F 3 "" H 2050 4250 50  0000 C CNN
+	1    2050 4250
+	0    1    1    0   
+$EndComp
+$Sheet
+S 9200 5550 1500 800 
+U 58137A3D
+F0 "Controller" 60
+F1 "controller.sch" 60
+F2 "JOY_BUTTON" I L 9200 5650 60 
+F3 "JOY_X" I L 9200 5800 60 
+F4 "JOY_Y" I L 9200 5950 60 
+F5 "A_BUTTON" I L 9200 6100 60 
+F6 "B_BUTTON" I L 9200 6250 60 
+F7 "EN_BUTTON" I R 10700 5650 60 
+F8 "EN_A" I R 10700 5800 60 
+F9 "EN_B" I R 10700 5950 60 
+$EndSheet
+Text Label 8650 6250 0    60   ~ 0
+SENSOR_VN
+Text Label 8650 6100 0    60   ~ 0
+SENSOR_VP
+$Sheet
+S 9300 3900 1100 1050
+U 5811BE75
+F0 "Audio" 60
+F1 "Audio.sch" 60
+F2 "MCLK" I L 9300 4000 60 
+F3 "SCLK" I L 9300 4150 60 
+F4 "SDIO" B L 9300 4250 60 
+F5 "FS" I L 9300 4400 60 
+F6 "BCLK" I L 9300 4500 60 
+F7 "DACIN" I L 9300 4600 60 
+F8 "ADCOUT" O R 10400 4500 60 
+$EndSheet
+$Sheet
+S 7550 2800 1100 1300
+U 5811E13F
+F0 "LCDTouch" 60
+F1 "LCDTouchScreen.sch" 60
+$EndSheet
+$Sheet
+S 9300 2100 1050 650 
+U 5811E5C9
+F0 "IRTransceiver" 60
+F1 "IRTransceiver.sch" 60
+$EndSheet
+Text Notes 7050 2350 0    60   ~ 0
+Joy_button/PRGM
+Text Notes 7050 1750 0    60   ~ 0
+EN_A
+Text Notes 7050 1950 0    60   ~ 0
+EN_B
+Text Notes 3900 2500 0    60   ~ 0
+Joy_X
+Text Notes 6100 3550 1    60   ~ 0
+Joy_Y
+Text Notes 7050 1850 0    60   ~ 0
+VCC_SENS (1/10)
+Text Notes 3850 1500 0    60   ~ 0
+A_Button
+Text Notes 3850 1600 0    60   ~ 0
+B_Button
+Text Notes 3850 1400 0    60   ~ 0
+Reset
+Text Notes 6200 3550 1    60   ~ 0
+LEDs
+Text Notes 7050 2150 0    60   ~ 0
+EMAC_CLK_OUT-25/50MHz
+Text Label 9250 4000 2    60   ~ 0
+IO16
+Text Notes 2050 4100 0    60   ~ 0
+Appropriate Interrupt Pin?
+$Comp
+L CONN_01X14 P1
+U 1 1 581D86E6
+P 6300 6950
+F 0 "P1" H 6300 7700 50  0000 C CNN
+F 1 "Alligator Connector" V 6400 6950 50  0000 C CNN
+F 2 "libs:aligator_pads" H 6300 6950 50  0001 C CNN
+F 3 "" H 6300 6950 50  0000 C CNN
+	1    6300 6950
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3.3V #PWR028
+U 1 1 581DAACE
+P 5500 6300
+F 0 "#PWR028" H 5500 6150 50  0001 C CNN
+F 1 "+3.3V" H 5500 6440 50  0000 C CNN
+F 2 "" H 5500 6300 50  0000 C CNN
+F 3 "" H 5500 6300 50  0000 C CNN
+	1    5500 6300
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR029
+U 1 1 581DB8B4
+P 5750 6150
+F 0 "#PWR029" H 5750 5900 50  0001 C CNN
+F 1 "GND" H 5750 6000 50  0000 C CNN
+F 2 "" H 5750 6150 50  0000 C CNN
+F 3 "" H 5750 6150 50  0000 C CNN
+	1    5750 6150
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR030
+U 1 1 581DC5E9
+P 6000 7600
+F 0 "#PWR030" H 6000 7350 50  0001 C CNN
+F 1 "GND" H 6000 7450 50  0000 C CNN
+F 2 "" H 6000 7600 50  0000 C CNN
+F 3 "" H 6000 7600 50  0000 C CNN
+	1    6000 7600
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR031
+U 1 1 581DCC5D
+P 5500 7400
+F 0 "#PWR031" H 5500 7250 50  0001 C CNN
+F 1 "+5V" H 5500 7540 50  0000 C CNN
+F 2 "" H 5500 7400 50  0000 C CNN
+F 3 "" H 5500 7400 50  0000 C CNN
+	1    5500 7400
+	1    0    0    -1  
+$EndComp
+Text Label 7400 1550 2    60   ~ 0
+I2C_SDA
+Text Label 7400 1250 2    60   ~ 0
+I2C_SCL
 Wire Wire Line
 	1150 2050 1150 2400
 Wire Wire Line
@@ -842,17 +1286,17 @@ Wire Wire Line
 Wire Wire Line
 	4800 2500 4300 2500
 Wire Wire Line
-	6650 1250 6900 1250
+	6650 1250 7400 1250
 Wire Wire Line
 	6650 1150 6950 1150
 Wire Wire Line
-	6650 1550 6900 1550
+	6650 1550 7400 1550
 Wire Wire Line
 	6650 1750 6900 1750
 Wire Wire Line
 	6650 1850 6900 1850
 Wire Wire Line
-	6650 1950 6950 1950
+	6650 1950 6900 1950
 Wire Wire Line
 	6650 2050 6950 2050
 Wire Wire Line
@@ -861,28 +1305,13 @@ Wire Wire Line
 	6650 2250 6950 2250
 Wire Wire Line
 	6650 2350 6900 2350
-Text Label 6900 2350 2    60   ~ 0
-IO0
 Wire Wire Line
 	6200 2950 6200 3250
-$Comp
-L GND #PWR018
-U 1 1 5809017E
-P 6400 3050
-F 0 "#PWR018" H 6400 2800 50  0001 C CNN
-F 1 "GND" H 6400 2900 50  0000 C CNN
-F 2 "" H 6400 3050 50  0000 C CNN
-F 3 "" H 6400 3050 50  0000 C CNN
-	1    6400 3050
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	6400 3050 6400 3000
 Wire Wire Line
 	6400 3000 6200 3000
 Connection ~ 6200 3000
-Text Label 6200 3250 1    60   ~ 0
-IO2
 Wire Wire Line
 	6100 2950 6100 3250
 Wire Wire Line
@@ -905,227 +1334,58 @@ Wire Wire Line
 	5300 3000 5150 3000
 Wire Wire Line
 	5150 3000 5150 3050
-Text Label 6100 3250 1    60   ~ 0
-IO15
-Text Label 6000 3200 1    60   ~ 0
-SD1
-Text Label 5900 3200 1    60   Italic 0
-SD0
-Text Label 5700 3200 1    60   ~ 0
-CMD
-Text Label 5600 3200 1    60   ~ 0
-SD3
-Text Label 5500 3200 1    60   ~ 0
-SD2
-Text Label 5400 3200 1    60   ~ 0
-IO13
-Text Label 5800 3200 1    60   ~ 0
-CLK
-Text Label 8650 5800 0    60   ~ 0
-IO12
-Text Label 8650 5950 0    60   ~ 0
-IO15
-Text Label 8650 5650 0    60   ~ 0
-IO0
-Text Label 11050 5650 2    60   ~ 0
-IO22
-Text Label 11050 5950 2    60   ~ 0
-IO21
-Text Label 11050 5800 2    60   ~ 0
-IO19
-$Comp
-L CONN_01X04 P4
-U 1 1 580D7B68
-P 3500 3650
-F 0 "P4" H 3500 3900 50  0000 C CNN
-F 1 "LED_1" V 3600 3650 50  0000 C CNN
-F 2 "libs:LED_8MM_APA-106" H 3500 3650 50  0001 C CNN
-F 3 "" H 3500 3650 50  0000 C CNN
-	1    3500 3650
-	0    -1   -1   0   
-$EndComp
-$Comp
-L CONN_01X04 P5
-U 1 1 580D86C3
-P 4000 3650
-F 0 "P5" H 4000 3900 50  0000 C CNN
-F 1 "LED_2" V 4100 3650 50  0000 C CNN
-F 2 "libs:LED_8MM_APA-106" H 4000 3650 50  0001 C CNN
-F 3 "" H 4000 3650 50  0000 C CNN
-	1    4000 3650
-	0    -1   -1   0   
-$EndComp
 Wire Wire Line
-	3650 3850 3650 3950
+	2700 2250 2700 2350
 Wire Wire Line
-	3650 3950 3850 3950
+	2700 2350 2900 2350
 Wire Wire Line
-	3850 3950 3850 3850
+	2900 2350 2900 2250
 Wire Wire Line
-	3350 3850 3350 3900
+	2400 2250 2400 2300
 Wire Wire Line
-	3350 3900 3100 3900
-Text Label 3100 3900 0    60   ~ 0
-IO2
-NoConn ~ 4150 3850
-$Comp
-L +3.3V #PWR021
-U 1 1 580DAAD9
-P 3200 4150
-F 0 "#PWR021" H 3200 4000 50  0001 C CNN
-F 1 "+3.3V" H 3200 4290 50  0000 C CNN
-F 2 "" H 3200 4150 50  0000 C CNN
-F 3 "" H 3200 4150 50  0000 C CNN
-	1    3200 4150
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR022
-U 1 1 580DAB83
-P 4150 4100
-F 0 "#PWR022" H 4150 3850 50  0001 C CNN
-F 1 "GND" H 4150 3950 50  0000 C CNN
-F 2 "" H 4150 4100 50  0000 C CNN
-F 3 "" H 4150 4100 50  0000 C CNN
-	1    4150 4100
-	1    0    0    -1  
-$EndComp
+	2400 2300 2150 2300
 Wire Wire Line
-	3550 3850 3550 4250
+	2600 2250 2600 2650
 Wire Wire Line
-	3200 4250 4050 4250
+	2250 2650 3100 2650
 Wire Wire Line
-	3200 4250 3200 4150
+	2250 2650 2250 2550
 Wire Wire Line
-	4050 4250 4050 3850
-Connection ~ 3550 4250
+	3100 2650 3100 2250
+Connection ~ 2600 2650
 Wire Wire Line
-	3450 3850 3450 4000
+	2500 2250 2500 2400
 Wire Wire Line
-	3450 4000 4150 4000
+	2500 2400 3200 2400
 Wire Wire Line
-	4150 4000 4150 4100
+	3200 2400 3200 2500
 Wire Wire Line
-	3950 3850 3950 4000
-Connection ~ 3950 4000
-$Comp
-L MOSFET_P Q3
-U 1 1 580E31AD
-P 3400 2800
-F 0 "Q3" V 3700 2850 60  0000 R CNN
-F 1 "FDN340P" V 3250 3350 60  0000 R CNN
-F 2 "freetronics_footprints:SOT23_FET" H 3400 2800 60  0001 C CNN
-F 3 "" H 3400 2800 60  0000 C CNN
-	1    3400 2800
-	0    1    -1   0   
-$EndComp
+	3000 2250 3000 2400
+Connection ~ 3000 2400
 Wire Wire Line
-	3600 2700 4050 2700
-Text Label 4050 2700 2    60   ~ 0
-VCC_SENS
-$Comp
-L R R3
-U 1 1 580E4CFF
-P 2850 2750
-F 0 "R3" V 2930 2750 50  0000 C CNN
-F 1 "10K" V 2750 2750 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 2780 2750 50  0001 C CNN
-F 3 "" H 2850 2750 50  0000 C CNN
-	1    2850 2750
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R4
-U 1 1 580E4FDA
-P 3150 3100
-F 0 "R4" V 3230 3100 50  0000 C CNN
-F 1 "1K" V 3050 3100 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 3080 3100 50  0001 C CNN
-F 3 "" H 3150 3100 50  0000 C CNN
-	1    3150 3100
-	0    1    1    0   
-$EndComp
+	1850 3100 2300 3100
 Wire Wire Line
-	3400 3000 3400 3100
+	1650 3400 1650 3500
 Wire Wire Line
-	3400 3100 3300 3100
-$Comp
-L +3.3V #PWR023
-U 1 1 580E52A3
-P 3100 2500
-F 0 "#PWR023" H 3100 2350 50  0001 C CNN
-F 1 "+3.3V" H 3100 2640 50  0000 C CNN
-F 2 "" H 3100 2500 50  0000 C CNN
-F 3 "" H 3100 2500 50  0000 C CNN
-	1    3100 2500
-	1    0    0    -1  
-$EndComp
+	1650 3500 1550 3500
 Wire Wire Line
-	3100 2500 3100 2700
+	1350 2900 1350 3100
 Wire Wire Line
-	3100 2700 3200 2700
+	1350 3100 1450 3100
 Wire Wire Line
-	2850 2600 2850 2550
+	1100 3000 1100 2950
 Wire Wire Line
-	2850 2550 3100 2550
-Connection ~ 3100 2550
+	1100 2950 1350 2950
+Connection ~ 1350 2950
 Wire Wire Line
-	2600 3100 3000 3100
+	850  3500 1250 3500
 Wire Wire Line
-	2850 3100 2850 2900
-Text Label 2600 3100 0    60   ~ 0
-IO18
-Connection ~ 2850 3100
-$Comp
-L CONN_01X20 P6
-U 1 1 580E9CD4
-P 6100 4850
-F 0 "P6" H 6100 5900 50  0000 C CNN
-F 1 "CONN_01X20" V 6200 4850 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x20" H 6100 4850 50  0001 C CNN
-F 3 "" H 6100 4850 50  0000 C CNN
-	1    6100 4850
-	1    0    0    -1  
-$EndComp
-$Comp
-L +3.3V #PWR024
-U 1 1 580EDF72
-P 5600 3800
-F 0 "#PWR024" H 5600 3650 50  0001 C CNN
-F 1 "+3.3V" H 5600 3940 50  0000 C CNN
-F 2 "" H 5600 3800 50  0000 C CNN
-F 3 "" H 5600 3800 50  0000 C CNN
-	1    5600 3800
-	1    0    0    -1  
-$EndComp
+	1100 3500 1100 3300
+Connection ~ 1100 3500
 Wire Wire Line
 	5900 3900 5600 3900
 Wire Wire Line
 	5600 3900 5600 3800
-Text Label 5350 4000 0    60   ~ 0
-EN
-Text Label 5350 4100 0    60   ~ 0
-SENSOR_VP
-Text Label 5350 4200 0    60   ~ 0
-SENSOR_VN
-Text Label 5350 4300 0    60   ~ 0
-IO34
-Text Label 5350 4400 0    60   ~ 0
-IO35
-Text Label 5350 4500 0    60   ~ 0
-IO32
-Text Label 5350 4600 0    60   ~ 0
-IO33
-Text Label 5350 4700 0    60   ~ 0
-IO25
-Text Label 5350 4800 0    60   ~ 0
-IO26
-Text Label 5350 4900 0    60   ~ 0
-IO27
-Text Label 5350 5000 0    60   ~ 0
-IO14
-Text Label 5350 5100 0    60   ~ 0
-IO12
 Wire Wire Line
 	5900 4000 5350 4000
 Wire Wire Line
@@ -1150,17 +1410,6 @@ Wire Wire Line
 	5900 5000 5350 5000
 Wire Wire Line
 	5900 5100 5350 5100
-$Comp
-L GND #PWR025
-U 1 1 580EFC34
-P 5250 5250
-F 0 "#PWR025" H 5250 5000 50  0001 C CNN
-F 1 "GND" H 5250 5100 50  0000 C CNN
-F 2 "" H 5250 5250 50  0000 C CNN
-F 3 "" H 5250 5250 50  0000 C CNN
-	1    5250 5250
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5900 5200 5250 5200
 Wire Wire Line
@@ -1173,74 +1422,10 @@ Wire Wire Line
 	5900 5500 5350 5500
 Wire Wire Line
 	5900 5600 5350 5600
-NoConn ~ 5900 5800
-Text Label 5350 5300 0    60   ~ 0
-IO13
-Text Label 5350 5400 0    60   ~ 0
-SD2
-Text Label 5350 5500 0    60   ~ 0
-SD3
-Text Label 5350 5600 0    60   ~ 0
-CMD
-$Comp
-L +5V #PWR026
-U 1 1 580F08CD
-P 5250 5650
-F 0 "#PWR026" H 5250 5500 50  0001 C CNN
-F 1 "+5V" H 5250 5790 50  0000 C CNN
-F 2 "" H 5250 5650 50  0000 C CNN
-F 3 "" H 5250 5650 50  0000 C CNN
-	1    5250 5650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5900 5700 5250 5700
 Wire Wire Line
 	5250 5700 5250 5650
-$Comp
-L CONN_01X20 P7
-U 1 1 580F1335
-P 6450 4850
-F 0 "P7" H 6450 5900 50  0000 C CNN
-F 1 "CONN_01X20" V 6550 4850 50  0000 C CNN
-F 2 "Pin_Headers:Pin_Header_Straight_1x20" H 6450 4850 50  0001 C CNN
-F 3 "" H 6450 4850 50  0000 C CNN
-	1    6450 4850
-	-1   0    0    -1  
-$EndComp
-$Comp
-L GND #PWR027
-U 1 1 580F2337
-P 7100 4600
-F 0 "#PWR027" H 7100 4350 50  0001 C CNN
-F 1 "GND" H 7100 4450 50  0000 C CNN
-F 2 "" H 7100 4600 50  0000 C CNN
-F 3 "" H 7100 4600 50  0000 C CNN
-	1    7100 4600
-	1    0    0    -1  
-$EndComp
-Text Label 6950 4200 2    60   ~ 0
-RXD
-Text Label 6950 4300 2    60   ~ 0
-TXD
-Text Label 6950 4000 2    60   ~ 0
-IO23
-Text Label 6950 4100 2    60   ~ 0
-IO22
-Text Label 6950 4400 2    60   ~ 0
-IO21
-Text Label 6950 4600 2    60   ~ 0
-IO19
-Text Label 6950 4700 2    60   ~ 0
-IO18
-Text Label 6950 4800 2    60   ~ 0
-IO5
-Text Label 6950 4900 2    60   ~ 0
-IO17
-Text Label 6950 5000 2    60   ~ 0
-IO16
-Text Label 6950 5100 2    60   ~ 0
-IO4
 Wire Wire Line
 	6650 4200 6950 4200
 Wire Wire Line
@@ -1265,8 +1450,6 @@ Wire Wire Line
 	6650 5100 6950 5100
 Wire Wire Line
 	6650 5200 6950 5200
-Text Label 6950 5200 2    60   ~ 0
-IO0
 Wire Wire Line
 	6650 4500 7100 4500
 Wire Wire Line
@@ -1284,17 +1467,6 @@ Wire Wire Line
 	6650 5600 6950 5600
 Wire Wire Line
 	6650 5700 6950 5700
-NoConn ~ 6650 5800
-Text Label 6950 5300 2    60   ~ 0
-IO2
-Text Label 6950 5400 2    60   ~ 0
-IO15
-Text Label 6950 5500 2    60   ~ 0
-SD1
-Text Label 6950 5600 2    60   Italic 0
-SD0
-Text Label 6950 5700 2    60   ~ 0
-CLK
 Wire Wire Line
 	1150 1650 1550 1650
 Wire Wire Line
@@ -1303,80 +1475,16 @@ Wire Wire Line
 	2350 950  2350 850 
 Wire Wire Line
 	1550 1650 1550 1600
-$Comp
-L +5V #PWR028
-U 1 1 58114717
-P 1550 1600
-F 0 "#PWR028" H 1550 1450 50  0001 C CNN
-F 1 "+5V" H 1550 1740 50  0000 C CNN
-F 2 "" H 1550 1600 50  0000 C CNN
-F 3 "" H 1550 1600 50  0000 C CNN
-	1    1550 1600
-	1    0    0    -1  
-$EndComp
-$Comp
-L +5V #PWR029
-U 1 1 581147C2
-P 2350 850
-F 0 "#PWR029" H 2350 700 50  0001 C CNN
-F 1 "+5V" H 2350 990 50  0000 C CNN
-F 2 "" H 2350 850 50  0000 C CNN
-F 3 "" H 2350 850 50  0000 C CNN
-	1    2350 850 
-	1    0    0    -1  
-$EndComp
-$Sheet
-S 1000 3850 850  500 
-U 58125176
-F0 "I2C Sensors" 60
-F1 "sensors.sch" 60
-F2 "I2C_SDA" I L 1000 3950 60 
-F3 "I2C_SCL" I L 1000 4100 60 
-F4 "ADXL_INT" I R 1850 4250 60 
-$EndSheet
 Wire Wire Line
 	1000 3950 600  3950
-Text Label 600  3950 0    60   ~ 0
-I2C_SDA
-Text Label 600  4100 0    60   ~ 0
-I2C_SCL
 Wire Wire Line
 	1000 4100 600  4100
-$Comp
-L R R6
-U 1 1 5812B9CE
-P 2050 4250
-F 0 "R6" V 2130 4250 50  0000 C CNN
-F 1 "10K" V 2050 4250 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 1980 4250 50  0001 C CNN
-F 3 "" H 2050 4250 50  0000 C CNN
-	1    2050 4250
-	0    1    1    0   
-$EndComp
 Wire Wire Line
 	1850 4250 1900 4250
 Wire Wire Line
 	2200 4250 2450 4250
-$Sheet
-S 9200 5550 1500 800 
-U 58137A3D
-F0 "Controller" 60
-F1 "controller.sch" 60
-F2 "JOY_BUTTON" I L 9200 5650 60 
-F3 "JOY_X" I L 9200 5800 60 
-F4 "JOY_Y" I L 9200 5950 60 
-F5 "A_BUTTON" I L 9200 6100 60 
-F6 "B_BUTTON" I L 9200 6250 60 
-F7 "EN_BUTTON" I R 10700 5650 60 
-F8 "EN_A" I R 10700 5800 60 
-F9 "EN_B" I R 10700 5950 60 
-$EndSheet
 Wire Wire Line
 	9200 5950 8650 5950
-Text Label 8650 6250 0    60   ~ 0
-SENSOR_VN
-Text Label 8650 6100 0    60   ~ 0
-SENSOR_VP
 Wire Wire Line
 	8650 6100 9200 6100
 Wire Wire Line
@@ -1391,59 +1499,70 @@ Wire Wire Line
 	10700 5800 11050 5800
 Wire Wire Line
 	10700 5950 11050 5950
-$Sheet
-S 9300 3900 1100 1050
-U 5811BE75
-F0 "Audio" 60
-F1 "Audio.sch" 60
-F2 "MCLK" I L 9300 4000 60 
-F3 "SCLK" I L 9300 4150 60 
-F4 "SDIO" B L 9300 4250 60 
-F5 "FS" I L 9300 4400 60 
-F6 "BCLK" I L 9300 4500 60 
-F7 "DACIN" I L 9300 4600 60 
-F8 "ADCOUT" O R 10400 4500 60 
-$EndSheet
-$Sheet
-S 7550 2800 1100 1300
-U 5811E13F
-F0 "LCDTouch" 60
-F1 "LCDTouchScreen.sch" 60
-$EndSheet
-$Sheet
-S 9300 2100 1050 650 
-U 5811E5C9
-F0 "IRTransceiver" 60
-F1 "IRTransceiver.sch" 60
-$EndSheet
-Text Notes 7050 2350 0    60   ~ 0
-Joy_button/PRGM
-Text Notes 7050 1750 0    60   ~ 0
-EN_A
-Text Notes 7050 1250 0    60   ~ 0
-EN_B
-Text Notes 3850 2500 0    60   ~ 0
-Joy_X
-Text Notes 6100 3550 1    60   ~ 0
-Joy_Y
-Text Notes 7050 1850 0    60   ~ 0
-VCC_SENS (1/10)
-Text Notes 3850 1500 0    60   ~ 0
-A_Button
-Text Notes 3850 1600 0    60   ~ 0
-B_Button
-Text Notes 3850 1400 0    60   ~ 0
-Reset
-Text Notes 6200 3550 1    60   ~ 0
-LEDs
-Text Notes 7050 2150 0    60   ~ 0
-EMAC_CLK_OUT-25/50MHz
-Text Label 9250 4000 2    60   ~ 0
-IO16
 Wire Wire Line
 	9250 4000 9300 4000
 Wire Wire Line
 	2250 850  2250 1100
 Wire Wire Line
 	2250 1100 2500 1100
+Wire Wire Line
+	6100 6300 5900 6300
+Wire Wire Line
+	6100 7600 6000 7600
+Wire Wire Line
+	5500 7400 5500 7500
+Wire Wire Line
+	5500 7500 6100 7500
+Text Label 11050 5650 2    60   ~ 0
+IO5
+Text Label 5650 6500 0    60   ~ 0
+I2C_SDA
+Text Label 5650 6600 0    60   ~ 0
+I2C_SCL
+Wire Wire Line
+	6100 7300 5650 7300
+Wire Wire Line
+	6100 7400 5650 7400
+Wire Wire Line
+	6100 6500 5650 6500
+Wire Wire Line
+	6100 6600 5650 6600
+Text Label 5650 7300 0    60   ~ 0
+RXD
+Text Label 5650 7400 0    60   ~ 0
+TXD
+Wire Wire Line
+	6100 6700 5650 6700
+Wire Wire Line
+	6100 6800 5650 6800
+Wire Wire Line
+	6100 6900 5650 6900
+Wire Wire Line
+	6100 7000 5650 7000
+Wire Wire Line
+	6100 7100 5650 7100
+Wire Wire Line
+	6100 7200 5650 7200
+Text Label 5650 7200 0    60   ~ 0
+IO14
+Text Label 5650 7100 0    60   ~ 0
+IO27
+Text Label 5650 7000 0    60   ~ 0
+IO26
+Text Label 5650 6900 0    60   ~ 0
+IO25
+Text Label 5650 6800 0    60   ~ 0
+IO33
+Text Label 5650 6700 0    60   ~ 0
+IO32
+Wire Wire Line
+	6100 6400 5500 6400
+Wire Wire Line
+	5500 6400 5500 6300
+Wire Wire Line
+	5900 6300 5900 6100
+Wire Wire Line
+	5900 6100 5750 6100
+Wire Wire Line
+	5750 6100 5750 6150
 $EndSCHEMATC

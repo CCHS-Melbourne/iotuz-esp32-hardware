@@ -55,12 +55,12 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L QDTech-3.2in-TFT U?
+L QDTech-3.2in-TFT U6
 U 1 1 5817975D
 P 4200 3000
-F 0 "U?" H 3850 3900 60  0000 C CNN
+F 0 "U6" H 3850 3900 60  0000 C CNN
 F 1 "QDTech-3.2in-TFT" H 4200 2100 60  0000 C CNN
-F 2 "" H 4150 2950 60  0001 C CNN
+F 2 "libs:QDTech-3.2in-TFT" H 4150 2950 60  0001 C CNN
 F 3 "" H 4150 2950 60  0001 C CNN
 	1    4200 3000
 	1    0    0    -1  
