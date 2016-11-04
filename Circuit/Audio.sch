@@ -62,6 +62,10 @@ F 0 "U5" H 5000 4450 60  0000 C CNN
 F 1 "NAU8814" H 6150 3050 60  0000 C CNN
 F 2 "" H 5600 3750 60  0001 C CNN
 F 3 "" H 5600 3750 60  0001 C CNN
+F 4 "NAU8814YG-ND" H 5600 3750 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/nuvoton-technology-corporation-of-america/NAU8814YG/NAU8814YG-ND/4271437" H 5600 3750 60  0001 C CNN "Link"
+F 6 "NAU8814YG" H 5600 3750 60  0001 C CNN "Manufacturer PN"
+F 7 "3.06" H 5600 3750 60  0001 C CNN "Unit Price"
 	1    5600 3750
 	1    0    0    -1  
 $EndComp
