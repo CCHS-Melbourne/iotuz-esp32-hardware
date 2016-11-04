@@ -2,7 +2,7 @@
 ##KiCAD
 #################
 *.bck #Backup files for schematic libraries
-
+*_autosave*.kicad_pcb
 #################
 ## Eclipse
 #################
