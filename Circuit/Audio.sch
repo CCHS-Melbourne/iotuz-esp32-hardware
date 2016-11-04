@@ -70,19 +70,19 @@ Unused Analogue - Float\nUnused Digital - GND
 $Comp
 L SPEAKER SP?
 U 1 1 581967C2
-P 7500 3050
-F 0 "SP?" H 7400 3300 50  0000 C CNN
-F 1 "SPEAKER" H 7400 2800 50  0000 C CNN
-F 2 "" H 7500 3050 50  0000 C CNN
-F 3 "" H 7500 3050 50  0000 C CNN
-F 4 "http://www.digikey.com.au/product-detail/en/cui-inc/CDM-12008/102-2494-ND/2791824" H 7500 3050 60  0001 C CNN "Link"
-F 5 "2.44000" H 7500 3050 60  0001 C CNN "Unit Cost"
-F 6 "102-2494-ND" H 7500 3050 60  0001 C CNN "Digikey PN"
-F 7 "CDM-12008" H 7500 3050 60  0001 C CNN "Manufacturer PN"
-	1    7500 3050
+P 7500 2900
+F 0 "SP?" H 7400 3150 50  0000 C CNN
+F 1 "SPEAKER" H 7400 2650 50  0000 C CNN
+F 2 "" H 7500 2900 50  0000 C CNN
+F 3 "" H 7500 2900 50  0000 C CNN
+F 4 "http://www.digikey.com.au/product-detail/en/cui-inc/CDM-12008/102-2494-ND/2791824" H 7500 2900 60  0001 C CNN "Link"
+F 5 "2.44000" H 7500 2900 60  0001 C CNN "Unit Cost"
+F 6 "102-2494-ND" H 7500 2900 60  0001 C CNN "Digikey PN"
+F 7 "CDM-12008" H 7500 2900 60  0001 C CNN "Manufacturer PN"
+	1    7500 2900
 	1    0    0    -1  
 $EndComp
-Text Notes 600  900  0    60   ~ 0
+Text Notes 4800 1050 0    60   ~ 0
 "When the MIC- is used as a single ended input, \nMIC+ should be conned to VREF by setting PMICPGA[0] \naddress (0x2C) bit to LOW."
 $Comp
 L SPU0410HR5H MK?
@@ -99,13 +99,13 @@ NoConn ~ 5350 2900
 $Comp
 L C_Small C?
 U 1 1 581BC31F
-P 5450 2600
-F 0 "C?" H 5460 2670 50  0000 L CNN
-F 1 "2.2uF" H 5460 2520 50  0000 L CNN
-F 2 "" H 5450 2600 50  0000 C CNN
-F 3 "" H 5450 2600 50  0000 C CNN
-	1    5450 2600
-	1    0    0    -1  
+P 2000 1900
+F 0 "C?" H 2010 1970 50  0000 L CNN
+F 1 "2.2uF" H 2010 1820 50  0000 L CNN
+F 2 "" H 2000 1900 50  0000 C CNN
+F 3 "" H 2000 1900 50  0000 C CNN
+	1    2000 1900
+	0    1    1    0   
 $EndComp
 Text Label 4400 3500 0    60   ~ 0
 MICBias
@@ -124,8 +124,6 @@ F 3 "" H 1400 1300 50  0000 C CNN
 	1    1400 1300
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5450 2200 5450 2500
 Wire Wire Line
 	5450 2700 5450 2900
 Text Label 4400 3350 0    60   ~ 0
@@ -162,10 +160,10 @@ F 3 "" H 5750 2750 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	5750 2750 5750 2900
-Text Label 5450 2200 0    60   ~ 0
-MICOut
-Text Label 1800 1900 0    60   ~ 0
-MICOut
+Text Label 5450 2700 1    60   ~ 0
+MIC-
+Text Label 2250 1900 0    60   ~ 0
+MIC-
 Text Notes 1550 1300 0    60   ~ 0
 R needed?
 Text Label 6600 3500 0    60   ~ 0
@@ -175,45 +173,226 @@ Wire Wire Line
 $Comp
 L C C?
 U 1 1 581BE775
-P 7850 3950
-F 0 "C?" H 7875 4050 50  0000 L CNN
-F 1 "4.7uF" H 7875 3850 50  0000 L CNN
-F 2 "" H 7888 3800 50  0000 C CNN
-F 3 "" H 7850 3950 50  0000 C CNN
-	1    7850 3950
+P 5550 2300
+F 0 "C?" H 5575 2400 50  0000 L CNN
+F 1 "4.7uF" H 5575 2200 50  0000 L CNN
+F 2 "" H 5588 2150 50  0000 C CNN
+F 3 "" H 5550 2300 50  0000 C CNN
+	1    5550 2300
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C?
 U 1 1 581BE7BE
-P 8100 3950
-F 0 "C?" H 8125 4050 50  0000 L CNN
-F 1 "4.7uF" H 8125 3850 50  0000 L CNN
-F 2 "" H 8138 3800 50  0000 C CNN
-F 3 "" H 8100 3950 50  0000 C CNN
-	1    8100 3950
+P 3600 4150
+F 0 "C?" H 3625 4250 50  0000 L CNN
+F 1 "4.7uF" H 3625 4050 50  0000 L CNN
+F 2 "" H 3638 4000 50  0000 C CNN
+F 3 "" H 3600 4150 50  0000 C CNN
+	1    3600 4150
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C?
 U 1 1 581BE7EF
-P 8350 3950
-F 0 "C?" H 8375 4050 50  0000 L CNN
-F 1 "4.7uF" H 8375 3850 50  0000 L CNN
-F 2 "" H 8388 3800 50  0000 C CNN
-F 3 "" H 8350 3950 50  0000 C CNN
-	1    8350 3950
+P 3850 4150
+F 0 "C?" H 3875 4250 50  0000 L CNN
+F 1 "4.7uF" H 3875 4050 50  0000 L CNN
+F 2 "" H 3888 4000 50  0000 C CNN
+F 3 "" H 3850 4150 50  0000 C CNN
+	1    3850 4150
 	1    0    0    -1  
 $EndComp
 $Comp
 L C C?
 U 1 1 581BE825
-P 8600 3950
-F 0 "C?" H 8625 4050 50  0000 L CNN
-F 1 "4.7uF" H 8625 3850 50  0000 L CNN
-F 2 "" H 8638 3800 50  0000 C CNN
-F 3 "" H 8600 3950 50  0000 C CNN
-	1    8600 3950
+P 4100 4150
+F 0 "C?" H 4125 4250 50  0000 L CNN
+F 1 "4.7uF" H 4125 4050 50  0000 L CNN
+F 2 "" H 4138 4000 50  0000 C CNN
+F 3 "" H 4100 4150 50  0000 C CNN
+	1    4100 4150
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	1800 1900 1900 1900
+Wire Wire Line
+	2100 1900 2250 1900
+$Comp
+L GND #PWR?
+U 1 1 581BEFAA
+P 5750 2200
+F 0 "#PWR?" H 5750 1950 50  0001 C CNN
+F 1 "GND" H 5750 2050 50  0000 C CNN
+F 2 "" H 5750 2200 50  0000 C CNN
+F 3 "" H 5750 2200 50  0000 C CNN
+	1    5750 2200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5550 2150 5550 2000
+Wire Wire Line
+	5550 2000 5750 2000
+Wire Wire Line
+	5750 2000 5750 2200
+Wire Wire Line
+	5550 2450 5550 2900
+$Comp
+L C C?
+U 1 1 581BF169
+P 800 1900
+F 0 "C?" H 825 2000 50  0000 L CNN
+F 1 "4.7uF" H 825 1800 50  0000 L CNN
+F 2 "" H 838 1750 50  0000 C CNN
+F 3 "" H 800 1900 50  0000 C CNN
+	1    800  1900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1400 1150 800  1150
+Wire Wire Line
+	800  1150 800  1750
+Wire Wire Line
+	1400 2450 800  2450
+Wire Wire Line
+	800  2450 800  2050
+$Comp
+L GND #PWR?
+U 1 1 581BF41C
+P 6750 3800
+F 0 "#PWR?" H 6750 3550 50  0001 C CNN
+F 1 "GND" H 6750 3650 50  0000 C CNN
+F 2 "" H 6750 3800 50  0000 C CNN
+F 3 "" H 6750 3800 50  0000 C CNN
+	1    6750 3800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6450 3800 6750 3800
+Text Notes 9600 3850 0    60   ~ 0
+I2C Mode - Address 0x34
+NoConn ~ 5650 2900
+Wire Wire Line
+	7200 2800 5850 2800
+Wire Wire Line
+	5850 2800 5850 2900
+Wire Wire Line
+	7200 3000 7150 3000
+Wire Wire Line
+	7150 3000 7150 3600
+Wire Wire Line
+	7150 3600 6450 3600
+Wire Notes Line
+	9550 3800 6800 3800
+Wire Notes Line
+	6800 3700 9550 3700
+Text Notes 9600 3700 0    60   ~ 0
+Mono Out - NC or come out to header?
+$Comp
+L GND #PWR?
+U 1 1 581BFD59
+P 4600 4450
+F 0 "#PWR?" H 4600 4200 50  0001 C CNN
+F 1 "GND" H 4600 4300 50  0000 C CNN
+F 2 "" H 4600 4450 50  0000 C CNN
+F 3 "" H 4600 4450 50  0000 C CNN
+	1    4600 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4400 4000 4750 4000
+Wire Wire Line
+	4600 4000 4600 4450
+Wire Notes Line
+	5350 2800 5350 1100
+Text Label 4400 4000 0    60   ~ 0
+AGND
+Connection ~ 4600 4000
+Wire Notes Line
+	4400 4000 4400 5800
+Text Notes 4150 6000 0    60   ~ 0
+Net tie AGND & GND. \nDo not separate but do make sensible layout to isolate.\nSimilarly, VSSSPK should be isolated in layout.
+Wire Wire Line
+	3850 3900 4750 3900
+Wire Wire Line
+	4100 3900 4100 4000
+Wire Wire Line
+	3600 3800 4750 3800
+Wire Wire Line
+	3850 3800 3850 4000
+Wire Wire Line
+	4750 3600 3600 3600
+Wire Wire Line
+	3600 3600 3600 4000
+Connection ~ 3850 3900
+Connection ~ 4100 3900
+Connection ~ 3600 3800
+Connection ~ 3850 3800
+$Comp
+L +3.3V #PWR?
+U 1 1 581C0164
+P 3600 3600
+F 0 "#PWR?" H 3600 3450 50  0001 C CNN
+F 1 "+3.3V" H 3600 3740 50  0000 C CNN
+F 2 "" H 3600 3600 50  0000 C CNN
+F 3 "" H 3600 3600 50  0000 C CNN
+	1    3600 3600
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 581C01A1
+P 3850 4450
+F 0 "#PWR?" H 3850 4200 50  0001 C CNN
+F 1 "GND" H 3850 4300 50  0000 C CNN
+F 2 "" H 3850 4450 50  0000 C CNN
+F 3 "" H 3850 4450 50  0000 C CNN
+	1    3850 4450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 4450 3850 4300
+Wire Wire Line
+	3600 4400 4100 4400
+Wire Wire Line
+	4100 4400 4100 4300
+Connection ~ 3850 4400
+Wire Wire Line
+	3600 4300 3600 4400
+Wire Notes Line
+	9550 2500 5650 2500
+Wire Notes Line
+	5650 2500 5650 2800
+Text Notes 9600 2500 0    60   ~ 0
+AUX input could go to DAC on ESP32..\nfor.. reasons?
+$Comp
+L GND #PWR?
+U 1 1 581C0598
+P 5850 4700
+F 0 "#PWR?" H 5850 4450 50  0001 C CNN
+F 1 "GND" H 5850 4550 50  0000 C CNN
+F 2 "" H 5850 4700 50  0000 C CNN
+F 3 "" H 5850 4700 50  0000 C CNN
+	1    5850 4700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5850 4700 5850 4600
+Wire Notes Line
+	5900 4650 9550 4650
+Text Notes 9600 4650 0    60   ~ 0
+"When the pin is configured as output, it can be used\nfor signaling analog mute, temperature alert, \nPLL frequency output, and PLL frequency lock. The CSb/GPIO pin\ncan also output the master clock through a PLL or directly"
+NoConn ~ 6450 3700
+Wire Notes Line
+	6550 4000 9550 4000
+Text Notes 9550 4000 0    60   ~ 0
+ 2-Wire Serial Clock & Data
+Wire Notes Line
+	6550 4000 6550 3900
+Wire Notes Line
+	5350 4750 5650 4750
+Wire Notes Line
+	5500 4750 5500 5150
+Text Notes 5250 5300 0    60   ~ 0
+I2S Interface
 $EndSCHEMATC
