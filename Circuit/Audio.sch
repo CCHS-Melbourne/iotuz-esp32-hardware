@@ -60,7 +60,7 @@ U 1 1 58192F60
 P 5600 3750
 F 0 "U5" H 5000 4450 60  0000 C CNN
 F 1 "NAU8814" H 6150 3050 60  0000 C CNN
-F 2 "" H 5600 3750 60  0001 C CNN
+F 2 "libs:NAU8814_QFN-24_4x4mm_Pitch0.5mm_EPAD" H 5600 3750 60  0001 C CNN
 F 3 "" H 5600 3750 60  0001 C CNN
 F 4 "NAU8814YG-ND" H 5600 3750 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/nuvoton-technology-corporation-of-america/NAU8814YG/NAU8814YG-ND/4271437" H 5600 3750 60  0001 C CNN "Link"
@@ -77,7 +77,7 @@ U 1 1 581967C2
 P 7500 2900
 F 0 "SP1" H 7400 3150 50  0000 C CNN
 F 1 "SPEAKER" H 7400 2650 50  0000 C CNN
-F 2 "libs1:CVS-1508.Speaker.PCPins" H 7500 2900 50  0001 C CNN
+F 2 "libs:CVS-1508.Speaker.PCPins" H 7500 2900 50  0001 C CNN
 F 3 "" H 7500 2900 50  0000 C CNN
 F 4 "http://www.digikey.com.au/product-detail/en/cui-inc/CVS-1508/102-2498-ND/2791828" H 7500 2900 60  0001 C CNN "Link"
 F 5 "3.3600" H 7500 2900 60  0001 C CNN "Unit Cost"
@@ -94,7 +94,7 @@ U 1 1 581BC275
 P 1400 1900
 F 0 "MK1" H 1200 2200 60  0000 C CNN
 F 1 "SPU0410HR5H" H 900 1550 60  0000 C CNN
-F 2 "libs1:MEMSMicrophone-SMT-SPU0410HR5H‐PB" H 1400 1900 60  0001 C CNN
+F 2 "libs:MEMSMicrophone-SMT-SPU0410HR5H‐PB" H 1400 1900 60  0001 C CNN
 F 3 "" H 1400 1900 60  0001 C CNN
 	1    1400 1900
 	1    0    0    -1  
@@ -180,8 +180,12 @@ U 1 1 581BE775
 P 5550 2300
 F 0 "C16" H 5575 2400 50  0000 L CNN
 F 1 "4.7uF" H 5575 2200 50  0000 L CNN
-F 2 "" H 5588 2150 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 5588 2150 50  0001 C CNN
 F 3 "" H 5550 2300 50  0000 C CNN
+F 4 "1276-2087-1-ND" H 3600 4150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173" H 3600 4150 60  0001 C CNN "Link"
+F 6 "CL10B475KQ8NQNC" H 3600 4150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.01" H 3600 4150 60  0001 C CNN "Unit Cost"
 	1    5550 2300
 	1    0    0    -1  
 $EndComp
@@ -191,8 +195,12 @@ U 1 1 581BE7BE
 P 3600 4150
 F 0 "C13" H 3625 4250 50  0000 L CNN
 F 1 "4.7uF" H 3625 4050 50  0000 L CNN
-F 2 "" H 3638 4000 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 3638 4000 50  0001 C CNN
 F 3 "" H 3600 4150 50  0000 C CNN
+F 4 "1276-2087-1-ND" H 3600 4150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173" H 3600 4150 60  0001 C CNN "Link"
+F 6 "CL10B475KQ8NQNC" H 3600 4150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.01" H 3600 4150 60  0001 C CNN "Unit Cost"
 	1    3600 4150
 	1    0    0    -1  
 $EndComp
@@ -202,8 +210,12 @@ U 1 1 581BE7EF
 P 3850 4150
 F 0 "C14" H 3875 4250 50  0000 L CNN
 F 1 "4.7uF" H 3875 4050 50  0000 L CNN
-F 2 "" H 3888 4000 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 3888 4000 50  0001 C CNN
 F 3 "" H 3850 4150 50  0000 C CNN
+F 4 "1276-2087-1-ND" H 3600 4150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173" H 3600 4150 60  0001 C CNN "Link"
+F 6 "CL10B475KQ8NQNC" H 3600 4150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.01" H 3600 4150 60  0001 C CNN "Unit Cost"
 	1    3850 4150
 	1    0    0    -1  
 $EndComp
@@ -213,8 +225,12 @@ U 1 1 581BE825
 P 4100 4150
 F 0 "C15" H 4125 4250 50  0000 L CNN
 F 1 "4.7uF" H 4125 4050 50  0000 L CNN
-F 2 "" H 4138 4000 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 4138 4000 50  0001 C CNN
 F 3 "" H 4100 4150 50  0000 C CNN
+F 4 "1276-2087-1-ND" H 3600 4150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173" H 3600 4150 60  0001 C CNN "Link"
+F 6 "CL10B475KQ8NQNC" H 3600 4150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.01" H 3600 4150 60  0001 C CNN "Unit Cost"
 	1    4100 4150
 	1    0    0    -1  
 $EndComp
@@ -247,8 +263,12 @@ U 1 1 581BF169
 P 800 1900
 F 0 "C1" H 825 2000 50  0000 L CNN
 F 1 "4.7uF" H 825 1800 50  0000 L CNN
-F 2 "" H 838 1750 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 838 1750 50  0001 C CNN
 F 3 "" H 800 1900 50  0000 C CNN
+F 4 "1276-2087-1-ND" H 3600 4150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10B475KQ8NQNC/1276-2087-1-ND/3890173" H 3600 4150 60  0001 C CNN "Link"
+F 6 "CL10B475KQ8NQNC" H 3600 4150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.01" H 3600 4150 60  0001 C CNN "Unit Cost"
 	1    800  1900
 	1    0    0    -1  
 $EndComp
@@ -291,7 +311,7 @@ Wire Notes Line
 Wire Notes Line
 	6800 3700 9550 3700
 Text Notes 9600 3700 0    60   ~ 0
-Mono Out - NC or come out to header?
+Mono Out - NC or come out to header?\nOr could go to TRS 3.5mm jack.
 $Comp
 L GND #PWR063
 U 1 1 581BFD59
@@ -368,7 +388,7 @@ Wire Notes Line
 Wire Notes Line
 	5650 2500 5650 2800
 Text Notes 9600 2500 0    60   ~ 0
-AUX input could go to DAC on ESP32..\nfor.. reasons?
+AUX input could go to DAC on ESP32..\nfor.. reasons?\nOr could go to TRS 3.5mm jack.
 $Comp
 L GND #PWR066
 U 1 1 581C0598
