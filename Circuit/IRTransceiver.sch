@@ -135,17 +135,6 @@ F 3 "" H 4500 4150 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	4500 4300 4500 4400
-$Comp
-L MOSFET_N Q?
-U 1 1 581D6A1D
-P 4400 3650
-F 0 "Q?" H 4310 3820 60  0000 R CNN
-F 1 "MOSFET_N" H 4460 3400 60  0000 R CNN
-F 2 "" H 4400 3650 60  0000 C CNN
-F 3 "" H 4400 3650 60  0000 C CNN
-	1    4400 3650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4500 3850 4500 4000
 $Comp
@@ -182,6 +171,17 @@ Wire Wire Line
 	4050 3650 4200 3650
 Text Notes 4700 4600 0    60   ~ 0
 I_f roughly 90mA @ 1.3V
-Text Notes 4600 3650 0    60   ~ 0
-TBD. Might just use NPN from main sheet\nto reduce component variability.
+Text Notes 4750 3600 0    60   ~ 0
+Lazy, but we don't have any N-MOS on the design\nand will work just fine.
+$Comp
+L S8050 Q?
+U 1 1 581E1075
+P 4400 3650
+F 0 "Q?" H 4600 3725 50  0000 L CNN
+F 1 "S8050" H 4600 3650 50  0000 L CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 4600 3575 50  0000 L CIN
+F 3 "" H 4400 3650 50  0000 L CNN
+	1    4400 3650
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
