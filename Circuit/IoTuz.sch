@@ -960,10 +960,12 @@ F0 "LCDTouch" 60
 F1 "LCDTouchScreen.sch" 60
 $EndSheet
 $Sheet
-S 9300 2100 1050 650 
+S 9300 2100 1050 300 
 U 5811E5C9
 F0 "IRTransceiver" 60
 F1 "IRTransceiver.sch" 60
+F2 "IRRx" O R 10350 2250 60 
+F3 "IRTx" I L 9300 2250 60 
 $EndSheet
 Text Notes 7050 2350 0    60   ~ 0
 Joy_button/PRGM

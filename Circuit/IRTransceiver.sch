@@ -91,9 +91,9 @@ F 3 "" H 4250 2750 50  0000 C CNN
 	1    4250 2750
 	1    0    0    -1  
 $EndComp
-Text Notes 4400 2450 0    60   ~ 0
-Out
-Text HLabel 4050 2500 0    60   Input ~ 0
+Text Notes 3850 2350 0    60   ~ 0
+38kHz sensitivity. \nSpectrum Cf around 940-950nm.
+Text HLabel 4050 2500 0    60   Output ~ 0
 IRRx
 Wire Wire Line
 	4400 2700 4250 2700
@@ -104,9 +104,82 @@ Wire Wire Line
 Wire Wire Line
 	4400 2950 4050 2950
 Wire Wire Line
-	4050 2950 4050 2750
-Wire Wire Line
 	4400 2600 4400 2500
 Wire Wire Line
 	4400 2500 4050 2500
+$Comp
+L LED D?
+U 1 1 581D68B3
+P 4500 4600
+F 0 "D?" H 4500 4700 50  0000 C CNN
+F 1 "IRLED" H 4500 4500 50  0000 C CNN
+F 2 "LEDs:LED-5MM" H 4500 4600 50  0001 C CNN
+F 3 "" H 4500 4600 50  0000 C CNN
+F 4 "TSAL6200" H 4500 4600 60  0001 C CNN "Manufacturer PN"
+F 5 "751-1204-ND" H 4500 4600 60  0001 C CNN "Digikey PN"
+F 6 "http://www.digikey.com.au/product-detail/en/vishay-semiconductor-opto-division/TSAL6200/751-1204-ND/1681339" H 4500 4600 60  0001 C CNN "Link"
+F 7 "0.57" H 4500 4600 60  0001 C CNN "Unit Cost"
+	1    4500 4600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R?
+U 1 1 581D690A
+P 4500 4150
+F 0 "R?" V 4580 4150 50  0000 C CNN
+F 1 "22R" V 4500 4150 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 4430 4150 50  0001 C CNN
+F 3 "" H 4500 4150 50  0000 C CNN
+	1    4500 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 4300 4500 4400
+$Comp
+L MOSFET_N Q?
+U 1 1 581D6A1D
+P 4400 3650
+F 0 "Q?" H 4310 3820 60  0000 R CNN
+F 1 "MOSFET_N" H 4460 3400 60  0000 R CNN
+F 2 "" H 4400 3650 60  0000 C CNN
+F 3 "" H 4400 3650 60  0000 C CNN
+	1    4400 3650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 3850 4500 4000
+$Comp
+L GND #PWR?
+U 1 1 581D6BBC
+P 4500 4950
+F 0 "#PWR?" H 4500 4700 50  0001 C CNN
+F 1 "GND" H 4500 4800 50  0000 C CNN
+F 2 "" H 4500 4950 50  0000 C CNN
+F 3 "" H 4500 4950 50  0000 C CNN
+	1    4500 4950
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 4800 4500 4950
+Wire Wire Line
+	4050 2950 4050 2750
+$Comp
+L +3.3V #PWR?
+U 1 1 581D6BFC
+P 4500 3300
+F 0 "#PWR?" H 4500 3150 50  0001 C CNN
+F 1 "+3.3V" H 4500 3440 50  0000 C CNN
+F 2 "" H 4500 3300 50  0000 C CNN
+F 3 "" H 4500 3300 50  0000 C CNN
+	1    4500 3300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4500 3300 4500 3450
+Text HLabel 4050 3650 0    60   Input ~ 0
+IRTx
+Wire Wire Line
+	4050 3650 4200 3650
+Text Notes 4700 4600 0    60   ~ 0
+I_f roughly 90mA @ 1.3V
 $EndSCHEMATC
