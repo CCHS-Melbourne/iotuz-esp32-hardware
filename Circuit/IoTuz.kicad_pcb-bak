@@ -2595,7 +2595,7 @@
   )
 
   (module libs:ADXL345 (layer F.Cu) (tedit 566E0724) (tstamp 5811EF76)
-    (at 151.6761 161.925)
+    (at 126 93.25)
     (path /58125176/564CE29B)
     (fp_text reference U302 (at -0.05 -3.61) (layer F.SilkS)
       (effects (font (size 0.7 0.7) (thickness 0.15)))
@@ -3510,7 +3510,7 @@
   )
 
   (module LEDs:LED-5MM (layer F.Cu) (tedit 5570F7EA) (tstamp 581D5658)
-    (at 173.99 156.21)
+    (at 151.13 58.42)
     (descr "LED 5mm round vertical")
     (tags "LED 5mm round vertical")
     (path /5811E5C9/581D68B3)
@@ -3642,7 +3642,7 @@
   )
 
   (module libs:NAU8814_QFN-24_4x4mm_Pitch0.5mm_EPAD (layer F.Cu) (tedit 58193446) (tstamp 581D56B4)
-    (at 109.22 167.64)
+    (at 127 114.3)
     (descr "24-Lead Plastic Quad Flat, No Lead Package (MJ) - 4x4x0.9 mm Body [QFN]; (see Microchip Packaging Specification 00000049BS.pdf)")
     (tags "QFN 0.5")
     (path /5811BE75/58192F60)
