@@ -182,4 +182,6 @@ Wire Wire Line
 	4050 3650 4200 3650
 Text Notes 4700 4600 0    60   ~ 0
 I_f roughly 90mA @ 1.3V
+Text Notes 4600 3650 0    60   ~ 0
+TBD. Might just use NPN from main sheet\nto reduce component variability.
 $EndSCHEMATC
