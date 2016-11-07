@@ -6,8 +6,11 @@ EESchema-LIBRARY Version 2.3
 DEF LXDC2XQ U 0 40 Y Y 1 F N
 F0 "U" -550 400 60 H V C CNN
 F1 "LXDC2XQ" 500 -400 60 H V C CNN
-F2 "" 0 0 60 H I C CNN
-F3 "" 0 0 60 H I C CNN
+F2 "" -650 300 60 H I C CNN
+F3 "http://power.murata.com/data/power/LXDC2XQ_Series_datasheet.pdf" -550 400 60 H I C CNN
+F4 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/LXDC2XQ33A-254/490-12573-1-ND/5797558" -450 500 60 H I C CNN "Digikey URL"
+F5 "1.55" -350 600 60 H I C CNN "Unit cost"
+F6 "490-12573-1-ND" -250 700 60 H I C CNN "Digikey PN"
 $FPLIST
  LXDC2XQ
 $ENDFPLIST

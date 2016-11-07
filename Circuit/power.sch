@@ -411,21 +411,6 @@ $EndComp
 Text Notes 800  3800 0    60   ~ 0
 Charge done not necessary? \nI'd just turn off the ~CHRG~ LED\n and call it good.
 $Comp
-L LXDC2XQ U3
-U 1 1 5812C4CE
-P 9500 5550
-F 0 "U3" H 8950 5950 60  0000 C CNN
-F 1 "LXDC2XQ" H 10000 5150 60  0000 C CNN
-F 2 "libs:LXDC2XQ" H 9500 5550 60  0001 C CNN
-F 3 "http://power.murata.com/data/power/LXDC2XQ_Series_datasheet.pdf" H 9500 5550 60  0001 C CNN
-F 4 "Digikey" H 9500 5550 60  0001 C CNN "Supplier"
-F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/LXDC2XQ33A-254/490-12573-1-ND/5797558" H 9500 5550 60  0001 C CNN "Digikey URL"
-F 6 "1.55" H 9500 5550 60  0001 C CNN "Unit Cost (1)"
-F 7 "490-12573-1-ND" H 9500 5550 60  0001 C CNN "Digikey PN"
-	1    9500 5550
-	1    0    0    -1  
-$EndComp
-$Comp
 L GND #PWR040
 U 1 1 5812C93A
 P 9500 6300
@@ -651,4 +636,18 @@ Wire Wire Line
 	10450 6100 10450 6200
 Wire Wire Line
 	10450 6200 9500 6200
+$Comp
+L LXDC2XQ U3
+U 1 1 581FF216
+P 9500 5550
+F 0 "U3" H 8950 5950 60  0000 C CNN
+F 1 "LXDC2XQ" H 10000 5150 60  0000 C CNN
+F 2 "" H 8850 5850 60  0001 C CNN
+F 3 "http://power.murata.com/data/power/LXDC2XQ_Series_datasheet.pdf" H 8950 5950 60  0001 C CNN
+F 4 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/LXDC2XQ33A-254/490-12573-1-ND/5797558" H 9050 6050 60  0001 C CNN "Digikey URL"
+F 5 "1.55" H 9150 6150 60  0001 C CNN "Unit cost"
+F 6 "490-12573-1-ND" H 9250 6250 60  0001 C CNN "Digikey PN"
+	1    9500 5550
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

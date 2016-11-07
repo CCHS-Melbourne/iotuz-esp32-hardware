@@ -283,16 +283,16 @@ Wire Wire Line
 $Comp
 L GND #PWR061
 U 1 1 581BF41C
-P 6750 3800
-F 0 "#PWR061" H 6750 3550 50  0001 C CNN
-F 1 "GND" H 6750 3650 50  0000 C CNN
-F 2 "" H 6750 3800 50  0000 C CNN
-F 3 "" H 6750 3800 50  0000 C CNN
-	1    6750 3800
+P 7400 3850
+F 0 "#PWR061" H 7400 3600 50  0001 C CNN
+F 1 "GND" H 7400 3700 50  0000 C CNN
+F 2 "" H 7400 3850 50  0000 C CNN
+F 3 "" H 7400 3850 50  0000 C CNN
+	1    7400 3850
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	6450 3800 6750 3800
+	6450 3800 7400 3800
 Text Notes 9600 3850 0    60   ~ 0
 I2C Mode - Address 0x34
 NoConn ~ 5650 2900
@@ -306,8 +306,6 @@ Wire Wire Line
 	7150 3000 7150 3600
 Wire Wire Line
 	7150 3600 6450 3600
-Wire Notes Line
-	9550 3800 6800 3800
 Wire Notes Line
 	6800 3700 9550 3700
 Text Notes 9600 3700 0    60   ~ 0
@@ -407,18 +405,10 @@ Wire Notes Line
 Text Notes 9600 4650 0    60   ~ 0
 "When the pin is configured as output, it can be used\nfor signaling analog mute, temperature alert, \nPLL frequency output, and PLL frequency lock. The CSb/GPIO pin\ncan also output the master clock through a PLL or directly"
 NoConn ~ 6450 3700
-Wire Notes Line
-	6550 4000 9550 4000
 Text Notes 9550 4000 0    60   ~ 0
  2-Wire Serial Clock & Data
 Wire Notes Line
-	6550 4000 6550 3900
-Wire Notes Line
-	5350 4750 5650 4750
-Wire Notes Line
-	5500 4750 5500 5150
-Text Notes 5250 5300 0    60   ~ 0
-I2S Interface
+	5350 5200 5650 5200
 Text HLabel 1400 3200 0    60   Input ~ 0
 MCLK
 Text HLabel 1400 3350 0    60   Input ~ 0
@@ -433,4 +423,70 @@ Text HLabel 1400 3800 0    60   Input ~ 0
 DACIN
 Text HLabel 1400 3900 0    60   Output ~ 0
 ADCOUT
+Text Label 1550 3350 0    60   ~ 0
+i2cSCLK
+Text Label 1550 3450 0    60   ~ 0
+i2cSDA
+Text Label 1550 3600 0    60   ~ 0
+i2sFS
+Text Label 1550 3700 0    60   ~ 0
+i2sBCLK
+Text Label 1550 3800 0    60   ~ 0
+i2sDIN
+Text Label 1550 3900 0    60   ~ 0
+i2sDOUT
+Text Label 1550 3200 0    60   ~ 0
+MasterCLK
+Text Label 5750 4750 3    60   ~ 0
+MasterCLK
+Text Label 5550 4750 3    60   ~ 0
+i2sFS
+Text Label 5650 4750 3    60   ~ 0
+i2sBCLK
+Text Label 5450 4750 3    60   ~ 0
+i2sDIN
+Text Label 5350 4750 3    60   ~ 0
+i2sDOUT
+Text Notes 5200 5600 0    60   ~ 0
+I2S Interface
+Wire Notes Line
+	5500 5200 5500 5500
+Wire Wire Line
+	5350 4600 5350 4750
+Wire Wire Line
+	5450 4600 5450 4750
+Wire Wire Line
+	5550 4600 5550 4750
+Wire Wire Line
+	5650 4600 5650 4750
+Wire Wire Line
+	5750 4600 5750 4750
+Text Label 6600 4000 0    60   ~ 0
+i2cSCLK
+Text Label 6600 3900 0    60   ~ 0
+i2cSDA
+Wire Wire Line
+	7400 3800 7400 3850
+Wire Notes Line
+	7450 3800 9550 3800
+Wire Notes Line
+	9550 3800 9550 3850
+Wire Wire Line
+	6450 3900 6600 3900
+Wire Wire Line
+	6450 4000 6600 4000
+Wire Wire Line
+	1400 3200 1550 3200
+Wire Wire Line
+	1400 3350 1550 3350
+Wire Wire Line
+	1400 3450 1550 3450
+Wire Wire Line
+	1400 3600 1550 3600
+Wire Wire Line
+	1400 3700 1550 3700
+Wire Wire Line
+	1400 3800 1550 3800
+Wire Wire Line
+	1400 3900 1550 3900
 $EndSCHEMATC
