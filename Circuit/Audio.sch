@@ -96,6 +96,10 @@ F 0 "MK1" H 1200 2200 60  0000 C CNN
 F 1 "SPU0410HR5H" H 900 1550 60  0000 C CNN
 F 2 "libs:MEMSMicrophone-SMT-SPU0410HR5H‐PB" H 1400 1900 60  0001 C CNN
 F 3 "" H 1400 1900 60  0001 C CNN
+F 4 "423-1138-1-ND" H 1400 1900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/knowles/SPU0410HR5H-PB/423-1138-1-ND/2420982" H 1400 1900 60  0001 C CNN "Link"
+F 6 "SPU0410HR5H-PB" H 1400 1900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.92000" H 1400 1900 60  0001 C CNN "Unit Cost"
 	1    1400 1900
 	1    0    0    -1  
 $EndComp
@@ -108,6 +112,10 @@ F 0 "C2" H 2010 1970 50  0000 L CNN
 F 1 "2.2uF" H 2010 1820 50  0000 L CNN
 F 2 "" H 2000 1900 50  0001 C CNN
 F 3 "" H 2000 1900 50  0000 C CNN
+F 4 "490-3296-1-ND" H 2000 1900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM188R61C225KE15D/490-3296-1-ND/702837" H 2000 1900 60  0001 C CNN "Link"
+F 6 "GRM188R61C225KE15D" H 2000 1900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.12" H 2000 1900 60  0001 C CNN "Unit Cost"
 	1    2000 1900
 	0    1    1    0   
 $EndComp
@@ -495,7 +503,7 @@ U 1 1 581FF4BD
 P 6950 3250
 F 0 "C?" H 6960 3320 50  0000 L CNN
 F 1 "100pF" H 6960 3170 50  0000 L CNN
-F 2 "" H 6950 3250 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 6950 3250 50  0001 C CNN
 F 3 "" H 6950 3250 50  0000 C CNN
 F 4 "490-3160-1-ND" H 6950 3250 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM0335C1E101JA01D/490-3160-1-ND/702701" H 6950 3250 60  0001 C CNN "Link"
@@ -510,7 +518,7 @@ U 1 1 5820032A
 P 6500 3000
 F 0 "C?" H 6510 3070 50  0000 L CNN
 F 1 "100pF" H 6510 2920 50  0000 L CNN
-F 2 "" H 6500 3000 50  0000 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 6500 3000 50  0001 C CNN
 F 3 "" H 6500 3000 50  0000 C CNN
 F 4 "490-3160-1-ND" H 6500 3000 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM0335C1E101JA01D/490-3160-1-ND/702701" H 6500 3000 60  0001 C CNN "Link"
