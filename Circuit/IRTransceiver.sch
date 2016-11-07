@@ -130,6 +130,10 @@ F 0 "R16" V 4580 4150 50  0000 C CNN
 F 1 "22R" V 4500 4150 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 4430 4150 50  0001 C CNN
 F 3 "" H 4500 4150 50  0000 C CNN
+F 4 "311-22GRCT-ND" V 4500 4150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-0722RL/311-22GRCT-ND/729690" V 4500 4150 60  0001 C CNN "Link"
+F 6 "RC0603JR-0722RL" V 4500 4150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 4500 4150 60  0001 C CNN "Unit Cost"
 	1    4500 4150
 	1    0    0    -1  
 $EndComp
@@ -171,16 +175,18 @@ Wire Wire Line
 	4050 3650 4200 3650
 Text Notes 4700 4600 0    60   ~ 0
 I_f roughly 90mA @ 1.3V
-Text Notes 4750 3600 0    60   ~ 0
-Lazy, but we don't have any N-MOS on the design\nand will work just fine.
 $Comp
-L S8050 Q4
-U 1 1 581E1075
+L MOSFET_N Q?
+U 1 1 58209DEB
 P 4400 3650
-F 0 "Q4" H 4600 3725 50  0000 L CNN
-F 1 "S8050" H 4600 3650 50  0000 L CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 4600 3575 50  0000 L CIN
-F 3 "" H 4400 3650 50  0000 L CNN
+F 0 "Q?" H 4310 3820 60  0000 R CNN
+F 1 "MOSFET_N" H 4460 3400 60  0000 R CNN
+F 2 "freetronics_footprints:SOT23_FET" H 4400 3650 60  0000 C CNN
+F 3 "" H 4400 3650 60  0000 C CNN
+F 4 "568-5818-1-ND" H 4400 3650 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/nxp-semiconductors/2N7002P,215/568-5818-1-ND/2531105" H 4400 3650 60  0001 C CNN "Link"
+F 6 "2N7002P,215" H 4400 3650 60  0001 C CNN "Manufacturer PN"
+F 7 "0.14" H 4400 3650 60  0001 C CNN "Unit Cost"
 	1    4400 3650
 	1    0    0    -1  
 $EndComp

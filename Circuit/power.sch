@@ -105,12 +105,12 @@ VIN
 $Comp
 L LED LED201
 U 1 1 563FF8B1
-P 2450 3400
-F 0 "LED201" H 2450 3500 50  0000 C CNN
-F 1 "LED_GREEN" H 2450 3300 50  0000 C CNN
-F 2 "LEDs:LED_0805" H 2450 3550 24  0000 C CNN
-F 3 "" H 2450 3400 60  0000 C CNN
-	1    2450 3400
+P 2700 3350
+F 0 "LED201" H 2700 3450 50  0000 C CNN
+F 1 "LED_PURPLE" H 2700 3250 50  0000 C CNN
+F 2 "LEDs:LED_0805" H 2700 3500 24  0000 C CNN
+F 3 "" H 2700 3350 60  0000 C CNN
+	1    2700 3350
 	0    -1   -1   0   
 $EndComp
 $Comp
@@ -126,8 +126,6 @@ F 3 "" H 2700 2650 60  0000 C CNN
 $EndComp
 Text Label 3100 3650 0    60   ~ 0
 ~CHRG
-Text Label 3100 3850 0    60   ~ 0
-~DONE
 $Comp
 L MOSFET_P Q202
 U 1 1 563FE525
@@ -408,8 +406,6 @@ F 3 "" H 2050 4800 50  0000 C CNN
 	1    2050 4800
 	1    0    0    -1  
 $EndComp
-Text Notes 800  3800 0    60   ~ 0
-Charge done not necessary? \nI'd just turn off the ~CHRG~ LED\n and call it good.
 $Comp
 L GND #PWR040
 U 1 1 5812C93A
@@ -457,15 +453,7 @@ Connection ~ 4050 1800
 Wire Wire Line
 	2400 1800 6650 1800
 Wire Wire Line
-	3100 3650 3400 3650
-Wire Wire Line
 	6850 2100 6850 3750
-Wire Wire Line
-	2450 3850 3400 3850
-Wire Wire Line
-	2450 3050 2450 3200
-Wire Wire Line
-	2450 3600 2450 3850
 Wire Wire Line
 	4950 4500 4950 4300
 Connection ~ 4950 4500
@@ -535,9 +523,7 @@ Wire Wire Line
 	2700 1800 2700 2500
 Connection ~ 2700 1800
 Wire Wire Line
-	2700 2800 2700 3050
-Wire Wire Line
-	2700 3050 2450 3050
+	2700 2800 2700 3150
 Wire Wire Line
 	6300 2700 6300 2500
 Connection ~ 6300 2500
@@ -579,14 +565,6 @@ Wire Wire Line
 	6850 3550 7050 3550
 Wire Wire Line
 	1650 1800 2000 1800
-Wire Notes Line
-	750  3000 2650 3000
-Wire Notes Line
-	2650 3000 2650 4250
-Wire Notes Line
-	2650 4250 750  4250
-Wire Notes Line
-	750  4250 750  3000
 Wire Wire Line
 	9350 6200 9650 6200
 Wire Wire Line
@@ -650,4 +628,9 @@ F 6 "490-12573-1-ND" H 9250 6250 60  0001 C CNN "Digikey PN"
 	1    9500 5550
 	1    0    0    -1  
 $EndComp
+Wire Wire Line
+	2700 3550 2700 3650
+Wire Wire Line
+	2700 3650 3400 3650
+NoConn ~ 3400 3850
 $EndSCHEMATC

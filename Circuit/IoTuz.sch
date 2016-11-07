@@ -233,6 +233,10 @@ F 0 "U1" H 3800 6150 60  0000 C CNN
 F 1 "CP2102" H 3800 6350 60  0000 C CNN
 F 2 "Housings_DFN_QFN:QFN-28-1EP_5x5mm_Pitch0.5mm" H 3800 6200 60  0001 C CNN
 F 3 "" H 3800 6200 60  0000 C CNN
+F 4 "336-1160-1-ND" H 3800 6200 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/silicon-labs/CP2102-GMR/336-1160-1-ND/3672615" H 3800 6200 60  0001 C CNN "Link"
+F 6 "CP2102-GMR" H 3800 6200 60  0001 C CNN "Manufacturer PN"
+F 7 "2.88" H 3800 6200 60  0001 C CNN "Unit Cost"
 	1    3800 6200
 	1    0    0    -1  
 $EndComp
@@ -426,6 +430,10 @@ F 0 "R1" V 1180 5000 50  0000 C CNN
 F 1 "12K(1%)" V 1000 5000 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 1030 5000 50  0001 C CNN
 F 3 "" H 1100 5000 50  0000 C CNN
+F 4 "311-12.0KHRCT-ND" V 1100 5000 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603FR-0712KL/311-12.0KHRCT-ND/729860" V 1100 5000 60  0001 C CNN "Link"
+F 6 "RC0603FR-0712KL" V 1100 5000 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 1100 5000 60  0001 C CNN "Unit Cost"
 	1    1100 5000
 	0    1    1    0   
 $EndComp
@@ -437,6 +445,10 @@ F 0 "R2" V 1180 5650 50  0000 C CNN
 F 1 "12K(1%)" V 1000 5650 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 1030 5650 50  0001 C CNN
 F 3 "" H 1100 5650 50  0000 C CNN
+F 4 "311-12.0KHRCT-ND" V 1100 5000 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603FR-0712KL/311-12.0KHRCT-ND/729860" V 1100 5000 60  0001 C CNN "Link"
+F 6 "RC0603FR-0712KL" V 1100 5000 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 1100 5000 60  0001 C CNN "Unit Cost"
 	1    1100 5650
 	0    1    1    0   
 $EndComp
@@ -448,6 +460,10 @@ F 0 "Q1" H 1800 5075 50  0000 L CNN
 F 1 "S8050" H 1800 5000 50  0000 L CNN
 F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 1800 4925 50  0000 L CIN
 F 3 "" H 1600 5000 50  0000 L CNN
+F 4 "MMSS8050-H-TPMSCT-ND" H 1600 5000 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/micro-commercial-co/MMSS8050-H-TP/MMSS8050-H-TPMSCT-ND/2825945" H 1600 5000 60  0001 C CNN "Link"
+F 6 "MMSS8050-H-TP" H 1600 5000 60  0001 C CNN "Manufactuer PN"
+F 7 "0.20" H 1600 5000 60  0001 C CNN "Unit Cost"
 	1    1600 5000
 	1    0    0    -1  
 $EndComp
@@ -459,6 +475,10 @@ F 0 "Q2" H 1800 5725 50  0000 L CNN
 F 1 "S8050" H 1800 5650 50  0000 L CNN
 F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 1800 5575 50  0000 L CIN
 F 3 "" H 1600 5650 50  0000 L CNN
+F 4 "MMSS8050-H-TPMSCT-ND" H 1600 5000 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/micro-commercial-co/MMSS8050-H-TP/MMSS8050-H-TPMSCT-ND/2825945" H 1600 5000 60  0001 C CNN "Link"
+F 6 "MMSS8050-H-TP" H 1600 5000 60  0001 C CNN "Manufactuer PN"
+F 7 "0.20" H 1600 5000 60  0001 C CNN "Unit Cost"
 	1    1600 5650
 	1    0    0    1   
 $EndComp
