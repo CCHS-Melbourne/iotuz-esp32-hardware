@@ -981,7 +981,7 @@ U 1 1 581D86E6
 P 6300 6950
 F 0 "P1" H 6300 7700 50  0000 C CNN
 F 1 "Alligator Connector" V 6400 6950 50  0000 C CNN
-F 2 "libs:aligator_pads" H 6300 6950 50  0001 C CNN
+F 2 "libs:alligator_pads" H 6300 6950 50  0001 C CNN
 F 3 "" H 6300 6950 50  0000 C CNN
 	1    6300 6950
 	1    0    0    -1  
