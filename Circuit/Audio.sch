@@ -489,4 +489,46 @@ Wire Wire Line
 	1400 3800 1550 3800
 Wire Wire Line
 	1400 3900 1550 3900
+$Comp
+L C_Small C?
+U 1 1 581FF4BD
+P 6950 3250
+F 0 "C?" H 6960 3320 50  0000 L CNN
+F 1 "100pF" H 6960 3170 50  0000 L CNN
+F 2 "" H 6950 3250 50  0000 C CNN
+F 3 "" H 6950 3250 50  0000 C CNN
+F 4 "490-3160-1-ND" H 6950 3250 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM0335C1E101JA01D/490-3160-1-ND/702701" H 6950 3250 60  0001 C CNN "Link"
+F 6 "GRM0335C1E101JA01D" H 6950 3250 60  0001 C CNN "Manufacturer PN"
+F 7 "0.01" H 6950 3250 60  0001 C CNN "Unit Cost"
+	1    6950 3250
+	0    1    1    0   
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 5820032A
+P 6500 3000
+F 0 "C?" H 6510 3070 50  0000 L CNN
+F 1 "100pF" H 6510 2920 50  0000 L CNN
+F 2 "" H 6500 3000 50  0000 C CNN
+F 3 "" H 6500 3000 50  0000 C CNN
+F 4 "490-3160-1-ND" H 6500 3000 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM0335C1E101JA01D/490-3160-1-ND/702701" H 6500 3000 60  0001 C CNN "Link"
+F 6 "GRM0335C1E101JA01D" H 6500 3000 60  0001 C CNN "Manufacturer PN"
+F 7 "0.01" H 6500 3000 60  0001 C CNN "Unit Cost"
+	1    6500 3000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	6500 2800 6500 2900
+Connection ~ 6500 2800
+Wire Wire Line
+	7150 3250 7050 3250
+Connection ~ 7150 3250
+Wire Wire Line
+	6850 3250 6500 3250
+Wire Wire Line
+	6500 3100 6500 3500
+Connection ~ 6500 3500
+Connection ~ 6500 3250
 $EndSCHEMATC
