@@ -411,17 +411,6 @@ Text Label 4050 5200 3    60   ~ 0
 CTS
 Text Label 3950 5200 3    60   ~ 0
 RTS
-$Comp
-L R R5
-U 1 1 5807D87D
-P 4000 4800
-F 0 "R5" V 4080 4800 50  0000 C CNN
-F 1 "470R(1%)" V 3900 4800 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 3930 4800 50  0001 C CNN
-F 3 "" H 4000 4800 50  0000 C CNN
-	1    4000 4800
-	0    1    1    0   
-$EndComp
 Text Label 4400 4950 2    60   ~ 0
 RXD
 Text Label 4400 4800 2    60   ~ 0
@@ -526,6 +515,10 @@ F 0 "R13" V 10880 800 50  0000 C CNN
 F 1 "470R(1%)" V 10700 800 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 10730 800 50  0001 C CNN
 F 3 "" H 10800 800 50  0000 C CNN
+F 4 "311-470HRCT-ND" V 10800 800 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603FR-07470RL/311-470HRCT-ND/730203" V 10800 800 60  0001 C CNN "Link"
+F 6 "RC0603FR-07470RL" V 10800 800 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 10800 800 60  0001 C CNN "Unit Cost"
 	1    10800 800 
 	0    1    1    0   
 $EndComp
@@ -1544,4 +1537,19 @@ Wire Notes Line
 	3800 1500 3800 2400
 Text Notes 3650 1950 0    60   ~ 0
 LCD PINS\nTHIS SIDE
+$Comp
+L R R5
+U 1 1 5820E1F5
+P 4000 4800
+F 0 "R5" V 4080 4800 50  0000 C CNN
+F 1 "470R(1%)" V 3900 4800 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 3930 4800 50  0001 C CNN
+F 3 "" H 4000 4800 50  0000 C CNN
+F 4 "311-470HRCT-ND" V 4000 4800 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603FR-07470RL/311-470HRCT-ND/730203" V 4000 4800 60  0001 C CNN "Link"
+F 6 "RC0603FR-07470RL" V 4000 4800 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 4000 4800 60  0001 C CNN "Unit Cost"
+	1    4000 4800
+	0    1    1    0   
+$EndComp
 $EndSCHEMATC

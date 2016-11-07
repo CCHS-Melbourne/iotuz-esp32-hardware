@@ -83,9 +83,13 @@ L R R204
 U 1 1 563C4E3C
 P 4950 4150
 F 0 "R204" V 5030 4150 50  0000 C CNN
-F 1 "7.15K 1%" V 4950 4150 39  0000 C CNN
+F 1 "3.6K 1%" V 4950 4150 39  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 4880 4150 24  0000 C CNN
 F 3 "" H 4950 4150 30  0000 C CNN
+F 4 "311-3.60KHRCT-ND" V 4950 4150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603FR-073K6L/311-3.60KHRCT-ND/730079" V 4950 4150 60  0001 C CNN "Link"
+F 6 "RC0603FR-073K6L" V 4950 4150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 4950 4150 60  0001 C CNN "Unit Cost"
 	1    4950 4150
 	1    0    0    -1  
 $EndComp
@@ -97,6 +101,10 @@ F 0 "D201" H 2200 1900 40  0000 C CNN
 F 1 "SS14" H 2200 1700 40  0000 C CNN
 F 2 "freetronics_footprints:DIODE_SMA" H 2200 1650 24  0000 C CNN
 F 3 "" H 2200 1800 60  0000 C CNN
+F 4 "SS14CT-ND" H 2200 1800 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/fairchild-semiconductor/SS14/SS14CT-ND/965729" H 2200 1800 60  0001 C CNN "Link"
+F 6 "SS14" H 2200 1800 60  0001 C CNN "Manufacturer PN"
+F 7 "0.39" H 2200 1800 60  0001 C CNN "Unit Cost"
 	1    2200 1800
 	1    0    0    -1  
 $EndComp
@@ -107,22 +115,11 @@ L LED LED201
 U 1 1 563FF8B1
 P 2700 3350
 F 0 "LED201" H 2700 3450 50  0000 C CNN
-F 1 "LED_PURPLE" H 2700 3250 50  0000 C CNN
+F 1 "LED_RED" H 2700 3250 50  0000 C CNN
 F 2 "LEDs:LED_0805" H 2700 3500 24  0000 C CNN
 F 3 "" H 2700 3350 60  0000 C CNN
 	1    2700 3350
 	0    -1   -1   0   
-$EndComp
-$Comp
-L R R202
-U 1 1 563FF8B7
-P 2700 2650
-F 0 "R202" V 2600 2650 50  0000 C CNN
-F 1 "1K" V 2700 2650 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 2800 2650 24  0000 C CNN
-F 3 "" H 2700 2650 60  0000 C CNN
-	1    2700 2650
-	1    0    0    -1  
 $EndComp
 Text Label 3100 3650 0    60   ~ 0
 ~CHRG
@@ -140,7 +137,7 @@ $EndComp
 Text Notes 750  950  0    60   ~ 0
 USB Input:\nPreferred charging input if available, 4.5-5.5V
 Text Notes 4550 4800 0    60   ~ 0
-Charging current\nIr = 252mA max
+Charging current\nIr = 500mA max
 $Comp
 L GND #PWR032
 U 1 1 56417FB3
@@ -276,6 +273,10 @@ F 0 "C201" H 4625 2200 50  0000 L CNN
 F 1 "10uF 16V" H 4625 2000 50  0000 L CNN
 F 2 "freetronics_footprints:1210_CAP" H 4750 1950 24  0000 C CNN
 F 3 "" H 4600 2100 60  0000 C CNN
+F 4 "1276-2865-1-ND" H 4600 2100 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL32F106ZOHNNNE/1276-2865-1-ND/3890951" H 4600 2100 60  0001 C CNN "Link"
+F 6 "CL32F106ZOHNNNE" H 4600 2100 60  0001 C CNN "Manufacturer PN"
+F 7 "0.29" H 4600 2100 60  0001 C CNN "Unit Cost"
 	1    4600 2100
 	1    0    0    -1  
 $EndComp
@@ -300,6 +301,10 @@ F 0 "R205" V 5530 3250 50  0000 C CNN
 F 1 "7.15K 1%" V 5450 3250 39  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 5350 3250 24  0000 C CNN
 F 3 "" H 5450 3250 60  0000 C CNN
+F 4 "311-7.15KHRCT-ND" V 5450 3250 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603FR-077K15L/311-7.15KHRCT-ND/730310" V 5450 3250 60  0001 C CNN "Link"
+F 6 "RC0603FR-077K15L" V 5450 3250 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 5450 3250 60  0001 C CNN "Unit Cost"
 	1    5450 3250
 	1    0    0    -1  
 $EndComp
@@ -311,7 +316,10 @@ F 0 "TH201" V 5360 3740 50  0000 C CNN
 F 1 "10K NTC" V 5600 3850 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 5650 3850 24  0000 C CNN
 F 3 "http://www.murata.com/products/catalog/pdf/r44e.pdf" H 5450 3850 60  0001 C CNN
-F 4 "NCP18XH103F03RB" V 5450 3850 60  0001 C CNN "MPN"
+F 4 "490-4800-1-ND" V 5450 3850 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/NCP18XH103F03RB/490-4800-1-ND/1644681" V 5450 3850 60  0001 C CNN "Link"
+F 6 "NCP18XH103F03RB" V 5450 3850 60  0001 C CNN "Manufacturer PN"
+F 7 "0.23" V 5450 3850 60  0001 C CNN "Unit Cost"
 	1    5450 3850
 	1    0    0    -1  
 $EndComp
@@ -319,17 +327,6 @@ Text Label 5450 3000 1    60   ~ 0
 VIN
 Text Notes 5600 5000 0    59   ~ 0
 NTC thermistor\nplaced under battery holder.\n\nCharging cut off @ 38.5C\nwhen using specified thermistor.
-$Comp
-L C C204
-U 1 1 566F9EBD
-P 6300 2850
-F 0 "C204" H 6325 2950 50  0000 L CNN
-F 1 "10uF 16V" H 6325 2750 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1210_HandSoldering" H 6450 2700 24  0000 C CNN
-F 3 "" H 6300 2850 60  0000 C CNN
-	1    6300 2850
-	1    0    0    -1  
-$EndComp
 $Comp
 L GND #PWR039
 U 1 1 566FA00B
@@ -633,4 +630,36 @@ Wire Wire Line
 Wire Wire Line
 	2700 3650 3400 3650
 NoConn ~ 3400 3850
+NoConn ~ 5850 3150
+NoConn ~ 5850 3950
+$Comp
+L R R?
+U 1 1 5820F348
+P 2700 2650
+F 0 "R?" V 2780 2650 50  0000 C CNN
+F 1 "470R(1%)" V 2600 2650 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 2630 2650 50  0001 C CNN
+F 3 "" H 2700 2650 50  0000 C CNN
+F 4 "311-470HRCT-ND" V 2700 2650 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603FR-07470RL/311-470HRCT-ND/730203" V 2700 2650 60  0001 C CNN "Link"
+F 6 "RC0603FR-07470RL" V 2700 2650 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 2700 2650 60  0001 C CNN "Unit Cost"
+	1    2700 2650
+	-1   0    0    1   
+$EndComp
+$Comp
+L C C204
+U 1 1 5820F69B
+P 6300 2850
+F 0 "C204" H 6325 2950 50  0000 L CNN
+F 1 "10uF 16V" H 6325 2750 50  0000 L CNN
+F 2 "freetronics_footprints:1210_CAP" H 6450 2700 24  0000 C CNN
+F 3 "" H 6300 2850 60  0000 C CNN
+F 4 "1276-2865-1-ND" H 6300 2850 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL32F106ZOHNNNE/1276-2865-1-ND/3890951" H 6300 2850 60  0001 C CNN "Link"
+F 6 "CL32F106ZOHNNNE" H 6300 2850 60  0001 C CNN "Manufacturer PN"
+F 7 "0.29" H 6300 2850 60  0001 C CNN "Unit Cost"
+	1    6300 2850
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
