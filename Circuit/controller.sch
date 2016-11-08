@@ -66,17 +66,6 @@ F 3 "" H 1900 850 60  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C7
-U 1 1 58137EF2
-P 950 1450
-F 0 "C7" H 975 1550 50  0000 L CNN
-F 1 "1nF" H 975 1350 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 988 1300 50  0001 C CNN
-F 3 "" H 950 1450 50  0000 C CNN
-	1    950  1450
-	1    0    0    -1  
-$EndComp
-$Comp
 L GND #PWR048
 U 1 1 58137F56
 P 950 1750
@@ -195,6 +184,10 @@ F 0 "C8" H 5225 1400 50  0000 L CNN
 F 1 "1nF" H 5225 1200 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" H 5238 1150 50  0001 C CNN
 F 3 "" H 5200 1300 50  0000 C CNN
+F 4 "490-3184-1-ND" H 5200 1300 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM033R71E102KA01D/490-3184-1-ND/702725" H 5200 1300 60  0001 C CNN "Link"
+F 6 "GRM033R71E102KA01D" H 5200 1300 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 5200 1300 60  0001 C CNN "Unit Cost"
 	1    5200 1300
 	1    0    0    -1  
 $EndComp
@@ -231,17 +224,6 @@ F 2 "freetronics_footprints:SW_PUSHBUTTON_PTH" H 4950 2350 50  0001 C CNN
 F 3 "" H 4950 2350 50  0000 C CNN
 	1    4950 2350
 	0    -1   -1   0   
-$EndComp
-$Comp
-L C C9
-U 1 1 5813C2DD
-P 5200 2350
-F 0 "C9" H 5225 2450 50  0000 L CNN
-F 1 "1nF" H 5225 2250 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 5238 2200 50  0001 C CNN
-F 3 "" H 5200 2350 50  0000 C CNN
-	1    5200 2350
-	1    0    0    -1  
 $EndComp
 $Comp
 L GND #PWR054
@@ -464,5 +446,35 @@ F 6 "RC0603FR-07470RL" V 950 1050 60  0001 C CNN "Manufacturer PN"
 F 7 "0.10" V 950 1050 60  0001 C CNN "Unit Cost"
 	1    950  1050
 	-1   0    0    1   
+$EndComp
+$Comp
+L C C9
+U 1 1 58230857
+P 5200 2350
+F 0 "C9" H 5225 2450 50  0000 L CNN
+F 1 "1nF" H 5225 2250 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 5238 2200 50  0001 C CNN
+F 3 "" H 5200 2350 50  0000 C CNN
+F 4 "490-3184-1-ND" H 5200 2350 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM033R71E102KA01D/490-3184-1-ND/702725" H 5200 2350 60  0001 C CNN "Link"
+F 6 "GRM033R71E102KA01D" H 5200 2350 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 5200 2350 60  0001 C CNN "Unit Cost"
+	1    5200 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C7
+U 1 1 582308E6
+P 950 1450
+F 0 "C7" H 975 1550 50  0000 L CNN
+F 1 "1nF" H 975 1350 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 988 1300 50  0001 C CNN
+F 3 "" H 950 1450 50  0000 C CNN
+F 4 "490-3184-1-ND" H 950 1450 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM033R71E102KA01D/490-3184-1-ND/702725" H 950 1450 60  0001 C CNN "Link"
+F 6 "GRM033R71E102KA01D" H 950 1450 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 950 1450 60  0001 C CNN "Unit Cost"
+	1    950  1450
+	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

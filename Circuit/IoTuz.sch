@@ -486,17 +486,6 @@ F 7 "0.10" V 10800 800 60  0001 C CNN "Unit Cost"
 	1    10800 800 
 	0    1    1    0   
 $EndComp
-$Comp
-L C C11
-U 1 1 58086D6E
-P 10550 1200
-F 0 "C11" H 10575 1300 50  0000 L CNN
-F 1 "1nF" H 10575 1100 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 10588 1050 50  0001 C CNN
-F 3 "" H 10550 1200 50  0000 C CNN
-	1    10550 1200
-	1    0    0    -1  
-$EndComp
 Text Label 11150 800  2    60   ~ 0
 EN
 Text Notes 9950 600  0    60   ~ 0
@@ -628,17 +617,6 @@ F 2 "" H 8700 1100 50  0000 C CNN
 F 3 "" H 8700 1100 50  0000 C CNN
 	1    8700 1100
 	1    0    0    -1  
-$EndComp
-$Comp
-L MOSFET_P Q3
-U 1 1 580E31AD
-P 1650 3200
-F 0 "Q3" V 1950 3250 60  0000 R CNN
-F 1 "FDN340P" V 1500 3750 60  0000 R CNN
-F 2 "freetronics_footprints:SOT23_FET" H 1650 3200 60  0001 C CNN
-F 3 "" H 1650 3200 60  0000 C CNN
-	1    1650 3200
-	0    1    -1   0   
 $EndComp
 Text Label 2300 3100 2    60   ~ 0
 VCC_SENS
@@ -1587,5 +1565,35 @@ F 6 "RC0603JR-0710KL" V 2050 4250 60  0001 C CNN "Manufacturer PN"
 F 7 "0.10" V 2050 4250 60  0001 C CNN "Unit Cost"
 	1    2050 4250
 	0    1    1    0   
+$EndComp
+$Comp
+L MOSFET_P Q3
+U 1 1 5822CF95
+P 1650 3200
+F 0 "Q3" V 1950 3250 60  0000 R CNN
+F 1 "FDN340P" V 1550 3750 60  0000 R CNN
+F 2 "freetronics_footprints:SOT23_FET" V 1350 2900 24  0000 C CNN
+F 3 "" H 1650 3200 60  0000 C CNN
+F 4 "FDN340PCT-ND" V 1650 3200 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/fairchild-semiconductor/FDN340P/FDN340PCT-ND/965604" V 1650 3200 60  0001 C CNN "Link"
+F 6 "FDN340P" V 1650 3200 60  0001 C CNN "Manufacturer PN"
+F 7 "0.39" V 1650 3200 60  0001 C CNN "Unit Cost"
+	1    1650 3200
+	0    1    -1   0   
+$EndComp
+$Comp
+L C C11
+U 1 1 58230BE0
+P 10550 1200
+F 0 "C11" H 10575 1300 50  0000 L CNN
+F 1 "1nF" H 10575 1100 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 10588 1050 50  0001 C CNN
+F 3 "" H 10550 1200 50  0000 C CNN
+F 4 "490-3184-1-ND" H 10550 1200 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM033R71E102KA01D/490-3184-1-ND/702725" H 10550 1200 60  0001 C CNN "Link"
+F 6 "GRM033R71E102KA01D" H 10550 1200 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 10550 1200 60  0001 C CNN "Unit Cost"
+	1    10550 1200
+	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

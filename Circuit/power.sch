@@ -135,6 +135,10 @@ F 0 "Q202" V 6650 1750 60  0000 R CNN
 F 1 "FDN340P" V 6750 1750 60  0000 R CNN
 F 2 "freetronics_footprints:SOT23_FET" V 6550 1600 24  0000 C CNN
 F 3 "" H 6850 1900 60  0000 C CNN
+F 4 "FDN340PCT-ND" V 6850 1900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/fairchild-semiconductor/FDN340P/FDN340PCT-ND/965604" V 6850 1900 60  0001 C CNN "Link"
+F 6 "FDN340P" V 6850 1900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.39" V 6850 1900 60  0001 C CNN "Unit Cost"
 	1    6850 1900
 	0    -1   -1   0   
 $EndComp
@@ -152,17 +156,6 @@ F 2 "" H 7450 4200 60  0000 C CNN
 F 3 "" H 7450 4200 60  0000 C CNN
 	1    7450 4200
 	-1   0    0    -1  
-$EndComp
-$Comp
-L MOSFET_P Q203
-U 1 1 5641832A
-P 8400 2600
-F 0 "Q203" V 8750 2700 60  0000 R CNN
-F 1 "FDN340P" V 8850 2800 60  0000 R CNN
-F 2 "freetronics_footprints:SOT23_FET" V 8650 2600 24  0000 C CNN
-F 3 "" H 8400 2600 60  0000 C CNN
-	1    8400 2600
-	0    -1   -1   0   
 $EndComp
 Text Label 8400 3450 1    60   ~ 0
 GBAT
@@ -360,18 +353,11 @@ F 0 "R18" V 6930 3900 50  0000 C CNN
 F 1 "100K" V 6850 3900 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 6780 3900 50  0001 C CNN
 F 3 "" H 6850 3900 50  0000 C CNN
+F 4 "311-100KGRCT-ND" V 6850 3900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-07100KL/311-100KGRCT-ND/729645" V 6850 3900 60  0001 C CNN "Link"
+F 6 "RC0603JR-07100KL" V 6850 3900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 6850 3900 60  0001 C CNN "Unit Cost"
 	1    6850 3900
-	1    0    0    -1  
-$EndComp
-$Comp
-L R R19
-U 1 1 56EBECD6
-P 8750 2800
-F 0 "R19" V 8830 2800 50  0000 C CNN
-F 1 "100K" V 8750 2800 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 8680 2800 50  0001 C CNN
-F 3 "" H 8750 2800 50  0000 C CNN
-	1    8750 2800
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -750,4 +736,36 @@ Wire Wire Line
 Connection ~ 10600 4950
 Wire Notes Line
 	6950 4750 11250 4750
+Text Notes 6700 1650 0    100  ~ 0
+Digikey have no FDN340P in-stock.
+$Comp
+L MOSFET_P Q203
+U 1 1 5822C664
+P 8400 2600
+F 0 "Q203" V 8600 3150 60  0000 R CNN
+F 1 "FDN340P" V 8700 3150 60  0000 R CNN
+F 2 "freetronics_footprints:SOT23_FET" V 8100 2300 24  0000 C CNN
+F 3 "" H 8400 2600 60  0000 C CNN
+F 4 "FDN340PCT-ND" V 8400 2600 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/fairchild-semiconductor/FDN340P/FDN340PCT-ND/965604" V 8400 2600 60  0001 C CNN "Link"
+F 6 "FDN340P" V 8400 2600 60  0001 C CNN "Manufacturer PN"
+F 7 "0.39" V 8400 2600 60  0001 C CNN "Unit Cost"
+	1    8400 2600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R19
+U 1 1 5822E061
+P 8750 2800
+F 0 "R19" V 8830 2800 50  0000 C CNN
+F 1 "100K" V 8750 2800 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 8680 2800 50  0001 C CNN
+F 3 "" H 8750 2800 50  0000 C CNN
+F 4 "311-100KGRCT-ND" V 8750 2800 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-07100KL/311-100KGRCT-ND/729645" V 8750 2800 60  0001 C CNN "Link"
+F 6 "RC0603JR-07100KL" V 8750 2800 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 8750 2800 60  0001 C CNN "Unit Cost"
+	1    8750 2800
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
