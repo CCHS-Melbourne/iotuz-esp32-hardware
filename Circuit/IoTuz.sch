@@ -141,17 +141,6 @@ $EndComp
 Text Label 1200 850  2    60   ~ 0
 BAT+
 $Comp
-L DIODE_SCHOTTKY D4
-U 1 1 57FB66B6
-P 2000 1150
-F 0 "D4" H 2000 1250 40  0000 C CNN
-F 1 "SS14" H 2000 1050 40  0000 C CNN
-F 2 "freetronics_footprints:DIODE_SMA" H 2000 1150 60  0001 C CNN
-F 3 "" H 2000 1150 60  0000 C CNN
-	1    2000 1150
-	0    -1   -1   0   
-$EndComp
-$Comp
 L GND #PWR03
 U 1 1 57FB6737
 P 2000 1450
@@ -312,17 +301,6 @@ F 3 "" H 1950 6300 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L C C3
-U 1 1 580787A7
-P 1950 6550
-F 0 "C3" H 1975 6650 50  0000 L CNN
-F 1 "10uF" H 1975 6450 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 1988 6400 50  0001 C CNN
-F 3 "" H 1950 6550 50  0000 C CNN
-	1    1950 6550
-	1    0    0    -1  
-$EndComp
-$Comp
 L C C4
 U 1 1 58078ABF
 P 2300 6550
@@ -330,6 +308,10 @@ F 0 "C4" H 2325 6650 50  0000 L CNN
 F 1 "0.1uF" H 2325 6450 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" H 2338 6400 50  0001 C CNN
 F 3 "" H 2300 6550 50  0000 C CNN
+F 4 "311-1088-1-ND" H 2300 6550 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/CC0603KRX7R7BB104/311-1088-1-ND/302998" H 2300 6550 60  0001 C CNN "Link"
+F 6 "CC0603KRX7R7BB104" H 2300 6550 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 2300 6550 60  0001 C CNN "Unit Cost"
 	1    2300 6550
 	1    0    0    -1  
 $EndComp
@@ -353,28 +335,6 @@ F 1 "+5V" H 2550 7190 50  0000 C CNN
 F 2 "" H 2550 7050 50  0000 C CNN
 F 3 "" H 2550 7050 50  0000 C CNN
 	1    2550 7050
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C5
-U 1 1 5807AA65
-P 2550 7300
-F 0 "C5" H 2575 7400 50  0000 L CNN
-F 1 "10uF" H 2575 7200 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 2588 7150 50  0001 C CNN
-F 3 "" H 2550 7300 50  0000 C CNN
-	1    2550 7300
-	1    0    0    -1  
-$EndComp
-$Comp
-L C C6
-U 1 1 5807AADF
-P 2900 7300
-F 0 "C6" H 2925 7400 50  0000 L CNN
-F 1 "0.1uF" H 2925 7200 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 2938 7150 50  0001 C CNN
-F 3 "" H 2900 7300 50  0000 C CNN
-	1    2900 7300
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -981,7 +941,7 @@ U 1 1 581D86E6
 P 6300 6950
 F 0 "P1" H 6300 7700 50  0000 C CNN
 F 1 "Alligator Connector" V 6400 6950 50  0000 C CNN
-F 2 "libs:alligator_pads" H 6300 6950 50  0001 C CNN
+F 2 "libs:aligator_pads" H 6300 6950 50  0001 C CNN
 F 3 "" H 6300 6950 50  0000 C CNN
 	1    6300 6950
 	1    0    0    -1  
@@ -1551,5 +1511,65 @@ F 6 "RC0603FR-07470RL" V 4000 4800 60  0001 C CNN "Manufacturer PN"
 F 7 "0.10" V 4000 4800 60  0001 C CNN "Unit Cost"
 	1    4000 4800
 	0    1    1    0   
+$EndComp
+$Comp
+L DIODE_SCHOTTKY D4
+U 1 1 5821353B
+P 2000 1150
+F 0 "D4" H 2000 1250 40  0000 C CNN
+F 1 "SS14" H 2000 1050 40  0000 C CNN
+F 2 "freetronics_footprints:DIODE_SMA" H 2000 1000 24  0000 C CNN
+F 3 "" H 2000 1150 60  0000 C CNN
+F 4 "SS14CT-ND" H 2000 1150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/fairchild-semiconductor/SS14/SS14CT-ND/965729" H 2000 1150 60  0001 C CNN "Link"
+F 6 "SS14" H 2000 1150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.39" H 2000 1150 60  0001 C CNN "Unit Cost"
+	1    2000 1150
+	0    -1   -1   0   
+$EndComp
+$Comp
+L C C3
+U 1 1 582193F3
+P 1950 6550
+F 0 "C3" H 1975 6650 50  0000 L CNN
+F 1 "10uF 16V" H 1975 6450 50  0000 L CNN
+F 2 "freetronics_footprints:0805" H 2100 6400 24  0000 C CNN
+F 3 "" H 1950 6550 60  0000 C CNN
+F 4 "1276-2399-1-ND" H 1950 6550 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485" H 1950 6550 60  0001 C CNN "Link"
+F 6 "CL21A106KOCLRNC" H 1950 6550 60  0001 C CNN "Manufacturer PN"
+F 7 "0.18" H 1950 6550 60  0001 C CNN "Unit Cost"
+	1    1950 6550
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C5
+U 1 1 58219789
+P 2550 7300
+F 0 "C5" H 2575 7400 50  0000 L CNN
+F 1 "10uF 16V" H 2575 7200 50  0000 L CNN
+F 2 "freetronics_footprints:0805" H 2700 7150 24  0000 C CNN
+F 3 "" H 2550 7300 60  0000 C CNN
+F 4 "1276-2399-1-ND" H 2550 7300 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485" H 2550 7300 60  0001 C CNN "Link"
+F 6 "CL21A106KOCLRNC" H 2550 7300 60  0001 C CNN "Manufacturer PN"
+F 7 "0.18" H 2550 7300 60  0001 C CNN "Unit Cost"
+	1    2550 7300
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C6
+U 1 1 5821E550
+P 2900 7300
+F 0 "C6" H 2925 7400 50  0000 L CNN
+F 1 "0.1uF" H 2925 7200 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 2938 7150 50  0001 C CNN
+F 3 "" H 2900 7300 50  0000 C CNN
+F 4 "311-1088-1-ND" H 2900 7300 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/CC0603KRX7R7BB104/311-1088-1-ND/302998" H 2900 7300 60  0001 C CNN "Link"
+F 6 "CC0603KRX7R7BB104" H 2900 7300 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 2900 7300 60  0001 C CNN "Unit Cost"
+	1    2900 7300
+	1    0    0    -1  
 $EndComp
 $EndSCHEMATC

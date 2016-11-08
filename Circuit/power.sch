@@ -164,7 +164,7 @@ Text Label 8400 3450 1    60   ~ 0
 GBAT
 Text Label 6850 3450 1    60   ~ 0
 GIN
-Text HLabel 10550 5550 2    60   Input ~ 0
+Text HLabel 11000 5500 1    60   Input ~ 0
 3.3OUT
 $Comp
 L GND #PWR033
@@ -188,6 +188,10 @@ F 0 "U202" H 7500 3700 60  0000 C CNN
 F 1 "MCP6002" H 7550 3350 60  0000 C CNN
 F 2 "freetronics_footprints:SO08_4mm" H 7050 3300 24  0000 C CNN
 F 3 "" H 7350 3550 60  0000 C CNN
+F 4 "MCP6002T-I/SNCT-ND" H 7350 3550 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/microchip-technology/MCP6002T-I-SN/MCP6002T-I-SNCT-ND/4307905" H 7350 3550 60  0001 C CNN "Link"
+F 6 "MCP6002T-I/SN" H 7350 3550 60  0001 C CNN "Manufacturer PN"
+F 7 "0.33" H 7350 3550 60  0001 C CNN "Unit Cost"
 	1    7350 3550
 	-1   0    0    -1  
 $EndComp
@@ -211,14 +215,18 @@ VIN
 Text Label 9450 3450 0    60   ~ 0
 VIN
 $Comp
-L C C203
+L C C?
 U 1 1 5642CCBE
-P 10250 2150
-F 0 "C203" H 10275 2250 50  0000 L CNN
-F 1 "100uF 16V X5R" H 10275 2050 50  0000 L CNN
-F 2 "Capacitors_SMD:C_1210_HandSoldering" H 10400 2350 24  0000 C CNN
-F 3 "" H 10250 2150 60  0000 C CNN
-	1    10250 2150
+P 11000 5900
+F 0 "C?" H 11050 5800 50  0000 L CNN
+F 1 "100uF 6.3V X5R" H 10850 6150 50  0000 L CNN
+F 2 "Capacitors_SMD:C_1210_HandSoldering" H 11150 6100 24  0000 C CNN
+F 3 "" H 11000 5900 60  0000 C CNN
+F 4 "490-7217-1-ND" H 11000 5900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM31CR60J107ME39K/490-7217-1-ND/3991203" H 11000 5900 60  0001 C CNN "Link"
+F 6 "GRM31CR60J107ME39K" H 11000 5900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.60" H 11000 5900 60  0001 C CNN "Unit Cost"
+	1    11000 5900
 	-1   0    0    1   
 $EndComp
 $Comp
@@ -271,12 +279,12 @@ U 1 1 5642CCB8
 P 4600 2100
 F 0 "C201" H 4625 2200 50  0000 L CNN
 F 1 "10uF 16V" H 4625 2000 50  0000 L CNN
-F 2 "freetronics_footprints:1210_CAP" H 4750 1950 24  0000 C CNN
+F 2 "freetronics_footprints:0805" H 4750 1950 24  0000 C CNN
 F 3 "" H 4600 2100 60  0000 C CNN
-F 4 "1276-2865-1-ND" H 4600 2100 60  0001 C CNN "Digikey PN"
-F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL32F106ZOHNNNE/1276-2865-1-ND/3890951" H 4600 2100 60  0001 C CNN "Link"
-F 6 "CL32F106ZOHNNNE" H 4600 2100 60  0001 C CNN "Manufacturer PN"
-F 7 "0.29" H 4600 2100 60  0001 C CNN "Unit Cost"
+F 4 "1276-2399-1-ND" H 4600 2100 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485" H 4600 2100 60  0001 C CNN "Link"
+F 6 "CL21A106KOCLRNC" H 4600 2100 60  0001 C CNN "Manufacturer PN"
+F 7 "0.18" H 4600 2100 60  0001 C CNN "Unit Cost"
 	1    4600 2100
 	1    0    0    -1  
 $EndComp
@@ -423,17 +431,6 @@ F 1 "GND" H 9800 4850 50  0000 C CNN
 F 2 "" H 9800 5000 60  0000 C CNN
 F 3 "" H 9800 5000 60  0000 C CNN
 	1    9800 5000
-	1    0    0    -1  
-$EndComp
-$Comp
-L CAP C12
-U 1 1 5812F47A
-P 10450 5900
-F 0 "C12" H 10500 6000 50  0000 L CNN
-F 1 "10uF" H 10500 5800 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 10450 5900 60  0001 C CNN
-F 3 "" H 10450 5900 60  0000 C CNN
-	1    10450 5900
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -585,7 +582,7 @@ Wire Wire Line
 Wire Wire Line
 	10450 5500 10450 5600
 Wire Wire Line
-	10450 5550 10550 5550
+	10450 5550 11000 5550
 Wire Wire Line
 	10450 5600 10300 5600
 Connection ~ 10450 5550
@@ -608,9 +605,9 @@ Wire Notes Line
 Wire Wire Line
 	10450 5550 10450 5700
 Wire Wire Line
-	10450 6100 10450 6200
+	10450 6000 10450 6200
 Wire Wire Line
-	10450 6200 9500 6200
+	9500 6200 11000 6200
 $Comp
 L LXDC2XQ U3
 U 1 1 581FF216
@@ -633,10 +630,10 @@ NoConn ~ 3400 3850
 NoConn ~ 5850 3150
 NoConn ~ 5850 3950
 $Comp
-L R R9
+L R R?
 U 1 1 5820F348
 P 2700 2650
-F 0 "R9" V 2780 2650 50  0000 C CNN
+F 0 "R?" V 2780 2650 50  0000 C CNN
 F 1 "470R(1%)" V 2600 2650 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 2630 2650 50  0001 C CNN
 F 3 "" H 2700 2650 50  0000 C CNN
@@ -647,19 +644,66 @@ F 7 "0.10" V 2700 2650 60  0001 C CNN "Unit Cost"
 	1    2700 2650
 	-1   0    0    1   
 $EndComp
+Wire Wire Line
+	11000 5500 11000 5750
+Connection ~ 11000 5550
+Wire Wire Line
+	11000 6200 11000 6050
+Connection ~ 10450 6200
+$Comp
+L PWR_FLAG #FLG?
+U 1 1 58217320
+P 10450 5500
+F 0 "#FLG?" H 10450 5595 50  0001 C CNN
+F 1 "PWR_FLAG" H 10450 5680 50  0000 C CNN
+F 2 "" H 10450 5500 60  0000 C CNN
+F 3 "" H 10450 5500 60  0000 C CNN
+	1    10450 5500
+	1    0    0    -1  
+$EndComp
 $Comp
 L C C204
-U 1 1 5820F69B
+U 1 1 58217FC8
 P 6300 2850
 F 0 "C204" H 6325 2950 50  0000 L CNN
 F 1 "10uF 16V" H 6325 2750 50  0000 L CNN
-F 2 "freetronics_footprints:1210_CAP" H 6450 2700 24  0000 C CNN
+F 2 "freetronics_footprints:0805" H 6450 2700 24  0000 C CNN
 F 3 "" H 6300 2850 60  0000 C CNN
-F 4 "1276-2865-1-ND" H 6300 2850 60  0001 C CNN "Digikey PN"
-F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL32F106ZOHNNNE/1276-2865-1-ND/3890951" H 6300 2850 60  0001 C CNN "Link"
-F 6 "CL32F106ZOHNNNE" H 6300 2850 60  0001 C CNN "Manufacturer PN"
-F 7 "0.29" H 6300 2850 60  0001 C CNN "Unit Cost"
+F 4 "1276-2399-1-ND" H 6300 2850 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485" H 6300 2850 60  0001 C CNN "Link"
+F 6 "CL21A106KOCLRNC" H 6300 2850 60  0001 C CNN "Manufacturer PN"
+F 7 "0.18" H 6300 2850 60  0001 C CNN "Unit Cost"
 	1    6300 2850
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C203
+U 1 1 582182F8
+P 10250 2150
+F 0 "C203" H 10275 2250 50  0000 L CNN
+F 1 "10uF 16V" H 10275 2050 50  0000 L CNN
+F 2 "freetronics_footprints:0805" H 10400 2000 24  0000 C CNN
+F 3 "" H 10250 2150 60  0000 C CNN
+F 4 "1276-2399-1-ND" H 10250 2150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485" H 10250 2150 60  0001 C CNN "Link"
+F 6 "CL21A106KOCLRNC" H 10250 2150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.18" H 10250 2150 60  0001 C CNN "Unit Cost"
+	1    10250 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C12
+U 1 1 58218A3F
+P 10450 5850
+F 0 "C12" H 10475 5950 50  0000 L CNN
+F 1 "10uF 16V" H 10475 5750 50  0000 L CNN
+F 2 "freetronics_footprints:0805" H 10600 5700 24  0000 C CNN
+F 3 "" H 10450 5850 60  0000 C CNN
+F 4 "1276-2399-1-ND" H 10450 5850 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485" H 10450 5850 60  0001 C CNN "Link"
+F 6 "CL21A106KOCLRNC" H 10450 5850 60  0001 C CNN "Manufacturer PN"
+F 7 "0.18" H 10450 5850 60  0001 C CNN "Unit Cost"
+	1    10450 5850
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
