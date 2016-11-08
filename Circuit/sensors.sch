@@ -88,17 +88,6 @@ Wire Wire Line
 	2500 3050 2500 2700
 Connection ~ 2500 2700
 $Comp
-L R R302
-U 1 1 564CDB75
-P 2250 3050
-F 0 "R302" V 2330 3050 50  0000 C CNN
-F 1 "4.7K" V 2250 3050 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 2350 2850 24  0000 C CNN
-F 3 "" H 2250 3050 60  0000 C CNN
-	1    2250 3050
-	1    0    0    -1  
-$EndComp
-$Comp
 L R R301
 U 1 1 564CDBA3
 P 2050 2950
@@ -106,6 +95,10 @@ F 0 "R301" V 2130 2950 50  0000 C CNN
 F 1 "4.7K" V 2050 2950 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 2150 2750 24  0000 C CNN
 F 3 "" H 2050 2950 60  0000 C CNN
+F 4 "311-4.7KGRCT-ND" V 2050 2950 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-074K7L/311-4.7KGRCT-ND/729732" V 2050 2950 60  0001 C CNN "Link"
+F 6 "RC0603JR-074K7L" V 2050 2950 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 2050 2950 60  0001 C CNN "Unit Cost"
 	1    2050 2950
 	1    0    0    -1  
 $EndComp
@@ -300,4 +293,19 @@ Wire Notes Line
 	1150 4450 1150 1400
 Text Notes 1200 1350 0    60   ~ 0
 Recommend different or removal. -BP
+$Comp
+L R R302
+U 1 1 58223067
+P 2250 3050
+F 0 "R302" V 2330 3050 50  0000 C CNN
+F 1 "4.7K" V 2250 3050 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 2350 2850 24  0000 C CNN
+F 3 "" H 2250 3050 60  0000 C CNN
+F 4 "311-4.7KGRCT-ND" V 2250 3050 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-074K7L/311-4.7KGRCT-ND/729732" V 2250 3050 60  0001 C CNN "Link"
+F 6 "RC0603JR-074K7L" V 2250 3050 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 2250 3050 60  0001 C CNN "Unit Cost"
+	1    2250 3050
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC

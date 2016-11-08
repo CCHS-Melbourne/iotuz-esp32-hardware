@@ -135,6 +135,10 @@ F 0 "F1" H 1750 900 50  0000 C CNN
 F 1 "1A PTC" H 1500 800 50  0000 C CNN
 F 2 "freetronics_footprints:1210" H 1650 850 50  0001 C CNN
 F 3 "" H 1650 850 50  0000 C CNN
+F 4 "507-1786-1-ND" H 1650 850 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/bel-fuse-inc/0ZCH0050FF2G/507-1786-1-ND/4156209" H 1650 850 60  0001 C CNN "Link"
+F 6 "0ZCH0050FF2G" H 1650 850 60  0001 C CNN "Manufacturer PN"
+F 7 "0.12" H 1650 850 60  0001 C CNN "Unit Cost"
 	1    1650 850 
 	1    0    0    -1  
 $EndComp
@@ -646,6 +650,10 @@ F 0 "R3" V 1180 3150 50  0000 C CNN
 F 1 "10K" V 1000 3150 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 1030 3150 50  0001 C CNN
 F 3 "" H 1100 3150 50  0000 C CNN
+F 4 "311-10KGRCT-ND" V 1100 3150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 1100 3150 60  0001 C CNN "Link"
+F 6 "RC0603JR-0710KL" V 1100 3150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 1100 3150 60  0001 C CNN "Unit Cost"
 	1    1100 3150
 	1    0    0    -1  
 $EndComp
@@ -657,6 +665,10 @@ F 0 "R4" V 1480 3500 50  0000 C CNN
 F 1 "1K" V 1300 3500 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 1330 3500 50  0001 C CNN
 F 3 "" H 1400 3500 50  0000 C CNN
+F 4 "311-1.0KGRCT-ND" V 1400 3500 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624" V 1400 3500 60  0001 C CNN "Link"
+F 6 "RC0603JR-071KL" V 1400 3500 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 1400 3500 60  0001 C CNN "Unit Cost"
 	1    1400 3500
 	0    1    1    0   
 $EndComp
@@ -842,17 +854,6 @@ Text Label 600  3950 0    60   ~ 0
 I2C_SDA
 Text Label 600  4100 0    60   ~ 0
 I2C_SCL
-$Comp
-L R R6
-U 1 1 5812B9CE
-P 2050 4250
-F 0 "R6" V 2130 4250 50  0000 C CNN
-F 1 "10K" V 2050 4250 50  0000 C CNN
-F 2 "Resistors_SMD:R_0603_HandSoldering" V 1980 4250 50  0001 C CNN
-F 3 "" H 2050 4250 50  0000 C CNN
-	1    2050 4250
-	0    1    1    0   
-$EndComp
 $Sheet
 S 9200 5550 1500 800 
 U 58137A3D
@@ -1571,5 +1572,20 @@ F 6 "CC0603KRX7R7BB104" H 2900 7300 60  0001 C CNN "Manufacturer PN"
 F 7 "0.10" H 2900 7300 60  0001 C CNN "Unit Cost"
 	1    2900 7300
 	1    0    0    -1  
+$EndComp
+$Comp
+L R R6
+U 1 1 582211E2
+P 2050 4250
+F 0 "R6" V 2130 4250 50  0000 C CNN
+F 1 "10K" V 1950 4250 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 1980 4250 50  0001 C CNN
+F 3 "" H 2050 4250 50  0000 C CNN
+F 4 "311-10KGRCT-ND" V 2050 4250 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 2050 4250 60  0001 C CNN "Link"
+F 6 "RC0603JR-0710KL" V 2050 4250 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 2050 4250 60  0001 C CNN "Unit Cost"
+	1    2050 4250
+	0    1    1    0   
 $EndComp
 $EndSCHEMATC
