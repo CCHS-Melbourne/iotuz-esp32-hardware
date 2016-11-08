@@ -62,6 +62,10 @@ F 0 "U301" H 3400 3000 60  0000 C CNN
 F 1 "BME280" H 3150 3300 60  0000 C CNN
 F 2 "libs:BME280" H 3150 3200 24  0000 C CNN
 F 3 "" H 3150 3300 60  0000 C CNN
+F 4 "828-1063-1-ND" H 3150 3300 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/bosch-sensortec/BME280/828-1063-1-ND/6136314" H 3150 3300 60  0001 C CNN "Link"
+F 6 "BME280" H 3150 3300 60  0001 C CNN "Manufacturer PN"
+F 7 "11.00" H 3150 3300 60  0001 C CNN "Unit Cost"
 	1    3150 3300
 	1    0    0    -1  
 $EndComp
@@ -155,6 +159,10 @@ F 0 "U302" H 5600 2550 60  0000 C CNN
 F 1 "ADXL345" H 6150 2850 60  0000 C CNN
 F 2 "libs:ADXL345" H 6100 2800 24  0000 C CNN
 F 3 "" H 6100 2800 60  0000 C CNN
+F 4 "ADXL345BCCZ-RLCT-ND" H 6150 3100 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/analog-devices-inc/ADXL345BCCZ-RL/ADXL345BCCZ-RLCT-ND/2237841" H 6150 3100 60  0001 C CNN "Link"
+F 6 "ADXL345BCCZ-RL" H 6150 3100 60  0001 C CNN "Manufacturer PN"
+F 7 "7.36" H 6150 3100 60  0001 C CNN "Unit Cost"
 	1    6150 3100
 	1    0    0    -1  
 $EndComp
@@ -212,17 +220,6 @@ Connection ~ 6150 4000
 Wire Wire Line
 	6900 2950 7100 2950
 NoConn ~ 7100 2950
-$Comp
-L C C302
-U 1 1 564CEBB9
-P 4750 2650
-F 0 "C302" H 4775 2750 50  0000 L CNN
-F 1 "1uF" H 4550 2550 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 4600 2500 24  0000 C CNN
-F 3 "" H 4750 2650 60  0000 C CNN
-	1    4750 2650
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	4750 2800 4750 2950
 $Comp
@@ -247,6 +244,10 @@ F 0 "C301" H 3825 3000 50  0000 L CNN
 F 1 "1uF" H 3825 2800 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" H 3900 2750 24  0000 C CNN
 F 3 "" H 3800 2900 60  0000 C CNN
+F 4 "311-1372-1-ND" H 3800 2900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/CC0603ZRY5V7BB105/311-1372-1-ND/2103156" H 3800 2900 60  0001 C CNN "Link"
+F 6 "CC0603ZRY5V7BB105" H 3800 2900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 3800 2900 60  0001 C CNN "Unit Cost"
 	1    3800 2900
 	1    0    0    -1  
 $EndComp
@@ -306,6 +307,21 @@ F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-074K7L/311-4.7KG
 F 6 "RC0603JR-074K7L" V 2250 3050 60  0001 C CNN "Manufacturer PN"
 F 7 "0.10" V 2250 3050 60  0001 C CNN "Unit Cost"
 	1    2250 3050
+	1    0    0    -1  
+$EndComp
+$Comp
+L C C302
+U 1 1 58232438
+P 4750 2650
+F 0 "C302" H 4775 2750 50  0000 L CNN
+F 1 "1uF" H 4775 2550 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 4850 2500 24  0000 C CNN
+F 3 "" H 4750 2650 60  0000 C CNN
+F 4 "311-1372-1-ND" H 4750 2650 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/CC0603ZRY5V7BB105/311-1372-1-ND/2103156" H 4750 2650 60  0001 C CNN "Link"
+F 6 "CC0603ZRY5V7BB105" H 4750 2650 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" H 4750 2650 60  0001 C CNN "Unit Cost"
+	1    4750 2650
 	1    0    0    -1  
 $EndComp
 $EndSCHEMATC
