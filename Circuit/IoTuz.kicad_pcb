@@ -3383,7 +3383,7 @@
   )
 
   (module libs:lcdtouchscreen.2.8inch-red.no-name.ili9341-xpt2046 (layer F.Cu) (tedit 5823BBB3) (tstamp 58245FFD)
-    (at 84 75 270)
+    (at 82 75 270)
     (path /5811E13F/5823E5D0)
     (fp_text reference U6 (at 0 2.54 270) (layer F.Fab)
       (effects (font (size 0.6 0.6) (thickness 0.1)))
