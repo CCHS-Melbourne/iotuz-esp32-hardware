@@ -40,6 +40,7 @@ LIBS:qdtech-3.2-tft
 LIBS:nau8814
 LIBS:spu0410hr5h
 LIBS:ili9341.touchlcd.red
+LIBS:NCP5501
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
@@ -76,10 +77,10 @@ LCD_RST
 Text HLabel 3300 2200 0    60   Input ~ 0
 LCD_D/C
 $Comp
-L CONN_01X14 P?
+L CONN_01X14 P6
 U 1 1 5823DD70
 P 2300 2450
-F 0 "P?" H 2300 3200 50  0000 C CNN
+F 0 "P6" H 2300 3200 50  0000 C CNN
 F 1 "CONN_01X14" V 2400 2450 50  0000 C CNN
 F 2 "" H 2300 2450 50  0000 C CNN
 F 3 "" H 2300 2450 50  0000 C CNN
@@ -87,10 +88,10 @@ F 3 "" H 2300 2450 50  0000 C CNN
 	-1   0    0    -1  
 $EndComp
 $Comp
-L CONN_01X04 P?
+L CONN_01X04 P7
 U 1 1 5823DDB5
 P 6250 2450
-F 0 "P?" H 6250 2700 50  0000 C CNN
+F 0 "P7" H 6250 2700 50  0000 C CNN
 F 1 "CONN_01X04" V 6350 2450 50  0000 C CNN
 F 2 "" H 6250 2450 50  0000 C CNN
 F 3 "" H 6250 2450 50  0000 C CNN
@@ -98,12 +99,12 @@ F 3 "" H 6250 2450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L ili9341.TouchLCD.Red.NoName U?
+L ili9341.TouchLCD.Red.NoName U6
 U 1 1 5823E5D0
 P 4300 2450
-F 0 "U?" H 3900 3200 60  0000 C CNN
+F 0 "U6" H 3900 3200 60  0000 C CNN
 F 1 "ili9341.TouchLCD.Red.NoName" H 5000 1700 60  0000 C CNN
-F 2 "" H 4300 2450 60  0001 C CNN
+F 2 "libs:lcdtouchscreen.2.8inch-red.no-name.ili9341-xpt2046" H 4300 2450 60  0001 C CNN
 F 3 "" H 4300 2450 60  0001 C CNN
 	1    4300 2450
 	1    0    0    -1  
@@ -114,7 +115,7 @@ Text HLabel 5150 2600 2    60   Input ~ 0
 SPI2_CLK
 Text HLabel 5150 2400 2    60   Input ~ 0
 SPI2_MOSI
-Text Notes 2850 1000 0    60   ~ 0
+Text Notes 1300 1650 0    60   ~ 0
 Connectors are for BOM headers. \nNo footprint placement necessary
 NoConn ~ 2500 1800
 NoConn ~ 2500 1900
@@ -168,10 +169,10 @@ Wire Wire Line
 Wire Wire Line
 	3300 2000 3650 2000
 $Comp
-L +3.3V #PWR?
+L +3.3V #PWR063
 U 1 1 58242261
 P 3550 1250
-F 0 "#PWR?" H 3550 1100 50  0001 C CNN
+F 0 "#PWR063" H 3550 1100 50  0001 C CNN
 F 1 "+3.3V" H 3550 1390 50  0000 C CNN
 F 2 "" H 3550 1250 50  0000 C CNN
 F 3 "" H 3550 1250 50  0000 C CNN
@@ -179,10 +180,10 @@ F 3 "" H 3550 1250 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 $Comp
-L GND #PWR?
+L GND #PWR064
 U 1 1 58242289
 P 2700 1950
-F 0 "#PWR?" H 2700 1700 50  0001 C CNN
+F 0 "#PWR064" H 2700 1700 50  0001 C CNN
 F 1 "GND" H 2700 1800 50  0000 C CNN
 F 2 "" H 2700 1950 50  0000 C CNN
 F 3 "" H 2700 1950 50  0000 C CNN
@@ -202,10 +203,10 @@ Wire Wire Line
 Wire Wire Line
 	4950 2600 5150 2600
 $Comp
-L R R?
+L R R9
 U 1 1 58247129
 P 3400 1650
-F 0 "R?" V 3480 1650 50  0000 C CNN
+F 0 "R9" V 3480 1650 50  0000 C CNN
 F 1 "10K" V 3300 1650 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 3330 1650 50  0001 C CNN
 F 3 "" H 3400 1650 50  0000 C CNN
@@ -228,4 +229,6 @@ Wire Wire Line
 Wire Wire Line
 	3400 1300 3550 1300
 Connection ~ 3550 1300
+Text Notes 5950 2050 0    60   ~ 0
+Connectors are for BOM headers. \nNo footprint placement necessary
 $EndSCHEMATC

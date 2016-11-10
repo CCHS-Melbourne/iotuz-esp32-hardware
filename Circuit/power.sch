@@ -40,6 +40,7 @@ LIBS:qdtech-3.2-tft
 LIBS:nau8814
 LIBS:spu0410hr5h
 LIBS:ili9341.touchlcd.red
+LIBS:NCP5501
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
@@ -378,14 +379,14 @@ F 3 "" H 8950 3700 50  0000 C CNN
 $EndComp
 Text Label 10650 1800 0    60   ~ 0
 3.3V
-Text Label 7550 5550 2    60   ~ 0
+Text Label 8450 5600 2    60   ~ 0
 3.3V_SWITCH
 Text Label 2550 4800 0    60   ~ 0
 3.3V_SWITCH
 Text Label 1550 4800 2    60   ~ 0
 3.3V
-Text Notes 7150 6200 0    60   ~ 0
-Regulated output\nBuck (upto)5v5->3v3
+Text Notes 8600 5200 0    60   ~ 0
+Regulated output\nLinear (upto)6V->3v3
 Text Label 7450 3050 3    60   ~ 0
 3.3V
 Text Label 9050 3050 3    60   ~ 0
@@ -406,23 +407,12 @@ $EndComp
 $Comp
 L GND #PWR036
 U 1 1 5812C93A
-P 8550 6300
-F 0 "#PWR036" H 8550 6050 50  0001 C CNN
-F 1 "GND" H 8550 6150 50  0000 C CNN
-F 2 "" H 8550 6300 60  0000 C CNN
-F 3 "" H 8550 6300 60  0000 C CNN
-	1    8550 6300
-	1    0    0    -1  
-$EndComp
-$Comp
-L GND #PWR037
-U 1 1 5812E212
-P 8850 5000
-F 0 "#PWR037" H 8850 4750 50  0001 C CNN
-F 1 "GND" H 8850 4850 50  0000 C CNN
-F 2 "" H 8850 5000 60  0000 C CNN
-F 3 "" H 8850 5000 60  0000 C CNN
-	1    8850 5000
+P 8950 6200
+F 0 "#PWR036" H 8950 5950 50  0001 C CNN
+F 1 "GND" H 8950 6050 50  0000 C CNN
+F 2 "" H 8950 6200 60  0000 C CNN
+F 3 "" H 8950 6200 60  0000 C CNN
+	1    8950 6200
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
@@ -552,66 +542,17 @@ Wire Wire Line
 Wire Wire Line
 	1650 1800 2000 1800
 Wire Wire Line
-	8400 6200 8700 6200
+	8450 5600 8550 5600
 Wire Wire Line
-	8400 6100 8400 6200
-Wire Wire Line
-	8550 6100 8550 6300
-Connection ~ 8550 6200
-Wire Wire Line
-	8700 6200 8700 6100
-Wire Wire Line
-	7650 5500 7650 5600
-Wire Wire Line
-	7650 5550 7550 5550
-Wire Wire Line
-	7650 5600 7750 5600
-Connection ~ 7650 5550
-Wire Wire Line
-	7750 5500 7650 5500
-Wire Wire Line
-	9350 5500 9500 5500
-Wire Wire Line
-	9500 5500 9500 5600
-Wire Wire Line
-	9500 5550 10050 5550
-Wire Wire Line
-	9500 5600 9350 5600
-Connection ~ 9500 5550
-Wire Wire Line
-	7650 5550 7650 4800
-Wire Wire Line
-	8450 5000 8450 4800
-Wire Wire Line
-	8450 4800 7650 4800
-Wire Wire Line
-	8650 5000 8650 4800
-Wire Wire Line
-	8650 4800 8850 4800
-Wire Wire Line
-	8850 4800 8850 5000
+	9350 5600 10050 5600
 Wire Notes Line
-	6950 6500 6950 4750
+	7850 6500 7850 4750
 Wire Wire Line
-	9500 5550 9500 5700
+	9500 5500 9500 5700
 Wire Wire Line
 	9500 6000 9500 6200
 Wire Wire Line
-	8550 6200 10600 6200
-$Comp
-L LXDC2XQ U3
-U 1 1 581FF216
-P 8550 5550
-F 0 "U3" H 8000 5950 60  0000 C CNN
-F 1 "LXDC2XQ" H 9050 5150 60  0000 C CNN
-F 2 "libs:LXDC2XQ" H 7900 5850 60  0001 C CNN
-F 3 "http://power.murata.com/data/power/LXDC2XQ_Series_datasheet.pdf" H 8000 5950 60  0001 C CNN
-F 4 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/LXDC2XQ33A-254/490-12573-1-ND/5797558" H 8100 6050 60  0001 C CNN "Digikey URL"
-F 5 "1.55" H 8200 6150 60  0001 C CNN "Unit cost"
-F 6 "490-12573-1-ND" H 8300 6250 60  0001 C CNN "Digikey PN"
-	1    8550 5550
-	1    0    0    -1  
-$EndComp
+	8950 6200 10600 6200
 Wire Wire Line
 	2700 3550 2700 3650
 Wire Wire Line
@@ -636,7 +577,6 @@ F 7 "0.10" V 2700 2650 60  0001 C CNN "Unit Cost"
 $EndComp
 Wire Wire Line
 	10050 4950 10050 5750
-Connection ~ 10050 5550
 Wire Wire Line
 	10050 6200 10050 6050
 Connection ~ 9500 6200
@@ -736,8 +676,6 @@ Wire Wire Line
 Wire Wire Line
 	10600 5050 10600 4950
 Connection ~ 10600 4950
-Wire Notes Line
-	6950 4750 11250 4750
 Text Notes 6700 1650 0    100  ~ 0
 Digikey have no FDN340P in-stock.
 $Comp
@@ -770,4 +708,22 @@ F 7 "0.10" V 8750 2800 60  0001 C CNN "Unit Cost"
 	1    8750 2800
 	1    0    0    -1  
 $EndComp
+$Comp
+L NCP5501 U?
+U 1 1 5824C89A
+P 8950 5650
+F 0 "U?" H 9100 5454 50  0000 C CNN
+F 1 "NCP5501" H 8950 5850 50  0000 C CNN
+F 2 "" H 8950 5650 50  0000 C CNN
+F 3 "" H 8950 5650 50  0000 C CNN
+	1    8950 5650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8950 5900 8950 6200
+Connection ~ 8950 6200
+Connection ~ 10050 5600
+Connection ~ 9500 5600
+Wire Notes Line
+	7850 4750 11250 4750
 $EndSCHEMATC

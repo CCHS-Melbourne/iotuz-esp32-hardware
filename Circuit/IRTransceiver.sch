@@ -40,6 +40,7 @@ LIBS:qdtech-3.2-tft
 LIBS:nau8814
 LIBS:spu0410hr5h
 LIBS:ili9341.touchlcd.red
+LIBS:NCP5501
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END

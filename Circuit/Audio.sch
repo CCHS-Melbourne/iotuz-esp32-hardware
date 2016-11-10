@@ -40,6 +40,7 @@ LIBS:qdtech-3.2-tft
 LIBS:nau8814
 LIBS:spu0410hr5h
 LIBS:ili9341.touchlcd.red
+LIBS:NCP5501
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
@@ -111,7 +112,7 @@ U 1 1 581BC31F
 P 2000 1900
 F 0 "C2" H 2010 1970 50  0000 L CNN
 F 1 "2.2uF" H 2010 1820 50  0000 L CNN
-F 2 "" H 2000 1900 50  0001 C CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 2000 1900 50  0001 C CNN
 F 3 "" H 2000 1900 50  0000 C CNN
 F 4 "490-3296-1-ND" H 2000 1900 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM188R61C225KE15D/490-3296-1-ND/702837" H 2000 1900 60  0001 C CNN "Link"
@@ -126,17 +127,6 @@ Wire Wire Line
 	4750 3500 4400 3500
 Text Label 1400 1150 0    60   ~ 0
 MICBias
-$Comp
-L R R15
-U 1 1 581BC437
-P 1400 1300
-F 0 "R15" V 1480 1300 50  0000 C CNN
-F 1 "R" V 1400 1300 50  0000 C CNN
-F 2 "" V 1330 1300 50  0001 C CNN
-F 3 "" H 1400 1300 50  0000 C CNN
-	1    1400 1300
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5450 2700 5450 2900
 Text Label 4400 3350 0    60   ~ 0
@@ -540,4 +530,19 @@ Wire Wire Line
 	6500 3100 6500 3500
 Connection ~ 6500 3500
 Connection ~ 6500 3250
+$Comp
+L R R15
+U 1 1 5824B8C8
+P 1400 1300
+F 0 "R15" V 1480 1300 50  0000 C CNN
+F 1 "1K" V 1300 1300 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 1330 1300 50  0001 C CNN
+F 3 "" H 1400 1300 50  0000 C CNN
+F 4 "311-1.0KGRCT-ND" V 1400 1300 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-071KL/311-1.0KGRCT-ND/729624" V 1400 1300 60  0001 C CNN "Link"
+F 6 "RC0603JR-071KL" V 1400 1300 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 1400 1300 60  0001 C CNN "Unit Cost"
+	1    1400 1300
+	-1   0    0    1   
+$EndComp
 $EndSCHEMATC
