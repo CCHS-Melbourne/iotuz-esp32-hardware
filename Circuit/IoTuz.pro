@@ -1,4 +1,4 @@
-update=Fri 04 Nov 2016 09:44:41 AEDT
+update=Thu 10 Nov 2016 11:27:29 AEDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -69,3 +69,4 @@ LibName37=libs/lxdc2xq
 LibName38=libs/qdtech-3.2-tft
 LibName39=libs/nau8814
 LibName40=libs/spu0410hr5h
+LibName41=libs/ili9341.touchlcd.red

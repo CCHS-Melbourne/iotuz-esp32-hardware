@@ -39,6 +39,7 @@ LIBS:lxdc2xq
 LIBS:qdtech-3.2-tft
 LIBS:nau8814
 LIBS:spu0410hr5h
+LIBS:ili9341.touchlcd.red
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
@@ -54,115 +55,177 @@ Comment2 ""
 Comment3 ""
 Comment4 ""
 $EndDescr
-$Comp
-L QDTech-3.2in-TFT U6
-U 1 1 5817975D
-P 4200 3000
-F 0 "U6" H 3850 3900 60  0000 C CNN
-F 1 "QDTech-3.2in-TFT" H 4200 2100 60  0000 C CNN
-F 2 "libs:QDTech-3.2in-TFT" H 4150 2950 60  0001 C CNN
-F 3 "" H 4150 2950 60  0001 C CNN
-	1    4200 3000
-	1    0    0    -1  
-$EndComp
-Text HLabel 1700 2450 0    60   Output ~ 0
-SPI_MISO
-Text HLabel 1700 2550 0    60   Input ~ 0
-SPI_CLK
-Text HLabel 1700 2650 0    60   Input ~ 0
-SPI_MOSI
-Text HLabel 1700 2850 0    60   Input ~ 0
+Text HLabel 3300 2600 0    60   Output ~ 0
+SPI1_MISO
+Text HLabel 3300 2400 0    60   Input ~ 0
+SPI1_CLK
+Text HLabel 3300 2300 0    60   Input ~ 0
+SPI1_MOSI
+Text HLabel 5150 2300 2    60   Input ~ 0
 SD_CS
-Text HLabel 1700 3050 0    60   Input ~ 0
+Text HLabel 3300 2800 0    60   Input ~ 0
 Touch_CS
-Text HLabel 1700 3150 0    60   Output ~ 0
-Touch_Pen
-Text HLabel 1700 3350 0    60   Input ~ 0
+Text HLabel 3300 3100 0    60   Output ~ 0
+Touch_IRQ
+Text HLabel 3300 2500 0    60   Input ~ 0
 Backlight_CTR
-Text HLabel 1700 3500 0    60   Input ~ 0
+Text HLabel 3300 2000 0    60   Input ~ 0
 LCD_CS
-Text HLabel 1700 3600 0    60   Input ~ 0
-LCD_WR
-Text HLabel 1700 3700 0    60   Input ~ 0
+Text HLabel 3300 2100 0    60   Input ~ 0
 LCD_RST
-Text HLabel 1700 3800 0    60   Input ~ 0
-LCD_RS
+Text HLabel 3300 2200 0    60   Input ~ 0
+LCD_D/C
 $Comp
-L GND #PWR063
-U 1 1 581ECEAF
-P 5000 3250
-F 0 "#PWR063" H 5000 3000 50  0001 C CNN
-F 1 "GND" H 5000 3100 50  0000 C CNN
-F 2 "" H 5000 3250 50  0000 C CNN
-F 3 "" H 5000 3250 50  0000 C CNN
-	1    5000 3250
+L CONN_01X14 P?
+U 1 1 5823DD70
+P 2300 2450
+F 0 "P?" H 2300 3200 50  0000 C CNN
+F 1 "CONN_01X14" V 2400 2450 50  0000 C CNN
+F 2 "" H 2300 2450 50  0000 C CNN
+F 3 "" H 2300 2450 50  0000 C CNN
+	1    2300 2450
+	-1   0    0    -1  
+$EndComp
+$Comp
+L CONN_01X04 P?
+U 1 1 5823DDB5
+P 6250 2450
+F 0 "P?" H 6250 2700 50  0000 C CNN
+F 1 "CONN_01X04" V 6350 2450 50  0000 C CNN
+F 2 "" H 6250 2450 50  0000 C CNN
+F 3 "" H 6250 2450 50  0000 C CNN
+	1    6250 2450
 	1    0    0    -1  
 $EndComp
-Wire Wire Line
-	5000 3250 5000 3200
-Wire Wire Line
-	5000 3200 4750 3200
-Wire Wire Line
-	4750 3100 4850 3100
-Wire Wire Line
-	4850 2400 4850 3200
-Connection ~ 4850 3200
-Wire Wire Line
-	4750 2400 4850 2400
-Connection ~ 4850 3100
-Wire Wire Line
-	4750 2500 4850 2500
-Connection ~ 4850 2500
-Connection ~ 4850 2600
-Connection ~ 4850 2700
-Connection ~ 4850 2800
-Connection ~ 4850 2900
-Connection ~ 4850 3000
-Wire Wire Line
-	4750 2600 4850 2600
-Wire Wire Line
-	4750 2700 4850 2700
-Wire Wire Line
-	4750 2800 4850 2800
-Wire Wire Line
-	4750 2900 4850 2900
-Wire Wire Line
-	4750 3000 4850 3000
 $Comp
-L GND #PWR064
-U 1 1 581ECF12
-P 3350 3250
-F 0 "#PWR064" H 3350 3000 50  0001 C CNN
-F 1 "GND" H 3350 3100 50  0000 C CNN
-F 2 "" H 3350 3250 50  0000 C CNN
-F 3 "" H 3350 3250 50  0000 C CNN
-	1    3350 3250
+L ili9341.TouchLCD.Red.NoName U?
+U 1 1 5823E5D0
+P 4300 2450
+F 0 "U?" H 3900 3200 60  0000 C CNN
+F 1 "ili9341.TouchLCD.Red.NoName" H 5000 1700 60  0000 C CNN
+F 2 "" H 4300 2450 60  0001 C CNN
+F 3 "" H 4300 2450 60  0001 C CNN
+	1    4300 2450
 	1    0    0    -1  
 $EndComp
+Text HLabel 5150 2500 2    60   Output ~ 0
+SPI2_MISO
+Text HLabel 5150 2600 2    60   Input ~ 0
+SPI2_CLK
+Text HLabel 5150 2400 2    60   Input ~ 0
+SPI2_MOSI
+Text Notes 2850 1000 0    60   ~ 0
+Connectors are for BOM headers. \nNo footprint placement necessary
+NoConn ~ 2500 1800
+NoConn ~ 2500 1900
+NoConn ~ 2500 2000
+NoConn ~ 2500 2100
+NoConn ~ 2500 2200
+NoConn ~ 2500 2300
+NoConn ~ 2500 2400
+NoConn ~ 2500 2500
+NoConn ~ 2500 2600
+NoConn ~ 2500 2700
+NoConn ~ 2500 2800
+NoConn ~ 2500 2900
+NoConn ~ 2500 3000
+NoConn ~ 2500 3100
+NoConn ~ 6050 2300
+NoConn ~ 6050 2400
+NoConn ~ 6050 2500
+NoConn ~ 6050 2600
 Wire Wire Line
-	3600 3200 3350 3200
-Connection ~ 3350 3200
+	3300 2400 3650 2400
 Wire Wire Line
-	3600 2500 3350 2500
-Connection ~ 3350 2500
+	3550 2400 3550 2700
+Wire Wire Line
+	3550 2700 3650 2700
+Connection ~ 3550 2400
+Wire Wire Line
+	3300 2300 3650 2300
+Wire Wire Line
+	3450 2300 3450 2900
+Wire Wire Line
+	3450 2900 3650 2900
+Connection ~ 3450 2300
+Wire Wire Line
+	3300 2600 3650 2600
+Wire Wire Line
+	3350 2600 3350 3000
+Wire Wire Line
+	3350 3000 3650 3000
 Connection ~ 3350 2600
-Connection ~ 3350 2700
-Connection ~ 3350 2800
-Connection ~ 3350 2900
-Connection ~ 3350 3000
-Connection ~ 3350 3100
 Wire Wire Line
-	3600 2600 3350 2600
+	3650 2800 3300 2800
 Wire Wire Line
-	3600 2700 3350 2700
+	3650 3100 3300 3100
 Wire Wire Line
-	3600 2800 3350 2800
+	3650 2500 3300 2500
 Wire Wire Line
-	3600 2900 3350 2900
+	3300 2200 3650 2200
 Wire Wire Line
-	3600 3000 3350 3000
+	3650 2100 3300 2100
 Wire Wire Line
-	3600 3100 3350 3100
+	3300 2000 3650 2000
+$Comp
+L +3.3V #PWR?
+U 1 1 58242261
+P 3550 1250
+F 0 "#PWR?" H 3550 1100 50  0001 C CNN
+F 1 "+3.3V" H 3550 1390 50  0000 C CNN
+F 2 "" H 3550 1250 50  0000 C CNN
+F 3 "" H 3550 1250 50  0000 C CNN
+	1    3550 1250
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 58242289
+P 2700 1950
+F 0 "#PWR?" H 2700 1700 50  0001 C CNN
+F 1 "GND" H 2700 1800 50  0000 C CNN
+F 2 "" H 2700 1950 50  0000 C CNN
+F 3 "" H 2700 1950 50  0000 C CNN
+	1    2700 1950
+	1    0    0    -1  
+$EndComp
 Wire Wire Line
-	3350 2500 3350 3250
+	3650 1900 2700 1900
+Wire Wire Line
+	2700 1900 2700 1950
+Wire Wire Line
+	4950 2300 5150 2300
+Wire Wire Line
+	4950 2400 5150 2400
+Wire Wire Line
+	4950 2500 5150 2500
+Wire Wire Line
+	4950 2600 5150 2600
+$Comp
+L R R?
+U 1 1 58247129
+P 3400 1650
+F 0 "R?" V 3480 1650 50  0000 C CNN
+F 1 "10K" V 3300 1650 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 3330 1650 50  0001 C CNN
+F 3 "" H 3400 1650 50  0000 C CNN
+F 4 "311-10KGRCT-ND" V 3400 1650 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 3400 1650 60  0001 C CNN "Link"
+F 6 "RC0603JR-0710KL" V 3400 1650 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 3400 1650 60  0001 C CNN "Unit Cost"
+	1    3400 1650
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	3550 1250 3550 1800
+Wire Wire Line
+	3550 1800 3650 1800
+Wire Wire Line
+	3400 1800 3400 2100
+Connection ~ 3400 2100
+Wire Wire Line
+	3400 1500 3400 1300
+Wire Wire Line
+	3400 1300 3550 1300
+Connection ~ 3550 1300
 $EndSCHEMATC
