@@ -491,7 +491,7 @@ F 7 "0.10" V 10800 800 60  0001 C CNN "Unit Cost"
 $EndComp
 Text Label 11150 800  2    60   ~ 0
 EN
-Text Notes 9950 600  0    60   ~ 0
+Text Notes 10300 600  0    60   ~ 0
 BUTTONS
 Text Label 4250 1700 0    60   ~ 0
 IO34
@@ -562,10 +562,6 @@ Text Label 5800 3200 1    60   ~ 0
 CLK
 Text Label 8650 5650 0    60   ~ 0
 IO0
-Text Label 11050 5950 2    60   ~ 0
-IO21
-Text Label 11050 5800 2    60   ~ 0
-IO19
 $Comp
 L CONN_01X04 P4
 U 1 1 580D7B68
@@ -656,8 +652,6 @@ F 3 "" H 1350 2900 50  0000 C CNN
 	1    1350 2900
 	1    0    0    -1  
 $EndComp
-Text Label 850  3500 0    60   ~ 0
-IO18
 $Comp
 L +5V #PWR4
 U 1 1 58114717
@@ -746,23 +740,19 @@ F3 "IRTx" I L 9300 2250 60
 $EndSheet
 Text Notes 7050 2350 0    60   ~ 0
 Joy_button/PRGM
-Text Notes 7050 1750 0    60   ~ 0
-EN_A
-Text Notes 7050 1950 0    60   ~ 0
-EN_B
-Text Notes 3750 1800 0    60   ~ 0
+Text Notes 6100 3500 1    60   ~ 0
+ENC_A
+Text Notes 6200 3500 1    60   ~ 0
+ENC_B
+Text Notes 3750 1700 0    60   ~ 0
 Joy_X
-Text Notes 7050 1850 0    60   ~ 0
+Text Notes 3400 2200 0    60   ~ 0
 VCC_SENS (1/10)
-Text Notes 7750 3050 0    60   ~ 0
-A_Button
-Text Notes 7750 3150 0    60   ~ 0
-B_Button
 Text Notes 3750 1400 0    60   ~ 0
 Reset
 Text Notes 7050 2150 0    60   ~ 0
-EMAC_CLK_OUT-25/50MHz
-Text Label 9250 4000 2    60   ~ 0
+MCLK
+Text Label 8900 4000 0    60   ~ 0
 IO16
 Text Notes 2050 4100 0    60   ~ 0
 Appropriate Interrupt Pin?
@@ -804,7 +794,9 @@ I2C_SDA
 Text Label 7400 1250 2    60   ~ 0
 I2C_SCL
 Wire Wire Line
-	1150 2050 1150 2400
+	1150 2050 1150 2300
+Wire Wire Line
+	1150 2300 1150 2400
 Wire Wire Line
 	1150 2300 650  2300
 Connection ~ 1150 2300
@@ -819,7 +811,9 @@ Wire Wire Line
 Wire Wire Line
 	950  850  1400 850 
 Wire Wire Line
-	1900 850  2250 850 
+	1900 850  2000 850 
+Wire Wire Line
+	2000 850  2250 850 
 Wire Wire Line
 	2000 1450 2000 1350
 Wire Wire Line
@@ -828,7 +822,9 @@ Connection ~ 2000 850
 Wire Wire Line
 	6650 2550 6750 2550
 Wire Wire Line
-	6750 2450 6750 2650
+	6750 2450 6750 2550
+Wire Wire Line
+	6750 2550 6750 2650
 Wire Wire Line
 	6650 1350 6950 1350
 Wire Wire Line
@@ -865,7 +861,9 @@ Wire Wire Line
 Wire Wire Line
 	1600 7500 1700 7500
 Wire Wire Line
-	1700 7100 1700 7550
+	1700 7100 1700 7500
+Wire Wire Line
+	1700 7500 1700 7550
 Wire Wire Line
 	1600 7100 1700 7100
 Connection ~ 1700 7500
@@ -874,9 +872,15 @@ Wire Wire Line
 Wire Wire Line
 	3000 5950 2600 5950
 Wire Wire Line
-	1950 6350 3000 6350
+	1950 6350 2300 6350
 Wire Wire Line
-	1950 6300 1950 6400
+	2300 6350 2600 6350
+Wire Wire Line
+	2600 6350 3000 6350
+Wire Wire Line
+	1950 6300 1950 6350
+Wire Wire Line
+	1950 6350 1950 6400
 Connection ~ 1950 6350
 Wire Wire Line
 	2300 6400 2300 6350
@@ -887,7 +891,9 @@ Wire Wire Line
 	2600 6450 2600 6350
 Connection ~ 2600 6350
 Wire Wire Line
-	2300 6700 2300 6800
+	2300 6700 2300 6750
+Wire Wire Line
+	2300 6750 2300 6800
 Wire Wire Line
 	1950 6700 1950 6750
 Wire Wire Line
@@ -898,12 +904,18 @@ Wire Wire Line
 Wire Wire Line
 	2550 7500 2900 7500
 Wire Wire Line
-	2900 7450 2900 7550
+	2900 7450 2900 7500
+Wire Wire Line
+	2900 7500 2900 7550
 Connection ~ 2900 7500
 Wire Wire Line
-	2550 7050 2550 7150
+	2550 7050 2550 7100
 Wire Wire Line
-	2550 7100 3500 7100
+	2550 7100 2550 7150
+Wire Wire Line
+	2550 7100 2900 7100
+Wire Wire Line
+	2900 7100 3500 7100
 Wire Wire Line
 	2900 7100 2900 7150
 Connection ~ 2550 7100
@@ -955,10 +967,14 @@ Wire Wire Line
 Wire Wire Line
 	1700 5350 1700 5450
 Wire Wire Line
-	550  5000 950  5000
+	550  5000 750  5000
+Wire Wire Line
+	750  5000 950  5000
 Connection ~ 750  5000
 Wire Wire Line
-	550  5650 950  5650
+	550  5650 850  5650
+Wire Wire Line
+	850  5650 950  5650
 Connection ~ 850  5650
 Wire Wire Line
 	1700 4800 1700 4750
@@ -979,12 +995,16 @@ Wire Notes Line
 Wire Wire Line
 	10300 900  10300 800 
 Wire Wire Line
-	10300 800  10650 800 
+	10300 800  10550 800 
+Wire Wire Line
+	10550 800  10650 800 
 Wire Wire Line
 	10550 1050 10550 800 
 Connection ~ 10550 800 
 Wire Wire Line
-	10300 1500 10300 1650
+	10300 1500 10300 1600
+Wire Wire Line
+	10300 1600 10300 1650
 Wire Wire Line
 	10300 1600 10550 1600
 Wire Wire Line
@@ -993,13 +1013,7 @@ Connection ~ 10300 1600
 Wire Wire Line
 	10950 800  11150 800 
 Wire Notes Line
-	8950 400  8950 1900
-Wire Notes Line
-	8950 400  11300 400 
-Wire Notes Line
 	11300 400  11300 1900
-Wire Notes Line
-	11300 1900 8950 1900
 Wire Wire Line
 	4800 1500 4250 1500
 Wire Wire Line
@@ -1079,7 +1093,9 @@ Wire Wire Line
 Wire Wire Line
 	8100 850  8100 1250
 Wire Wire Line
-	7750 1250 8600 1250
+	7750 1250 8100 1250
+Wire Wire Line
+	8100 1250 8600 1250
 Wire Wire Line
 	7750 1250 7750 1150
 Wire Wire Line
@@ -1088,7 +1104,9 @@ Connection ~ 8100 1250
 Wire Wire Line
 	8000 850  8000 1000
 Wire Wire Line
-	8000 1000 8700 1000
+	8000 1000 8500 1000
+Wire Wire Line
+	8500 1000 8700 1000
 Wire Wire Line
 	8700 1000 8700 1100
 Wire Wire Line
@@ -1101,7 +1119,9 @@ Wire Wire Line
 Wire Wire Line
 	1650 3500 1550 3500
 Wire Wire Line
-	1350 2900 1350 3100
+	1350 2900 1350 2950
+Wire Wire Line
+	1350 2950 1350 3100
 Wire Wire Line
 	1350 3100 1450 3100
 Wire Wire Line
@@ -1110,7 +1130,9 @@ Wire Wire Line
 	1100 2950 1350 2950
 Connection ~ 1350 2950
 Wire Wire Line
-	850  3500 1250 3500
+	850  3500 1100 3500
+Wire Wire Line
+	1100 3500 1250 3500
 Wire Wire Line
 	1100 3500 1100 3300
 Connection ~ 1100 3500
@@ -1147,7 +1169,7 @@ Wire Wire Line
 Wire Wire Line
 	10700 5950 11050 5950
 Wire Wire Line
-	9250 4000 9300 4000
+	8900 4000 9300 4000
 Wire Wire Line
 	2250 850  2250 1100
 Wire Wire Line
@@ -1170,8 +1192,6 @@ Text Label 5050 5100 0    60   ~ 0
 IO25
 Text Label 5050 5000 0    60   ~ 0
 IO33
-Text Notes 3750 3350 0    60   ~ 0
-LCD PINS\nTHIS SIDE
 $Comp
 L R R5
 U 1 1 5820E1F5
@@ -1438,27 +1458,17 @@ Text Label 4250 1500 0    60   ~ 0
 Sensor_VP
 Text Label 4250 1600 0    60   ~ 0
 Sensor_VN
-Text Label 7650 900  0    60   ~ 0
-Sensor_VN
 Text Label 8800 2250 0    60   ~ 0
 Sensor_VP
 Text Notes 3750 1500 0    60   ~ 0
 IRTx
-Text Notes 3750 1600 0    60   ~ 0
+Text Notes 7050 1150 0    60   ~ 0
 LED_Data
-Text Notes 3750 1700 0    60   ~ 0
-Joy_Y
-Text Label 2200 1800 0    60   ~ 0
-IO32
-Text Label 2200 1900 0    60   ~ 0
-IO33
-Text Label 2200 2000 0    60   ~ 0
-IO25
-Text Notes 3750 1900 0    60   ~ 0
+Text Notes 3750 1800 0    60   ~ 0
 LCD_CS
-Text Notes 3750 2000 0    60   ~ 0
+Text Notes 3750 1900 0    60   ~ 0
 LCD_RST
-Text Notes 3750 2100 0    60   ~ 0
+Text Notes 3750 2000 0    60   ~ 0
 LCD_D/C
 Wire Wire Line
 	2200 1800 2500 1800
@@ -1486,18 +1496,10 @@ Text Label 2200 2300 0    60   ~ 0
 IO12
 Wire Wire Line
 	2200 2300 2500 2300
-Text Notes 3750 2200 0    60   ~ 0
-Backlight
 Wire Wire Line
 	2000 2600 2500 2600
-Text Notes 6100 3650 1    60   ~ 0
-Touch_CS
-Text Notes 6300 3550 0    197  ~ 0
-IO2 Was tied to GND. WHY?
 Wire Wire Line
 	2000 2700 2500 2700
-Text Notes 6200 3700 1    60   ~ 0
-Touch_IRQ
 $Comp
 L PCF8574 U?
 U 1 1 58273BA5
@@ -1529,9 +1531,13 @@ F 7 "0.10" V 5950 5350 60  0001 C CNN "Unit Cost"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	5950 5100 6600 5100
+	5950 5100 6250 5100
 Wire Wire Line
-	6250 4900 6250 5100
+	6250 5100 6600 5100
+Wire Wire Line
+	6250 4900 6250 5000
+Wire Wire Line
+	6250 5000 6250 5100
 Wire Wire Line
 	6600 5000 6250 5000
 Connection ~ 6250 5100
@@ -1631,4 +1637,70 @@ Text Label 8100 5300 2    61   ~ 0
 SD_Sel
 Wire Wire Line
 	8100 5300 7600 5300
+Wire Wire Line
+	6600 5400 6350 5400
+Text Notes 3750 2100 0    60   ~ 0
+IO_INT
+Text Label 10650 2250 2    60   ~ 0
+IO4
+Text Notes 7050 2250 0    60   ~ 0
+IRRx
+Text Label 7650 900  0    60   ~ 0
+IO23
+Text Label 850  3500 0    60   ~ 0
+IO26
+Text Label 11050 5950 2    60   ~ 0
+IO2
+Text Label 11050 5800 2    60   ~ 0
+IO15
+Text Label 8900 4150 0    60   ~ 0
+I2C_SCL
+Text Label 8900 4250 0    60   ~ 0
+I2C_SDA
+Wire Wire Line
+	8900 4150 9300 4150
+Wire Wire Line
+	8900 4250 9300 4250
+Text Notes 3750 1600 0    60   ~ 0
+Joy_Y
+Text Label 8650 5950 0    60   ~ 0
+Sensor_VN
+Text Label 2200 1800 0    60   ~ 0
+IO35
+Text Label 2200 1900 0    60   ~ 0
+IO32
+Text Label 6350 5400 0    60   ~ 0
+IO25
+Text Label 10650 4500 2    60   ~ 0
+IO27
+Wire Wire Line
+	10400 4500 10650 4500
+Text Notes 3750 2300 0    60   ~ 0
+ADCOUT
+Text Label 8900 4600 0    60   ~ 0
+IO17
+Text Notes 7050 2050 0    60   ~ 0
+DACIn
+Wire Wire Line
+	8900 4600 9300 4600
+Text Label 8900 4500 0    60   ~ 0
+IO5
+Wire Wire Line
+	9300 4500 8900 4500
+Text Notes 7050 1950 0    60   ~ 0
+BClk
+Text Label 8900 4400 0    60   ~ 0
+IO18
+Wire Wire Line
+	8900 4400 9300 4400
+Text Notes 7050 1850 0    60   ~ 0
+FS
+Text Label 8650 5800 0    60   ~ 0
+IO34
+Text Label 2200 2000 0    60   ~ 0
+IO33
+Wire Notes Line
+	10050 1900 10050 400 
+Wire Notes Line
+	10050 1900 11250 1900
 $EndSCHEMATC
