@@ -175,9 +175,9 @@ F 3 "" H 6750 2650 50  0000 C CNN
 	1    6750 2650
 	1    0    0    -1  
 $EndComp
-Text Label 6900 1350 2    60   ~ 0
+Text Label 6950 1350 2    60   ~ 0
 RXD
-Text Label 6900 1450 2    60   ~ 0
+Text Label 6950 1450 2    60   ~ 0
 TXD
 $Comp
 L +3.3V #PWR14
@@ -223,7 +223,7 @@ F 3 "" H 5150 3050 50  0000 C CNN
 	1    5150 3050
 	1    0    0    -1  
 $EndComp
-Text Label 4300 1400 0    60   ~ 0
+Text Label 4250 1400 0    60   ~ 0
 EN
 $Comp
 L CP2102 U1
@@ -493,10 +493,6 @@ Text Label 11150 800  2    60   ~ 0
 EN
 Text Notes 9950 600  0    60   ~ 0
 BUTTONS
-Text Label 4300 1500 0    60   ~ 0
-SENSOR_VP
-Text Label 4300 1600 0    60   ~ 0
-SENSOR_VN
 Text Label 4250 1700 0    60   ~ 0
 IO34
 Text Label 4250 1800 0    60   ~ 0
@@ -513,19 +509,19 @@ Text Label 4250 2300 0    60   ~ 0
 IO27
 Text Label 4250 2400 0    60   ~ 0
 IO14
-Text Label 4300 2500 0    60   ~ 0
+Text Label 4250 2500 0    60   ~ 0
 IO12
 Text Label 6950 1150 2    60   ~ 0
 IO23
-Text Label 6900 1250 2    60   ~ 0
+Text Label 6950 1250 2    60   ~ 0
 IO22
-Text Label 6900 1550 2    60   ~ 0
+Text Label 6950 1550 2    60   ~ 0
 IO21
-Text Label 6900 1750 2    60   ~ 0
+Text Label 6950 1750 2    60   ~ 0
 IO19
-Text Label 6900 1850 2    60   ~ 0
+Text Label 6950 1850 2    60   ~ 0
 IO18
-Text Label 6900 1950 2    60   ~ 0
+Text Label 6950 1950 2    60   ~ 0
 IO5
 Text Label 6950 2050 2    60   ~ 0
 IO17
@@ -533,22 +529,22 @@ Text Label 6950 2150 2    60   ~ 0
 IO16
 Text Label 6950 2250 2    60   ~ 0
 IO4
-Text Label 6900 2350 2    60   ~ 0
+Text Label 6950 2350 2    60   ~ 0
 IO0
 $Comp
 L GND #PWR22
 U 1 1 5809017E
-P 6400 3050
-F 0 "#PWR22" H 6400 2800 50  0001 C CNN
-F 1 "GND" H 6400 2900 50  0000 C CNN
-F 2 "" H 6400 3050 50  0000 C CNN
-F 3 "" H 6400 3050 50  0000 C CNN
-	1    6400 3050
+P 5950 5500
+F 0 "#PWR22" H 5950 5250 50  0001 C CNN
+F 1 "GND" H 5950 5350 50  0000 C CNN
+F 2 "" H 5950 5500 50  0000 C CNN
+F 3 "" H 5950 5500 50  0000 C CNN
+	1    5950 5500
 	1    0    0    -1  
 $EndComp
-Text Label 6200 3250 1    60   ~ 0
+Text Label 6200 3200 1    60   ~ 0
 IO2
-Text Label 6100 3250 1    60   ~ 0
+Text Label 6100 3200 1    60   ~ 0
 IO15
 Text Label 6000 3200 1    60   ~ 0
 SD1
@@ -564,10 +560,6 @@ Text Label 5400 3200 1    60   ~ 0
 IO13
 Text Label 5800 3200 1    60   ~ 0
 CLK
-Text Label 8650 5800 0    60   ~ 0
-IO12
-Text Label 8650 5950 0    60   ~ 0
-IO15
 Text Label 8650 5650 0    60   ~ 0
 IO0
 Text Label 11050 5950 2    60   ~ 0
@@ -598,8 +590,6 @@ F 4 "1" H 8550 650 60  0001 C CNN "Non-Digikey"
 	1    8550 650 
 	0    -1   -1   0   
 $EndComp
-Text Label 7650 900  0    60   ~ 0
-IO2
 NoConn ~ 8700 850 
 $Comp
 L +3.3V #PWR24
@@ -717,10 +707,6 @@ F7 "EN_BUTTON" I R 10700 5650 60
 F8 "EN_A" I R 10700 5800 60 
 F9 "EN_B" I R 10700 5950 60 
 $EndSheet
-Text Label 8650 6250 0    60   ~ 0
-SENSOR_VN
-Text Label 8650 6100 0    60   ~ 0
-SENSOR_VP
 $Sheet
 S 9300 3900 1100 1050
 U 5811BE75
@@ -735,23 +721,20 @@ F7 "DACIN" I L 9300 4600 60
 F8 "ADCOUT" O R 10400 4500 60 
 $EndSheet
 $Sheet
-S 2500 1700 1150 1750
+S 2500 1700 800  1300
 U 5811E13F
 F0 "LCDTouch" 60
 F1 "LCDTouchScreen.sch" 60
-F2 "SD_CS" I R 3650 2450 60 
+F2 "SD_CS" I L 2500 2850 60 
 F3 "Touch_CS" I L 2500 2600 60 
-F4 "Backlight_CTR" I L 2500 2350 60 
+F4 "Backlight_CTR" I L 2500 2500 60 
 F5 "LCD_CS" I L 2500 1800 60 
 F6 "LCD_RST" I L 2500 1900 60 
-F7 "SPI1_MISO" O L 2500 2500 60 
+F7 "SPI1_MISO" O L 2500 2300 60 
 F8 "SPI1_CLK" I L 2500 2200 60 
 F9 "SPI1_MOSI" I L 2500 2100 60 
 F10 "Touch_IRQ" O L 2500 2700 60 
 F11 "LCD_D/C" I L 2500 2000 60 
-F12 "SPI2_MISO" O R 3650 2650 60 
-F13 "SPI2_CLK" I R 3650 2750 60 
-F14 "SPI2_MOSI" I R 3650 2550 60 
 $EndSheet
 $Sheet
 S 9300 2100 1050 300 
@@ -767,20 +750,16 @@ Text Notes 7050 1750 0    60   ~ 0
 EN_A
 Text Notes 7050 1950 0    60   ~ 0
 EN_B
-Text Notes 3900 2500 0    60   ~ 0
+Text Notes 3750 1800 0    60   ~ 0
 Joy_X
-Text Notes 6100 3550 1    60   ~ 0
-Joy_Y
 Text Notes 7050 1850 0    60   ~ 0
 VCC_SENS (1/10)
-Text Notes 3850 1500 0    60   ~ 0
+Text Notes 7750 3050 0    60   ~ 0
 A_Button
-Text Notes 3850 1600 0    60   ~ 0
+Text Notes 7750 3150 0    60   ~ 0
 B_Button
-Text Notes 3850 1400 0    60   ~ 0
+Text Notes 3750 1400 0    60   ~ 0
 Reset
-Text Notes 6200 3550 1    60   ~ 0
-LEDs
 Text Notes 7050 2150 0    60   ~ 0
 EMAC_CLK_OUT-25/50MHz
 Text Label 9250 4000 2    60   ~ 0
@@ -851,9 +830,9 @@ Wire Wire Line
 Wire Wire Line
 	6750 2450 6750 2650
 Wire Wire Line
-	6650 1350 6900 1350
+	6650 1350 6950 1350
 Wire Wire Line
-	6650 1450 6900 1450
+	6650 1450 6950 1450
 Wire Wire Line
 	3650 950  3650 1050
 Wire Wire Line
@@ -870,7 +849,7 @@ Wire Wire Line
 	6650 2450 6750 2450
 Connection ~ 6750 2550
 Wire Wire Line
-	4800 1400 4300 1400
+	4800 1400 4250 1400
 Wire Wire Line
 	3000 6050 2450 6050
 Wire Wire Line
@@ -1022,9 +1001,9 @@ Wire Notes Line
 Wire Notes Line
 	11300 1900 8950 1900
 Wire Wire Line
-	4800 1500 4300 1500
+	4800 1500 4250 1500
 Wire Wire Line
-	4800 1600 4300 1600
+	4800 1600 4250 1600
 Wire Wire Line
 	4800 1700 4250 1700
 Wire Wire Line
@@ -1042,7 +1021,7 @@ Wire Wire Line
 Wire Wire Line
 	4800 2400 4250 2400
 Wire Wire Line
-	4800 2500 4300 2500
+	4800 2500 4250 2500
 Wire Wire Line
 	6650 1250 7400 1250
 Wire Wire Line
@@ -1050,11 +1029,11 @@ Wire Wire Line
 Wire Wire Line
 	6650 1550 7400 1550
 Wire Wire Line
-	6650 1750 6900 1750
+	6650 1750 6950 1750
 Wire Wire Line
-	6650 1850 6900 1850
+	6650 1850 6950 1850
 Wire Wire Line
-	6650 1950 6900 1950
+	6650 1950 6950 1950
 Wire Wire Line
 	6650 2050 6950 2050
 Wire Wire Line
@@ -1062,16 +1041,11 @@ Wire Wire Line
 Wire Wire Line
 	6650 2250 6950 2250
 Wire Wire Line
-	6650 2350 6900 2350
+	6650 2350 6950 2350
 Wire Wire Line
-	6200 2950 6200 3250
+	6200 2950 6200 3200
 Wire Wire Line
-	6400 3050 6400 3000
-Wire Wire Line
-	6400 3000 6200 3000
-Connection ~ 6200 3000
-Wire Wire Line
-	6100 2950 6100 3250
+	6100 2950 6100 3200
 Wire Wire Line
 	6000 2950 6000 3200
 Wire Wire Line
@@ -1155,7 +1129,7 @@ Wire Wire Line
 Wire Wire Line
 	1850 4250 1900 4250
 Wire Wire Line
-	2200 4250 2450 4250
+	2200 4250 2650 4250
 Wire Wire Line
 	9200 5950 8650 5950
 Wire Wire Line
@@ -1178,8 +1152,6 @@ Wire Wire Line
 	2250 850  2250 1100
 Wire Wire Line
 	2250 1100 2500 1100
-Text Label 11050 5650 2    60   ~ 0
-IO5
 Text Label 4900 5900 0    60   ~ 0
 I2C_SDA
 Text Label 4900 6000 0    60   ~ 0
@@ -1198,9 +1170,7 @@ Text Label 5050 5100 0    60   ~ 0
 IO25
 Text Label 5050 5000 0    60   ~ 0
 IO33
-Wire Notes Line
-	3800 1500 3800 2400
-Text Notes 3650 1950 0    60   ~ 0
+Text Notes 3750 3350 0    60   ~ 0
 LCD PINS\nTHIS SIDE
 $Comp
 L R R5
@@ -1461,7 +1431,200 @@ F 3 "" H 4900 7600 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	9300 2250 9050 2250
+	9300 2250 8800 2250
 Wire Wire Line
 	10350 2250 10650 2250
+Text Label 4250 1500 0    60   ~ 0
+Sensor_VP
+Text Label 4250 1600 0    60   ~ 0
+Sensor_VN
+Text Label 7650 900  0    60   ~ 0
+Sensor_VN
+Text Label 8800 2250 0    60   ~ 0
+Sensor_VP
+Text Notes 3750 1500 0    60   ~ 0
+IRTx
+Text Notes 3750 1600 0    60   ~ 0
+LED_Data
+Text Notes 3750 1700 0    60   ~ 0
+Joy_Y
+Text Label 2200 1800 0    60   ~ 0
+IO32
+Text Label 2200 1900 0    60   ~ 0
+IO33
+Text Label 2200 2000 0    60   ~ 0
+IO25
+Text Notes 3750 1900 0    60   ~ 0
+LCD_CS
+Text Notes 3750 2000 0    60   ~ 0
+LCD_RST
+Text Notes 3750 2100 0    60   ~ 0
+LCD_D/C
+Wire Wire Line
+	2200 1800 2500 1800
+Wire Wire Line
+	2200 1900 2500 1900
+Wire Wire Line
+	2200 2000 2500 2000
+Text Label 2200 2100 0    60   ~ 0
+IO13
+Wire Wire Line
+	2200 2100 2500 2100
+Text Notes 5400 4050 1    60   ~ 0
+SPI1_MOSI(LCD/T)
+Text Label 2200 2200 0    60   ~ 0
+IO14
+Wire Wire Line
+	2200 2200 2500 2200
+Text Notes 3750 2400 0    60   ~ 0
+SPI1_CLK
+Wire Wire Line
+	2000 2500 2500 2500
+Text Notes 3750 2500 0    60   ~ 0
+SPI1_MISO
+Text Label 2200 2300 0    60   ~ 0
+IO12
+Wire Wire Line
+	2200 2300 2500 2300
+Text Notes 3750 2200 0    60   ~ 0
+Backlight
+Wire Wire Line
+	2000 2600 2500 2600
+Text Notes 6100 3650 1    60   ~ 0
+Touch_CS
+Text Notes 6300 3550 0    197  ~ 0
+IO2 Was tied to GND. WHY?
+Wire Wire Line
+	2000 2700 2500 2700
+Text Notes 6200 3700 1    60   ~ 0
+Touch_IRQ
+$Comp
+L PCF8574 U?
+U 1 1 58273BA5
+P 7100 5000
+F 0 "U?" H 6750 5600 50  0000 L CNN
+F 1 "PCF8574" H 7200 5600 50  0000 L CNN
+F 2 "" H 7100 5000 50  0000 C CNN
+F 3 "" H 7100 5000 50  0000 C CNN
+	1    7100 5000
+	1    0    0    -1  
+$EndComp
+$Comp
+L R R?
+U 1 1 58274894
+P 5950 5350
+F 0 "R?" V 6030 5350 50  0000 C CNN
+F 1 "10K" V 5850 5350 50  0000 C CNN
+F 2 "Resistors_SMD:R_0603_HandSoldering" V 5880 5350 50  0001 C CNN
+F 3 "" H 5950 5350 50  0000 C CNN
+F 4 "311-10KGRCT-ND" V 5950 5350 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-0710KL/311-10KGRCT-ND/729647" V 5950 5350 60  0001 C CNN "Link"
+F 6 "RC0603JR-0710KL" V 5950 5350 60  0001 C CNN "Manufacturer PN"
+F 7 "0.10" V 5950 5350 60  0001 C CNN "Unit Cost"
+	1    5950 5350
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	5950 5100 6600 5100
+Wire Wire Line
+	6250 4900 6250 5100
+Wire Wire Line
+	6600 5000 6250 5000
+Connection ~ 6250 5100
+Wire Wire Line
+	6600 4900 6250 4900
+Connection ~ 6250 5000
+Wire Wire Line
+	5950 5100 5950 5200
+NoConn ~ 6400 3050
+Text Notes 6150 4450 0    61   ~ 0
+I2C I/O Expander\nWrite: 0x40\nRead: 0x41
+Text Label 8650 6100 0    61   ~ 0
+A_Btn
+Text Label 8650 6250 0    61   ~ 0
+B_Btn
+Text Label 11050 5650 2    61   ~ 0
+Enc_Btn
+Text Label 2650 4250 2    61   ~ 0
+ADXL_INT
+Text Label 2000 2500 0    61   ~ 0
+BL_Control
+Text Label 8100 5100 2    61   ~ 0
+BL_Control
+Text Label 8100 5000 2    61   ~ 0
+ADXL_INT
+Text Label 8100 4600 2    61   ~ 0
+A_Btn
+Text Label 8100 4700 2    61   ~ 0
+B_Btn
+Text Label 8100 4800 2    61   ~ 0
+Enc_Btn
+Text Label 2000 2700 0    61   ~ 0
+Touch_INT
+Text Label 8100 4900 2    61   ~ 0
+Touch_INT
+Text Label 6200 4600 0    60   ~ 0
+I2C_SCL
+Text Label 6200 4700 0    60   ~ 0
+I2C_SDA
+$Comp
+L GND #PWR?
+U 1 1 5827C565
+P 7100 5800
+F 0 "#PWR?" H 7100 5550 50  0001 C CNN
+F 1 "GND" H 7100 5650 50  0000 C CNN
+F 2 "" H 7100 5800 50  0000 C CNN
+F 3 "" H 7100 5800 50  0000 C CNN
+	1    7100 5800
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 5700 7100 5800
+$Comp
+L +3.3V #PWR?
+U 1 1 5827CB27
+P 7100 4150
+F 0 "#PWR?" H 7100 4000 50  0001 C CNN
+F 1 "+3.3V" H 7100 4290 50  0000 C CNN
+F 2 "" H 7100 4150 50  0000 C CNN
+F 3 "" H 7100 4150 50  0000 C CNN
+	1    7100 4150
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7100 4150 7100 4300
+Wire Wire Line
+	7600 4600 8100 4600
+Wire Wire Line
+	7600 4700 8100 4700
+Wire Wire Line
+	7600 4800 8100 4800
+Wire Wire Line
+	7600 4900 8100 4900
+Wire Wire Line
+	7600 5000 8100 5000
+Wire Wire Line
+	7600 5100 8100 5100
+Wire Wire Line
+	6200 4600 6600 4600
+Wire Wire Line
+	6200 4700 6600 4700
+Text Label 2000 2600 0    61   ~ 0
+Touch_Sel
+Text Label 2000 2850 0    61   ~ 0
+SD_Sel
+Wire Wire Line
+	2000 2850 2500 2850
+Wire Notes Line
+	1950 2450 1950 2850
+Text Notes 1350 2650 0    61   ~ 0
+I2C Expander
+Text Label 8100 5200 2    61   ~ 0
+Touch_Sel
+Wire Wire Line
+	7600 5200 8100 5200
+Text Label 8100 5300 2    61   ~ 0
+SD_Sel
+Wire Wire Line
+	8100 5300 7600 5300
 $EndSCHEMATC

@@ -109,12 +109,6 @@ F 3 "" H 4300 2450 60  0001 C CNN
 	1    4300 2450
 	1    0    0    -1  
 $EndComp
-Text HLabel 5150 2500 2    60   Output ~ 0
-SPI2_MISO
-Text HLabel 5150 2600 2    60   Input ~ 0
-SPI2_CLK
-Text HLabel 5150 2400 2    60   Input ~ 0
-SPI2_MOSI
 Text Notes 1300 1650 0    60   ~ 0
 Connectors are for BOM headers. \nNo footprint placement necessary
 NoConn ~ 2500 1800
@@ -138,21 +132,21 @@ NoConn ~ 6050 2600
 Wire Wire Line
 	3300 2400 3650 2400
 Wire Wire Line
-	3550 2400 3550 2700
+	3550 2400 3550 3300
 Wire Wire Line
 	3550 2700 3650 2700
 Connection ~ 3550 2400
 Wire Wire Line
 	3300 2300 3650 2300
 Wire Wire Line
-	3450 2300 3450 2900
+	3450 2300 3450 3500
 Wire Wire Line
 	3450 2900 3650 2900
 Connection ~ 3450 2300
 Wire Wire Line
 	3300 2600 3650 2600
 Wire Wire Line
-	3350 2600 3350 3000
+	3350 2600 3350 3400
 Wire Wire Line
 	3350 3000 3650 3000
 Connection ~ 3350 2600
@@ -196,12 +190,6 @@ Wire Wire Line
 	2700 1900 2700 1950
 Wire Wire Line
 	4950 2300 5150 2300
-Wire Wire Line
-	4950 2400 5150 2400
-Wire Wire Line
-	4950 2500 5150 2500
-Wire Wire Line
-	4950 2600 5150 2600
 $Comp
 L R R9
 U 1 1 58247129
@@ -231,4 +219,25 @@ Wire Wire Line
 Connection ~ 3550 1300
 Text Notes 5950 2050 0    60   ~ 0
 Connectors are for BOM headers. \nNo footprint placement necessary
+Wire Wire Line
+	3550 3300 5050 3300
+Wire Wire Line
+	5050 3300 5050 2600
+Wire Wire Line
+	5050 2600 4950 2600
+Connection ~ 3550 2700
+Wire Wire Line
+	4950 2500 5150 2500
+Wire Wire Line
+	5150 2500 5150 3400
+Wire Wire Line
+	5150 3400 3350 3400
+Connection ~ 3350 3000
+Wire Wire Line
+	3450 3500 5250 3500
+Wire Wire Line
+	5250 3500 5250 2400
+Wire Wire Line
+	5250 2400 4950 2400
+Connection ~ 3450 2900
 $EndSCHEMATC
