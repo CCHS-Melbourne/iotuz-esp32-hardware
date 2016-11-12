@@ -41,6 +41,7 @@ LIBS:nau8814
 LIBS:spu0410hr5h
 LIBS:ili9341.touchlcd.red
 LIBS:NCP5501
+LIBS:Jack.3.5mm-CUI-MJ3523
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
@@ -144,7 +145,11 @@ Wire Wire Line
 Wire Wire Line
 	1300 2400 1300 2450
 Wire Wire Line
-	1300 2450 2250 2450
+	1300 2450 1400 2450
+Wire Wire Line
+	1400 2450 1500 2450
+Wire Wire Line
+	1500 2450 2250 2450
 Wire Wire Line
 	1400 2550 1400 2450
 Wire Wire Line
@@ -172,7 +177,9 @@ R needed?
 Text Label 6600 3500 0    60   ~ 0
 AGND
 Wire Wire Line
-	6450 3500 6600 3500
+	6450 3500 6500 3500
+Wire Wire Line
+	6500 3500 6600 3500
 $Comp
 L C C16
 U 1 1 581BE775
@@ -272,11 +279,15 @@ F 7 "0.01" H 3600 4150 60  0001 C CNN "Unit Cost"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	800  1150 1400 1150
+	800  1150 1050 1150
+Wire Wire Line
+	1050 1150 1400 1150
 Wire Wire Line
 	800  1150 800  1750
 Wire Wire Line
-	1400 2450 800  2450
+	1400 2450 1050 2450
+Wire Wire Line
+	1050 2450 800  2450
 Wire Wire Line
 	800  2450 800  2050
 $Comp
@@ -296,17 +307,19 @@ Text Notes 9600 3850 0    60   ~ 0
 I2C Mode - Address 0x34
 NoConn ~ 5650 2900
 Wire Wire Line
-	5850 2800 7200 2800
+	5850 2800 6500 2800
+Wire Wire Line
+	6500 2800 7200 2800
 Wire Wire Line
 	5850 2800 5850 2900
 Wire Wire Line
 	7200 3000 7150 3000
 Wire Wire Line
-	7150 3000 7150 3600
+	7150 3000 7150 3250
+Wire Wire Line
+	7150 3250 7150 3600
 Wire Wire Line
 	7150 3600 6450 3600
-Text Notes 9600 3700 0    60   ~ 0
-Mono Out - NC or come out to header?\nOr could go to TRS 3.5mm jack.
 $Comp
 L GND #PWR54
 U 1 1 581BFD59
@@ -319,7 +332,9 @@ F 3 "" H 4600 4450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	4400 4000 4750 4000
+	4400 4000 4600 4000
+Wire Wire Line
+	4600 4000 4750 4000
 Wire Wire Line
 	4600 4000 4600 4450
 Wire Notes Line
@@ -332,17 +347,25 @@ Wire Notes Line
 Text Notes 4150 6000 0    60   ~ 0
 Net tie AGND & GND. \nDo not separate but do make sensible layout to isolate.\nSimilarly, VSSSPK should be isolated in layout.
 Wire Wire Line
-	3850 3900 4750 3900
+	3850 3900 4100 3900
+Wire Wire Line
+	4100 3900 4750 3900
 Wire Wire Line
 	4100 3900 4100 4000
 Wire Wire Line
-	3600 3800 4750 3800
+	3600 3800 3850 3800
 Wire Wire Line
-	3850 3800 3850 4000
+	3850 3800 4750 3800
+Wire Wire Line
+	3850 3800 3850 3900
+Wire Wire Line
+	3850 3900 3850 4000
 Wire Wire Line
 	4750 3600 3600 3600
 Wire Wire Line
-	3600 3600 3600 4000
+	3600 3600 3600 3800
+Wire Wire Line
+	3600 3800 3600 4000
 Connection ~ 3850 3900
 Connection ~ 4100 3900
 Connection ~ 3600 3800
@@ -370,9 +393,13 @@ F 3 "" H 3850 4450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3850 4300 3850 4450
+	3850 4300 3850 4400
 Wire Wire Line
-	3600 4400 4100 4400
+	3850 4400 3850 4450
+Wire Wire Line
+	3600 4400 3850 4400
+Wire Wire Line
+	3850 4400 4100 4400
 Wire Wire Line
 	4100 4400 4100 4300
 Connection ~ 3850 4400
@@ -387,24 +414,20 @@ AUX input could go to DAC on ESP32..\nfor.. reasons?\nOr could go to TRS 3.5mm j
 $Comp
 L GND #PWR57
 U 1 1 581C0598
-P 5850 4700
-F 0 "#PWR57" H 5850 4450 50  0001 C CNN
-F 1 "GND" H 5850 4550 50  0000 C CNN
-F 2 "" H 5850 4700 50  0000 C CNN
-F 3 "" H 5850 4700 50  0000 C CNN
-	1    5850 4700
+P 8050 4550
+F 0 "#PWR57" H 8050 4300 50  0001 C CNN
+F 1 "GND" H 8050 4400 50  0000 C CNN
+F 2 "" H 8050 4550 50  0000 C CNN
+F 3 "" H 8050 4550 50  0000 C CNN
+	1    8050 4550
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
 	5850 4700 5850 4600
-Wire Notes Line
-	5900 4650 9550 4650
-Text Notes 9600 4650 0    60   ~ 0
-"When the pin is configured as output, it can be used\nfor signaling analog mute, temperature alert, \nPLL frequency output, and PLL frequency lock. The CSb/GPIO pin\ncan also output the master clock through a PLL or directly"
 Text Notes 9550 4000 0    60   ~ 0
  2-Wire Serial Clock & Data
 Wire Notes Line
-	5350 5200 5650 5200
+	5300 5200 5650 5200
 Text HLabel 1400 3200 0    60   Input ~ 0
 MCLK
 Text HLabel 1400 3350 0    60   Input ~ 0
@@ -509,7 +532,9 @@ Connection ~ 7150 3250
 Wire Wire Line
 	6850 3250 6500 3250
 Wire Wire Line
-	6500 3100 6500 3500
+	6500 3100 6500 3250
+Wire Wire Line
+	6500 3250 6500 3500
 Connection ~ 6500 3500
 Connection ~ 6500 3250
 $Comp
@@ -605,16 +630,50 @@ L CONN_01X01 P?
 U 1 1 582BB613
 P 8400 3700
 F 0 "P?" H 8400 3800 50  0000 C CNN
-F 1 "CONN_01X01" V 8500 3700 50  0000 C CNN
+F 1 "MOut-Pin" V 8500 3700 50  0000 C CNN
 F 2 "Connect:1pin" H 8400 3700 50  0000 C CNN
 F 3 "" H 8400 3700 50  0000 C CNN
 	1    8400 3700
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	7950 3700 8200 3700
-Wire Notes Line
-	8650 3700 9550 3700
+	7950 3700 8050 3700
+Wire Wire Line
+	8050 3700 8200 3700
 Wire Notes Line
 	9550 3700 9550 3650
+$Comp
+L Jack.3.5mm-Mono J?
+U 1 1 5826FDD0
+P 8650 4300
+F 0 "J?" H 8900 4050 60  0000 C CNN
+F 1 "Jack.3.5mm-Mono" H 8600 4550 60  0000 C CNN
+F 2 "" H 8650 4350 60  0001 C CNN
+F 3 "" H 8650 4350 60  0001 C CNN
+	1    8650 4300
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	5850 4700 7850 4700
+Wire Wire Line
+	7850 4700 7850 4300
+Wire Wire Line
+	7850 4300 8150 4300
+Wire Wire Line
+	8150 4450 8050 4450
+Wire Wire Line
+	8050 4450 8050 4550
+Wire Wire Line
+	8050 3700 8050 4150
+Wire Wire Line
+	8050 4150 8150 4150
+Connection ~ 8050 3700
+Text Notes 7900 5000 0    60   ~ 0
+GPIO used for Jack Detect\nSee NAU8814 section 12.7.2
+Wire Notes Line
+	7850 4700 7850 4900
+Wire Notes Line
+	7850 4900 7900 4900
+Text Notes 8150 3500 0    60   ~ 0
+Mono Out
 $EndSCHEMATC
