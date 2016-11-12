@@ -111,13 +111,13 @@ L C_Small C2
 U 1 1 581BC31F
 P 2000 1900
 F 0 "C2" H 2010 1970 50  0000 L CNN
-F 1 "2.2uF" H 2010 1820 50  0000 L CNN
+F 1 "1uF" H 2010 1820 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" H 2000 1900 50  0001 C CNN
 F 3 "" H 2000 1900 50  0000 C CNN
-F 4 "490-3296-1-ND" H 2000 1900 60  0001 C CNN "Digikey PN"
-F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM188R61C225KE15D/490-3296-1-ND/702837" H 2000 1900 60  0001 C CNN "Link"
-F 6 "GRM188R61C225KE15D" H 2000 1900 60  0001 C CNN "Manufacturer PN"
-F 7 "0.12" H 2000 1900 60  0001 C CNN "Unit Cost"
+F 4 "490-1536-1-ND" H 2000 1900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM188R61C105KA93D/490-1536-1-ND/587769" H 2000 1900 60  0001 C CNN "Link"
+F 6 "GRM188R61C105KA93D" H 2000 1900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.1" H 2000 1900 60  0001 C CNN "Unit Cost"
 	1    2000 1900
 	0    1    1    0   
 $EndComp
@@ -144,7 +144,7 @@ Wire Wire Line
 Wire Wire Line
 	1300 2400 1300 2450
 Wire Wire Line
-	1300 2450 1500 2450
+	1300 2450 2250 2450
 Wire Wire Line
 	1400 2550 1400 2450
 Wire Wire Line
@@ -272,7 +272,7 @@ F 7 "0.01" H 3600 4150 60  0001 C CNN "Unit Cost"
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	1400 1150 800  1150
+	800  1150 1400 1150
 Wire Wire Line
 	800  1150 800  1750
 Wire Wire Line
@@ -296,7 +296,7 @@ Text Notes 9600 3850 0    60   ~ 0
 I2C Mode - Address 0x34
 NoConn ~ 5650 2900
 Wire Wire Line
-	7200 2800 5850 2800
+	5850 2800 7200 2800
 Wire Wire Line
 	5850 2800 5850 2900
 Wire Wire Line
@@ -305,8 +305,6 @@ Wire Wire Line
 	7150 3000 7150 3600
 Wire Wire Line
 	7150 3600 6450 3600
-Wire Notes Line
-	6800 3700 9550 3700
 Text Notes 9600 3700 0    60   ~ 0
 Mono Out - NC or come out to header?\nOr could go to TRS 3.5mm jack.
 $Comp
@@ -372,7 +370,7 @@ F 3 "" H 3850 4450 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 Wire Wire Line
-	3850 4450 3850 4300
+	3850 4300 3850 4450
 Wire Wire Line
 	3600 4400 4100 4400
 Wire Wire Line
@@ -403,7 +401,6 @@ Wire Notes Line
 	5900 4650 9550 4650
 Text Notes 9600 4650 0    60   ~ 0
 "When the pin is configured as output, it can be used\nfor signaling analog mute, temperature alert, \nPLL frequency output, and PLL frequency lock. The CSb/GPIO pin\ncan also output the master clock through a PLL or directly"
-NoConn ~ 6450 3700
 Text Notes 9550 4000 0    60   ~ 0
  2-Wire Serial Clock & Data
 Wire Notes Line
@@ -489,32 +486,17 @@ Wire Wire Line
 Wire Wire Line
 	1400 3900 1550 3900
 $Comp
-L C_Small C18
-U 1 1 581FF4BD
-P 6950 3250
-F 0 "C18" H 6960 3320 50  0000 L CNN
-F 1 "100pF" H 6960 3170 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 6950 3250 50  0001 C CNN
-F 3 "" H 6950 3250 50  0000 C CNN
-F 4 "490-3160-1-ND" H 6950 3250 60  0001 C CNN "Digikey PN"
-F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM0335C1E101JA01D/490-3160-1-ND/702701" H 6950 3250 60  0001 C CNN "Link"
-F 6 "GRM0335C1E101JA01D" H 6950 3250 60  0001 C CNN "Manufacturer PN"
-F 7 "0.01" H 6950 3250 60  0001 C CNN "Unit Cost"
-	1    6950 3250
-	0    1    1    0   
-$EndComp
-$Comp
 L C_Small C17
 U 1 1 5820032A
 P 6500 3000
 F 0 "C17" H 6510 3070 50  0000 L CNN
-F 1 "100pF" H 6510 2920 50  0000 L CNN
+F 1 "33pF 1%" H 6510 2920 50  0000 L CNN
 F 2 "Capacitors_SMD:C_0603_HandSoldering" H 6500 3000 50  0001 C CNN
 F 3 "" H 6500 3000 50  0000 C CNN
-F 4 "490-3160-1-ND" H 6500 3000 60  0001 C CNN "Digikey PN"
-F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM0335C1E101JA01D/490-3160-1-ND/702701" H 6500 3000 60  0001 C CNN "Link"
-F 6 "GRM0335C1E101JA01D" H 6500 3000 60  0001 C CNN "Manufacturer PN"
-F 7 "0.01" H 6500 3000 60  0001 C CNN "Unit Cost"
+F 4 "1276-2262-1-ND" H 6500 3000 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10C330FB8NNNC/1276-2262-1-ND/3890348" H 6500 3000 60  0001 C CNN "Link"
+F 6 "CL10C330FB8NNNC" H 6500 3000 60  0001 C CNN "Manufacturer PN"
+F 7 "0.14" H 6500 3000 60  0001 C CNN "Unit Cost"
 	1    6500 3000
 	1    0    0    -1  
 $EndComp
@@ -545,4 +527,94 @@ F 7 "0.10" V 1400 1300 60  0001 C CNN "Unit Cost"
 	1    1400 1300
 	-1   0    0    1   
 $EndComp
+Wire Wire Line
+	1050 1150 1050 1800
+Connection ~ 1050 1150
+Wire Wire Line
+	1050 2000 1050 2450
+Connection ~ 1050 2450
+Connection ~ 1500 2450
+$Comp
+L C_Small C18
+U 1 1 582BA565
+P 6950 3250
+F 0 "C18" H 6960 3320 50  0000 L CNN
+F 1 "33pF 1%" H 6960 3170 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 6950 3250 50  0001 C CNN
+F 3 "" H 6950 3250 50  0000 C CNN
+F 4 "1276-2262-1-ND" H 6950 3250 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10C330FB8NNNC/1276-2262-1-ND/3890348" H 6950 3250 60  0001 C CNN "Link"
+F 6 "CL10C330FB8NNNC" H 6950 3250 60  0001 C CNN "Manufacturer PN"
+F 7 "0.14" H 6950 3250 60  0001 C CNN "Unit Cost"
+	1    6950 3250
+	0    1    1    0   
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 582BA612
+P 1050 1900
+F 0 "C?" H 1060 1970 50  0000 L CNN
+F 1 "33pF 1%" H 1060 1820 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 1050 1900 50  0001 C CNN
+F 3 "" H 1050 1900 50  0000 C CNN
+F 4 "1276-2262-1-ND" H 1050 1900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10C330FB8NNNC/1276-2262-1-ND/3890348" H 1050 1900 60  0001 C CNN "Link"
+F 6 "CL10C330FB8NNNC" H 1050 1900 60  0001 C CNN "Manufacturer PN"
+F 7 "0.14" H 1050 1900 60  0001 C CNN "Unit Cost"
+	1    1050 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 582BA791
+P 2250 2150
+F 0 "C?" H 2260 2220 50  0000 L CNN
+F 1 "33pF 1%" H 2260 2070 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 2250 2150 50  0001 C CNN
+F 3 "" H 2250 2150 50  0000 C CNN
+F 4 "1276-2262-1-ND" H 2250 2150 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL10C330FB8NNNC/1276-2262-1-ND/3890348" H 2250 2150 60  0001 C CNN "Link"
+F 6 "CL10C330FB8NNNC" H 2250 2150 60  0001 C CNN "Manufacturer PN"
+F 7 "0.14" H 2250 2150 60  0001 C CNN "Unit Cost"
+	1    2250 2150
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 582BA940
+P 7850 3700
+F 0 "C?" H 7860 3770 50  0000 L CNN
+F 1 "1uF" H 7860 3620 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 7850 3700 50  0001 C CNN
+F 3 "" H 7850 3700 50  0000 C CNN
+F 4 "490-1536-1-ND" H 7850 3700 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM188R61C105KA93D/490-1536-1-ND/587769" H 7850 3700 60  0001 C CNN "Link"
+F 6 "GRM188R61C105KA93D" H 7850 3700 60  0001 C CNN "Manufacturer PN"
+F 7 "0.1" H 7850 3700 60  0001 C CNN "Unit Cost"
+	1    7850 3700
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6450 3700 7750 3700
+Wire Wire Line
+	2250 1900 2250 2050
+Wire Wire Line
+	2250 2450 2250 2250
+$Comp
+L CONN_01X01 P?
+U 1 1 582BB613
+P 8400 3700
+F 0 "P?" H 8400 3800 50  0000 C CNN
+F 1 "CONN_01X01" V 8500 3700 50  0000 C CNN
+F 2 "Connect:1pin" H 8400 3700 50  0000 C CNN
+F 3 "" H 8400 3700 50  0000 C CNN
+	1    8400 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7950 3700 8200 3700
+Wire Notes Line
+	8650 3700 9550 3700
+Wire Notes Line
+	9550 3700 9550 3650
 $EndSCHEMATC
