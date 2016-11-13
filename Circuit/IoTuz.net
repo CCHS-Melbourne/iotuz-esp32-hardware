@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/bob/Git/IoTuz/Circuit/IoTuz.sch)
-    (date "Sun 13 Nov 2016 12:35:06 AEDT")
+    (date "Sun 13 Nov 2016 14:43:11 AEDT")
     (tool "Eeschema 4.0.4+e1-6308~48~ubuntu16.04.1-stable")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
@@ -263,7 +263,7 @@
       (tstamp 5821353B))
     (comp (ref C3)
       (value "10uF 16V")
-      (footprint freetronics_footprints:0805)
+      (footprint Capacitors_SMD:C_0805_HandSoldering)
       (fields
         (field (name "Digikey PN") 1276-2399-1-ND)
         (field (name Link) http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485)
@@ -274,7 +274,7 @@
       (tstamp 582193F3))
     (comp (ref C5)
       (value "10uF 16V")
-      (footprint freetronics_footprints:0805)
+      (footprint Capacitors_SMD:C_0805_HandSoldering)
       (fields
         (field (name "Digikey PN") 1276-2399-1-ND)
         (field (name Link) http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485)
@@ -453,7 +453,7 @@
       (tstamp 5642D8F0))
     (comp (ref C201)
       (value "10uF 16V")
-      (footprint freetronics_footprints:0805)
+      (footprint Capacitors_SMD:C_0805_HandSoldering)
       (fields
         (field (name "Digikey PN") 1276-2399-1-ND)
         (field (name Link) http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485)
@@ -515,7 +515,7 @@
       (tstamp 5820F348))
     (comp (ref C204)
       (value "10uF 16V")
-      (footprint freetronics_footprints:0805)
+      (footprint Capacitors_SMD:C_0805_HandSoldering)
       (fields
         (field (name "Digikey PN") 1276-2399-1-ND)
         (field (name Link) http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485)
@@ -526,7 +526,7 @@
       (tstamp 58217FC8))
     (comp (ref C203)
       (value "10uF 16V")
-      (footprint freetronics_footprints:0805)
+      (footprint Capacitors_SMD:C_0805_HandSoldering)
       (fields
         (field (name "Digikey PN") 1276-2399-1-ND)
         (field (name Link) http://www.digikey.com.au/product-detail/en/samsung-electro-mechanics-america-inc/CL21A106KOCLRNC/1276-2399-1-ND/3890485)
@@ -1654,7 +1654,7 @@
       (node (ref P1) (pin 35))
       (node (ref C5) (pin 1))
       (node (ref D201) (pin A)))
-    (net (code 3) (name /ADXL_INT)
+    (net (code 3) (name /ACCEL_INT)
       (node (ref R6) (pin 1))
       (node (ref U7) (pin 9)))
     (net (code 4) (name "/I2C Sensors/ADXL_INT")
