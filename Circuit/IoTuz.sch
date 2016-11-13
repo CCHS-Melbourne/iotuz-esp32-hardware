@@ -696,7 +696,7 @@ F0 "LCDTouch" 60
 F1 "LCDTouchScreen.sch" 60
 F2 "SD_CS" I L 2500 2850 60 
 F3 "Touch_CS" I L 2500 2600 60 
-F4 "Backlight_CTR" I L 2500 2500 60 
+F4 "~Backlight_CTR" I L 2500 2500 60 
 F5 "LCD_CS" I L 2500 1800 60 
 F6 "LCD_RST" I L 2500 1900 60 
 F7 "SPI1_MISO" O L 2500 2300 60 
@@ -1382,7 +1382,7 @@ Text Label 2650 4250 2    61   ~ 0
 ACCEL_INT
 Text Label 2000 2500 0    61   ~ 0
 BL_Control
-Text Label 8100 5100 2    61   ~ 0
+Text Label 8100 5300 2    61   ~ 0
 BL_Control
 Text Label 8100 5000 2    61   ~ 0
 ACCEL_INT
@@ -1394,7 +1394,7 @@ Text Label 8100 4800 2    61   ~ 0
 Enc_Btn
 Text Label 2000 2700 0    61   ~ 0
 Touch_INT
-Text Label 8100 4900 2    61   ~ 0
+Text Label 8100 5100 2    61   ~ 0
 Touch_INT
 Text Label 6200 4600 0    60   ~ 0
 I2C_SCL
@@ -1456,7 +1456,7 @@ Text Label 8100 5200 2    61   ~ 0
 Touch_Sel
 Wire Wire Line
 	7600 5200 8100 5200
-Text Label 8100 5300 2    61   ~ 0
+Text Label 8100 4900 2    61   ~ 0
 SD_Sel
 Wire Wire Line
 	8100 5300 7600 5300
@@ -1652,4 +1652,6 @@ F 7 "0.1" H 10550 1200 60  0001 C CNN "Unit Cost"
 	1    10550 1200
 	1    0    0    -1  
 $EndComp
+Text Notes 7050 1750 0    60   ~ 0
+SPARE BABY!
 $EndSCHEMATC
