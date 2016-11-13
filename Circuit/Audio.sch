@@ -657,4 +657,8 @@ F 7 "0.01" H 3850 4150 60  0001 C CNN "Unit Cost"
 	1    3850 4150
 	1    0    0    -1  
 $EndComp
+Text Label 6500 2800 0    60   ~ 0
+Speaker-
+Text Label 7150 3600 0    60   ~ 0
+Speaker+
 $EndSCHEMATC
