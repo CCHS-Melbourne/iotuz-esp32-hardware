@@ -711,7 +711,7 @@ U 5811E5C9
 F0 "IRTransceiver" 60
 F1 "IRTransceiver.sch" 60
 F2 "IRRx" O R 10350 2250 60 
-F3 "IRTx" I L 9300 2250 60 
+F3 "~IRTx" I L 9300 2250 60 
 $EndSheet
 Text Notes 7050 2350 0    60   ~ 0
 Joy_button/PRGM
@@ -946,14 +946,14 @@ Wire Wire Line
 Wire Wire Line
 	10300 800  10650 800 
 Wire Wire Line
-	10550 1050 10550 800 
+	10550 800  10550 1100
 Connection ~ 10550 800 
 Wire Wire Line
 	10300 1500 10300 1650
 Wire Wire Line
-	10300 1600 10550 1600
+	10550 1600 10300 1600
 Wire Wire Line
-	10550 1600 10550 1350
+	10550 1300 10550 1600
 Connection ~ 10300 1600
 Wire Wire Line
 	10950 800  11150 800 
@@ -1199,21 +1199,6 @@ F 7 "0.10" V 2050 4250 60  0001 C CNN "Unit Cost"
 	1    2050 4250
 	0    1    1    0   
 $EndComp
-$Comp
-L C C11
-U 1 1 58230BE0
-P 10550 1200
-F 0 "C11" H 10575 1300 50  0000 L CNN
-F 1 "1nF" H 10575 1100 50  0000 L CNN
-F 2 "Capacitors_SMD:C_0603_HandSoldering" H 10588 1050 50  0001 C CNN
-F 3 "" H 10550 1200 50  0000 C CNN
-F 4 "490-3184-1-ND" H 10550 1200 60  0001 C CNN "Digikey PN"
-F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM033R71E102KA01D/490-3184-1-ND/702725" H 10550 1200 60  0001 C CNN "Link"
-F 6 "GRM033R71E102KA01D" H 10550 1200 60  0001 C CNN "Manufacturer PN"
-F 7 "0.10" H 10550 1200 60  0001 C CNN "Unit Cost"
-	1    10550 1200
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
 	5200 4100 5200 4200
 Wire Wire Line
@@ -1304,7 +1289,7 @@ Sensor_VN
 Text Label 8800 2250 0    60   ~ 0
 Sensor_VP
 Text Notes 3750 1500 0    60   ~ 0
-IRTx
+~IRTx
 Text Notes 7050 1150 0    60   ~ 0
 LED_Data
 Text Notes 3750 1800 0    60   ~ 0
@@ -1652,4 +1637,19 @@ Wire Wire Line
 	4800 7250 4800 7300
 Wire Wire Line
 	4800 7650 4800 7600
+$Comp
+L C_Small C11
+U 1 1 582AAA8A
+P 10550 1200
+F 0 "C11" H 10560 1270 50  0000 L CNN
+F 1 "1uF" H 10560 1120 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603_HandSoldering" H 10550 1200 50  0001 C CNN
+F 3 "" H 10550 1200 50  0000 C CNN
+F 4 "490-1536-1-ND" H 10550 1200 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/murata-electronics-north-america/GRM188R61C105KA93D/490-1536-1-ND/587769" H 10550 1200 60  0001 C CNN "Link"
+F 6 "GRM188R61C105KA93D" H 10550 1200 60  0001 C CNN "Manufacturer PN"
+F 7 "0.1" H 10550 1200 60  0001 C CNN "Unit Cost"
+	1    10550 1200
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
