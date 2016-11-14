@@ -1,9 +1,9 @@
-(kicad_pcb (version 4) (host pcbnew 4.0.4+e1-6308~48~ubuntu16.04.1-stable)
+(kicad_pcb (version 4) (host pcbnew 4.0.3-1.fc24-product)
 
   (general
     (links 399)
-    (no_connects 23)
-    (area 0 34.300001 202.423477 152.705)
+    (no_connects 21)
+    (area 49.949999 54.949999 200.050001 150.050001)
     (thickness 1.6)
     (drawings 234)
     (tracks 1372)
@@ -2789,6 +2789,11 @@
       (net 26 /IO13))
     (pad 17 thru_hole oval (at 17.78 -81) (size 1.524 1.524) (drill 1.016) (layers *.Cu *.Mask)
       (net 25 /IO12))
+    (model iotuz.3dshapes/lcd-red-2in8.wrl
+      (at (xyz 0 0 0.25))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Capacitors_SMD:C_0603_HandSoldering (layer F.Cu) (tedit 541A9B4D) (tstamp 5826FD00)
