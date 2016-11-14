@@ -1384,13 +1384,13 @@ Text Label 2000 2500 0    61   ~ 0
 BL_Control
 Text Label 8100 5300 2    61   ~ 0
 BL_Control
-Text Label 8100 5000 2    61   ~ 0
-ACCEL_INT
 Text Label 8100 4600 2    61   ~ 0
-A_Btn
+ACCEL_INT
 Text Label 8100 4700 2    61   ~ 0
-B_Btn
+A_Btn
 Text Label 8100 4800 2    61   ~ 0
+B_Btn
+Text Label 8100 4900 2    61   ~ 0
 Enc_Btn
 Text Label 2000 2700 0    61   ~ 0
 Touch_INT
@@ -1456,7 +1456,7 @@ Text Label 8100 5200 2    61   ~ 0
 Touch_Sel
 Wire Wire Line
 	7600 5200 8100 5200
-Text Label 8100 4900 2    61   ~ 0
+Text Label 8100 5000 2    61   ~ 0
 SD_Sel
 Wire Wire Line
 	8100 5300 7600 5300

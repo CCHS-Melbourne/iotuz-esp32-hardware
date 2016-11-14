@@ -162,9 +162,9 @@ Wire Wire Line
 	2400 1450 2500 1450
 Text HLabel 1000 850  2    60   Input ~ 0
 JOY_BUTTON
-Text HLabel 2500 1450 2    60   Input ~ 0
-JOY_X
 Text HLabel 2100 900  2    60   Input ~ 0
+JOY_X
+Text HLabel 2500 1450 2    60   Input ~ 0
 JOY_Y
 Wire Wire Line
 	950  850  1000 850 
