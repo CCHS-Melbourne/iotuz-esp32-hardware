@@ -2342,6 +2342,11 @@
       (net 115 /Audio/Speaker-))
     (pad 2 thru_hole circle (at 0 3.8) (size 1 1) (drill 0.762) (layers *.Cu *.Mask)
       (net 116 /Audio/Speaker+))
+    (model iotuz.3dshapes/speaker.wrl
+      (at (xyz 0 0 0.02))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module libs:TSOP38238.IRReceiver (layer F.Cu) (tedit 581D35A5) (tstamp 581E66A4)
