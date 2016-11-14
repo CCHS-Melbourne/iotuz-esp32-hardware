@@ -2,8 +2,8 @@
 
   (general
     (links 396)
-    (no_connects 1)
-    (area 0 34.300001 202.423477 152.705)
+    (no_connects 0)
+    (area 49.949999 54.949999 200.050001 150.050001)
     (thickness 1.6)
     (drawings 234)
     (tracks 1472)

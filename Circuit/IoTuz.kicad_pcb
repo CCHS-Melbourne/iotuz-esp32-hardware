@@ -3,7 +3,7 @@
   (general
     (links 396)
     (no_connects 0)
-    (area 0 34.300001 202.423477 152.705)
+    (area 49.949999 54.949999 200.050001 150.050001)
     (thickness 1.6)
     (drawings 234)
     (tracks 1472)
@@ -2318,6 +2318,11 @@
       (net 115 /Audio/Speaker-))
     (pad 2 thru_hole circle (at 0 3.8) (size 1 1) (drill 0.762) (layers *.Cu *.Mask)
       (net 116 /Audio/Speaker+))
+    (model iotuz.3dshapes/speaker.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module libs:TSOP38238.IRReceiver (layer F.Cu) (tedit 581D35A5) (tstamp 581E66A4)
@@ -2765,6 +2770,11 @@
       (net 26 /IO13))
     (pad 17 thru_hole oval (at 17.78 -81) (size 1.524 1.524) (drill 1.016) (layers *.Cu *.Mask)
       (net 25 /IO12))
+    (model iotuz.3dshapes/lcd-red-2in8.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (module Capacitors_SMD:C_0603_HandSoldering (layer F.Cu) (tedit 541A9B4D) (tstamp 5826FD00)
