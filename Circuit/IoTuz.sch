@@ -423,7 +423,7 @@ F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 1800 4925 50  0000 L CIN
 F 3 "" H 1600 5000 50  0000 L CNN
 F 4 "MMSS8050-H-TPMSCT-ND" H 1600 5000 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/micro-commercial-co/MMSS8050-H-TP/MMSS8050-H-TPMSCT-ND/2825945" H 1600 5000 60  0001 C CNN "Link"
-F 6 "MMSS8050-H-TP" H 1600 5000 60  0001 C CNN "Manufactuer PN"
+F 6 "MMSS8050-H-TP" H 1600 5000 60  0001 C CNN "Manufacturer PN"
 F 7 "0.20" H 1600 5000 60  0001 C CNN "Unit Cost"
 	1    1600 5000
 	1    0    0    -1  
@@ -438,7 +438,7 @@ F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 1800 5575 50  0000 L CIN
 F 3 "" H 1600 5650 50  0000 L CNN
 F 4 "MMSS8050-H-TPMSCT-ND" H 1600 5000 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/micro-commercial-co/MMSS8050-H-TP/MMSS8050-H-TPMSCT-ND/2825945" H 1600 5000 60  0001 C CNN "Link"
-F 6 "MMSS8050-H-TP" H 1600 5000 60  0001 C CNN "Manufactuer PN"
+F 6 "MMSS8050-H-TP" H 1600 5000 60  0001 C CNN "Manufacturer PN"
 F 7 "0.20" H 1600 5000 60  0001 C CNN "Unit Cost"
 	1    1600 5650
 	1    0    0    1   
@@ -472,6 +472,7 @@ F 0 "SW5" H 10450 1310 50  0000 C CNN
 F 1 "RESET" H 10300 1120 50  0000 C CNN
 F 2 "freetronics_footprints:SW_PUSHBUTTON_PTH" H 10300 1200 50  0001 C CNN
 F 3 "" H 10300 1200 50  0000 C CNN
+F 4 "1" H 10300 1200 60  0001 C CNN "Non-Digikey"
 	1    10300 1200
 	0    -1   -1   0   
 $EndComp

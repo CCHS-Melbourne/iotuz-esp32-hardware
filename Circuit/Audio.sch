@@ -67,10 +67,10 @@ F 0 "SP1" H 7400 3150 50  0000 C CNN
 F 1 "SPEAKER" H 7400 2650 50  0000 C CNN
 F 2 "libs:CVS-1508.Speaker.PCPins" H 7500 2900 50  0001 C CNN
 F 3 "" H 7500 2900 50  0000 C CNN
-F 4 "http://www.digikey.com.au/product-detail/en/cui-inc/CVS-1508/102-2498-ND/2791828" H 7500 2900 60  0001 C CNN "Link"
-F 5 "3.3600" H 7500 2900 60  0001 C CNN "Unit Cost"
-F 6 "102-2498-ND" H 7500 2900 60  0001 C CNN "Digikey PN"
-F 7 "CVS-1508" H 7500 2900 60  0001 C CNN "Manufacturer PN"
+F 4 "102-2498-ND" H 7500 2900 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/cui-inc/CVS-1508/102-2498-ND/2791828" H 7500 2900 60  0001 C CNN "Link"
+F 6 "CVS-1508" H 7500 2900 60  0001 C CNN "Manufacturer PN"
+F 7 "3.3600" H 7500 2900 60  0001 C CNN "Unit Cost"
 	1    7500 2900
 	1    0    0    -1  
 $EndComp
@@ -592,7 +592,7 @@ F 3 "" H 5600 3750 60  0001 C CNN
 F 4 "NAU8814YG-ND" H 5600 3750 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/nuvoton-technology-corporation-of-america/NAU8814YG/NAU8814YG-ND/4271437" H 5600 3750 60  0001 C CNN "Link"
 F 6 "NAU8814YG" H 5600 3750 60  0001 C CNN "Manufacturer PN"
-F 7 "3.06" H 5600 3750 60  0001 C CNN "Unit Price"
+F 7 "3.06" H 5600 3750 60  0001 C CNN "Unit Cost"
 	1    5600 3750
 	1    0    0    -1  
 $EndComp

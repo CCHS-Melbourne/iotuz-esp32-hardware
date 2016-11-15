@@ -65,9 +65,9 @@ F 0 "P8" H 4600 2900 50  0000 C CNN
 F 1 "IRReceiver" V 4700 2700 50  0000 C CNN
 F 2 "libs:TSOP38238.IRReceiver" H 4600 2700 50  0000 C CNN
 F 3 "" H 4600 2700 50  0000 C CNN
-F 4 "TSOP38238" H 4600 2700 60  0001 C CNN "Manufacturer PN"
-F 5 "751-1227-ND" H 4600 2700 60  0001 C CNN "Digikey PN"
-F 6 "http://www.digikey.com.au/product-detail/en/vishay-semiconductor-opto-division/TSOP38238/751-1227-ND/1681362" H 4600 2700 60  0001 C CNN "Link"
+F 4 "751-1227-ND" H 4600 2700 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/vishay-semiconductor-opto-division/TSOP38238/751-1227-ND/1681362" H 4600 2700 60  0001 C CNN "Link"
+F 6 "TSOP38238" H 4600 2700 60  0001 C CNN "Manufacturer PN"
 F 7 "1.12" H 4600 2700 60  0001 C CNN "Unit Cost"
 	1    4600 2700
 	1    0    0    -1  
@@ -118,9 +118,9 @@ F 0 "D3" H 4500 4900 50  0000 C CNN
 F 1 "IRLED" H 4500 4700 50  0000 C CNN
 F 2 "LEDs:LED-5MM" H 4500 4800 50  0001 C CNN
 F 3 "" H 4500 4800 50  0000 C CNN
-F 4 "TSAL6200" H 4500 4800 60  0001 C CNN "Manufacturer PN"
-F 5 "751-1204-ND" H 4500 4800 60  0001 C CNN "Digikey PN"
-F 6 "http://www.digikey.com.au/product-detail/en/vishay-semiconductor-opto-division/TSAL6200/751-1204-ND/1681339" H 4500 4800 60  0001 C CNN "Link"
+F 4 "751-1204-ND" H 4500 4800 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com.au/product-detail/en/vishay-semiconductor-opto-division/TSAL6200/751-1204-ND/1681339" H 4500 4800 60  0001 C CNN "Link"
+F 6 "TSAL6200" H 4500 4800 60  0001 C CNN "Manufacturer PN"
 F 7 "0.57" H 4500 4800 60  0001 C CNN "Unit Cost"
 	1    4500 4800
 	0    -1   -1   0   
