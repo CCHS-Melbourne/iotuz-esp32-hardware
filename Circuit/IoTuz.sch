@@ -1037,23 +1037,9 @@ Wire Wire Line
 Wire Wire Line
 	7900 900  7650 900 
 Wire Wire Line
-	8100 850  8100 1250
-Wire Wire Line
-	7750 1250 8600 1250
-Wire Wire Line
 	7750 1250 7750 1150
 Wire Wire Line
-	8600 1250 8600 850 
-Connection ~ 8100 1250
-Wire Wire Line
-	8000 850  8000 1000
-Wire Wire Line
-	8000 1000 8700 1000
-Wire Wire Line
 	8700 1000 8700 1100
-Wire Wire Line
-	8500 850  8500 1000
-Connection ~ 8500 1000
 Wire Wire Line
 	1150 1650 1550 1650
 Wire Wire Line
@@ -1691,4 +1677,18 @@ F 3 "" H 6300 6850 50  0000 C CNN
 	1    0    0    -1  
 $EndComp
 NoConn ~ 6100 6850
+Wire Wire Line
+	7750 1250 8500 1250
+Wire Wire Line
+	8500 1250 8500 850 
+Wire Wire Line
+	8000 850  8000 1250
+Connection ~ 8000 1250
+Wire Wire Line
+	8100 850  8100 1000
+Wire Wire Line
+	8100 1000 8700 1000
+Wire Wire Line
+	8600 850  8600 1000
+Connection ~ 8600 1000
 $EndSCHEMATC
