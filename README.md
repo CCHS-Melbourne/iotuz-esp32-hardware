@@ -46,6 +46,7 @@ This project was designed by the 2017 linux.conf.au Open Hardware Team!
  - [Andy Gelme](https://github.com/geekscape)
  - [Jon Oxer](https://github.com/jonoxer)
  - [Mark Wolfe](https://github.com/wolfeidau)
+ - [Ian Firns](https://github.com/firnsy)
 
 Made at hackmelbourne.org!
 
