@@ -1682,13 +1682,13 @@ U 1 1 583F843A
 P 1600 5650
 F 0 "Q2" H 1900 5600 50  0000 R CNN
 F 1 "S8050" H 2050 5700 50  0000 R CNN
-F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 2700 5800 50  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:SOT-23_Handsoldering" H 2650 5500 50  0000 C CNN
 F 3 "" H 1600 5650 50  0000 C CNN
 F 4 "MMSS8050-H-TPMSCT-ND" H 1600 5650 60  0001 C CNN "Digikey PN"
 F 5 "http://www.digikey.com.au/product-detail/en/micro-commercial-co/MMSS8050-H-TP/MMSS8050-H-TPMSCT-ND/2825945" H 1600 5650 60  0001 C CNN "Link"
 F 6 "MMSS8050-H-TP" H 1600 5650 60  0001 C CNN "Manufacturer PN"
 F 7 "0.20" H 1600 5650 60  0001 C CNN "Unit Cost"
 	1    1600 5650
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 $EndSCHEMATC
