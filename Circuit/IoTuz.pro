@@ -1,4 +1,4 @@
-update=Sat 12 Nov 2016 21:41:28 AEDT
+update=5/12/2016 1:17:01 AM
 version=1
 last_client=kicad
 [pcbnew]
@@ -72,3 +72,4 @@ LibName40=libs/spu0410hr5h
 LibName41=libs/ili9341.touchlcd.red
 LibName42=libs/NCP5501
 LibName43=libs/Jack.3.5mm-CUI-MJ3523
+LibName44=libs/alligator.x39

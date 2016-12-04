@@ -1,7 +1,7 @@
 EESchema-DOCLIB  Version 2.0
 #
-$CMP CONN_01X39
-D Connector, single row, 01x39
+$CMP ALLIGATOR_X39
+D Alligator pins x39
 K connector
 $ENDCMP
 #
