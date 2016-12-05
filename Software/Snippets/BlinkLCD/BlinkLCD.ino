@@ -4,10 +4,10 @@
 #include <Wire.h> 
 
 int address = 0x20; //0100000 (7bit) address of the IO expander on i2c bus
-uint8_t dataReceive; //16bit data received
-uint8_t dataSend;  //16bit data sent
+uint8_t dataReceive; //8bit data received
+uint8_t dataSend;  //8bit data sent
 
-// the setup function runs once when you press reset or power the board
+
 void setup() {
   Wire.begin(); 
   Serial.begin(115200);
