@@ -42,6 +42,7 @@ LIBS:spu0410hr5h
 LIBS:ili9341.touchlcd.red
 LIBS:NCP5501
 LIBS:Jack.3.5mm-CUI-MJ3523
+LIBS:alligator.x39
 LIBS:IoTuz-cache
 EELAYER 25 0
 EELAYER END
