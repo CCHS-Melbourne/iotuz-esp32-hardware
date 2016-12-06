@@ -750,13 +750,13 @@ Text Label 10050 2600 0    60   ~ 0
 TXD
 Text Label 10050 4700 0    60   ~ 0
 IO14
-Text Label 10050 4800 0    60   ~ 0
-IO27
 Text Label 10050 5000 0    60   ~ 0
+IO27
+Text Label 10050 5200 0    60   ~ 0
 IO26
 Text Label 10050 5100 0    60   ~ 0
 IO25
-Text Label 10050 5200 0    60   ~ 0
+Text Label 10050 5300 0    60   ~ 0
 IO33
 $Comp
 L R R5
@@ -848,11 +848,11 @@ F 7 "0.10" V 2050 4250 60  0001 C CNN "Unit Cost"
 	1    2050 4250
 	0    1    1    0   
 $EndComp
-Text Label 10050 5600 0    60   ~ 0
+Text Label 10050 5700 0    60   ~ 0
 IO34
-Text Label 10050 5400 0    60   ~ 0
+Text Label 10050 5500 0    60   ~ 0
 IO35
-Text Label 10050 5300 0    60   ~ 0
+Text Label 10050 5400 0    60   ~ 0
 IO32
 Text Label 10050 4500 0    60   ~ 0
 IO13
@@ -1065,9 +1065,9 @@ F 3 "" H 1550 3150 50  0000 C CNN
 	1    1550 3150
 	1    0    0    -1  
 $EndComp
-Text Label 10050 5800 0    60   ~ 0
+Text Label 10050 5900 0    60   ~ 0
 Sensor_VP
-Text Label 10050 5700 0    60   ~ 0
+Text Label 10050 5800 0    60   ~ 0
 Sensor_VN
 Text Label 10050 4300 0    60   ~ 0
 IO15
@@ -1091,7 +1091,7 @@ Text Label 10050 3400 0    60   ~ 0
 IO23
 Text Label 4950 5150 0    60   ~ 0
 AuxAudioIn
-Text Label 9900 5500 0    60   ~ 0
+Text Label 10050 5600 0    60   ~ 0
 AuxAudioIn
 Text Label 7200 5050 2    60   ~ 0
 MonoAudioOut
@@ -1698,7 +1698,7 @@ Wire Wire Line
 Wire Wire Line
 	10500 4700 10050 4700
 Wire Wire Line
-	10500 4800 10050 4800
+	9700 4800 10500 4800
 Wire Wire Line
 	10500 4900 9850 4900
 Wire Wire Line
@@ -1706,15 +1706,13 @@ Wire Wire Line
 Wire Wire Line
 	10500 6000 10050 6000
 Wire Wire Line
-	10050 5900 10500 5900
-Wire Wire Line
 	10500 5800 10050 5800
 Wire Wire Line
 	10500 5700 10050 5700
 Wire Wire Line
 	10500 5600 10050 5600
 Wire Wire Line
-	10500 5500 9900 5500
+	10500 5500 10050 5500
 Wire Wire Line
 	10500 5400 10050 5400
 Wire Wire Line
@@ -1727,4 +1725,32 @@ Text Label 6950 5800 0    60   ~ 0
 IO26
 Text Label 2200 1800 0    60   ~ 0
 IO19
+$Comp
+L GND #PWR?
+U 1 1 58470982
+P 10050 6300
+F 0 "#PWR?" H 10050 6050 50  0001 C CNN
+F 1 "GND" H 10050 6150 50  0000 C CNN
+F 2 "" H 10050 6300 50  0000 C CNN
+F 3 "" H 10050 6300 50  0000 C CNN
+	1    10050 6300
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	10050 6000 10050 6300
+Wire Wire Line
+	10500 5900 10050 5900
+$Comp
+L GND #PWR?
+U 1 1 584977AE
+P 9700 4850
+F 0 "#PWR?" H 9700 4600 50  0001 C CNN
+F 1 "GND" H 9700 4700 50  0000 C CNN
+F 2 "" H 9700 4850 50  0000 C CNN
+F 3 "" H 9700 4850 50  0000 C CNN
+	1    9700 4850
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	9700 4800 9700 4850
 $EndSCHEMATC
