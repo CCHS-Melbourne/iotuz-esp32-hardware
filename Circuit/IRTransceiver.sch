@@ -131,13 +131,13 @@ L R R16
 U 1 1 581D690A
 P 4500 4400
 F 0 "R16" V 4580 4400 50  0000 C CNN
-F 1 "22R" V 4500 4400 50  0000 C CNN
+F 1 "22R 1/4W" V 4400 4400 50  0000 C CNN
 F 2 "Resistors_SMD:R_0603_HandSoldering" V 4430 4400 50  0001 C CNN
 F 3 "" H 4500 4400 50  0000 C CNN
-F 4 "311-22GRCT-ND" V 4500 4400 60  0001 C CNN "Digikey PN"
-F 5 "http://www.digikey.com.au/product-detail/en/yageo/RC0603JR-0722RL/311-22GRCT-ND/729690" V 4500 4400 60  0001 C CNN "Link"
-F 6 "RC0603JR-0722RL" V 4500 4400 60  0001 C CNN "Manufacturer PN"
-F 7 "0.10" V 4500 4400 60  0001 C CNN "Unit Cost"
+F 4 "P22.00BZCT-ND" V 4500 4400 60  0001 C CNN "Digikey PN"
+F 5 "http://www.digikey.com/product-detail/en/panasonic-electronic-components/ERJ-PA3J220V/P22.00BZCT-ND/5036282" V 4500 4400 60  0001 C CNN "Link"
+F 6 "ERJ-PA3J220V" V 4500 4400 60  0001 C CNN "Manufacturer PN"
+F 7 "0.11" V 4500 4400 60  0001 C CNN "Unit Cost"
 	1    4500 4400
 	1    0    0    -1  
 $EndComp
