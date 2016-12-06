@@ -689,11 +689,11 @@ Text Notes 7050 2350 0    60   ~ 0
 Joy_button/PRGM
 Text Notes 6100 3500 1    60   ~ 0
 ENC_A
-Text Notes 6200 3500 1    60   ~ 0
+Text Notes 3950 1500 2    60   ~ 0
 ENC_B
 Text Notes 3750 1700 0    60   ~ 0
 Joy_X
-Text Notes 3400 2200 0    60   ~ 0
+Text Notes 6200 4150 1    60   ~ 0
 Battery V (1/10)
 Text Notes 3750 1400 0    60   ~ 0
 Reset
@@ -864,17 +864,17 @@ Text Label 4250 1500 0    60   ~ 0
 Sensor_VP
 Text Label 4250 1600 0    60   ~ 0
 Sensor_VN
-Text Label 6950 5800 0    60   ~ 0
+Text Label 9400 3700 2    60   ~ 0
 Sensor_VP
-Text Notes 3750 1500 0    60   ~ 0
+Text Notes 3650 2200 0    60   ~ 0
 ~IRTx
 Text Notes 7050 1150 0    60   ~ 0
 LED_Data
-Text Notes 3750 1800 0    60   ~ 0
+Text Notes 7650 1750 0    60   ~ 0
 LCD_CS
 Text Notes 3750 1900 0    60   ~ 0
 LCD_RST
-Text Notes 3750 2000 0    60   ~ 0
+Text Notes 7600 2250 0    60   ~ 0
 LCD_D/C
 Text Label 2200 2100 0    60   ~ 0
 IO13
@@ -980,13 +980,13 @@ Text Label 6850 6750 2    61   ~ 0
 SD_Sel
 Text Notes 3750 2100 0    60   ~ 0
 IO_INT
-Text Label 8800 5800 2    60   ~ 0
+Text Label 2200 2000 0    60   ~ 0
 IO4
-Text Notes 7050 2250 0    60   ~ 0
+Text Notes 3650 1800 0    60   ~ 0
 IRRx
 Text Label 7650 900  0    60   ~ 0
 IO23
-Text Label 9250 3700 2    60   ~ 0
+Text Label 700  3100 2    60   ~ 0
 IO2
 Text Label 9250 3550 2    60   ~ 0
 IO15
@@ -998,7 +998,7 @@ Text Notes 3750 1600 0    60   ~ 0
 Joy_Y
 Text Label 6850 3700 0    60   ~ 0
 Sensor_VN
-Text Label 2200 1800 0    60   ~ 0
+Text Label 8800 5800 2    60   ~ 0
 IO35
 Text Label 2200 1900 0    60   ~ 0
 IO32
@@ -1022,8 +1022,6 @@ Text Notes 7050 1850 0    60   ~ 0
 FS
 Text Label 6850 3550 0    60   ~ 0
 IO34
-Text Label 2200 2000 0    60   ~ 0
-IO33
 $Comp
 L R R4
 U 1 1 582B0107
@@ -1039,8 +1037,6 @@ F 7 "0.10" V 950 3100 60  0001 C CNN "Unit Cost"
 	1    950  3100
 	0    1    1    0   
 $EndComp
-Text Label 700  3100 2    60   ~ 0
-IO26
 $Comp
 L R R20
 U 1 1 582B5E05
@@ -1116,8 +1112,6 @@ F 7 "0.1" H 10550 1200 60  0001 C CNN "Unit Cost"
 	1    10550 1200
 	1    0    0    -1  
 $EndComp
-Text Notes 7050 1750 0    60   ~ 0
-SPARE BABY!
 $Comp
 L CONN_01X01 MP3
 U 1 1 582A40A8
@@ -1511,7 +1505,7 @@ Wire Wire Line
 Wire Wire Line
 	8900 3550 9250 3550
 Wire Wire Line
-	8900 3700 9250 3700
+	8900 3700 9400 3700
 Wire Wire Line
 	5050 4450 5450 4450
 Wire Wire Line
@@ -1729,4 +1723,8 @@ Wire Wire Line
 	10500 5200 10050 5200
 Wire Wire Line
 	10500 5100 10050 5100
+Text Label 6950 5800 0    60   ~ 0
+IO26
+Text Label 2200 1800 0    60   ~ 0
+IO19
 $EndSCHEMATC
