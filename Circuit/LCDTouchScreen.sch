@@ -116,6 +116,7 @@ F 0 "U6" H 3900 3200 60  0000 C CNN
 F 1 "ili9341.TouchLCD.Red.NoName" H 5000 1700 60  0000 C CNN
 F 2 "libs:lcdtouchscreen.2.8inch-red.no-name.ili9341-xpt2046" H 4300 2450 60  0001 C CNN
 F 3 "" H 4300 2450 60  0001 C CNN
+F 4 "1" H 4300 2450 60  0001 C CNN "Non-Digikey"
 	1    4300 2450
 	1    0    0    -1  
 $EndComp
