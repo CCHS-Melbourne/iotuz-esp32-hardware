@@ -749,15 +749,15 @@ Text Label 10050 2600 0    60   ~ 0
 RXD
 Text Label 10050 2700 0    60   ~ 0
 TXD
-Text Label 10050 4700 0    60   ~ 0
+Text Label 10050 5100 0    60   ~ 0
 IO14
 Text Label 10050 5600 0    60   ~ 0
 IO27
 Text Label 10050 5200 0    60   ~ 0
 IO26
-Text Label 10050 5100 0    60   ~ 0
+Text Label 10050 5000 0    60   ~ 0
 IO25
-Text Label 10050 4900 0    60   ~ 0
+Text Label 10050 4800 0    60   ~ 0
 IO33
 $Comp
 L R R5
@@ -851,7 +851,7 @@ F 7 "0.10" V 2050 4250 60  0001 C CNN "Unit Cost"
 $EndComp
 Text Label 10050 5700 0    60   ~ 0
 IO34
-Text Label 10050 5000 0    60   ~ 0
+Text Label 10050 4900 0    60   ~ 0
 IO35
 Text Label 10050 5300 0    60   ~ 0
 IO32
@@ -1699,8 +1699,6 @@ Wire Wire Line
 Wire Wire Line
 	10500 4700 10050 4700
 Wire Wire Line
-	9700 4800 10500 4800
-Wire Wire Line
 	10500 4900 10050 4900
 Wire Wire Line
 	10500 5000 10050 5000
@@ -1741,17 +1739,8 @@ Wire Wire Line
 	10050 6000 10050 6300
 Wire Wire Line
 	10500 5900 10050 5900
-$Comp
-L GND #PWR030
-U 1 1 584977AE
-P 9700 4850
-F 0 "#PWR030" H 9700 4600 50  0001 C CNN
-F 1 "GND" H 9700 4700 50  0000 C CNN
-F 2 "" H 9700 4850 50  0000 C CNN
-F 3 "" H 9700 4850 50  0000 C CNN
-	1    9700 4850
-	1    0    0    -1  
-$EndComp
 Wire Wire Line
-	9700 4800 9700 4850
+	10500 4800 10050 4800
+Text Label 10050 4700 0    60   ~ 0
+IO33
 $EndSCHEMATC
