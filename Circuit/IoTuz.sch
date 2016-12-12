@@ -918,7 +918,7 @@ F 7 "0.10" V 4900 7100 60  0001 C CNN "Unit Cost"
 	1    0    0    -1  
 $EndComp
 Text Notes 4900 6200 0    61   ~ 0
-I2C I/O Expander\nWrite: 0x40\nRead: 0x41
+I2C I/O Expander\nWrite: 0x40\nRead: 0x20
 Text Label 6850 3850 0    61   ~ 0
 A_Btn
 Text Label 6850 4000 0    61   ~ 0
