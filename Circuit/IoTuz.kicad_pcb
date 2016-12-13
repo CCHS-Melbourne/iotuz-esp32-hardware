@@ -1,7 +1,7 @@
 (kicad_pcb (version 4) (host pcbnew 4.0.4+e1-6308~48~ubuntu16.04.1-stable)
 
   (general
-    (links 0)
+    (links 421)
     (no_connects 0)
     (area 0 34.300001 205.408 155.000001)
     (thickness 1.6)
@@ -371,8 +371,8 @@
     (uvia_drill 0.1)
   )
 
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F54FA) (tstamp 584F59C4)
-    (at 68 133.5)
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B5F)
+    (at 185 99)
     (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
@@ -383,8 +383,8 @@
       (net 2 GND))
   )
 
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F54FA) (tstamp 584F59C0)
-    (at 65.5 131)
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B5B)
+    (at 188 99)
     (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
@@ -395,8 +395,308 @@
       (net 2 GND))
   )
 
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F54FA) (tstamp 584F59BC)
-    (at 62 131)
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B57)
+    (at 191 99)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B52)
+    (at 185 102)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B4E)
+    (at 186.5 100.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B4A)
+    (at 189.5 100.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B46)
+    (at 188 102)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B42)
+    (at 191 102)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B3E)
+    (at 192.5 100.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B3A)
+    (at 194 99)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B36)
+    (at 197 99)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B32)
+    (at 195.5 100.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B2E)
+    (at 198.5 100.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B2A)
+    (at 192.5 103.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B26)
+    (at 194 102)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B22)
+    (at 197 102)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B1E)
+    (at 195.5 103.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B1A)
+    (at 198.5 103.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B16)
+    (at 192.5 106.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B12)
+    (at 194 105)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B0E)
+    (at 197 105)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B0A)
+    (at 195.5 106.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B06)
+    (at 198.5 106.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5B01)
+    (at 192.5 109.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5AFD)
+    (at 194 108)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5AF9)
+    (at 197 108)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5AF5)
+    (at 195.5 109.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F5AE2)
+    (at 198.5 109.5)
     (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
     )
@@ -466,330 +766,6 @@
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
     )
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F2F3) (tstamp 58469ADF)
-    (at 185 102)
-    (fp_text reference REF** (at 18.95 4.725 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 16.5 4.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F352) (tstamp 58469ADB)
-    (at 185 99)
-    (fp_text reference REF** (at 18.75 7.675 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 16.5 7.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F354) (tstamp 58469AD4)
-    (at 191 99)
-    (fp_text reference REF** (at 12.675 7.675 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 10.55 7.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F381) (tstamp 58469AD0)
-    (at 186.5 100.5)
-    (fp_text reference REF** (at 17.45 6.225 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 15.025 5.725 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F34D) (tstamp 58469ACC)
-    (at 188 102)
-    (fp_text reference REF** (at 15.75 4.775 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 13.5 4.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F37D) (tstamp 58469AC8)
-    (at 188 99)
-    (fp_text reference REF** (at 15.925 7.85 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 13.525 7.225 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F37A) (tstamp 58469AC4)
-    (at 189.5 100.5)
-    (fp_text reference REF** (at 14.425 6.1 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 12.025 5.725 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F36B) (tstamp 58469AC0)
-    (at 192.5 100.5)
-    (fp_text reference REF** (at 11.45 6.175 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 8.95 5.725 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F346) (tstamp 58469ABC)
-    (at 191 102)
-    (fp_text reference REF** (at 12.925 4.675 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 10.55 4.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F348) (tstamp 58469AB6)
-    (at 194 99)
-    (fp_text reference REF** (at 9.675 7.85 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 7.5 7.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F33C) (tstamp 58469AAE)
-    (at 195.5 100.5)
-    (fp_text reference REF** (at 8.45 6.075 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 6.05 5.675 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F2FE) (tstamp 58469AAA)
-    (at 197 99)
-    (fp_text reference REF** (at 6.9 7.675 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 4.55 7.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F341) (tstamp 58469AA6)
-    (at 198.5 100.5)
-    (fp_text reference REF** (at 5.45 6.225 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 3.05 5.675 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F364) (tstamp 58469AA2)
-    (at 194 102)
-    (fp_text reference REF** (at 9.9 4.575 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 7.45 4.225 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F36E) (tstamp 58469A9E)
-    (at 192.5 103.5)
-    (fp_text reference REF** (at 11.4 3.175 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 8.95 2.725 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F360) (tstamp 58469A9A)
-    (at 195.5 103.5)
-    (fp_text reference REF** (at 8.4 3.225 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 5.95 2.725 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F338) (tstamp 58469A96)
-    (at 197 102)
-    (fp_text reference REF** (at 6.9 4.675 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 4.45 4.175 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F333) (tstamp 58469A92)
-    (at 198.5 103.5)
-    (fp_text reference REF** (at 5.45 3.175 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 3 2.675 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F358) (tstamp 58469A8E)
-    (at 194 105)
-    (fp_text reference REF** (at 9.95 1.675 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 7.45 1.225 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F373) (tstamp 58469A8A)
-    (at 192.5 106.5)
-    (fp_text reference REF** (at 11.45 0.175 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 9.025 -0.275 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F31A) (tstamp 58469A86)
-    (at 195.5 106.5)
-    (fp_text reference REF** (at 8.525 0.175 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 6 -0.325 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F35A) (tstamp 58469A82)
-    (at 197 105)
-    (fp_text reference REF** (at 6.95 1.675 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 4.45 1.225 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F32E) (tstamp 58469A7E)
-    (at 198.5 106.5)
-    (fp_text reference REF** (at 5.4 0.225 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 3 -0.325 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F32B) (tstamp 58469A78)
-    (at 198.5 109.5)
-    (fp_text reference REF** (at 5.4 -2.825 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 3.05 -3.325 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F324) (tstamp 58469A70)
-    (at 195.5 109.5)
-    (fp_text reference REF** (at 8.45 -2.825 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 6 -3.325 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F31E) (tstamp 58469A6C)
-    (at 197 108)
-    (fp_text reference REF** (at 6.9 -1.275 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 4.5 -1.825 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F316) (tstamp 58469A4E)
-    (at 194 108)
-    (fp_text reference REF** (at 9.95 -1.275 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 7.5 -1.825 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
   )
 
   (module freetronics_footprints:SOT23_FET (layer F.Cu) (tedit 584E8693) (tstamp 580B69BD)
@@ -4498,18 +4474,6 @@
     )
   )
 
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 5847F367) (tstamp 584699AA)
-    (at 192.5 109.5)
-    (fp_text reference REF** (at 11.4 -2.825 90) (layer F.SilkS) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (fp_text value via.0.6mm-drill.0.4mm (at 9.025 -3.275 90) (layer F.Fab) hide
-      (effects (font (size 1 1) (thickness 0.15)))
-    )
-    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
-      (net 2 GND))
-  )
-
   (module libs:tuz (layer B.Cu) (tedit 0) (tstamp 584F0A2B)
     (at 102.95 90.77 180)
     (fp_text reference G*** (at 0 0 180) (layer B.SilkS) hide
@@ -5147,7 +5111,43 @@
       (xy 1.379414 4.334294)) (layer B.SilkS) (width 0.01))
   )
 
-  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F54FA) (tstamp 584F59AB)
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F59C4)
+    (at 68 133.5)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F59C0)
+    (at 65.5 131)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F59BC)
+    (at 62 131)
+    (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (fp_text value "" (at 0 -0.5) (layer F.Fab) hide
+      (effects (font (size 1 1) (thickness 0.15)))
+    )
+    (pad 1 thru_hole circle (at 0 0) (size 0.6 0.6) (drill 0.4) (layers *.Cu)
+      (net 2 GND))
+  )
+
+  (module libs:via.0.6mm-drill.0.4mm (layer F.Cu) (tedit 584F537A) (tstamp 584F59AB)
     (at 62 133.5)
     (fp_text reference "" (at 0 1.1) (layer F.SilkS) hide
       (effects (font (size 1 1) (thickness 0.15)))
