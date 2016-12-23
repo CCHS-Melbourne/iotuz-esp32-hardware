@@ -1,4 +1,4 @@
-IoTuz - The Internet of Tux
+IoTuz - The Internet of Tuz
 =============
 
 
