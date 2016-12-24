@@ -41,6 +41,8 @@ Check out (and contribute to) [the wiki](https://github.com/CCHS-Melbourne/IoTuz
 CREDITS
 ------------
 
+Made at hackmelbourne.org !
+
 This project was designed by the 2017 linux.conf.au Open Hardware Team!
  - [Bob Powers](https://github.com/rdpowers)
  - [John Spencer](https://github.com/mage0r)
@@ -50,7 +52,7 @@ This project was designed by the 2017 linux.conf.au Open Hardware Team!
  - [Mark Wolfe](https://github.com/wolfeidau)
  - [Ian Firns](https://github.com/firnsy)
 
-Made at hackmelbourne.org!
+Art work: Tasmanian Devil ["Tuz" reference](http://www.redbubble.com/people/taniawalker/works/22375875-round-tasmania-vignettes) (C) 2016 by [Tania Walker](http://www.taniawalker.com).  License [CC-BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/2.0).  This art work is only going to be used on the PCB production run for the [LCA2017 Open Hardware Mini-Conference](http://www.openhardwareconf.org/wiki/OHC2017).
 
 SPECIAL THANKS
 ------------
