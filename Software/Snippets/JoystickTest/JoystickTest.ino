@@ -23,27 +23,33 @@
 
 const int analogInPinX = 39;  // Analog input pin that the potentiometer is attached to
 const int analogInPinY = 34;  // Analog input pin that the potentiometer is attached to
+const int joyBtn = 0;  // Digital input pin that the button is attached to
 
 int sensorValueX = 0;        // value read from the pot
 int sensorValueY = 0;        // value read from the pot
+int joyBtnValue = 0;        // value read from the pot
 
 //int outputValue = 0;        // value output to the PWM (analog out)
 
 void setup() {
   // initialize serial communications at 9600 bps:
   Serial.begin(115200);
+  pinMode(joyBtn, INPUT_PULLUP);
 }
 
 void loop() {
   // read the analog in value:
   sensorValueX = analogRead(analogInPinX);
   sensorValueY = analogRead(analogInPinY);
+  joyBtnValue = digitalRead(joyBtn);
 
   // print the results to the serial monitor:
   Serial.print("X Axis = ");
   Serial.print(sensorValueX);
   Serial.print("\t Y Axis = ");
-  Serial.println(sensorValueY);
+  Serial.print(sensorValueY);
+  Serial.print("\t Joy Button = ");
+  Serial.println(joyBtnValue);
 
 
   // wait 25 milliseconds before the next loop
