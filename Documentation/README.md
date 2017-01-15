@@ -91,3 +91,44 @@ A pointed soldering iron tip will work fine for the through-hole components,
 but if you'd like to see a chisel tip in action attaching the ESP32 module
 to your IoTuz PCB then
 [watch this video](https://www.youtube.com/watch?v=haz02WWTRY4) !
+
+Assembly
+--------
+
+![IoTuz image 5](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8477.jpg)
+
+![IoTuz image 6](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8479.jpg)
+
+![IoTuz image 7](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8480.jpg)
+
+![IoTuz image 8](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8481.jpg)
+
+![IoTuz image 9](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8483.jpg)
+
+![IoTuz image 10](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8484.jpg)
+
+![IoTuz image 11](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8485.jpg)
+
+![IoTuz image 12](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8486.jpg)
+
+![IoTuz image 13](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8487.jpg)
+
+![IoTuz image 14](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8488.jpg)
+
+![IoTuz image 15](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8489.jpg)
+
+![IoTuz image 16](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8490.jpg)
+
+![IoTuz image 17](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8491.jpg)
+
+![IoTuz image 18](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8492.jpg)
+
+![IoTuz image 19](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8493.jpg)
+
+![IoTuz image 20](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8494.jpg)
+
+![IoTuz image 21](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8495.jpg)
+
+![IoTuz image 22](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8496.jpg)
+
+![IoTuz image 23](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8498.jpg)
