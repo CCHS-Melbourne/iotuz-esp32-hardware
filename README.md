@@ -14,7 +14,7 @@ The ESP32 is definitely the big brother of the ESP8266.  Included in it's featur
 
 As usual we've got a custom board and some custom software to get you started on your journey!  Check out the subdirectories in this repo for more information.
 
-![IoTuz Render](https://dl.dropboxusercontent.com/u/22882311/IoTuz/iotuz.5.png)
+![IoTuz Render](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Circuit/Resources/IoTuz-Render.png)
 
 
 FEATURES
