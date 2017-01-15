@@ -16,6 +16,9 @@ Errata for Tuesday 2017-01-17
   This means that your IoTuz PCB may not charge the LiPo battery,
   but works in every other way
 
+* IoTuz PCBs with the CN3063 charge controller fitted will have a modified
+  MCP6002 (U202) with two small (red) wires altering one of the op-amps.
+
 Introduction
 ------------
 
@@ -64,7 +67,8 @@ travelling, especially on airplanes, place the LiPo battery in the
 supplied orange box.  And yes, we saw the exact same type of LiPo
 battery in another project release the
 [magic smoke](https://www.youtube.com/watch?v=l1jmYe7AIXM)
-a few days ago, when a package was opened with a pocket knife !
+a few days ago, when a
+[package was opened with a pocket knife !](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8536.jpg)
 
 Check before starting
 ---------------------
@@ -102,6 +106,13 @@ Assembly
 --------
 
 Let's start with InfraRed transmitter and receiver.
+
+The IR transmitter LED must be inserted in the correct orientation.
+Like all LEDs, this IR transmitter has a slight flat edge on the otherwise
+circular plastic diffuser.  The LED also has one shorter leg, which is the
+negative (cathode) pin.  Place the LED with the shorter leg into the hole
+marked "K".  The solder mask has an image of the LED profile indicating the
+orientation of the flat edge.
 
 ![IoTuz image 5](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8477.jpg)
 
@@ -171,8 +182,12 @@ the notch (as shown) and have them sit flush to the IoTuz PCB.  It is worth
 the effort to have them sit flush, just be careful, because we don't have
 any spare RGB LEDs !
 
+If you are new to hardware / soldering and would like your RGB LEDs to be
+flush with the IoTuz PCB, please ask for some assistance from an experienced
+person, just to ensure that you don't clip the legs too short.
+
 Double and triple check that you have the RGB LEDs correctly orientated
-by aligning the shape of the LED with the solder mask image on the PCB.
+by aligning the flat edge of the LED with the solder mask image on the PCB.
 It'll be quite tricky desoldering an incorrectly placed LED and any
 rework always has a small risk of damaging the IoTuz PCB pads.
 
