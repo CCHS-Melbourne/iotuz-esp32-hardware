@@ -120,31 +120,33 @@ Design is all about the details :)
 ![IoTuz image 7](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8480.jpg)
 
 Okay, the reset switch is easy.  Except they come in so many different
-colours !  Red was chosen to make it easy to see.
+colours !
+
+Red was chosen to make it easy to see.
 
 ![IoTuz image 8](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8481.jpg)
 
 The pads along the bottom of your IoTuz are intended for easy access to the
-ESP32 I/O peripheral pins, e.g digital and analog GPIOs, I2C, SPI, etc.
+ESP32 I/O peripheral pins, e.g digital GPIOs, analog I/O, I2C, SPI, etc.
 You can choose not to place any header pins ... it is up-to-you.
 Controversially, I choose to use 90 degree header pins underneath IoTuz.
-However, the OHMC team concensus would be to use straight male headers
+However, the OHMC team concensus would be to use straight male header pins
 on top of the PCB.  Either way, take care not to leave any solder bridges.
 
 ![IoTuz image 9](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8483.jpg)
 
-Solder a 4-pin make header onto the RGB LCD touch-screen.  These provide both
+Solder a 4-pin male header onto the RGB LCD touch-screen.  These provide both
 mechanical stability and SPI bus for the built-in SD card connector.
 
 ![IoTuz image 12](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8484.jpg)
 
-You can choose the recommended approach of just using the standard female
-header pins as shown.
+For the RGB LCD touch-screen, you can choose the recommended approach of just
+using the standard female header pins as shown.
 
 However, if you'd like the RGB LCD touch-screen to sit higher off the IoTuz
 PCB, then a set of machined female header pins have been provided, which can
 be soldered into the PCB instead.  This allows the standard female header pins
-to tbe inserted (more snugly) into the machined female header pins.
+to be inserted (more snugly) into the machined female header pins.
 
 If this doesn't make sense, don't worry ... just put the machined female
 header pins back in the bag and run with the standard female header pins.
@@ -153,7 +155,8 @@ That'll work just fine.
 ![IoTuz image 10](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8487.jpg)
 
 When placing the RGB LCD touch-screen female header pins, you might like to
-insert the touch-screen to ensure that the header alignment is correct.
+insert the touch-screen before soldering to ensure that the header alignment
+is correct.
 
 ![IoTuz image 11](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8485.jpg)
 
@@ -164,11 +167,11 @@ before proceeding with the remaining component assembly.
 
 You can solder the RGB LEDs into the PCB and have them sit a millimeter above
 the IoTuz PCB ... or you can very carefully cut the RGB LED legs just below
-the notch (as show) and have them sit flush to the IoTuz PCB.  It is worth
+the notch (as shown) and have them sit flush to the IoTuz PCB.  It is worth
 the effort to have them sit flush, just be careful, because we don't have
 any spare RGB LEDs !
 
-Double and triple check that you have the RGB LEDs orientated correctly
+Double and triple check that you have the RGB LEDs correctly orientated
 by aligning the shape of the LED with the solder mask image on the PCB.
 It'll be quite tricky desoldering an incorrectly placed LED and any
 rework always has a small risk of damaging the IoTuz PCB pads.
@@ -184,7 +187,7 @@ We are on the home stretch now !
 ![IoTuz image 14](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8489.jpg)
 
 The joystick has a lot of pins, some of which may have been slightly bent
-whilst transported.  Carefully check that all pins are straight and watch
+during transportation.  Carefully check that all pins are straight and watch
 for alignment when inserting into the PCB ... don't force it.
 
 Before soldering, check that every pin has come through the PCB and is
@@ -202,7 +205,9 @@ knob.
 Same pin alignments advice again for the rotary encoder.
 
 Wait until the IoTuz is completely assembled before putting on the rotary
-encoder knob.  Note: That knob was chosen because it just looks cool !
+encoder knob.
+
+Note: That knob was chosen because it just looks cool !
 
 ![IoTuz image 18](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8492.jpg)
 
@@ -215,7 +220,7 @@ However, you might want to ask for some shorter buttons.
 
 ![IoTuz image 20](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8494.jpg)
 
-Too easy.
+Too easy ...
 
 ![IoTuz image 19](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8493.jpg)
 
@@ -227,8 +232,9 @@ Congratulations !
 
 Complete, except for the speaker and microphone mentioned early.
 
-Don't forget to check for solder bridges and use a multimeter to get the
-power and ground pins for short-circuits ... before applying power.
+Before applying power, don't forget to check for solder bridges and
+use a multimeter to ensure that there are no short-circuits between
+power and ground pins.
 
 ![IoTuz image 22](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8496.jpg)
 
@@ -237,6 +243,6 @@ Time to flash some firmware and enjoy your
 
 ![IoTuz image 23](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8498.jpg)
 
-If you have improvements or suggestions, please make change / pull request
+If you have improvements or suggestions, please make the change / pull request
 or lodge an [issue](https://github.com/CCHS-Melbourne/IoTuz/issues) ...
 thanks !
