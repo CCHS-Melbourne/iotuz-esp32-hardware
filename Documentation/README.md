@@ -1,5 +1,5 @@
-IoTuz - Hand-soldering through-hole components instructions
-=====
+Hand-soldering through-hole component instructions
+==================================================
 
 Errata for Tuesday 2017-01-17
 -----------------------------
