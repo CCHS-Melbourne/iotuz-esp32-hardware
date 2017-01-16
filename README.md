@@ -1,23 +1,22 @@
 IoTuz - The Internet of Tuz
 =============
 
-
 Welcome to the linux.conf.au 2017 Open Hardware Project.  You can see information about this and other MiniConfs at http://www.openhardwareconf.org/wiki/Main_Page
 
 This year we're bringing a project with the hottest new micro for people to have a play with. The ESP32 is the successor to the hugely popular ESP8266 chip we used for 2016 Open Hardware Project, the (ESPlant, https://github.com/CCHS-Melbourne/ESPlant).
 
-The ESP32 is definitely the big brother of the ESP8266.  Included in it's features:
-* 2.4 GHz Wi-Fi
-* Bluetooth
-* Dual Core
-
+The ESP32 is definitely the big brother of the ESP8266.  Included in it's features: 2.4 GHz Wi-Fi, Bluetooth, Dual Core CPUs
 
 As usual we've got a custom board and some custom software to get you started on your journey!  Check out the subdirectories in this repo for more information.
 
 ![IoTuz Render](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Circuit/Resources/IoTuz-Render.png)
 
+Hardware assembly instructions
+------------------------------
+[Workshop instructions](https://github.com/CCHS-Melbourne/IoTuz/tree/master/Documentation)
+for people attending the LCA2017 Open Hardware Mini-Conference.
 
-FEATURES
+Features
 --------
 
 * Coming Soon
