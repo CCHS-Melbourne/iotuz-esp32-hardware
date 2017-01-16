@@ -16,6 +16,11 @@ Hardware assembly instructions
 [Workshop assembly instructions](https://github.com/CCHS-Melbourne/IoTuz/wiki/Assembly-Instructions)
 for people attending the LCA2017 Open Hardware Mini-Conference.
 
+Software instructions
+---------------------
+
+[Software setup instructions](https://github.com/CCHS-Melbourne/IoTuz/wiki/Software-Instructions)
+
 Features
 --------
 
