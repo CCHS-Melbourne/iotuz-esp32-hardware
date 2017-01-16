@@ -131,9 +131,17 @@ Design is all about the details :)
 ![IoTuz image 7](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8480.jpg)
 
 Okay, the reset switch is easy.  Except they come in so many different
-colours !
+colours!
 
 Red was chosen to make it easy to see.
+
+Warning: it is possible to insert the switch the wrong way. If you look 
+closely at the holes in the PCB, you will notice that they are not in 
+a square. The holes are in pairs that are slightly closer together on 
+the ends of the button. When you insert the button, make sure it is 
+rotated so the pins line up neatly with the holes. If you bend the pins 
+and use a bit of force it's quite possible to accidentally insert the 
+switch rotated 90 degrees by mistake, and your IoTuz won't work.
 
 ![IoTuz image 8](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8481.jpg)
 
@@ -167,7 +175,8 @@ That'll work just fine.
 
 When placing the RGB LCD touch-screen female header pins, you might like to
 insert the touch-screen before soldering to ensure that the header alignment
-is correct.
+is correct. The screen can make a good soldering jig to hold everything in 
+position.
 
 ![IoTuz image 11](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8485.jpg)
 
@@ -240,13 +249,26 @@ length.
 
 However, you might want to ask for some shorter buttons.
 
+Just like the reset button, make sure these buttons are rotated correctly 
+to insert into the PCB.
+
 ![IoTuz image 20](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8494.jpg)
 
 Too easy ...
 
 ![IoTuz image 19](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8493.jpg)
 
-And you are nearly done ...
+And you are nearly done! The last item to fit is the battery holder. 
+
+Inside the battery holder you'll find small "+" and "-" symbols moulded 
+into the plastic. The battery holder will fit either way, so make sure 
+the + is on the left and the - is on the right, as indicated by the 
+markings on the PCB.
+
+You'll also notice that we've drilled a hole in the bottom of the 
+battery holder. This hole needs to clear the tiny temperature sensor 
+already fitted to the PCB, so make sure the battery holder sits down 
+neatly and doesn't foul against the sensor.
 
 ![IoTuz image 21](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8495.jpg)
 
@@ -257,6 +279,13 @@ Complete, except for the speaker and microphone mentioned early.
 Before applying power, don't forget to check for solder bridges and
 use a multimeter to ensure that there are no short-circuits between
 power and ground pins.
+
+You can easily do this using a multimeter. Put the multimeter into 
+continuity tester mode, put the black lead on the GND pad at the bottom 
+right corner of the PCB, and touch the red lead to the 5V and 3.3V pads 
+in turn. If the multimeter shows continuity in either case, do NOT 
+apply power to the board until you have found the cause of the short 
+circuit.
 
 ![IoTuz image 22](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8496.jpg)
 
