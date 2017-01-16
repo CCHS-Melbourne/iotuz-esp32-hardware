@@ -176,6 +176,13 @@ before proceeding with the remaining component assembly.
 
 ![IoTuz image 13](https://github.com/CCHS-Melbourne/IoTuz/blob/master/Documentation/Images/IMG_8486.jpg)
 
+The RGB LED pins are thin and close together.  There is a risk of creating
+solder bridges across the pins.  Care should be taken to not use too much
+solder.  After soldering the RGB LEDs, visually inspect for problems and
+also use a multimeter to test that ground and 3.3V are not short-circuited.
+The closeness of the pins makes this problem difficult to fix, please ask
+for assistance, if required.
+
 You can solder the RGB LEDs into the PCB and have them sit a millimeter above
 the IoTuz PCB ... or you can very carefully cut the RGB LED legs just below
 the notch (as shown) and have them sit flush to the IoTuz PCB.  It is worth
