@@ -13,7 +13,7 @@ As usual we've got a custom board and some custom software to get you started on
 
 Hardware assembly instructions
 ------------------------------
-[Workshop instructions](https://github.com/CCHS-Melbourne/IoTuz/tree/master/Documentation)
+[Workshop assembly instructions](https://github.com/CCHS-Melbourne/IoTuz/wiki/Assembly-Instructions)
 for people attending the LCA2017 Open Hardware Mini-Conference.
 
 Features
