@@ -16,6 +16,11 @@
 
 #include "SPI.h"
 #include "Adafruit_GFX.h"
+// The latest version of that library may not be up to date and miss a patch for ESP32
+// which will cause a compilation error:
+// Adafruit_ILI9341.cpp:113:3: error: 'mosiport' was not declared in this scope
+// If so, get the latest version from github, or just patch this single line
+// https://github.com/adafruit/Adafruit_ILI9341/blob/master/Adafruit_ILI9341.cpp#L98
 #include "Adafruit_ILI9341.h"
 #include <Wire.h>
 
