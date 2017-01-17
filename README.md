@@ -67,6 +67,8 @@ SPECIAL THANKS
 
 To the [HackMelbourne](http://hackmelbourne.org) community of Melbourne, Australia.
 
+The Desk Solder protectors feature graphics from [Adafruit Reference Cards](https://github.com/adafruit/Reference-Cards).
+
 To all other open-source developers whose countless hours supported every other aspect of this design.
 
 DISTRIBUTION
