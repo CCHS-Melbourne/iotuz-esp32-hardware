@@ -65,7 +65,7 @@ void setup() {
   delay(100);
   pcf8574_write(dataSend); // FIXME: why is this run twice?
   
-  delay(3000);
+  delay(3000); // FIXME: why is this? Can this be dropped?
   Serial.println("ILI9341 Test!"); 
  
   tft.begin();
