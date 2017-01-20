@@ -24,7 +24,8 @@ BME230: 0x77
 
 // https://github.com/CCHS-Melbourne/iotuz-esp32-hardware/wiki has hardware mapping details
 
-// LCD brightness control and touchscreen CS are behind the port expander, as well as both push buttons
+// LCD brightness control and touchscreen CS are behind the port
+// expander, as well as both push buttons
 #define I2C_EXPANDER 0x20 //0100000 (7bit) address of the IO expander on i2c bus
 
 /* Port expander PCF8574, access via I2C on */
@@ -472,7 +473,7 @@ void lcd_test(LCDtest choice) {
 
 void finger_draw() {
     uint16_t pixel_x, pixel_y;
-    uint16_t color_pressure;
+    uint16_t color_pressure, color;
     static uint8_t update_coordinates = 0;
 
     // Clear (i.e. set) CS for TS before talking to it
@@ -482,26 +483,47 @@ void finger_draw() {
     TS_Point p = ts.getPoint();
     // Then disable it again so that talking SPI to LCD doesn't reach TS
     i2cexp_set_bits(I2CEXP_TOUCH_CS);
-    // Pressure goes from 1800 to 2200 with a stylus, 3000 if you mash a finger in, let's say 1024
-    // Colors are 16 bits, so multiply pressure by 64 to get a color range from pressure
-    // X goes from 320 to 3900 (let's say 3600), Y goes from 200 to 3800 (let's say 3600 too)
-    // each X pixel is 11.25 dots of resolution on digitizer, and 15 dots for Y.
-    pixel_x = (p.x-320)/11.25;
-    pixel_y = (p.y-200)/15;
-    color_pressure = (p.z-1800)*128;
-    //tft.drawPixel(pixel_x, pixel_y, color_pressure);
-    tft.fillCircle(pixel_x, pixel_y, 2, color_pressure);
 
-//     // Writing coordinates every time is too slow, write less often
-//     if (update_coordinates++ % 64 == 0)
-//     {
-// 	// Cursor offsets are in pixels, not characters
-// 	tft.setCursor(0, 0);
-// 	tft.print("x = ");
-// 	tft.println(p.x);
-// 	tft.print("y = ");
-// 	tft.println(p.y);
-//     }
+    if (p.z) {
+	// Pressure goes from 1000 to 2200 with a stylus but is unreliable,
+	// 3000 if you mash a finger in, let's say 2048 range
+	// Colors are 16 bits, so multiply pressure by 32 to get a color range from pressure
+	// X goes from 320 to 3900 (let's say 3600), Y goes from 200 to 3800 (let's say 3600 too)
+	// each X pixel is 11.25 dots of resolution on digitizer, and 15 dots for Y.
+	pixel_x = (p.x-320)/11.25;
+	pixel_y = (p.y-200)/15;
+	
+	// Colors are 16 bits, 5 bit: red, 6 bits: green, 5 bits: blue
+	// to map a pressure number to colors and avoid random black looking colors,
+	// let's seed the color with 2 lowest bits per color: 0001100001100011
+	// this gives us 10 bits we need to fill in for which color we'll use,
+	color_pressure = p.z-1000;
+	if (p.z < 1000) color_pressure = 0;
+	color_pressure = constrain(color_pressure, 0, 2047)/2;
+	// 3 highest bits (9-7), get shifted 6 times to 15-13
+	// 4 middle  bits (6-3), get shifted 5 times to 11-08
+	// 3 lowest  bits (2-1), get shifted 2 times to 04-02
+	color = B00011000*256 + B01100011 + ((color_pressure & 0x380) << 6) +
+                                            ((color_pressure & B01111000) << 5) +
+                                            ((color_pressure & B00000111) << 2);
+	Serial.print("Color: ");
+	Serial.print(p.z);
+	Serial.print(" -> ");
+	Serial.print(color_pressure);
+	Serial.print(" -> ");
+	Serial.println(color, HEX);
+	tft.fillCircle(pixel_x, pixel_y, 2, color);
+	update_coordinates = 1;
+    // Writing coordinates every time is too slow, write less often
+    } else if (update_coordinates) {
+	update_coordinates = 0;
+	// Cursor offsets are in pixels, not characters
+	tft.fillRect(20, 0, 32, 16, ILI9341_BLACK);
+	tft.setCursor(20, 0);
+	tft.println(p.x);
+	tft.setCursor(20, 8);
+	tft.println(p.y);
+    }
 }
 
 void setup() {
@@ -568,6 +590,9 @@ void setup() {
     tft.fillScreen(ILI9341_BLACK);
     tft.setTextColor(ILI9341_WHITE);
     tft.setTextSize(1);
+    tft.setCursor(0, 0);
+    tft.println("x = ");
+    tft.print("y = ");
 
     // Tri-color APA106 LEDs Setup (not working right now)
     pixels.begin();
@@ -586,7 +611,7 @@ void loop(void) {
     if (lcd_demo == -1)
     {
 	finger_draw();
-	delay(10);
+	delay(1);
 	return;
     }
 
