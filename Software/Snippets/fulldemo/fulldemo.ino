@@ -15,10 +15,14 @@
 
 /*
 I2C addresses:
-Audio: 0x19
-IO_EXP: 0x20 (read?)
-IO_EXP: 0x40 (write?)
-ADXL: 0x53
+Audio:  0x1A
+IO_EXP: 0x20 (write)
+IO_EXP: 0x21 (read) => data sheet implies there a separate port for read, but I don't see it
+Spec sheet says "To enter the Read mode the master (microcontroller) addresses the slave
+device and sets the last bit of the address byte to logic 1 (address byte read)"
+http://hackaday.com/2008/12/27/parts-8bit-io-expander-pcf8574/ says
+'0x41 is the read address,'
+ADXL:   0x53
 BME230: 0x77
 */
 
@@ -38,8 +42,20 @@ BME230: 0x77
 #define I2CEXP_TOUCH_CS	    0x40 // (Out)
 #define I2CEXP_LCD_BL_CTR   0x80 // (Out)
 
-// Keep track of which output bits are on/off
-uint8_t i2cexp = 0;
+// Keep track of which output bits are on/off. Spec sheet says:
+// Ensure a logic 1 is written for any port that is being used as an input to ensure the strong
+// external pull-down is turned off.
+#define I2CEXP_IMASK ( I2CEXP_ACCEL_INT + I2CEXP_A_BUT + I2CEXP_B_BUT + I2CEXP_ENC_BUT + I2CEXP_TOUCH_INT )
+// Any write to I2CEXP should contain those mask bits so allow reads to work later
+uint8_t i2cexp = I2CEXP_IMASK;
+bool butA   = false;
+bool butB   = false;
+bool butEnc = false;
+// Are we drawing on the screen with joystick, or finger?
+bool joystick_mode;
+uint16_t joyValueX;
+uint16_t joyValueY;
+bool joyBtnValue;
 
 #include "SPI.h"
 #include "Adafruit_GFX.h"
@@ -67,6 +83,9 @@ uint8_t i2cexp = 0;
 #define SPI_CLK 14
 
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
+
+// Buffer to store strings going to be printed on tft
+char tft_str[41];
 // TFT Setup End
 
 // Touch screen
@@ -384,6 +403,18 @@ void i2cexp_set_bits(uint8_t bitfield) {
     pcf8574_write(i2cexp);
 }
 
+uint8_t i2cexp_read() {
+    // For read to work, we must have sent 1 bits on the ports that get used as input
+    // This is done by i2cexp_clear_bits called in setup.
+    Wire.requestFrom(I2C_EXPANDER, 1); // FIXME: deal with returned error here?
+    while (Wire.available() < 1) ;
+    uint8_t read = ~Wire.read(); // Apparently one has to invert the bits read
+    // When no buttons are pushed, this returns 0x91, which includes some ports
+    // we use as output, so we do need to filter out the ports used as read.
+    // Serial.println(read, HEX);
+    return read;
+}
+
 // I2C/TWI success (transaction was successful).
 #define ku8TWISuccess    0
 // I2C/TWI device not present (address sent, NACK received).
@@ -471,6 +502,13 @@ void lcd_test(LCDtest choice) {
     }
 }
 
+// maxlength is the maximum number of characters that need to be deleted before writing on top
+void tftprint(uint16_t x, uint16_t y, uint8_t maxlength, char *text) {
+    if (maxlength > 0) tft.fillRect(x*8, y*8, maxlength*8, 8, ILI9341_BLACK);
+    tft.setCursor(x*8, y*8);
+    tft.println(text);
+}
+
 void finger_draw() {
     uint16_t pixel_x, pixel_y;
     uint16_t color_pressure, color;
@@ -517,13 +555,101 @@ void finger_draw() {
     // Writing coordinates every time is too slow, write less often
     } else if (update_coordinates) {
 	update_coordinates = 0;
-	// Cursor offsets are in pixels, not characters
-	tft.fillRect(20, 0, 32, 16, ILI9341_BLACK);
-	tft.setCursor(20, 0);
-	tft.println(p.x);
-	tft.setCursor(20, 8);
-	tft.println(p.y);
+	sprintf(tft_str, "%d", p.x);
+	tftprint(2, 0, 4, tft_str);
+	sprintf(tft_str, "%d", p.y);
+	tftprint(2, 1, 4, tft_str);
     }
+}
+
+void joystick_draw() {
+    static int8_t update_cnt = 0;
+    // 4096 -> 320 (divide by 12.8) and -> 240 (divide by 17)
+    // Sadly on my board, the middle is 2300/1850 and not 2048/2048
+    read_joystick();
+    uint16_t pixel_x = joyValueX/12.8;
+    uint16_t pixel_y = joyValueY/17;
+    tft.fillCircle(pixel_x, pixel_y, 2, ILI9341_WHITE);
+
+    // Do not write the cursor values too often, it's too slow
+    if (!update_cnt++ % 16)
+    {
+	sprintf(tft_str, "%d > %d", joyValueX, pixel_x);
+	tftprint(2, 0, 10, tft_str);
+	sprintf(tft_str, "%d > %d", joyValueY, pixel_y);
+	tftprint(2, 1, 10, tft_str);
+    }
+}
+
+
+void scan_buttons() {
+    uint8_t butt_state = i2cexp_read();
+
+    if (butt_state & I2CEXP_A_BUT && !butA)
+    {
+	butA = true;
+	// clear screen
+	reset_tft();
+	tftprint(0, 2, 0, "But A");
+    }
+    if (!(butt_state & I2CEXP_A_BUT) && butA)
+    {
+	butA = false;
+	tftprint(0, 2, 5, "");
+    }
+    if (butt_state & I2CEXP_B_BUT && !butB)
+    {
+	butB = true;
+	tftprint(0, 3, 0, "But B");
+	joystick_mode = !joystick_mode;
+	Serial.print("Joystick: ");
+	Serial.println(joystick_mode);
+	if (joystick_mode) {
+	    tftprint(30, 0, 11, "Joystick Draw");
+	} else { 
+	    tftprint(30, 0, 13, "Finger Draw");
+	}
+    }
+    if (!(butt_state & I2CEXP_B_BUT) && butB)
+    {
+	butB = false;
+	tftprint(0, 3, 5, "");
+    }
+    if (butt_state & I2CEXP_ENC_BUT && !butEnc)
+    {
+	butEnc = true;
+	tftprint(0, 4, 0, "Enc But");
+    }
+    if (!(butt_state & I2CEXP_ENC_BUT) && butEnc)
+    {
+	butEnc = false;
+	tftprint(0, 4, 7, "");
+    }
+}
+
+void reset_tft() {
+    tft.setRotation(3);
+    tft.fillScreen(ILI9341_BLACK);
+    tft.setTextColor(ILI9341_WHITE);
+    tft.setTextSize(1);
+    tft.setCursor(0, 0);
+    tft.println("x=");
+    tft.print("y=");
+}
+
+void read_joystick() {
+    // read the analog in value:
+    joyValueX = 4096-analogRead(JOYSTICK_X_PIN);
+    joyValueY = analogRead(JOYSTICK_Y_PIN);
+    joyBtnValue = !digitalRead(JOYSTICK_BUT_PIN);
+
+    // print the results to the serial monitor:
+    Serial.print("X Axis = ");
+    Serial.print(joyValueX);
+    Serial.print("\t Y Axis = ");
+    Serial.print(joyValueY);
+    Serial.print("\t Joy Button = ");
+    Serial.println(joyBtnValue);
 }
 
 void setup() {
@@ -558,16 +684,18 @@ void setup() {
     // speed before sending data, so this works transparently.
 
     // ESP32 requires an extended begin with pin mappings (which is not supported by the
-    // adafruit library, so we do an explicit begin here and then the other SPI libraries work
-    // with hardware SPI as setup here):
+    // adafruit library), so we do an explicit begin here and then the other SPI libraries work
+    // with hardware SPI as setup here (they will do a second begin without pin mappings and
+    // that will be ignored).
     SPI.begin(SPI_CLK, MISO, MOSI);
 
     Wire.begin();
-    // LCD backlight is inverted logic, turn it on
+    // LCD backlight is inverted logic,
     // This turns the backlight off
     // i2cexp_set_bits(I2CEXP_LCD_BL_CTR);
     // And this turns it on
     i2cexp_clear_bits(I2CEXP_LCD_BL_CTR);
+    // Note this also initializes the read bits on PCF8574 by setting them to 1 as per I2CEXP_IMASK
 
     Serial.println("ILI9341 Test!"); 
 
@@ -586,13 +714,7 @@ void setup() {
     Serial.print("Resolution: "); Serial.print(tft.height()); 
     Serial.print(" x "); Serial.println(tft.width());
     Serial.println(F("Done!"));
-    tft.setRotation(3);
-    tft.fillScreen(ILI9341_BLACK);
-    tft.setTextColor(ILI9341_WHITE);
-    tft.setTextSize(1);
-    tft.setCursor(0, 0);
-    tft.println("x = ");
-    tft.print("y = ");
+    reset_tft();
 
     // Tri-color APA106 LEDs Setup (not working right now)
     pixels.begin();
@@ -603,14 +725,17 @@ void setup() {
 
 void loop(void) {
     static int8_t lcd_demo = -1;
-    int joyValueX = 0;
-    int joyValueY = 0;
-    int joyBtnValue = digitalRead(JOYSTICK_BUT_PIN);
+    read_joystick();
 
-    if (joyBtnValue == 0) lcd_demo++;
+    if (joyBtnValue == true) lcd_demo++;
     if (lcd_demo == -1)
     {
-	finger_draw();
+	if (joystick_mode) {
+	    joystick_draw();
+	} else {
+	    finger_draw();
+	}
+	scan_buttons();
 	delay(1);
 	return;
     }
@@ -619,20 +744,9 @@ void loop(void) {
     Serial.print(lcd_demo);
     lcd_test((LCDtest) lcd_demo);
 
-    while ((joyBtnValue = digitalRead(JOYSTICK_BUT_PIN)) == 1)
+    read_joystick();
+    while (joyBtnValue  == false)
     {
-	// read the analog in value:
-	joyValueX = analogRead(JOYSTICK_X_PIN);
-	joyValueY = analogRead(JOYSTICK_Y_PIN);
-	joyBtnValue = digitalRead(JOYSTICK_BUT_PIN);
-
-	// print the results to the serial monitor:
-	Serial.print("X Axis = ");
-	Serial.print(joyValueX);
-	Serial.print("\t Y Axis = ");
-	Serial.print(joyValueY);
-	Serial.print("\t Joy Button = ");
-	Serial.println(joyBtnValue);
 	// wait 50 milliseconds before the next loop
 	// for the analog-to-digital converter to settle
 	// after the last reading:
@@ -640,14 +754,14 @@ void loop(void) {
 	delay(50);
 
 	// left
-	if (joyValueX > 3500)
+	if (joyValueX < 500)
 	{
 	    tft.setRotation(0);
 	    lcd_test((LCDtest) lcd_demo);
 	}
 
 	// right
-	if (joyValueX < 500)
+	if (joyValueX > 3500)
 	{
 	    tft.setRotation(2);
 	    lcd_test((LCDtest) lcd_demo);
@@ -669,7 +783,7 @@ void loop(void) {
     }
     lcd_demo++;
     // tilting joystick back (not too far) while clicking goes back one demo
-    if (joyValueX > 2000) lcd_demo-=2;
+    if (joyValueX < 2000) lcd_demo-=2;
     if (lcd_demo == 12) lcd_demo = 0;
     if (lcd_demo == -1) lcd_demo = 11;
 
