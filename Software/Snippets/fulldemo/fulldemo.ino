@@ -16,15 +16,16 @@
 /*
 I2C addresses:
 Audio:  0x1A
-IO_EXP: 0x20 (write)
-IO_EXP: 0x21 (read) => data sheet implies there a separate port for read, but I don't see it
-Spec sheet says "To enter the Read mode the master (microcontroller) addresses the slave
+IO_EXP: 0x20 => Spec sheet says 
+"To enter the Read mode the master (microcontroller) addresses the slave
 device and sets the last bit of the address byte to logic 1 (address byte read)"
-http://hackaday.com/2008/12/27/parts-8bit-io-expander-pcf8574/ says
-'0x41 is the read address,'
+The Wire lib automatically uses the right I/O port for read and write.
 ADXL:   0x53
-BME230: 0x77
+BME230: 0x77 (Temp/Humidity/Pressure)
 */
+
+#define CONFIG_DISABLE_HAL_LOCKS 1
+
 
 // https://github.com/CCHS-Melbourne/iotuz-esp32-hardware/wiki has hardware mapping details
 
@@ -42,17 +43,21 @@ BME230: 0x77
 #define I2CEXP_TOUCH_CS	    0x40 // (Out)
 #define I2CEXP_LCD_BL_CTR   0x80 // (Out)
 
-// Keep track of which output bits are on/off. Spec sheet says:
-// Ensure a logic 1 is written for any port that is being used as an input to ensure the strong
-// external pull-down is turned off.
+// Dealing with the I/O expander is a bit counter intuitive. There is no difference between a
+// write meant to toggle an output port, and a write designed to turn off pull down resistors and trigger
+// a read request.
+// The write just before the read should have bits high on the bits you'd like to read back, but you
+// may get high bits back on other bits you didn't turn off the pull down resistor on. This is normal.
+// Just filter out the bits you're trying to get from the value read back and keep in mind that when
+// you write, you should still send the right bit values for the output pins.
+// This is all stored in i2cexp which we initialize to the bits used as input:
 #define I2CEXP_IMASK ( I2CEXP_ACCEL_INT + I2CEXP_A_BUT + I2CEXP_B_BUT + I2CEXP_ENC_BUT + I2CEXP_TOUCH_INT )
 // Any write to I2CEXP should contain those mask bits so allow reads to work later
 uint8_t i2cexp = I2CEXP_IMASK;
 bool butA   = false;
 bool butB   = false;
 bool butEnc = false;
-// Are we drawing on the screen with joystick, or finger?
-bool joystick_mode;
+// Are we drawing on the screen with joystick, accelerator, or finger?
 uint16_t joyValueX;
 uint16_t joyValueY;
 bool joyBtnValue;
@@ -69,8 +74,13 @@ bool joyBtnValue;
 #include <Wire.h>
 
 // Support for APA106 RGB LEDs
-// Except this library does not work with APA106 (yet). FIXME
+// Current Adafruit code does not support writing to any LED strip on ESP32
 #include "Adafruit_NeoPixel.h"
+
+// Accelerometer
+#include <Adafruit_Sensor.h>
+#include <Adafruit_ADXL345_U.h>
+Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 
 // TFT + Touch Screen Setup Start
 // These are the minimal changes from v0.1 to get the LCD working
@@ -105,7 +115,7 @@ XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 
 // APA106 is somewhat compatible with WS2811 or WS2812 (but not quite, timing is different?)
 // https://learn.adafruit.com/adafruit-neopixel-uberguide/
-// This should work, but currently does not due to lack of support for ESP32 in the adafruit lib
+// FIXME: This should work, but currently does not due to lack of support for ESP32 in the adafruit lib
 #define RGB_LED_PIN 23
 #define NUMPIXELS 2
 Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + NEO_KHZ800);
@@ -115,28 +125,45 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + N
 #define JOYSTICK_Y_PIN 34
 #define JOYSTICK_BUT_PIN 0
 
-
+// How many options to display in the rectangle screen
+#define NHORIZ 5
+#define NVERT 4
+// Option names to display on screen
+// 40 chars wide, 5 boxes, 8 char per box
+// 30 chars high, 4 boxes, 7 lines per box
+char* opt_name[NVERT][NHORIZ][3] = {
+    { { "", "Finger", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, { "", "", ""}, },
+    { { "", "", ""}, { "", "", ""}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
+    { { "", "Text", ""}, { "", "Fill", ""}, { "", "Diagonal", "Lines"}, { "Horizon", "Vert", "Lines"}, { "", "Rectangle", ""}, },
+    { { "", "Fill", "Rectangle"}, { "", "Circles", ""}, { "", "Fill", "Circles"}, { "", "Triangles", ""}, { "", "Fill", "Triangles"}, },
+};
+// tft_width, tft_height, calculated in setup after tft init
+uint16_t tftw, tfth;
+// number of pixels of each selection box (height and width)
+uint16_t boxw, boxh;
 
 typedef enum {
-    TEXT = 0,
-    FILL = 1,
-    LINES = 2,
-    HORIZVERT = 3,
-    RECT = 4,
-    RECTFILL = 5,
-    CIRCLE = 6,
-    CIRCFILL = 7,
-    TRIANGLE = 8,
-    TRIFILL = 9,
-    ROUNDREC = 10,
-    ROUNDRECFILL = 11,
+    FINGERPAINT = 0,
+    JOYABS = 1,
+    JOYREL = 2,
+    ACCELPAINT = 3,
+    ROUNDREC = 8,
+    ROUNDRECFILL = 9,
+    TEXT = 10,
+    FILL = 11,
+    LINES = 12,
+    HORIZVERT = 13,
+    RECT = 14,
+    RECTFILL = 15,
+    CIRCLE = 16,
+    CIRCFILL = 17,
+    TRIANGLE = 18,
+    TRIFILL = 19,
 } LCDtest;
 
 
 unsigned long testFillScreen() {
   unsigned long start = micros();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
   tft.fillScreen(ILI9341_RED);
   yield();
   tft.fillScreen(ILI9341_GREEN);
@@ -149,7 +176,6 @@ unsigned long testFillScreen() {
 }
 
 unsigned long testText() {
-  tft.fillScreen(ILI9341_BLACK);
   unsigned long start = micros();
   tft.setCursor(0, 0);
   tft.setTextColor(ILI9341_WHITE);  tft.setTextSize(1);
@@ -181,9 +207,6 @@ unsigned long testLines(uint16_t color) {
                 w = tft.width(),
                 h = tft.height();
 
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-  
   x1 = y1 = 0;
   y2    = h - 1;
   start = micros();
@@ -238,7 +261,6 @@ unsigned long testFastLines(uint16_t color1, uint16_t color2) {
   unsigned long start;
   int           x, y, w = tft.width(), h = tft.height();
 
-  tft.fillScreen(ILI9341_BLACK);
   start = micros();
   for(y=0; y<h; y+=5) tft.drawFastHLine(0, y, w, color1);
   for(x=0; x<w; x+=5) tft.drawFastVLine(x, 0, h, color2);
@@ -252,7 +274,6 @@ unsigned long testRects(uint16_t color) {
                 cx = tft.width()  / 2,
                 cy = tft.height() / 2;
 
-  tft.fillScreen(ILI9341_BLACK);
   n     = min(tft.width(), tft.height());
   start = micros();
   for(i=2; i<n; i+=6) {
@@ -269,7 +290,6 @@ unsigned long testFilledRects(uint16_t color1, uint16_t color2) {
                 cx = tft.width()  / 2 - 1,
                 cy = tft.height() / 2 - 1;
 
-  tft.fillScreen(ILI9341_BLACK);
   n = min(tft.width(), tft.height());
   for(i=n; i>0; i-=6) {
     i2    = i / 2;
@@ -288,7 +308,6 @@ unsigned long testFilledCircles(uint8_t radius, uint16_t color) {
   unsigned long start;
   int x, y, w = tft.width(), h = tft.height(), r2 = radius * 2;
 
-  tft.fillScreen(ILI9341_BLACK);
   start = micros();
   for(x=radius; x<w; x+=r2) {
     for(y=radius; y<h; y+=r2) {
@@ -322,7 +341,6 @@ unsigned long testTriangles() {
   int           n, i, cx = tft.width()  / 2 - 1,
                       cy = tft.height() / 2 - 1;
 
-  tft.fillScreen(ILI9341_BLACK);
   n     = min(cx, cy);
   start = micros();
   for(i=0; i<n; i+=5) {
@@ -341,7 +359,6 @@ unsigned long testFilledTriangles() {
   int           i, cx = tft.width()  / 2 - 1,
                    cy = tft.height() / 2 - 1;
 
-  tft.fillScreen(ILI9341_BLACK);
   start = micros();
   for(i=min(cx,cy); i>10; i-=5) {
     start = micros();
@@ -362,7 +379,6 @@ unsigned long testRoundRects() {
                 cx = tft.width()  / 2 - 1,
                 cy = tft.height() / 2 - 1;
 
-  tft.fillScreen(ILI9341_BLACK);
   w     = min(tft.width(), tft.height());
   start = micros();
   for(i=0; i<w; i+=6) {
@@ -379,7 +395,6 @@ unsigned long testFilledRoundRects() {
                 cx = tft.width()  / 2 - 1,
                 cy = tft.height() / 2 - 1;
 
-  tft.fillScreen(ILI9341_BLACK);
   start = micros();
   for(i=min(tft.width(), tft.height()); i>20; i-=6) {
     i2 = i / 2;
@@ -509,11 +524,7 @@ void tftprint(uint16_t x, uint16_t y, uint8_t maxlength, char *text) {
     tft.println(text);
 }
 
-void finger_draw() {
-    uint16_t pixel_x, pixel_y;
-    uint16_t color_pressure, color;
-    static uint8_t update_coordinates = 0;
-
+TS_Point get_touch() {
     // Clear (i.e. set) CS for TS before talking to it
     i2cexp_clear_bits(I2CEXP_TOUCH_CS);
     // Calling getpoint calls SPI.beginTransaction with a speed of only 2MHz, so we need to
@@ -522,14 +533,35 @@ void finger_draw() {
     // Then disable it again so that talking SPI to LCD doesn't reach TS
     i2cexp_set_bits(I2CEXP_TOUCH_CS);
 
+    return p;
+}
+
+void touchcoord2pixelcoord(uint16_t *pixel_x, uint16_t *pixel_y) {
+    // Pressure goes from 1000 to 2200 with a stylus but is unreliable,
+    // 3000 if you mash a finger in, let's say 2048 range
+    // Colors are 16 bits, so multiply pressure by 32 to get a color range from pressure
+    // X goes from 320 to 3900 (let's say 3600), Y goes from 200 to 3800 (let's say 3600 too)
+    // each X pixel is 11.25 dots of resolution on digitizer, and 15 dots for Y.
+    Serial.print("Converted touch coordinates ");
+    Serial.print(*pixel_x);
+    Serial.print("x");
+    Serial.print(*pixel_y);
+    *pixel_x = constrain((*pixel_x-320)/11.25, 0, 319);
+    *pixel_y = constrain((*pixel_y-200)/15, 0, 239);
+    Serial.print(" to pixel coordinates ");
+    Serial.print(*pixel_x);
+    Serial.print("x");
+    Serial.println(*pixel_y);
+}
+
+void finger_draw() {
+    uint16_t color_pressure, color;
+    static uint8_t update_coordinates = 0;
+    TS_Point p = get_touch();
+
     if (p.z) {
-	// Pressure goes from 1000 to 2200 with a stylus but is unreliable,
-	// 3000 if you mash a finger in, let's say 2048 range
-	// Colors are 16 bits, so multiply pressure by 32 to get a color range from pressure
-	// X goes from 320 to 3900 (let's say 3600), Y goes from 200 to 3800 (let's say 3600 too)
-	// each X pixel is 11.25 dots of resolution on digitizer, and 15 dots for Y.
-	pixel_x = (p.x-320)/11.25;
-	pixel_y = (p.y-200)/15;
+	uint16_t pixel_x = p.x, pixel_y = p.y;
+	touchcoord2pixelcoord(&pixel_x, &pixel_y);
 	
 	// Colors are 16 bits, 5 bit: red, 6 bits: green, 5 bits: blue
 	// to map a pressure number to colors and avoid random black looking colors,
@@ -538,18 +570,7 @@ void finger_draw() {
 	color_pressure = p.z-1000;
 	if (p.z < 1000) color_pressure = 0;
 	color_pressure = constrain(color_pressure, 0, 2047)/2;
-	// 3 highest bits (9-7), get shifted 6 times to 15-13
-	// 4 middle  bits (6-3), get shifted 5 times to 11-08
-	// 3 lowest  bits (2-1), get shifted 2 times to 04-02
-	color = B00011000*256 + B01100011 + ((color_pressure & 0x380) << 6) +
-                                            ((color_pressure & B01111000) << 5) +
-                                            ((color_pressure & B00000111) << 2);
-	Serial.print("Color: ");
-	Serial.print(p.z);
-	Serial.print(" -> ");
-	Serial.print(color_pressure);
-	Serial.print(" -> ");
-	Serial.println(color, HEX);
+	color = tenbitstocolor(color_pressure);
 	tft.fillCircle(pixel_x, pixel_y, 2, color);
 	update_coordinates = 1;
     // Writing coordinates every time is too slow, write less often
@@ -562,6 +583,24 @@ void finger_draw() {
     }
 }
 
+void read_joystick(bool showdebug=true) {
+    // read the analog in value:
+    joyValueX = 4096-analogRead(JOYSTICK_X_PIN);
+    joyValueY = analogRead(JOYSTICK_Y_PIN);
+    joyBtnValue = !digitalRead(JOYSTICK_BUT_PIN);
+
+    if (showdebug) {
+	// print the results to the serial monitor:
+	Serial.print("X Axis = ");
+	Serial.print(joyValueX);
+	Serial.print("\t Y Axis = ");
+	Serial.print(joyValueY);
+	Serial.print("\t Joy Button = ");
+	Serial.println(joyBtnValue);
+    }
+}
+
+// Draw the dot directly to where the joystick is pointing.
 void joystick_draw() {
     static int8_t update_cnt = 0;
     // 4096 -> 320 (divide by 12.8) and -> 240 (divide by 17)
@@ -581,15 +620,85 @@ void joystick_draw() {
     }
 }
 
+// Move the dot relative to the joystick position (like driving a ball).
+void joystick_draw_relative() {
+    static uint16_t update_cnt = 0;
+    static float pixel_x = 160;
+    static float pixel_y = 120;
+    // Sadly on my board, the middle is 2300/1850 and not 2048/2048
+    read_joystick();
+    float move_x = (joyValueX-2300.0)/2048;
+    float move_y = (joyValueY-1850.0)/2048;
 
-void scan_buttons() {
+    tft.fillCircle(int(pixel_x), int(pixel_y), 2, tenbitstocolor(update_cnt % 1024));
+    pixel_x = constrain(pixel_x + move_x, 0, 319);
+    pixel_y = constrain(pixel_y + move_y, 0, 239);
+
+    // Do not write the cursor values too often, it's too slow
+    if (!(update_cnt++ % 32)) {
+	sprintf(tft_str, "%.1f > %.1f", move_x, int(pixel_x));
+	tftprint(2, 0, 10, tft_str);
+	sprintf(tft_str, "%.1f > %.1f", move_y, int(pixel_y));
+	tftprint(2, 1, 10, tft_str);
+    }
+}
+
+void accel_draw() {
+    static uint16_t update_cnt = 0;
+    static float pixel_x = 160;
+    static float pixel_y = 120;
+    sensors_event_t event; 
+    accel.getEvent(&event);
+    float accel_x = -event.acceleration.x;
+    // My accelerator isn't really level, it shows 2 when my board is flat
+    float accel_y = event.acceleration.y - 2;
+
+    tft.fillCircle(int(pixel_x), int(pixel_y), 2, tenbitstocolor(update_cnt % 1024));
+    pixel_x = constrain(pixel_x + accel_x, 0, 319);
+    pixel_y = constrain(pixel_y + accel_y, 0, 239);
+
+    // Do not write the cursor values too often, it's too slow
+    if (!(update_cnt++ % 32)) {
+	sprintf(tft_str, "%.1f > %.1f", accel_x, int(pixel_x));
+	tftprint(2, 0, 10, tft_str);
+	sprintf(tft_str, "%.1f > %.1f", accel_y, int(pixel_y));
+	tftprint(2, 1, 10, tft_str);
+    }
+}
+
+uint16_t tenbitstocolor(uint16_t tenbits) {
+    uint16_t color;
+
+    // TFT colors are 5 bit Red, 6 bits Green, 5 bits Blue, we want to avoid
+    // black looking colors, so we seed the last 2 bits of each color to 1
+    // and then interleave 10 bits ot color spread across the remaining bits
+    // that affect the end color more visibly.
+    // 3 highest bits (9-7), get shifted 6 times to 15-13
+    // 4 middle  bits (6-3), get shifted 4 times to 10-07
+    // 3 lowest  bits (2-0), get shifted 2 times to 04-02
+    // This means that if the 10 input bits are 0, the output color is
+    // 00011000 01100011 = 0x1863
+    color = B00011000*256 + B01100011 + ((tenbits & 0x380) << 6) +
+					((tenbits & B01111000) << 4) +
+					((tenbits & B00000111) << 2);
+
+//    Serial.print("Color: ");
+//    Serial.print(tenbits, HEX);
+//    Serial.print(" -> ");
+//    Serial.println(color, HEX);
+    return color;
+}
+
+
+void scan_buttons(bool *need_select) {
     uint8_t butt_state = i2cexp_read();
+    *need_select = false;
 
     if (butt_state & I2CEXP_A_BUT && !butA)
     {
 	butA = true;
-	// clear screen
 	reset_tft();
+	reset_textcoord();
 	tftprint(0, 2, 0, "But A");
     }
     if (!(butt_state & I2CEXP_A_BUT) && butA)
@@ -601,14 +710,7 @@ void scan_buttons() {
     {
 	butB = true;
 	tftprint(0, 3, 0, "But B");
-	joystick_mode = !joystick_mode;
-	Serial.print("Joystick: ");
-	Serial.println(joystick_mode);
-	if (joystick_mode) {
-	    tftprint(30, 0, 11, "Joystick Draw");
-	} else { 
-	    tftprint(30, 0, 13, "Finger Draw");
-	}
+	*need_select = true;
     }
     if (!(butt_state & I2CEXP_B_BUT) && butB)
     {
@@ -632,25 +734,176 @@ void reset_tft() {
     tft.fillScreen(ILI9341_BLACK);
     tft.setTextColor(ILI9341_WHITE);
     tft.setTextSize(1);
+}
+
+void reset_textcoord() {
     tft.setCursor(0, 0);
     tft.println("x=");
     tft.print("y=");
 }
 
-void read_joystick() {
-    // read the analog in value:
-    joyValueX = 4096-analogRead(JOYSTICK_X_PIN);
-    joyValueY = analogRead(JOYSTICK_Y_PIN);
-    joyBtnValue = !digitalRead(JOYSTICK_BUT_PIN);
-
-    // print the results to the serial monitor:
-    Serial.print("X Axis = ");
-    Serial.print(joyValueX);
-    Serial.print("\t Y Axis = ");
-    Serial.print(joyValueY);
-    Serial.print("\t Joy Button = ");
-    Serial.println(joyBtnValue);
+void displaySensorDetails(void)
+{
+    sensor_t sensor;
+    accel.getSensor(&sensor);
+    Serial.println("------------------------------------");
+    Serial.print  ("Sensor:       "); Serial.println(sensor.name);
+    Serial.print  ("Driver Ver:   "); Serial.println(sensor.version);
+    Serial.print  ("Unique ID:    "); Serial.println(sensor.sensor_id);
+    Serial.print  ("Max Value:    "); Serial.print(sensor.max_value); Serial.println(" m/s^2");
+    Serial.print  ("Min Value:    "); Serial.print(sensor.min_value); Serial.println(" m/s^2");
+    Serial.print  ("Resolution:   "); Serial.print(sensor.resolution); Serial.println(" m/s^2");  
+    Serial.println("------------------------------------");
+    Serial.println("");
 }
+
+
+
+
+void draw_choices(void) {
+
+    for(uint16_t x=tftw/NHORIZ; x<tftw; x+=boxw) tft.drawFastVLine(x, 0, tfth, ILI9341_LIGHTGREY);
+    for(uint16_t y=tfth/NVERT;  y<tfth; y+=boxh) tft.drawFastHLine(0, y, tftw, ILI9341_LIGHTGREY);
+    
+    for(uint8_t y=0; y<NVERT; y++) { 
+	for(uint8_t x=0; x<NHORIZ; x++) { 
+	    for(uint8_t line=0; line<3; line++) { 
+		tft.setCursor(x*boxw + 4, y*boxh + line*8 + 16);
+		tft.println(opt_name[y][x][line]);
+	    }
+	}
+    }
+
+}
+
+void show_selected_box(uint8_t x, uint8_t y) {
+    tft.fillRect(x*boxw, y*boxh, boxw, boxh, ILI9341_LIGHTGREY);
+}
+
+uint8_t get_selection(void) {
+    TS_Point p;
+    uint8_t x, y, select;
+
+    Serial.println("Waiting for finger touch to select option");
+    do {
+	p = get_touch();
+    // at boot, I get a fake touch with pressure 1030
+    } while ( p.z < 1060);
+
+    uint16_t pixel_x = p.x, pixel_y = p.y;
+    touchcoord2pixelcoord(&pixel_x, &pixel_y);
+
+    x = pixel_x/(tftw/NHORIZ);
+    y = pixel_y/(tfth/NVERT);
+    Serial.print("Got touch in box coordinates ");
+    Serial.print(x);
+    Serial.print("x");
+    Serial.print(y);
+    Serial.print(" pressure: ");
+    Serial.println(p.z);
+    return (x + y*NHORIZ);
+}
+
+void loop(void) {
+    static bool need_select = true;
+    static uint8_t select;
+    
+    if (need_select) {
+	reset_tft();
+	draw_choices();
+	select = get_selection();
+	Serial.print("Got menu selection #");
+	Serial.println(select);
+	tft.fillScreen(ILI9341_BLACK);
+    }
+
+    switch (select) {
+    case FINGERPAINT:
+	if (need_select) reset_textcoord();
+	finger_draw();
+	break;
+    case JOYABS:
+	if (need_select) reset_textcoord();
+	joystick_draw();
+	break;
+    case JOYREL:
+	if (need_select) reset_textcoord();
+	joystick_draw_relative();
+	break;
+    case ACCELPAINT:
+	if (need_select) reset_textcoord();
+	accel_draw();
+	break;
+    default:
+	if (select >= 8) {
+	    Serial.print("Running LCD Demo #");
+	    Serial.println(select);
+	    lcd_test((LCDtest) select);
+	    delay(500);
+	    need_select = true;
+	    return;
+	}
+    }
+    scan_buttons(&need_select);
+    delay(1);
+    return;
+    
+
+    if (joyBtnValue == true) select++;
+    // tilting joystick back (not too far) while clicking goes back one demo
+    if (joyValueX < 2000) select-=2;
+    if (select == 12) select = 0;
+    if (select == -1) select = 11;
+
+    // Try to light up LEDs (not working yet)
+    pixels.setPixelColor(0, select*20, 0, 0);
+    pixels.setPixelColor(1, 0, select*20, 0);
+    pixels.show();
+
+
+    Serial.print("Running LCD Demo #");
+    Serial.println(select);
+    lcd_test((LCDtest) select);
+
+    do {
+	read_joystick(false);
+	// wait 50 milliseconds before the next loop
+	// for the analog-to-digital converter to settle
+	// after the last reading:
+	// this also calls yield() for us
+	delay(50);
+
+	// left
+	if (joyValueX < 500)
+	{
+	    tft.setRotation(0);
+	    lcd_test((LCDtest) select);
+	}
+
+	// right
+	if (joyValueX > 3500)
+	{
+	    tft.setRotation(2);
+	    lcd_test((LCDtest) select);
+	}
+
+	// up
+	if (joyValueY < 500)
+	{
+	    tft.setRotation(1);
+	    lcd_test((LCDtest) select);
+	}
+
+	// down
+	if (joyValueY > 3500)
+	{
+	    tft.setRotation(3);
+	    lcd_test((LCDtest) select);
+	}
+    } while (joyBtnValue  == false);
+
+}
+
 
 void setup() {
     Serial.begin(115200);
@@ -689,6 +942,11 @@ void setup() {
     // that will be ignored).
     SPI.begin(SPI_CLK, MISO, MOSI);
 
+    // Until further notice, there is a hack to get HW SPI be as fast as SW SPI:
+    // in espressif/esp32/cores/esp32/esp32-hal.h after the first define, add
+    // #define CONFIG_DISABLE_HAL_LOCKS 1
+    // Use with caution, this may cause unknown issues
+
     Wire.begin();
     // LCD backlight is inverted logic,
     // This turns the backlight off
@@ -711,87 +969,30 @@ void setup() {
     Serial.print("Image Format: 0x"); Serial.println(x, HEX);
     x = tft.readcommand8(ILI9341_RDSELFDIAG);
     Serial.print("Self Diagnostic: 0x"); Serial.println(x, HEX); 
-    Serial.print("Resolution: "); Serial.print(tft.height()); 
-    Serial.print(" x "); Serial.println(tft.width());
+    tft.setRotation(3);
+    tftw = tft.width(), tfth = tft.height();
+    boxw = tftw/NHORIZ, boxh = tfth/NVERT;
+    Serial.print("Resolution: "); Serial.print(tftw); 
+    Serial.print(" x "); Serial.println(tfth);
+    Serial.print("Selection Box Size: "); Serial.print(boxw); 
+    Serial.print(" x "); Serial.println(boxh);
     Serial.println(F("Done!"));
-    reset_tft();
 
     // Tri-color APA106 LEDs Setup (not working right now)
     pixels.begin();
     pixels.setPixelColor(0, 255, 0, 0);
     pixels.setPixelColor(1, 0, 255, 0);
     pixels.show();
-}
 
-void loop(void) {
-    static int8_t lcd_demo = -1;
-    read_joystick();
-
-    if (joyBtnValue == true) lcd_demo++;
-    if (lcd_demo == -1)
-    {
-	if (joystick_mode) {
-	    joystick_draw();
-	} else {
-	    finger_draw();
-	}
-	scan_buttons();
-	delay(1);
-	return;
+    // ADXL345
+    if(!accel.begin()) {
+	/* There was a problem detecting the ADXL345 ... check your connections */
+	Serial.println("Ooops, no ADXL345 detected ... Check your wiring!");
+	while(1);
     }
+    accel.setRange(ADXL345_RANGE_16_G);
+    displaySensorDetails();
 
-    Serial.print("Running LCD Demo #");
-    Serial.print(lcd_demo);
-    lcd_test((LCDtest) lcd_demo);
-
-    read_joystick();
-    while (joyBtnValue  == false)
-    {
-	// wait 50 milliseconds before the next loop
-	// for the analog-to-digital converter to settle
-	// after the last reading:
-	// this also calls yield() for us
-	delay(50);
-
-	// left
-	if (joyValueX < 500)
-	{
-	    tft.setRotation(0);
-	    lcd_test((LCDtest) lcd_demo);
-	}
-
-	// right
-	if (joyValueX > 3500)
-	{
-	    tft.setRotation(2);
-	    lcd_test((LCDtest) lcd_demo);
-	}
-
-	// up
-	if (joyValueY < 500)
-	{
-	    tft.setRotation(1);
-	    lcd_test((LCDtest) lcd_demo);
-	}
-
-	// down
-	if (joyValueY > 3500)
-	{
-	    tft.setRotation(3);
-	    lcd_test((LCDtest) lcd_demo);
-	}
-    }
-    lcd_demo++;
-    // tilting joystick back (not too far) while clicking goes back one demo
-    if (joyValueX < 2000) lcd_demo-=2;
-    if (lcd_demo == 12) lcd_demo = 0;
-    if (lcd_demo == -1) lcd_demo = 11;
-
-    // Try to light up LEDs (not working yet)
-    pixels.setPixelColor(0, lcd_demo*20, 0, 0);
-    pixels.setPixelColor(1, 0, lcd_demo*20, 0);
-    pixels.show();
 }
-
 
 // vim:sts=4:sw=4
