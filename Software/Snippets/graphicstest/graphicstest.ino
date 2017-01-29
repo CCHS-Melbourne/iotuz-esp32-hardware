@@ -30,7 +30,8 @@
 #define TFT_MOSI 13
 #define TFT_CLK 14
 #define TFT_RST 32
-#define TFT_MISO 12
+#define TFT_MISO 12 // TODO: MOSI/CLK/MISO could be renamed without the TFT
+// bit since they are common to multiple devices (not just TFT)
 
 // Use hardware SPI (on Uno, #13, #12, #11) and the above for CS/DC
 //Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC);
@@ -43,24 +44,28 @@ uint8_t dataSend;  //8bit data sent
 
 void setup() {
   
-  pinMode(TFT_CS, OUTPUT);
-  pinMode(TFT_MOSI, OUTPUT);
-  pinMode(TFT_DC, OUTPUT);
+  pinMode(TFT_CS, OUTPUT);   // I believe these aren't needed because the adafruit library
+  pinMode(TFT_MOSI, OUTPUT); // also sets those (but it can't hurt to keep them for
+  pinMode(TFT_DC, OUTPUT);   // documentation purposes
   pinMode(TFT_CLK, OUTPUT);
   pinMode(TFT_RST, OUTPUT);
-  pinMode(TFT_MISO, OUTPUT);
+  pinMode(TFT_MISO, INPUT);
   
+  // Multiple devices are on the SPI bus, we need to active the proper device
+  // via CS before talking to it (done by bringing the line low). This is however
+  // already done by the adafruit library too, so this call is redundant.
   digitalWrite(TFT_CS, LOW);
   Wire.begin();
   Serial.begin(115200);
   Serial.println("Serial Begin"); 
-  dataSend = B01111111; //turn every pin to input except P7
+  // 
+  dataSend = B01111111; // Bring P7 low (LCD backlight) and other pins high. This is required to
+                        // ensure CS is high (i.e. disabled) on other SPI devices when we talk to the TFT.
   pcf8574_write(dataSend); //set up pins
   delay(100);
-  dataSend = B01111111; //turn every pin to input except P7
-  pcf8574_write(dataSend); //set up pins
+  pcf8574_write(dataSend); // FIXME: why is this run twice?
   
-  delay(3000);
+  delay(3000); // FIXME: why is this? Can this be dropped?
   Serial.println("ILI9341 Test!"); 
  
   tft.begin();
