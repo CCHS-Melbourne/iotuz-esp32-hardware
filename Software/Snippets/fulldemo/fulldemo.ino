@@ -24,8 +24,6 @@ ADXL:   0x53
 BME230: 0x77 (Temp/Humidity/Pressure)
 */
 
-#define CONFIG_DISABLE_HAL_LOCKS 1
-
 
 // https://github.com/CCHS-Melbourne/iotuz-esp32-hardware/wiki has hardware mapping details
 
@@ -73,9 +71,16 @@ bool joyBtnValue;
 #include "Adafruit_ILI9341.h"
 #include <Wire.h>
 
+// https://learn.adafruit.com/adafruit-neopixel-uberguide/
 // Support for APA106 RGB LEDs
-// Current Adafruit code does not support writing to any LED strip on ESP32
 #include "Adafruit_NeoPixel.h"
+// APA106 is somewhat compatible with WS2811 or WS2812 (well, maybe not 100%, but close enough to work)
+// I have patched the Adafruit library to support ESP32. If that hasn't been merged yet, see this patch
+// https://github.com/adafruit/Adafruit_NeoPixel/pull/125
+#define RGB_LED_PIN 23
+#define NUMPIXELS 2
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + NEO_KHZ800);
+// If you are lacking the ESP32 patch, you will get no error, but the LEDs will not work
 
 // Accelerometer
 #include <Adafruit_Sensor.h>
@@ -111,14 +116,15 @@ char tft_str[41];
 XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 //XPT2046_Touchscreen ts(TS_CS_PIN, TS_IRQ_PIN);  // Param 2 - Touch IRQ Pin - interrupt enabled polling
 
+// This is calibration data for the raw touch data to the screen coordinates
+#define TS_MINX 320
+#define TS_MINY 220
+#define TS_MAXX 3920
+#define TS_MAXY 3820
+#define MINPRESSURE 400
+#define MAXPRESSURE 3000
 
 
-// APA106 is somewhat compatible with WS2811 or WS2812 (but not quite, timing is different?)
-// https://learn.adafruit.com/adafruit-neopixel-uberguide/
-// FIXME: This should work, but currently does not due to lack of support for ESP32 in the adafruit lib
-#define RGB_LED_PIN 23
-#define NUMPIXELS 2
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + NEO_KHZ800);
 
 // Joystick Setup
 #define JOYSTICK_X_PIN 39
@@ -133,7 +139,7 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + N
 // 30 chars high, 4 boxes, 7 lines per box
 char* opt_name[NVERT][NHORIZ][3] = {
     { { "", "Finger", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, { "", "", ""}, },
-    { { "", "", ""}, { "", "", ""}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
+    { { "Select", "LEDs", "Color"}, { "", "LEDs", "Off"}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
     { { "", "Text", ""}, { "", "Fill", ""}, { "", "Diagonal", "Lines"}, { "Horizon", "Vert", "Lines"}, { "", "Rectangle", ""}, },
     { { "", "Fill", "Rectangle"}, { "", "Circles", ""}, { "", "Fill", "Circles"}, { "", "Triangles", ""}, { "", "Fill", "Triangles"}, },
 };
@@ -147,6 +153,8 @@ typedef enum {
     JOYABS = 1,
     JOYREL = 2,
     ACCELPAINT = 3,
+    COLORLED = 5,
+    LEDOFF = 6,
     ROUNDREC = 8,
     ROUNDRECFILL = 9,
     TEXT = 10,
@@ -546,8 +554,10 @@ void touchcoord2pixelcoord(uint16_t *pixel_x, uint16_t *pixel_y) {
     Serial.print(*pixel_x);
     Serial.print("x");
     Serial.print(*pixel_y);
-    *pixel_x = constrain((*pixel_x-320)/11.25, 0, 319);
-    *pixel_y = constrain((*pixel_y-200)/15, 0, 239);
+    //*pixel_x = constrain((*pixel_x-320)/11.25, 0, 319);
+    //*pixel_y = constrain((*pixel_y-200)/15, 0, 239);
+    *pixel_x = map(*pixel_x, TS_MINX, TS_MAXX, 0, tftw);
+    *pixel_y = map(*pixel_y, TS_MINY, TS_MAXY, 0, tfth);
     Serial.print(" to pixel coordinates ");
     Serial.print(*pixel_x);
     Serial.print("x");
@@ -559,28 +569,34 @@ void finger_draw() {
     static uint8_t update_coordinates = 0;
     TS_Point p = get_touch();
 
-    if (p.z) {
-	uint16_t pixel_x = p.x, pixel_y = p.y;
-	touchcoord2pixelcoord(&pixel_x, &pixel_y);
-	
-	// Colors are 16 bits, 5 bit: red, 6 bits: green, 5 bits: blue
-	// to map a pressure number to colors and avoid random black looking colors,
-	// let's seed the color with 2 lowest bits per color: 0001100001100011
-	// this gives us 10 bits we need to fill in for which color we'll use,
-	color_pressure = p.z-1000;
-	if (p.z < 1000) color_pressure = 0;
-	color_pressure = constrain(color_pressure, 0, 2047)/2;
-	color = tenbitstocolor(color_pressure);
-	tft.fillCircle(pixel_x, pixel_y, 2, color);
-	update_coordinates = 1;
+    uint16_t pixel_x = p.x, pixel_y = p.y;
+    touchcoord2pixelcoord(&pixel_x, &pixel_y);
+
     // Writing coordinates every time is too slow, write less often
-    } else if (update_coordinates) {
+    if (update_coordinates == 32) {
 	update_coordinates = 0;
 	sprintf(tft_str, "%d", p.x);
 	tftprint(2, 0, 4, tft_str);
 	sprintf(tft_str, "%d", p.y);
 	tftprint(2, 1, 4, tft_str);
     }
+
+    if (p.z < MINPRESSURE || p.z > MAXPRESSURE) {
+	// If we were touching the screen, and we release, show coordinates next time around.
+	if (update_coordinates > 0) update_coordinates = 32;
+	return;
+    }
+    
+    // Colors are 16 bits, 5 bit: red, 6 bits: green, 5 bits: blue
+    // to map a pressure number to colors and avoid random black looking colors,
+    // let's seed the color with 2 lowest bits per color: 0001100001100011
+    // this gives us 10 bits we need to fill in for which color we'll use,
+    color_pressure = p.z-1000;
+    if (p.z < 1000) color_pressure = 0;
+    color_pressure = constrain(color_pressure, 0, 2047)/2;
+    color = tenbitstocolor(color_pressure);
+    tft.fillCircle(pixel_x, pixel_y, 2, color);
+    update_coordinates++;
 }
 
 void read_joystick(bool showdebug=true) {
@@ -666,6 +682,62 @@ void accel_draw() {
     }
 }
 
+void draw_color_selector() {
+    // 240 pixels high: 75/5 (R) + 75/5 (G) + 75/5 (B)
+    // 6 bits of colors for G, 64 colors, 320 pixels wide: 5 pixels wide per color tone
+    for (uint8_t i=0; i<3; i++) {
+	for (uint8_t j=0; j<64; j++) {
+	    uint16_t color = j;
+	    
+	    // R and B are only 32 shades (5 bits) while G is 64 shades/6 bits.
+	    if (i != 1) color /= 2;
+
+	    if (i == 0) color = color << 11;
+	    if (i == 1) color = color << 5;
+	    tft.fillRect(j*5, i*80, 5, 75, color);
+	}
+    }   
+}
+
+void led_color_selector() {
+    uint16_t color_pressure;
+    uint8_t colnum, color;
+    static uint8_t RGB[3] = {255, 255, 255};
+
+    TS_Point p = get_touch();
+
+    if (p.z < MINPRESSURE || p.z > MAXPRESSURE) {
+	return;
+    }
+
+    // Red and Green seem reversed on APA106
+    pixels.setPixelColor(0, RGB[1], RGB[0], RGB[2]);
+    pixels.setPixelColor(1, 255-RGB[1], 255-RGB[0], 255-RGB[2]);
+    pixels.show();
+
+    uint16_t pixel_x = p.x, pixel_y = p.y;
+    touchcoord2pixelcoord(&pixel_x, &pixel_y);
+
+//    sprintf(tft_str, "%d", pixel_x);
+//    tftprint(2, 0, 3, tft_str);
+//    sprintf(tft_str, "%d", pixel_y);
+//    tftprint(2, 1, 3, tft_str);
+    sprintf(tft_str, "%.2x/%.2x/%.2x", RGB[0], RGB[1], RGB[2]);
+    tftprint(0, 0, 8, tft_str);
+
+    if (pixel_y < 80) colnum = 0;
+    else if (pixel_y < 160) colnum = 1;
+    else if (pixel_y < 240) colnum = 2;
+    
+    color = map(pixel_x, 0, 320, 0, 255);
+//    sprintf(tft_str, "col %d: %2x", colnum, color);
+//    tftprint(0, 3, 9, tft_str);
+    tft.fillRect(0, 80*(colnum+1)-5, 320, 4, ILI9341_BLACK);
+    tft.fillTriangle(pixel_x, 80*(colnum+1)-5, pixel_x-2, 80*(colnum+1)-2, pixel_x+2, 80*(colnum+1)-2, ILI9341_WHITE);
+    
+    RGB[colnum] = color;
+}
+
 uint16_t tenbitstocolor(uint16_t tenbits) {
     uint16_t color;
 
@@ -715,7 +787,9 @@ void scan_buttons(bool *need_select) {
     if (!(butt_state & I2CEXP_B_BUT) && butB)
     {
 	butB = false;
-	tftprint(0, 3, 5, "");
+	// When changing modes, this could delete a block over a new mode
+	// that draws a background.
+	//tftprint(0, 3, 5, "");
     }
     if (butt_state & I2CEXP_ENC_BUT && !butEnc)
     {
@@ -815,24 +889,42 @@ void loop(void) {
 	Serial.print("Got menu selection #");
 	Serial.println(select);
 	tft.fillScreen(ILI9341_BLACK);
+	// Kind of random LED illumination
+	pixels.setPixelColor(0, (select % 5)*50, 0, 255);
+	pixels.setPixelColor(1, 0, (select/5)*64, 255);
+	pixels.show();
     }
 
+
+    // The first 4 demos display x/y coordinate text in the upper left corner
+    // After the first time around the loop, need_select gets reset to false
+    // and the coordinate text is not rewritten (to save screen drawing time)
+    if (select <= 3 and need_select) reset_textcoord();
     switch (select) {
     case FINGERPAINT:
-	if (need_select) reset_textcoord();
 	finger_draw();
 	break;
     case JOYABS:
-	if (need_select) reset_textcoord();
 	joystick_draw();
 	break;
     case JOYREL:
-	if (need_select) reset_textcoord();
 	joystick_draw_relative();
 	break;
     case ACCELPAINT:
-	if (need_select) reset_textcoord();
 	accel_draw();
+	break;
+    case COLORLED:
+	// First time around the loop, draw a color selection circle
+	if (need_select) draw_color_selector();
+	led_color_selector();
+	break;
+    case LEDOFF:
+	pixels.setPixelColor(0, 0, 0, 0);
+	pixels.setPixelColor(1, 0, 0, 0);
+	pixels.show();
+	// shortcut scan buttons below and go back to main menu
+	need_select = true;
+	return;
 	break;
     default:
 	if (select >= 8) {
@@ -840,68 +932,14 @@ void loop(void) {
 	    Serial.println(select);
 	    lcd_test((LCDtest) select);
 	    delay(500);
+	    // shortcut scan buttons below and go back to main menu
 	    need_select = true;
 	    return;
 	}
     }
+    // resets need_select to false unless 'B' is pushed.
     scan_buttons(&need_select);
     delay(1);
-    return;
-    
-
-    if (joyBtnValue == true) select++;
-    // tilting joystick back (not too far) while clicking goes back one demo
-    if (joyValueX < 2000) select-=2;
-    if (select == 12) select = 0;
-    if (select == -1) select = 11;
-
-    // Try to light up LEDs (not working yet)
-    pixels.setPixelColor(0, select*20, 0, 0);
-    pixels.setPixelColor(1, 0, select*20, 0);
-    pixels.show();
-
-
-    Serial.print("Running LCD Demo #");
-    Serial.println(select);
-    lcd_test((LCDtest) select);
-
-    do {
-	read_joystick(false);
-	// wait 50 milliseconds before the next loop
-	// for the analog-to-digital converter to settle
-	// after the last reading:
-	// this also calls yield() for us
-	delay(50);
-
-	// left
-	if (joyValueX < 500)
-	{
-	    tft.setRotation(0);
-	    lcd_test((LCDtest) select);
-	}
-
-	// right
-	if (joyValueX > 3500)
-	{
-	    tft.setRotation(2);
-	    lcd_test((LCDtest) select);
-	}
-
-	// up
-	if (joyValueY < 500)
-	{
-	    tft.setRotation(1);
-	    lcd_test((LCDtest) select);
-	}
-
-	// down
-	if (joyValueY > 3500)
-	{
-	    tft.setRotation(3);
-	    lcd_test((LCDtest) select);
-	}
-    } while (joyBtnValue  == false);
-
 }
 
 
@@ -978,10 +1016,11 @@ void setup() {
     Serial.print(" x "); Serial.println(boxh);
     Serial.println(F("Done!"));
 
-    // Tri-color APA106 LEDs Setup (not working right now)
+    // Tri-color APA106 LEDs Setup
+    // Mapping is actually Green, Red, Blue
     pixels.begin();
     pixels.setPixelColor(0, 255, 0, 0);
-    pixels.setPixelColor(1, 0, 255, 0);
+    pixels.setPixelColor(1, 0, 0, 255);
     pixels.show();
 
     // ADXL345
