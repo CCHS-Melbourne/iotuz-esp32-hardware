@@ -13,6 +13,7 @@
   MIT license, all text above must be included in any redistribution
  ****************************************************/
 
+
 /*
 I2C addresses:
 Audio:  0x1A
@@ -24,6 +25,32 @@ ADXL:   0x53
 BME230: 0x77 (Temp/Humidity/Pressure)
 */
 
+#define CONFIG_DISABLE_HAL_LOCKS 1
+
+#include <Wire.h>
+#include <SPI.h>
+
+#include "Adafruit_GFX.h"
+// Support for LCD screen
+// The latest version of that library may not be up to date and miss a patch for ESP32
+// which will cause a compilation error:
+// Adafruit_ILI9341.cpp:113:3: error: 'mosiport' was not declared in this scope
+// If so, get the latest version from github, or just patch this single line
+// https://github.com/adafruit/Adafruit_ILI9341/blob/master/Adafruit_ILI9341.cpp#L98
+#include "Adafruit_ILI9341.h"
+
+// Support for APA106 RGB LEDs
+// Current Adafruit code does not support writing to any LED strip on ESP32
+#include "Adafruit_NeoPixel.h"
+
+// Accelerometer
+#include <Adafruit_Sensor.h>
+#include <Adafruit_ADXL345_U.h>
+
+#include "defs.h"
+
+// Touch screen
+#include "XPT2046_Touchscreen.h"
 
 // https://github.com/CCHS-Melbourne/iotuz-esp32-hardware/wiki has hardware mapping details
 
@@ -59,6 +86,7 @@ bool butEnc = false;
 uint16_t joyValueX;
 uint16_t joyValueY;
 bool joyBtnValue;
+
 
 #include "SPI.h"
 #include "Adafruit_GFX.h"
@@ -103,8 +131,6 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 char tft_str[41];
 // TFT Setup End
 
-// Touch screen
-#include "XPT2046_Touchscreen.h"
 // Touch screen select is on port expander line 6, not directly connected, so the library
 // cannot toggle it directly. It however requires a CS pin, so I'm giving it 33, a spare IO
 // pin so that it doesn't break anything else.
