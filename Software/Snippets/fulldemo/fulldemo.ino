@@ -13,7 +13,6 @@
   MIT license, all text above must be included in any redistribution
  ****************************************************/
 
-
 /*
 I2C addresses:
 Audio:  0x1A
@@ -24,33 +23,6 @@ The Wire lib automatically uses the right I/O port for read and write.
 ADXL:   0x53
 BME230: 0x77 (Temp/Humidity/Pressure)
 */
-
-#define CONFIG_DISABLE_HAL_LOCKS 1
-
-#include <Wire.h>
-#include <SPI.h>
-
-#include "Adafruit_GFX.h"
-// Support for LCD screen
-// The latest version of that library may not be up to date and miss a patch for ESP32
-// which will cause a compilation error:
-// Adafruit_ILI9341.cpp:113:3: error: 'mosiport' was not declared in this scope
-// If so, get the latest version from github, or just patch this single line
-// https://github.com/adafruit/Adafruit_ILI9341/blob/master/Adafruit_ILI9341.cpp#L98
-#include "Adafruit_ILI9341.h"
-
-// Support for APA106 RGB LEDs
-// Current Adafruit code does not support writing to any LED strip on ESP32
-#include "Adafruit_NeoPixel.h"
-
-// Accelerometer
-#include <Adafruit_Sensor.h>
-#include <Adafruit_ADXL345_U.h>
-
-#include "defs.h"
-
-// Touch screen
-#include "XPT2046_Touchscreen.h"
 
 
 // https://github.com/CCHS-Melbourne/iotuz-esp32-hardware/wiki has hardware mapping details
@@ -88,6 +60,31 @@ uint16_t joyValueX;
 uint16_t joyValueY;
 bool joyBtnValue;
 
+#include "SPI.h"
+#include "Adafruit_GFX.h"
+// Support for LCD screen
+// The latest version of that library may not be up to date and miss a patch for ESP32
+// which will cause a compilation error:
+// Adafruit_ILI9341.cpp:113:3: error: 'mosiport' was not declared in this scope
+// If so, get the latest version from github, or just patch this single line
+// https://github.com/adafruit/Adafruit_ILI9341/blob/master/Adafruit_ILI9341.cpp#L98
+#include "Adafruit_ILI9341.h"
+#include <Wire.h>
+
+// https://learn.adafruit.com/adafruit-neopixel-uberguide/
+// Support for APA106 RGB LEDs
+#include "Adafruit_NeoPixel.h"
+// APA106 is somewhat compatible with WS2811 or WS2812 (well, maybe not 100%, but close enough to work)
+// I have patched the Adafruit library to support ESP32. If that hasn't been merged yet, see this patch
+// https://github.com/adafruit/Adafruit_NeoPixel/pull/125
+#define RGB_LED_PIN 23
+#define NUMPIXELS 2
+Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + NEO_KHZ800);
+// If you are lacking the ESP32 patch, you will get no error, but the LEDs will not work
+
+// Accelerometer
+#include <Adafruit_Sensor.h>
+#include <Adafruit_ADXL345_U.h>
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 
 // TFT + Touch Screen Setup Start
@@ -106,6 +103,8 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 char tft_str[41];
 // TFT Setup End
 
+// Touch screen
+#include "XPT2046_Touchscreen.h"
 // Touch screen select is on port expander line 6, not directly connected, so the library
 // cannot toggle it directly. It however requires a CS pin, so I'm giving it 33, a spare IO
 // pin so that it doesn't break anything else.
@@ -117,14 +116,15 @@ char tft_str[41];
 XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 //XPT2046_Touchscreen ts(TS_CS_PIN, TS_IRQ_PIN);  // Param 2 - Touch IRQ Pin - interrupt enabled polling
 
+// This is calibration data for the raw touch data to the screen coordinates
+#define TS_MINX 320
+#define TS_MINY 220
+#define TS_MAXX 3920
+#define TS_MAXY 3820
+#define MINPRESSURE 400
+#define MAXPRESSURE 3000
 
 
-// APA106 is somewhat compatible with WS2811 or WS2812 (but not quite, timing is different?)
-// https://learn.adafruit.com/adafruit-neopixel-uberguide/
-// FIXME: This should work, but currently does not due to lack of support for ESP32 in the adafruit lib
-#define RGB_LED_PIN 23
-#define NUMPIXELS 2
-Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + NEO_KHZ800);
 
 // Joystick Setup
 #define JOYSTICK_X_PIN 39
@@ -138,8 +138,8 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + N
 // 40 chars wide, 5 boxes, 8 char per box
 // 30 chars high, 4 boxes, 7 lines per box
 char* opt_name[NVERT][NHORIZ][3] = {
-    { { "", "Finger", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, { "", "", ""}, },
-    { { "", "", ""}, { "", "", ""}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
+    { { "", "Finger", "Paint"},  { "Adafruit", "Touch", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, },
+    { { "Select", "LEDs", "Color"}, { "", "LEDs", "Off"}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
     { { "", "Text", ""}, { "", "Fill", ""}, { "", "Diagonal", "Lines"}, { "Horizon", "Vert", "Lines"}, { "", "Rectangle", ""}, },
     { { "", "Fill", "Rectangle"}, { "", "Circles", ""}, { "", "Fill", "Circles"}, { "", "Triangles", ""}, { "", "Fill", "Triangles"}, },
 };
@@ -148,248 +148,28 @@ uint16_t tftw, tfth;
 // number of pixels of each selection box (height and width)
 uint16_t boxw, boxh;
 
-unsigned long testFillScreen() {
-  unsigned long start = micros();
-  tft.fillScreen(ILI9341_RED);
-  yield();
-  tft.fillScreen(ILI9341_GREEN);
-  yield();
-  tft.fillScreen(ILI9341_BLUE);
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-  return micros() - start;
-}
+typedef enum {
+    FINGERPAINT = 0,
+    TOUCHPAINT = 1,
+    JOYABS = 2,
+    JOYREL = 3,
+    ACCELPAINT = 4,
+    COLORLED = 5,
+    LEDOFF = 6,
+    ROUNDREC = 8,
+    ROUNDRECFILL = 9,
+    TEXT = 10,
+    FILL = 11,
+    LINES = 12,
+    HORIZVERT = 13,
+    RECT = 14,
+    RECTFILL = 15,
+    CIRCLE = 16,
+    CIRCFILL = 17,
+    TRIANGLE = 18,
+    TRIFILL = 19,
+} LCDtest;
 
-unsigned long testText() {
-  unsigned long start = micros();
-  tft.setCursor(0, 0);
-  tft.setTextColor(ILI9341_WHITE);  tft.setTextSize(1);
-  tft.println("Hello World!");
-  tft.setTextColor(ILI9341_YELLOW); tft.setTextSize(2);
-  tft.println(1234.56);
-  tft.setTextColor(ILI9341_RED);    tft.setTextSize(3);
-  tft.println(0xDEADBEEF, HEX);
-  tft.println();
-  tft.setTextColor(ILI9341_GREEN);
-  tft.setTextSize(5);
-  tft.println("Groop");
-  tft.setTextSize(2);
-  tft.println("I implore thee,");
-  tft.setTextSize(1);
-  tft.println("my foonting turlingdromes.");
-  tft.println("And hooptiously drangle me");
-  tft.println("with crinkly bindlewurdles,");
-  tft.println("Or I will rend thee");
-  tft.println("in the gobberwarts");
-  tft.println("with my blurglecruncheon,");
-  tft.println("see if I don't!");
-  return micros() - start;
-}
-
-unsigned long testLines(uint16_t color) {
-  unsigned long start, t;
-  int           x1, y1, x2, y2,
-                w = tft.width(),
-                h = tft.height();
-
-  x1 = y1 = 0;
-  y2    = h - 1;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = w - 1;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  t     = micros() - start; // fillScreen doesn't count against timing
-
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-
-  x1    = w - 1;
-  y1    = 0;
-  y2    = h - 1;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = 0;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  t    += micros() - start;
-
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-
-  x1    = 0;
-  y1    = h - 1;
-  y2    = 0;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = w - 1;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  t    += micros() - start;
-
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-
-  x1    = w - 1;
-  y1    = h - 1;
-  y2    = 0;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = 0;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-
-  yield();
-  return micros() - start;
-}
-
-unsigned long testFastLines(uint16_t color1, uint16_t color2) {
-  unsigned long start;
-  int           x, y, w = tft.width(), h = tft.height();
-
-  start = micros();
-  for(y=0; y<h; y+=5) tft.drawFastHLine(0, y, w, color1);
-  for(x=0; x<w; x+=5) tft.drawFastVLine(x, 0, h, color2);
-
-  return micros() - start;
-}
-
-unsigned long testRects(uint16_t color) {
-  unsigned long start;
-  int           n, i, i2,
-                cx = tft.width()  / 2,
-                cy = tft.height() / 2;
-
-  n     = min(tft.width(), tft.height());
-  start = micros();
-  for(i=2; i<n; i+=6) {
-    i2 = i / 2;
-    tft.drawRect(cx-i2, cy-i2, i, i, color);
-  }
-
-  return micros() - start;
-}
-
-unsigned long testFilledRects(uint16_t color1, uint16_t color2) {
-  unsigned long start, t = 0;
-  int           n, i, i2,
-                cx = tft.width()  / 2 - 1,
-                cy = tft.height() / 2 - 1;
-
-  n = min(tft.width(), tft.height());
-  for(i=n; i>0; i-=6) {
-    i2    = i / 2;
-    start = micros();
-    tft.fillRect(cx-i2, cy-i2, i, i, color1);
-    t    += micros() - start;
-    // Outlines are not included in timing results
-    tft.drawRect(cx-i2, cy-i2, i, i, color2);
-    yield();
-  }
-
-  return t;
-}
-
-unsigned long testFilledCircles(uint8_t radius, uint16_t color) {
-  unsigned long start;
-  int x, y, w = tft.width(), h = tft.height(), r2 = radius * 2;
-
-  start = micros();
-  for(x=radius; x<w; x+=r2) {
-    for(y=radius; y<h; y+=r2) {
-      tft.fillCircle(x, y, radius, color);
-    }
-  }
-
-  return micros() - start;
-}
-
-unsigned long testCircles(uint8_t radius, uint16_t color) {
-  unsigned long start;
-  int           x, y, r2 = radius * 2,
-                w = tft.width()  + radius,
-                h = tft.height() + radius;
-
-  // Screen is not cleared for this one -- this is
-  // intentional and does not affect the reported time.
-  start = micros();
-  for(x=0; x<w; x+=r2) {
-    for(y=0; y<h; y+=r2) {
-      tft.drawCircle(x, y, radius, color);
-    }
-  }
-
-  return micros() - start;
-}
-
-unsigned long testTriangles() {
-  unsigned long start;
-  int           n, i, cx = tft.width()  / 2 - 1,
-                      cy = tft.height() / 2 - 1;
-
-  n     = min(cx, cy);
-  start = micros();
-  for(i=0; i<n; i+=5) {
-    tft.drawTriangle(
-      cx    , cy - i, // peak
-      cx - i, cy + i, // bottom left
-      cx + i, cy + i, // bottom right
-      tft.color565(i, i, i));
-  }
-
-  return micros() - start;
-}
-
-unsigned long testFilledTriangles() {
-  unsigned long start, t = 0;
-  int           i, cx = tft.width()  / 2 - 1,
-                   cy = tft.height() / 2 - 1;
-
-  start = micros();
-  for(i=min(cx,cy); i>10; i-=5) {
-    start = micros();
-    tft.fillTriangle(cx, cy - i, cx - i, cy + i, cx + i, cy + i,
-      tft.color565(0, i*10, i*10));
-    t += micros() - start;
-    tft.drawTriangle(cx, cy - i, cx - i, cy + i, cx + i, cy + i,
-      tft.color565(i*10, i*10, 0));
-    yield();
-  }
-
-  return t;
-}
-
-unsigned long testRoundRects() {
-  unsigned long start;
-  int           w, i, i2,
-                cx = tft.width()  / 2 - 1,
-                cy = tft.height() / 2 - 1;
-
-  w     = min(tft.width(), tft.height());
-  start = micros();
-  for(i=0; i<w; i+=6) {
-    i2 = i / 2;
-    tft.drawRoundRect(cx-i2, cy-i2, i, i, i/8, tft.color565(i, 0, 0));
-  }
-
-  return micros() - start;
-}
-
-unsigned long testFilledRoundRects() {
-  unsigned long start;
-  int           i, i2,
-                cx = tft.width()  / 2 - 1,
-                cy = tft.height() / 2 - 1;
-
-  start = micros();
-  for(i=min(tft.width(), tft.height()); i>20; i-=6) {
-    i2 = i / 2;
-    tft.fillRoundRect(cx-i2, cy-i2, i, i, i/8, tft.color565(0, i, 0));
-    yield();
-  }
-
-  return micros() - start;
-}
 
 // To clear bit #7, send 128
 void i2cexp_clear_bits(uint8_t bitfield) {
@@ -505,8 +285,8 @@ void lcd_test(LCDtest choice) {
 
 // maxlength is the maximum number of characters that need to be deleted before writing on top
 void tftprint(uint16_t x, uint16_t y, uint8_t maxlength, char *text) {
-    if (maxlength > 0) tft.fillRect(x*8, y*8, maxlength*8, 8, ILI9341_BLACK);
-    tft.setCursor(x*8, y*8);
+    if (maxlength > 0) tft.fillRect(x*6, y*8, maxlength*6, 8, ILI9341_BLACK);
+    tft.setCursor(x*6, y*8);
     tft.println(text);
 }
 
@@ -532,8 +312,10 @@ void touchcoord2pixelcoord(uint16_t *pixel_x, uint16_t *pixel_y) {
     Serial.print(*pixel_x);
     Serial.print("x");
     Serial.print(*pixel_y);
-    *pixel_x = constrain((*pixel_x-320)/11.25, 0, 319);
-    *pixel_y = constrain((*pixel_y-200)/15, 0, 239);
+    //*pixel_x = constrain((*pixel_x-320)/11.25, 0, 319);
+    //*pixel_y = constrain((*pixel_y-200)/15, 0, 239);
+    *pixel_x = map(*pixel_x, TS_MINX, TS_MAXX, 0, tftw);
+    *pixel_y = map(*pixel_y, TS_MINY, TS_MAXY, 0, tfth);
     Serial.print(" to pixel coordinates ");
     Serial.print(*pixel_x);
     Serial.print("x");
@@ -545,28 +327,34 @@ void finger_draw() {
     static uint8_t update_coordinates = 0;
     TS_Point p = get_touch();
 
-    if (p.z) {
-	uint16_t pixel_x = p.x, pixel_y = p.y;
-	touchcoord2pixelcoord(&pixel_x, &pixel_y);
-	
-	// Colors are 16 bits, 5 bit: red, 6 bits: green, 5 bits: blue
-	// to map a pressure number to colors and avoid random black looking colors,
-	// let's seed the color with 2 lowest bits per color: 0001100001100011
-	// this gives us 10 bits we need to fill in for which color we'll use,
-	color_pressure = p.z-1000;
-	if (p.z < 1000) color_pressure = 0;
-	color_pressure = constrain(color_pressure, 0, 2047)/2;
-	color = tenbitstocolor(color_pressure);
-	tft.fillCircle(pixel_x, pixel_y, 2, color);
-	update_coordinates = 1;
+    uint16_t pixel_x = p.x, pixel_y = p.y;
+    touchcoord2pixelcoord(&pixel_x, &pixel_y);
+
     // Writing coordinates every time is too slow, write less often
-    } else if (update_coordinates) {
+    if (update_coordinates == 32) {
 	update_coordinates = 0;
 	sprintf(tft_str, "%d", p.x);
 	tftprint(2, 0, 4, tft_str);
 	sprintf(tft_str, "%d", p.y);
 	tftprint(2, 1, 4, tft_str);
     }
+
+    if (p.z < MINPRESSURE || p.z > MAXPRESSURE) {
+	// If we were touching the screen, and we release, show coordinates next time around.
+	if (update_coordinates > 0) update_coordinates = 32;
+	return;
+    }
+    
+    // Colors are 16 bits, 5 bit: red, 6 bits: green, 5 bits: blue
+    // to map a pressure number to colors and avoid random black looking colors,
+    // let's seed the color with 2 lowest bits per color: 0001100001100011
+    // this gives us 10 bits we need to fill in for which color we'll use,
+    color_pressure = p.z-1000;
+    if (p.z < 1000) color_pressure = 0;
+    color_pressure = constrain(color_pressure, 0, 2047)/2;
+    color = tenbitstocolor(color_pressure);
+    tft.fillCircle(pixel_x, pixel_y, 2, color);
+    update_coordinates++;
 }
 
 void read_joystick(bool showdebug=true) {
@@ -652,6 +440,62 @@ void accel_draw() {
     }
 }
 
+void draw_color_selector() {
+    // 240 pixels high: 75/5 (R) + 75/5 (G) + 75/5 (B)
+    // 6 bits of colors for G, 64 colors, 320 pixels wide: 5 pixels wide per color tone
+    for (uint8_t i=0; i<3; i++) {
+	for (uint8_t j=0; j<64; j++) {
+	    uint16_t color = j;
+	    
+	    // R and B are only 32 shades (5 bits) while G is 64 shades/6 bits.
+	    if (i != 1) color /= 2;
+
+	    if (i == 0) color = color << 11;
+	    if (i == 1) color = color << 5;
+	    tft.fillRect(j*5, i*80, 5, 75, color);
+	}
+    }   
+}
+
+void led_color_selector() {
+    uint16_t color_pressure;
+    uint8_t colnum, color;
+    static uint8_t RGB[3] = {255, 255, 255};
+
+    TS_Point p = get_touch();
+
+    if (p.z < MINPRESSURE || p.z > MAXPRESSURE) {
+	return;
+    }
+
+    // Red and Green seem reversed on APA106
+    pixels.setPixelColor(0, RGB[1], RGB[0], RGB[2]);
+    pixels.setPixelColor(1, 255-RGB[1], 255-RGB[0], 255-RGB[2]);
+    pixels.show();
+
+    uint16_t pixel_x = p.x, pixel_y = p.y;
+    touchcoord2pixelcoord(&pixel_x, &pixel_y);
+
+//    sprintf(tft_str, "%d", pixel_x);
+//    tftprint(2, 0, 3, tft_str);
+//    sprintf(tft_str, "%d", pixel_y);
+//    tftprint(2, 1, 3, tft_str);
+    sprintf(tft_str, "%.2x/%.2x/%.2x", RGB[0], RGB[1], RGB[2]);
+    tftprint(0, 0, 8, tft_str);
+
+    if (pixel_y < 80) colnum = 0;
+    else if (pixel_y < 160) colnum = 1;
+    else if (pixel_y < 240) colnum = 2;
+    
+    color = map(pixel_x, 0, 320, 0, 255);
+//    sprintf(tft_str, "col %d: %2x", colnum, color);
+//    tftprint(0, 3, 9, tft_str);
+    tft.fillRect(0, 80*(colnum+1)-5, 320, 4, ILI9341_BLACK);
+    tft.fillTriangle(pixel_x, 80*(colnum+1)-5, pixel_x-2, 80*(colnum+1)-2, pixel_x+2, 80*(colnum+1)-2, ILI9341_WHITE);
+    
+    RGB[colnum] = color;
+}
+
 uint16_t tenbitstocolor(uint16_t tenbits) {
     uint16_t color;
 
@@ -701,7 +545,9 @@ void scan_buttons(bool *need_select) {
     if (!(butt_state & I2CEXP_B_BUT) && butB)
     {
 	butB = false;
-	tftprint(0, 3, 5, "");
+	// When changing modes, this could delete a block over a new mode
+	// that draws a background.
+	//tftprint(0, 3, 5, "");
     }
     if (butt_state & I2CEXP_ENC_BUT && !butEnc)
     {
@@ -801,24 +647,47 @@ void loop(void) {
 	Serial.print("Got menu selection #");
 	Serial.println(select);
 	tft.fillScreen(ILI9341_BLACK);
+	// Kind of random LED illumination
+	pixels.setPixelColor(0, (select % 5)*50, 0, 255);
+	pixels.setPixelColor(1, 0, (select/5)*64, 255);
+	pixels.show();
     }
 
+
+    // The first 4 demos display x/y coordinate text in the upper left corner
+    // After the first time around the loop, need_select gets reset to false
+    // and the coordinate text is not rewritten (to save screen drawing time)
+    if (select <= 3 and need_select) reset_textcoord();
     switch (select) {
     case FINGERPAINT:
-	if (need_select) reset_textcoord();
 	finger_draw();
 	break;
+    case TOUCHPAINT:
+	// First time around the loop, draw a color selection circle
+	if (need_select) touchpaint_setup();
+	touchpaint_loop();
+	break;
     case JOYABS:
-	if (need_select) reset_textcoord();
 	joystick_draw();
 	break;
     case JOYREL:
-	if (need_select) reset_textcoord();
 	joystick_draw_relative();
 	break;
     case ACCELPAINT:
-	if (need_select) reset_textcoord();
 	accel_draw();
+	break;
+    case COLORLED:
+	// First time around the loop, draw a color selection circle
+	if (need_select) draw_color_selector();
+	led_color_selector();
+	break;
+    case LEDOFF:
+	pixels.setPixelColor(0, 0, 0, 0);
+	pixels.setPixelColor(1, 0, 0, 0);
+	pixels.show();
+	// shortcut scan buttons below and go back to main menu
+	need_select = true;
+	return;
 	break;
     default:
 	if (select >= 8) {
@@ -826,68 +695,14 @@ void loop(void) {
 	    Serial.println(select);
 	    lcd_test((LCDtest) select);
 	    delay(500);
+	    // shortcut scan buttons below and go back to main menu
 	    need_select = true;
 	    return;
 	}
     }
+    // resets need_select to false unless 'B' is pushed.
     scan_buttons(&need_select);
     delay(1);
-    return;
-    
-
-    if (joyBtnValue == true) select++;
-    // tilting joystick back (not too far) while clicking goes back one demo
-    if (joyValueX < 2000) select-=2;
-    if (select == 12) select = 0;
-    if (select == -1) select = 11;
-
-    // Try to light up LEDs (not working yet)
-    pixels.setPixelColor(0, select*20, 0, 0);
-    pixels.setPixelColor(1, 0, select*20, 0);
-    pixels.show();
-
-
-    Serial.print("Running LCD Demo #");
-    Serial.println(select);
-    lcd_test((LCDtest) select);
-
-    do {
-	read_joystick(false);
-	// wait 50 milliseconds before the next loop
-	// for the analog-to-digital converter to settle
-	// after the last reading:
-	// this also calls yield() for us
-	delay(50);
-
-	// left
-	if (joyValueX < 500)
-	{
-	    tft.setRotation(0);
-	    lcd_test((LCDtest) select);
-	}
-
-	// right
-	if (joyValueX > 3500)
-	{
-	    tft.setRotation(2);
-	    lcd_test((LCDtest) select);
-	}
-
-	// up
-	if (joyValueY < 500)
-	{
-	    tft.setRotation(1);
-	    lcd_test((LCDtest) select);
-	}
-
-	// down
-	if (joyValueY > 3500)
-	{
-	    tft.setRotation(3);
-	    lcd_test((LCDtest) select);
-	}
-    } while (joyBtnValue  == false);
-
 }
 
 
@@ -964,10 +779,11 @@ void setup() {
     Serial.print(" x "); Serial.println(boxh);
     Serial.println(F("Done!"));
 
-    // Tri-color APA106 LEDs Setup (not working right now)
+    // Tri-color APA106 LEDs Setup
+    // Mapping is actually Green, Red, Blue
     pixels.begin();
     pixels.setPixelColor(0, 255, 0, 0);
-    pixels.setPixelColor(1, 0, 255, 0);
+    pixels.setPixelColor(1, 0, 0, 255);
     pixels.show();
 
     // ADXL345
