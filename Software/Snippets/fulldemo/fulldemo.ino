@@ -13,7 +13,6 @@
   MIT license, all text above must be included in any redistribution
  ****************************************************/
 
-
 /*
 I2C addresses:
 Audio:  0x1A
@@ -25,32 +24,6 @@ ADXL:   0x53
 BME230: 0x77 (Temp/Humidity/Pressure)
 */
 
-#define CONFIG_DISABLE_HAL_LOCKS 1
-
-#include <Wire.h>
-#include <SPI.h>
-
-#include "Adafruit_GFX.h"
-// Support for LCD screen
-// The latest version of that library may not be up to date and miss a patch for ESP32
-// which will cause a compilation error:
-// Adafruit_ILI9341.cpp:113:3: error: 'mosiport' was not declared in this scope
-// If so, get the latest version from github, or just patch this single line
-// https://github.com/adafruit/Adafruit_ILI9341/blob/master/Adafruit_ILI9341.cpp#L98
-#include "Adafruit_ILI9341.h"
-
-// Support for APA106 RGB LEDs
-// Current Adafruit code does not support writing to any LED strip on ESP32
-#include "Adafruit_NeoPixel.h"
-
-// Accelerometer
-#include <Adafruit_Sensor.h>
-#include <Adafruit_ADXL345_U.h>
-
-#include "defs.h"
-
-// Touch screen
-#include "XPT2046_Touchscreen.h"
 
 // https://github.com/CCHS-Melbourne/iotuz-esp32-hardware/wiki has hardware mapping details
 
@@ -86,7 +59,6 @@ bool butEnc = false;
 uint16_t joyValueX;
 uint16_t joyValueY;
 bool joyBtnValue;
-
 
 #include "SPI.h"
 #include "Adafruit_GFX.h"
@@ -131,6 +103,8 @@ Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 char tft_str[41];
 // TFT Setup End
 
+// Touch screen
+#include "XPT2046_Touchscreen.h"
 // Touch screen select is on port expander line 6, not directly connected, so the library
 // cannot toggle it directly. It however requires a CS pin, so I'm giving it 33, a spare IO
 // pin so that it doesn't break anything else.
@@ -164,7 +138,7 @@ XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 // 40 chars wide, 5 boxes, 8 char per box
 // 30 chars high, 4 boxes, 7 lines per box
 char* opt_name[NVERT][NHORIZ][3] = {
-    { { "", "Finger", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, { "", "", ""}, },
+    { { "", "Finger", "Paint"},  { "Adafruit", "Touch", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, },
     { { "Select", "LEDs", "Color"}, { "", "LEDs", "Off"}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
     { { "", "Text", ""}, { "", "Fill", ""}, { "", "Diagonal", "Lines"}, { "Horizon", "Vert", "Lines"}, { "", "Rectangle", ""}, },
     { { "", "Fill", "Rectangle"}, { "", "Circles", ""}, { "", "Fill", "Circles"}, { "", "Triangles", ""}, { "", "Fill", "Triangles"}, },
@@ -176,9 +150,10 @@ uint16_t boxw, boxh;
 
 typedef enum {
     FINGERPAINT = 0,
-    JOYABS = 1,
-    JOYREL = 2,
-    ACCELPAINT = 3,
+    TOUCHPAINT = 1,
+    JOYABS = 2,
+    JOYREL = 3,
+    ACCELPAINT = 4,
     COLORLED = 5,
     LEDOFF = 6,
     ROUNDREC = 8,
@@ -195,249 +170,6 @@ typedef enum {
     TRIFILL = 19,
 } LCDtest;
 
-
-unsigned long testFillScreen() {
-  unsigned long start = micros();
-  tft.fillScreen(ILI9341_RED);
-  yield();
-  tft.fillScreen(ILI9341_GREEN);
-  yield();
-  tft.fillScreen(ILI9341_BLUE);
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-  return micros() - start;
-}
-
-unsigned long testText() {
-  unsigned long start = micros();
-  tft.setCursor(0, 0);
-  tft.setTextColor(ILI9341_WHITE);  tft.setTextSize(1);
-  tft.println("Hello World!");
-  tft.setTextColor(ILI9341_YELLOW); tft.setTextSize(2);
-  tft.println(1234.56);
-  tft.setTextColor(ILI9341_RED);    tft.setTextSize(3);
-  tft.println(0xDEADBEEF, HEX);
-  tft.println();
-  tft.setTextColor(ILI9341_GREEN);
-  tft.setTextSize(5);
-  tft.println("Groop");
-  tft.setTextSize(2);
-  tft.println("I implore thee,");
-  tft.setTextSize(1);
-  tft.println("my foonting turlingdromes.");
-  tft.println("And hooptiously drangle me");
-  tft.println("with crinkly bindlewurdles,");
-  tft.println("Or I will rend thee");
-  tft.println("in the gobberwarts");
-  tft.println("with my blurglecruncheon,");
-  tft.println("see if I don't!");
-  return micros() - start;
-}
-
-unsigned long testLines(uint16_t color) {
-  unsigned long start, t;
-  int           x1, y1, x2, y2,
-                w = tft.width(),
-                h = tft.height();
-
-  x1 = y1 = 0;
-  y2    = h - 1;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = w - 1;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  t     = micros() - start; // fillScreen doesn't count against timing
-
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-
-  x1    = w - 1;
-  y1    = 0;
-  y2    = h - 1;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = 0;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  t    += micros() - start;
-
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-
-  x1    = 0;
-  y1    = h - 1;
-  y2    = 0;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = w - 1;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  t    += micros() - start;
-
-  yield();
-  tft.fillScreen(ILI9341_BLACK);
-  yield();
-
-  x1    = w - 1;
-  y1    = h - 1;
-  y2    = 0;
-  start = micros();
-  for(x2=0; x2<w; x2+=6) tft.drawLine(x1, y1, x2, y2, color);
-  x2    = 0;
-  for(y2=0; y2<h; y2+=6) tft.drawLine(x1, y1, x2, y2, color);
-
-  yield();
-  return micros() - start;
-}
-
-unsigned long testFastLines(uint16_t color1, uint16_t color2) {
-  unsigned long start;
-  int           x, y, w = tft.width(), h = tft.height();
-
-  start = micros();
-  for(y=0; y<h; y+=5) tft.drawFastHLine(0, y, w, color1);
-  for(x=0; x<w; x+=5) tft.drawFastVLine(x, 0, h, color2);
-
-  return micros() - start;
-}
-
-unsigned long testRects(uint16_t color) {
-  unsigned long start;
-  int           n, i, i2,
-                cx = tft.width()  / 2,
-                cy = tft.height() / 2;
-
-  n     = min(tft.width(), tft.height());
-  start = micros();
-  for(i=2; i<n; i+=6) {
-    i2 = i / 2;
-    tft.drawRect(cx-i2, cy-i2, i, i, color);
-  }
-
-  return micros() - start;
-}
-
-unsigned long testFilledRects(uint16_t color1, uint16_t color2) {
-  unsigned long start, t = 0;
-  int           n, i, i2,
-                cx = tft.width()  / 2 - 1,
-                cy = tft.height() / 2 - 1;
-
-  n = min(tft.width(), tft.height());
-  for(i=n; i>0; i-=6) {
-    i2    = i / 2;
-    start = micros();
-    tft.fillRect(cx-i2, cy-i2, i, i, color1);
-    t    += micros() - start;
-    // Outlines are not included in timing results
-    tft.drawRect(cx-i2, cy-i2, i, i, color2);
-    yield();
-  }
-
-  return t;
-}
-
-unsigned long testFilledCircles(uint8_t radius, uint16_t color) {
-  unsigned long start;
-  int x, y, w = tft.width(), h = tft.height(), r2 = radius * 2;
-
-  start = micros();
-  for(x=radius; x<w; x+=r2) {
-    for(y=radius; y<h; y+=r2) {
-      tft.fillCircle(x, y, radius, color);
-    }
-  }
-
-  return micros() - start;
-}
-
-unsigned long testCircles(uint8_t radius, uint16_t color) {
-  unsigned long start;
-  int           x, y, r2 = radius * 2,
-                w = tft.width()  + radius,
-                h = tft.height() + radius;
-
-  // Screen is not cleared for this one -- this is
-  // intentional and does not affect the reported time.
-  start = micros();
-  for(x=0; x<w; x+=r2) {
-    for(y=0; y<h; y+=r2) {
-      tft.drawCircle(x, y, radius, color);
-    }
-  }
-
-  return micros() - start;
-}
-
-unsigned long testTriangles() {
-  unsigned long start;
-  int           n, i, cx = tft.width()  / 2 - 1,
-                      cy = tft.height() / 2 - 1;
-
-  n     = min(cx, cy);
-  start = micros();
-  for(i=0; i<n; i+=5) {
-    tft.drawTriangle(
-      cx    , cy - i, // peak
-      cx - i, cy + i, // bottom left
-      cx + i, cy + i, // bottom right
-      tft.color565(i, i, i));
-  }
-
-  return micros() - start;
-}
-
-unsigned long testFilledTriangles() {
-  unsigned long start, t = 0;
-  int           i, cx = tft.width()  / 2 - 1,
-                   cy = tft.height() / 2 - 1;
-
-  start = micros();
-  for(i=min(cx,cy); i>10; i-=5) {
-    start = micros();
-    tft.fillTriangle(cx, cy - i, cx - i, cy + i, cx + i, cy + i,
-      tft.color565(0, i*10, i*10));
-    t += micros() - start;
-    tft.drawTriangle(cx, cy - i, cx - i, cy + i, cx + i, cy + i,
-      tft.color565(i*10, i*10, 0));
-    yield();
-  }
-
-  return t;
-}
-
-unsigned long testRoundRects() {
-  unsigned long start;
-  int           w, i, i2,
-                cx = tft.width()  / 2 - 1,
-                cy = tft.height() / 2 - 1;
-
-  w     = min(tft.width(), tft.height());
-  start = micros();
-  for(i=0; i<w; i+=6) {
-    i2 = i / 2;
-    tft.drawRoundRect(cx-i2, cy-i2, i, i, i/8, tft.color565(i, 0, 0));
-  }
-
-  return micros() - start;
-}
-
-unsigned long testFilledRoundRects() {
-  unsigned long start;
-  int           i, i2,
-                cx = tft.width()  / 2 - 1,
-                cy = tft.height() / 2 - 1;
-
-  start = micros();
-  for(i=min(tft.width(), tft.height()); i>20; i-=6) {
-    i2 = i / 2;
-    tft.fillRoundRect(cx-i2, cy-i2, i, i, i/8, tft.color565(0, i, 0));
-    yield();
-  }
-
-  return micros() - start;
-}
 
 // To clear bit #7, send 128
 void i2cexp_clear_bits(uint8_t bitfield) {
@@ -553,8 +285,8 @@ void lcd_test(LCDtest choice) {
 
 // maxlength is the maximum number of characters that need to be deleted before writing on top
 void tftprint(uint16_t x, uint16_t y, uint8_t maxlength, char *text) {
-    if (maxlength > 0) tft.fillRect(x*8, y*8, maxlength*8, 8, ILI9341_BLACK);
-    tft.setCursor(x*8, y*8);
+    if (maxlength > 0) tft.fillRect(x*6, y*8, maxlength*6, 8, ILI9341_BLACK);
+    tft.setCursor(x*6, y*8);
     tft.println(text);
 }
 
@@ -929,6 +661,11 @@ void loop(void) {
     switch (select) {
     case FINGERPAINT:
 	finger_draw();
+	break;
+    case TOUCHPAINT:
+	// First time around the loop, draw a color selection circle
+	if (need_select) touchpaint_setup();
+	touchpaint_loop();
 	break;
     case JOYABS:
 	joystick_draw();
