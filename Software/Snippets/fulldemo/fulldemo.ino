@@ -63,6 +63,8 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + N
 #include <Adafruit_ADXL345_U.h>
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 
+// tft adafruit library (games use tft2 a separate library, for which we skip the init
+// since the adafruit init works fine for both)
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 
 // Buffer to store strings going to be printed on tft
@@ -81,14 +83,6 @@ char tft_str[41];
 
 XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 //XPT2046_Touchscreen ts(TS_CS_PIN, TS_IRQ_PIN);  // Param 2 - Touch IRQ Pin - interrupt enabled polling
-
-// This is calibration data for the raw touch data to the screen coordinates
-#define TS_MINX 320
-#define TS_MINY 220
-#define TS_MAXX 3920
-#define TS_MAXY 3820
-#define MINPRESSURE 400
-#define MAXPRESSURE 3000
 
 // Joystick Setup
 #define JOYSTICK_X_PIN 39
@@ -669,7 +663,7 @@ void setup() {
     // adafruit library), so we do an explicit begin here and then the other SPI libraries work
     // with hardware SPI as setup here (they will do a second begin without pin mappings and
     // that will be ignored).
-    SPI.begin(SPI_CLK, MISO, MOSI);
+    SPI.begin(SPI_CLK, SPI_MISO, SPI_MOSI);
 
     // Until further notice, there is a hack to get HW SPI be as fast as SW SPI:
     // in espressif/esp32/cores/esp32/esp32-hal.h after the first define, add
