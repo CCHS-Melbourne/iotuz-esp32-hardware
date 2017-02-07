@@ -26,32 +26,8 @@ BME230: 0x77 (Temp/Humidity/Pressure)
 
 
 // https://github.com/CCHS-Melbourne/iotuz-esp32-hardware/wiki has hardware mapping details
+#include "iotuz.h"
 
-// LCD brightness control and touchscreen CS are behind the port
-// expander, as well as both push buttons
-#define I2C_EXPANDER 0x20 //0100000 (7bit) address of the IO expander on i2c bus
-
-/* Port expander PCF8574, access via I2C on */
-#define I2CEXP_ACCEL_INT    0x01 // (In)
-#define I2CEXP_A_BUT	    0x02 // (In)
-#define I2CEXP_B_BUT	    0x04 // (In)
-#define I2CEXP_ENC_BUT	    0x08 // (In)
-#define I2CEXP_SD_CS	    0x10 // (Out)
-#define I2CEXP_TOUCH_INT    0x20 // (In)
-#define I2CEXP_TOUCH_CS	    0x40 // (Out)
-#define I2CEXP_LCD_BL_CTR   0x80 // (Out)
-
-// Dealing with the I/O expander is a bit counter intuitive. There is no difference between a
-// write meant to toggle an output port, and a write designed to turn off pull down resistors and trigger
-// a read request.
-// The write just before the read should have bits high on the bits you'd like to read back, but you
-// may get high bits back on other bits you didn't turn off the pull down resistor on. This is normal.
-// Just filter out the bits you're trying to get from the value read back and keep in mind that when
-// you write, you should still send the right bit values for the output pins.
-// This is all stored in i2cexp which we initialize to the bits used as input:
-#define I2CEXP_IMASK ( I2CEXP_ACCEL_INT + I2CEXP_A_BUT + I2CEXP_B_BUT + I2CEXP_ENC_BUT + I2CEXP_TOUCH_INT )
-// Any write to I2CEXP should contain those mask bits so allow reads to work later
-uint8_t i2cexp = I2CEXP_IMASK;
 bool butA   = false;
 bool butB   = false;
 bool butEnc = false;
@@ -87,16 +63,6 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + N
 #include <Adafruit_ADXL345_U.h>
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
 
-// TFT + Touch Screen Setup Start
-// These are the minimal changes from v0.1 to get the LCD working
-#define TFT_DC 4
-#define TFT_CS 19
-#define TFT_RST 32
-// SPI Pins are shared by TFT, touch screen, SD Card
-#define MISO 12
-#define MOSI 13
-#define SPI_CLK 14
-
 Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 
 // Buffer to store strings going to be printed on tft
@@ -124,8 +90,6 @@ XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 #define MINPRESSURE 400
 #define MAXPRESSURE 3000
 
-
-
 // Joystick Setup
 #define JOYSTICK_X_PIN 39
 #define JOYSTICK_Y_PIN 34
@@ -133,15 +97,16 @@ XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 
 // How many options to display in the rectangle screen
 #define NHORIZ 5
-#define NVERT 4
+#define NVERT 5
 // Option names to display on screen
 // 40 chars wide, 5 boxes, 8 char per box
-// 30 chars high, 4 boxes, 7 lines per box
+// 30 chars high, 5 boxes, 6 lines per box
 char* opt_name[NVERT][NHORIZ][3] = {
     { { "", "Finger", "Paint"},  { "Adafruit", "Touch", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, },
     { { "Select", "LEDs", "Color"}, { "", "LEDs", "Off"}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
     { { "", "Text", ""}, { "", "Fill", ""}, { "", "Diagonal", "Lines"}, { "Horizon", "Vert", "Lines"}, { "", "Rectangle", ""}, },
     { { "", "Fill", "Rectangle"}, { "", "Circles", ""}, { "", "Fill", "Circles"}, { "", "Triangles", ""}, { "", "Fill", "Triangles"}, },
+    { { "", "Tetris", ""}, { "", "Breakout", ""}, { "", "", ""}, { "", "", ""}, { "", "", ""}, },
 };
 // tft_width, tft_height, calculated in setup after tft init
 uint16_t tftw, tfth;
@@ -168,55 +133,10 @@ typedef enum {
     CIRCFILL = 17,
     TRIANGLE = 18,
     TRIFILL = 19,
+    TETRIS = 20,
+    BREAKOUT = 21,
 } LCDtest;
 
-
-// To clear bit #7, send 128
-void i2cexp_clear_bits(uint8_t bitfield) {
-    // set bits to clear to 0, all other to 1, binary and to clear the bits
-    i2cexp &= (~bitfield);
-    pcf8574_write(i2cexp);
-}
-
-// To set bit #7, send 128
-void i2cexp_set_bits(uint8_t bitfield) {
-    i2cexp |= bitfield;
-    pcf8574_write(i2cexp);
-}
-
-uint8_t i2cexp_read() {
-    // For read to work, we must have sent 1 bits on the ports that get used as input
-    // This is done by i2cexp_clear_bits called in setup.
-    Wire.requestFrom(I2C_EXPANDER, 1); // FIXME: deal with returned error here?
-    while (Wire.available() < 1) ;
-    uint8_t read = ~Wire.read(); // Apparently one has to invert the bits read
-    // When no buttons are pushed, this returns 0x91, which includes some ports
-    // we use as output, so we do need to filter out the ports used as read.
-    // Serial.println(read, HEX);
-    return read;
-}
-
-// I2C/TWI success (transaction was successful).
-#define ku8TWISuccess    0
-// I2C/TWI device not present (address sent, NACK received).
-#define ku8TWIDeviceNACK 2
-// I2C/TWI data not received (data sent, NACK received).
-#define ku8TWIDataNACK   3
-// I2C/TWI other error.
-#define ku8TWIError      4
-
-void pcf8574_write(uint8_t dt){
-    uint8_t error;
-
-    Wire.beginTransmission(I2C_EXPANDER);
-    // Serial.print("Writing to I2CEXP: ");
-    // Serial.println(dt);
-    Wire.write(dt);
-    error = Wire.endTransmission();
-    if (error != ku8TWISuccess) {
-	// FIXME: do something here if you like
-    }
-}
 
 void lcd_test(LCDtest choice) {
     switch (choice) {
@@ -689,6 +609,16 @@ void loop(void) {
 	need_select = true;
 	return;
 	break;
+    case TETRIS:
+	// First time around the loop, draw a color selection circle
+	if (need_select) tetris_setup();
+	tetris_loop();
+	break;
+    case BREAKOUT:
+	// First time around the loop, draw a color selection circle
+	if (need_select) breakout_setup();
+	breakout_loop();
+	break;
     default:
 	if (select >= 8) {
 	    Serial.print("Running LCD Demo #");
@@ -710,10 +640,8 @@ void setup() {
     Serial.begin(115200);
     Serial.println("Serial Begin"); 
 
-    // Currently, we are using software SPI, but this init should also be done by the
-    // adafruit library
-    pinMode(MOSI, OUTPUT);
-    pinMode(MISO, INPUT);
+    pinMode(SPI_MOSI, OUTPUT);
+    pinMode(SPI_MISO, INPUT);
     pinMode(SPI_CLK, OUTPUT);
 
     // Joystick Setup
