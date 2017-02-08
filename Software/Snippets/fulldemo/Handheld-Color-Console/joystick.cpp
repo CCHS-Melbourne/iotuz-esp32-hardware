@@ -81,19 +81,26 @@ class Joystick
     static int getPosition (int pin)
     {
       int n = analogRead(pin);
-//      Serial.print(n);
+      int newn;
+
+      //Serial.print("pin ");
+      //Serial.print(pin);
+      //Serial.print(": ");
+      //Serial.print(n);
     
-      if (pin == JOYSTICK_X_PIN) n -= JOYSTICK_CENTERX;
-      if (pin == JOYSTICK_Y_PIN) n -= JOYSTICK_CENTERY;
-//      Serial.print(" > ");
-//      Serial.print(n);
+      // allow for a huge dead zone in the middle ot compensate for bad joysticks
+      // that are different between boards
+      // First, map the bottom part of the range.
+      newn = map(n, 0, 1700, -5, 0);
+      // then if we're higher than that, clip the middle and start counting any movement
+      // past 2300.
+      if (n > 1700) newn = map(constrain(n, 2300, 4095), 2300, 4095, 0, 5);
+      // this should yield a result between -5 and +5 that skips the center.
+      //Serial.print(" > ");
+      //Serial.println(newn);
     
-      n /= 512;
-//      Serial.print(" > ");
-//      Serial.println(n);
-    
-      // Analog 0-4096 is turned into 1>9 for a speed to the left, -1>-6 for a speed to the right
-      return n;
+      // Analog 0-4096 is turned into 1>5 for a speed to the left, -1>-5 for a speed to the right
+      return newn;
     }
 };
 

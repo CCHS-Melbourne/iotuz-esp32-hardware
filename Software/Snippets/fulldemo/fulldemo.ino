@@ -292,7 +292,7 @@ void read_joystick(bool showdebug=true) {
 void joystick_draw() {
     static int8_t update_cnt = 0;
     // 4096 -> 320 (divide by 12.8) and -> 240 (divide by 17)
-    // Sadly on my board, the middle is 2300/1850 and not 2048/2048
+    // Sadly on my board, the middle is 1785/1850 and not 2048/2048
     read_joystick();
     uint16_t pixel_x = joyValueX/12.8;
     uint16_t pixel_y = joyValueY/17;
@@ -313,10 +313,14 @@ void joystick_draw_relative() {
     static uint16_t update_cnt = 0;
     static float pixel_x = 160;
     static float pixel_y = 120;
-    // Sadly on my board, the middle is 2300/1850 and not 2048/2048
+    // Sadly on my board, the middle is 1785/1850 and not 2048/2048
     read_joystick();
     float move_x = (joyValueX-2300.0)/2048;
     float move_y = (joyValueY-1850.0)/2048;
+    int8_t intmove_x = map(joyValueX, 0, 1700, -5, 0);
+    int8_t intmove_y = map(joyValueY, 0, 1700, -5, 0);
+    if (joyValueX > 1700) intmove_x = map(constrain(joyValueX, 2300, 4096), 2300, 4096, 0, 5);
+    if (joyValueY > 1700) intmove_y = map(constrain(joyValueY, 2300, 4096), 2300, 4096, 0, 5);
 
     tft.fillCircle(int(pixel_x), int(pixel_y), 2, tenbitstocolor(update_cnt % 1024));
     pixel_x = constrain(pixel_x + move_x, 0, 319);
@@ -324,10 +328,10 @@ void joystick_draw_relative() {
 
     // Do not write the cursor values too often, it's too slow
     if (!(update_cnt++ % 32)) {
-	sprintf(tft_str, "%.1f > %.1f", move_x, int(pixel_x));
-	tftprint(2, 0, 10, tft_str);
-	sprintf(tft_str, "%.1f > %.1f", move_y, int(pixel_y));
-	tftprint(2, 1, 10, tft_str);
+	sprintf(tft_str, "%.1f (%d) > %d", move_x, intmove_x, int(pixel_x));
+	tftprint(2, 0, 16, tft_str);                        
+	sprintf(tft_str, "%.1f (%d) > %d", move_y, intmove_y, int(pixel_y));
+	tftprint(2, 1, 16, tft_str);
     }
 }
 

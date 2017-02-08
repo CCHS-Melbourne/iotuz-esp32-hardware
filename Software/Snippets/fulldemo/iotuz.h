@@ -38,6 +38,6 @@ void i2cexp_set_bits(uint8_t bitfield);
 #define JOYSTICK_Y_PIN 34
 #define JOYSTICK_BUT_PIN 0
 
-// Center on my IoTuz board
+// Center on my IoTuz board (not used anymore)
 #define JOYSTICK_CENTERX  1785
 #define JOYSTICK_CENTERY  1854
