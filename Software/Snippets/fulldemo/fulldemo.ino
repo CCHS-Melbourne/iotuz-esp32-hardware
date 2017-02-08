@@ -519,6 +519,13 @@ void draw_choices(void) {
 	for(uint8_t x=0; x<NHORIZ; x++) { 
 	    for(uint8_t line=0; line<3; line++) { 
 		tft.setCursor(x*boxw + 4, y*boxh + line*8 + 16);
+		if (y*NHORIZ+x == 1 || y*NHORIZ+x == 5 || y*NHORIZ+x == 20 || y*NHORIZ+x == 21) {
+		    tft.setTextColor(ILI9341_RED);
+		} else if (y*NHORIZ+x == 4) {
+		    tft.setTextColor(ILI9341_BLUE);
+		} else {
+		    tft.setTextColor(ILI9341_WHITE);
+		}
 		tft.println(opt_name[y][x][line]);
 	    }
 	}
