@@ -1,3 +1,6 @@
+#ifndef IOTUZ_H
+#define IOTUZ_H
+
 // TFT + Touch Screen Setup Start
 // These are the minimal changes from v0.1 to get the LCD working
 #define TFT_DC 4
@@ -22,9 +25,6 @@
 #define I2CEXP_TOUCH_CS	    0x40	// (Out)
 #define I2CEXP_LCD_BL_CTR   0x80	// (Out)
 
-void i2cexp_clear_bits(uint8_t bitfield);
-void i2cexp_set_bits(uint8_t bitfield);
-
 // This is calibration data for the raw touch data to the screen coordinates
 #define TS_MINX 320
 #define TS_MINY 220
@@ -41,3 +41,24 @@ void i2cexp_set_bits(uint8_t bitfield);
 // Center on my IoTuz board (not used anymore)
 #define JOYSTICK_CENTERX  1785
 #define JOYSTICK_CENTERY  1854
+
+#define ENCODERA_PIN 15
+#define ENCODERB_PIN 36
+
+
+void i2cexp_clear_bits(uint8_t bitfield);
+void i2cexp_set_bits(uint8_t bitfield);
+
+typedef enum {
+    ENC_DOWN = 0,
+    ENC_PUSHED = 1,
+    ENC_UP = 2,
+    ENC_RELEASED = 3,
+
+} ButtState;
+
+int16_t read_encoder();
+bool encoder_changed();
+ButtState read_encoder_button();
+
+#endif

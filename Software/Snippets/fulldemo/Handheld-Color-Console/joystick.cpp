@@ -52,7 +52,7 @@ class Joystick
 
     static boolean fire()
     {
-      return digitalRead(JOYSTICK_BUT_PIN) == LOW;
+      return (digitalRead(JOYSTICK_BUT_PIN) == LOW || read_encoder_button() == ENC_DOWN);
     }
 
     static void waitForRelease()
@@ -91,10 +91,10 @@ class Joystick
       // allow for a huge dead zone in the middle ot compensate for bad joysticks
       // that are different between boards
       // First, map the bottom part of the range.
-      newn = map(n, 0, 1700, -5, 0);
+      newn = map(n, 0, 1600, -5, 0);
       // then if we're higher than that, clip the middle and start counting any movement
       // past 2300.
-      if (n > 1700) newn = map(constrain(n, 2300, 4095), 2300, 4095, 0, 5);
+      if (n > 1600) newn = map(constrain(n, 2400, 4095), 2400, 4095, 0, 5);
       // this should yield a result between -5 and +5 that skips the center.
       //Serial.print(" > ");
       //Serial.println(newn);

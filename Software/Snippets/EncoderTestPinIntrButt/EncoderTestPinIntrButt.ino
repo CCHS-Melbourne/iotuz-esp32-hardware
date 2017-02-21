@@ -66,8 +66,9 @@ void loop() {
 	lastencoder = encoder0Pos;
     }
 
-    // There is no debouncing here.
+    // There is no debouncing here, delay at the end will help a bit, but is not foolproof
     scan_buttons();
+
     //Serial.println("Do other stuff in loop()");
     delay(1);
 }

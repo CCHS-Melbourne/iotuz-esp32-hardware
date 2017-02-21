@@ -45,7 +45,12 @@ bool joyBtnValue;
 // If so, get the latest version from github, or just patch this single line
 // https://github.com/adafruit/Adafruit_ILI9341/blob/master/Adafruit_ILI9341.cpp#L98
 #include "Adafruit_ILI9341.h"
-#include <Wire.h>
+//#include "ILI9341_t3.h"
+// tft adafruit library (games use tft2 a separate library, for which we skip the init
+// since the adafruit init works fine for both)
+Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
+//ILI9341_t3 tft = ILI9341_t3(TFT_CS, TFT_DC, TFT_RST);
+
 
 // https://learn.adafruit.com/adafruit-neopixel-uberguide/
 // Support for APA106 RGB LEDs
@@ -62,10 +67,6 @@ Adafruit_NeoPixel pixels = Adafruit_NeoPixel(NUMPIXELS, RGB_LED_PIN, NEO_GRB + N
 #include <Adafruit_Sensor.h>
 #include <Adafruit_ADXL345_U.h>
 Adafruit_ADXL345_Unified accel = Adafruit_ADXL345_Unified(12345);
-
-// tft adafruit library (games use tft2 a separate library, for which we skip the init
-// since the adafruit init works fine for both)
-Adafruit_ILI9341 tft = Adafruit_ILI9341(TFT_CS, TFT_DC, TFT_RST);
 
 // Buffer to store strings going to be printed on tft
 char tft_str[41];
@@ -97,7 +98,7 @@ XPT2046_Touchscreen ts(TS_CS_PIN);  // Param 2 - NULL - No interrupts
 // 30 chars high, 5 boxes, 6 lines per box
 char* opt_name[NVERT][NHORIZ][3] = {
     { { "", "Finger", "Paint"},  { "Adafruit", "Touch", "Paint"}, { "Joystick", "Absolute", "Paint"}, { "Joystick", "Relative", "Paint"}, { "", "Accel", "Paint"}, },
-    { { "Select", "LEDs", "Color"}, { "", "LEDs", "Off"}, { "", "", ""}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
+    { { "Select", "LEDs", "Color"}, { "", "LEDs", "Off"}, { "", "Rotary", "Encoder"}, { "", "Round", "Rects"}, { "Round", "Fill", "Rects"}, },
     { { "", "Text", ""}, { "", "Fill", ""}, { "", "Diagonal", "Lines"}, { "Horizon", "Vert", "Lines"}, { "", "Rectangle", ""}, },
     { { "", "Fill", "Rectangle"}, { "", "Circles", ""}, { "", "Fill", "Circles"}, { "", "Triangles", ""}, { "", "Fill", "Triangles"}, },
     { { "", "Tetris", ""}, { "", "Breakout", ""}, { "", "", ""}, { "", "", ""}, { "", "", ""}, },
@@ -115,6 +116,7 @@ typedef enum {
     ACCELPAINT = 4,
     COLORLED = 5,
     LEDOFF = 6,
+    ROTARTYENC = 7,
     ROUNDREC = 8,
     ROUNDRECFILL = 9,
     TEXT = 10,
@@ -305,6 +307,28 @@ void joystick_draw() {
 	tftprint(2, 0, 10, tft_str);
 	sprintf(tft_str, "%d > %d", joyValueY, pixel_y);
 	tftprint(2, 1, 10, tft_str);
+    }
+}
+
+void rotary_encoder() {
+    static int16_t   encoder = 0;
+    static ButtState encoder_button = ENC_UP;
+
+    int16_t   new_encoder = read_encoder();
+    ButtState new_encoder_button = read_encoder_button();
+
+    if (new_encoder != encoder || new_encoder_button != encoder_button) {
+	// Serial.print(encoder);
+	// Serial.print(" > ");
+	// Serial.print(new_encoder);
+	// Serial.print(" | ");
+	// Serial.print(encoder_button);
+	// Serial.print(" > ");
+	// Serial.println(new_encoder_button);
+	encoder = new_encoder;
+	encoder_button = new_encoder_button;
+	sprintf(tft_str, "%d/%d", encoder_button, encoder);
+	tftprint(0, 0, 10, tft_str);
     }
 }
 
@@ -572,6 +596,7 @@ void loop(void) {
 	Serial.print("Got menu selection #");
 	Serial.println(select);
 	tft.fillScreen(ILI9341_BLACK);
+
 	// Kind of random LED illumination
 	pixels.setPixelColor(0, (select % 5)*50, 0, 255);
 	pixels.setPixelColor(1, 0, (select/5)*64, 255);
@@ -614,6 +639,9 @@ void loop(void) {
 	need_select = true;
 	return;
 	break;
+    case ROTARTYENC:
+	rotary_encoder();
+	break;
     case TETRIS:
 	// First time around the loop, draw a color selection circle
 	if (need_select) tetris_setup();
@@ -645,17 +673,9 @@ void setup() {
     Serial.begin(115200);
     Serial.println("Serial Begin"); 
 
-    pinMode(SPI_MOSI, OUTPUT);
-    pinMode(SPI_MISO, INPUT);
-    pinMode(SPI_CLK, OUTPUT);
+    // Basic init and pin mapping that should be common to anything using IoTuz
+    iotuz_setup();
 
-    // Joystick Setup
-    pinMode(JOYSTICK_BUT_PIN, INPUT_PULLUP);
-
-    // TFT Setup
-    pinMode(TFT_CS, OUTPUT);
-    pinMode(TFT_DC, OUTPUT);
-    pinMode(TFT_RST, OUTPUT);
     // Hardware SPI on ESP32 is actually slower than software SPI. Giving 80Mhz
     // here does not make things any faster. There seems to be a fair amount of
     // overhead in the fancier hw SPI on ESP32 which is designed to send more than
@@ -681,13 +701,13 @@ void setup() {
     // #define CONFIG_DISABLE_HAL_LOCKS 1
     // Use with caution, this may cause unknown issues
 
-    Wire.begin();
     // LCD backlight is inverted logic,
     // This turns the backlight off
     // i2cexp_set_bits(I2CEXP_LCD_BL_CTR);
     // And this turns it on
     i2cexp_clear_bits(I2CEXP_LCD_BL_CTR);
     // Note this also initializes the read bits on PCF8574 by setting them to 1 as per I2CEXP_IMASK
+    // but iotuz_setup now does this for us earlier up.
 
     Serial.println("ILI9341 Test!"); 
 
@@ -712,8 +732,9 @@ void setup() {
     Serial.print(" x "); Serial.println(boxh);
     Serial.println(F("Done!"));
 
+
     // Tri-color APA106 LEDs Setup
-    // Mapping is actually Green, Red, Blue
+    // Mapping is actually Green, Red, Blue (not RGB)
     pixels.begin();
     pixels.setPixelColor(0, 255, 0, 0);
     pixels.setPixelColor(1, 0, 0, 255);

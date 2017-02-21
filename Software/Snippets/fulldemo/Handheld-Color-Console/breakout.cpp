@@ -101,7 +101,6 @@ class Breakout
           delay(100);
         }
       }
-    
       while (!Joystick::fire());
     }
 
@@ -114,7 +113,7 @@ class Breakout
       do
       {
         const int m = js.getX();
-        if ( m != 0)
+        if ( m != 0 || encoder_changed())
         {
           paddle.draw(m);
           ball.clear();
@@ -192,7 +191,7 @@ class Breakout
 	//Serial.println(m);
 	// ESP32 is too fast and moves the ball too quickly, not giving a chance to move the paddle
 	delay(7);
-        if (waited > PADDLE_MOVE_WAIT && m != 0)
+        if (waited > PADDLE_MOVE_WAIT && (m != 0 || encoder_changed()))
         {
   	  //Serial.println("move paddle");
           last = millis();
