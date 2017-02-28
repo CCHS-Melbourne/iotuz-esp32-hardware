@@ -22,6 +22,7 @@
 #define PADDLECPP
 
 #include "config.h"
+#include "iotuz.h" // read_encoder
 
 class Paddle
 {
@@ -35,6 +36,29 @@ class Paddle
   
     void draw(int m)
     {
+      // Allow overriding joystick movement with rotary encoder
+      static int16_t encoder = 0;
+      int16_t new_encoder = read_encoder();
+      if (encoder != new_encoder)
+      {
+	Serial.print("Rot Encoder > ");
+	Serial.print(encoder);
+	Serial.print(" > ");
+	Serial.print(new_encoder);
+	m = (encoder-new_encoder) * -2;
+	encoder = new_encoder;
+	Serial.print(" > ");
+	Serial.println(m);
+      }
+      else
+      {
+	Serial.print("Joy: ");
+	Serial.println(m);
+      }
+      // ^^^^^
+      // Because there are 2 ways to drive the paddle, show on serial console which
+      // one is responsible for moving the paddle if it drifts on its own.
+
       if ( m < 0 && x > PADDLE_W )
       {
         // cant move beyond the screen border
