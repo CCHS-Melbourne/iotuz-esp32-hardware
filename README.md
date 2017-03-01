@@ -23,10 +23,20 @@ Software instructions
 
 [Software setup instructions](https://github.com/CCHS-Melbourne/IoTuz/wiki/Software-Instructions)
 
+Please see https://github.com/marcmerlin/IoTuz mentioned below for an arduino driver.
+
 Features
 --------
 
-* Coming Soon
+[Marc MERLIN has written a partial driver for the arduino environment](https://github.com/marcmerlin/IoTuz) with suport for:
+- TFT (hw SPI)
+- Touchscreen (hw SPI)
+- Rotary Encoder via interrupt driven driver
+- Support for A and B buttons "hidden" behind the I2C IO multiplexer
+- Joystick
+- Color LEDs (requires a patch for the adafruit library)
+- Accelerometer
+- IO expander (pcf8574)
 
 Getting IoTuz
 ---------------
