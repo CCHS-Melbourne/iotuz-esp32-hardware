@@ -28,19 +28,28 @@ Please see https://github.com/marcmerlin/IoTuz mentioned below for an arduino dr
 Features
 --------
 
-[Marc MERLIN has written a partial driver for the arduino environment](https://github.com/marcmerlin/IoTuz) with suport for:
+[Marc MERLIN has written a driver for the arduino environment](https://github.com/marcmerlin/IoTuz) with support for:
 - TFT (hw SPI)
 - Touchscreen (hw SPI)
-- Rotary Encoder via interrupt driven driver
+- Replacement touchscreen support (calibration option in case your touchscreen is reversed or has different calibration)
+- Rotary Encoder via pin interrupt driven driver
 - Support for A and B buttons "hidden" behind the I2C IO multiplexer
 - Joystick
-- Color LEDs (requires a patch for the adafruit library)
+- Color LEDs
 - Accelerometer
+- BME280 (temperature, humidity, pressure)
 - IO expander (pcf8574)
+- Infrared receiver
+
+![image](https://cloud.githubusercontent.com/assets/1369412/25074744/82b7619c-22b7-11e7-8e0c-99e2d5e20826.png)
+![image](https://cloud.githubusercontent.com/assets/1369412/25074745/89e531d8-22b7-11e7-9e5a-e26123518ce0.png)
+![image](https://cloud.githubusercontent.com/assets/1369412/25074748/991a8cca-22b7-11e7-9467-843c9a7dc7df.png)
+
+For this software, go to: https://github.com/marcmerlin/IoTuz
+
 
 Getting IoTuz
 ---------------
-
 You need to clone the IoTuz repo from github, using the `--recursive` option to pick up submodules. If you download a zip file then the submodule parts will be missing, so we recommend using git to get it.
 
 The command is:
